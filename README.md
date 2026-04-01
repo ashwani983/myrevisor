@@ -2,6 +2,9 @@
 
 **DevOps Interview Study Application** - Master your Kubernetes, AWS, Docker, Jenkins, Git, and Shell Scripting knowledge through interactive CLI quizzes.
 
+[![npm version](https://badge.fury.io/js/myrevisor.svg)](https://badge.fury.io/js/myrevisor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                                                             │
@@ -15,6 +18,12 @@
 │         [ Your DevOps Interview Preparation Tool ]           │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
+```
+
+## Quick Install
+
+```bash
+npm install -g myrevisor
 ```
 
 ## Features
