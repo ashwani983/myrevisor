@@ -1,0 +1,358 @@
+{
+  "subject": "Docker",
+  "description": "Docker is a platform for developing, shipping, and running applications inside containers. Containers package applications with their dependencies for consistent deployment across environments.",
+  "totalQuestions": 50,
+  "lastUpdated": "2025-10-04",
+  "questions": [
+    {
+      "id": "docker-001",
+      "question": "What is the difference between Docker Image, Container, and Engine?",
+      "answer": "Docker Engine: Platform that runs and manages containers (includes dockerd daemon, API, CLI)\n\nDocker Image:\n- Blueprint/template for creating containers\n- Read-only layers stacked on top of each other\n- Created using Dockerfile\n- Can exist independently\n\nDocker Container:\n- Running instance of an image\n- Has writable layer on top of image layers\n- Real-world entity that uses RAM when running\n- Isolated environment for the application",
+      "difficulty": "easy",
+      "tags": ["basics", "concepts"]
+    },
+    {
+      "id": "docker-002",
+      "question": "What is the difference between dockerd and containerd?",
+      "answer": "dockerd (Docker Daemon):\n- Main manager for all container operations\n- Handles API requests from Docker CLI\n- High-level container management\n- Creates and manages images, containers, networks, volumes\n\ncontainerd:\n- Lightweight container runtime\n- Lower-level container operations\n- Pulls images, starts/stops containers\n- Used BY dockerd (not directly accessed)\n\nAnalogy: dockerd is the captain, containerd is the crew handling the actual cargo.",
+      "difficulty": "medium",
+      "tags": ["architecture", "runtime"]
+    },
+    {
+      "id": "docker-003",
+      "question": "Why and when should you use Docker?",
+      "answer": "Use Docker for:\n\n- Consistency: Same behavior across dev/staging/prod\n- Isolation: Separate environments for apps\n- Resource Efficiency: Lightweight vs VMs\n- Rapid Deployment: Start/stop containers quickly\n- Version Control: Track image versions\n- CI/CD: Automate testing and deployment\n- Microservices: Each service in its own container\n- Scalability: Easy horizontal scaling\n- DevOps: Bridge between dev and ops teams",
+      "difficulty": "easy",
+      "tags": ["use-cases", "benefits"]
+    },
+    {
+      "id": "docker-004",
+      "question": "What is the difference between COPY and RUN in Dockerfile?",
+      "answer": "COPY instruction:\n- Copies files from host to container filesystem\n- Used for including app files\n- Example: COPY ./src /app\n\nRUN instruction:\n- Executes commands during IMAGE BUILD\n- Creates new layer for each RUN\n- Used for installing packages, setup\n- Example: RUN apt-get update && apt-get install -y python3",
+      "difficulty": "easy",
+      "tags": ["dockerfile", "commands"]
+    },
+    {
+      "id": "docker-005",
+      "question": "What is the difference between CMD and ENTRYPOINT?",
+      "answer": "CMD:\n- Default command when container starts\n- Can be overridden from CLI\n- Example: CMD [\"python\", \"app.py\"]\n\nENTRYPOINT:\n- Main executable that always runs\n- CLI arguments append to it\n- Cannot be easily overridden\n- Example: ENTRYPOINT [\"python\", \"app.py\"]\n   docker run myimage arg1 → runs python app.py arg1\n\nBest practice: Use both together for flexible commands.",
+      "difficulty": "medium",
+      "tags": ["dockerfile", "commands"]
+    },
+    {
+      "id": "docker-006",
+      "question": "Explain docker stop, docker restart, and docker kill commands.",
+      "answer": "docker stop:\n- Graceful shutdown (SIGTERM)\n- 10 second grace period for cleanup\n- Data in volumes persists\n- Same config when restarted\n\ndocker kill:\n- Immediate termination (SIGKILL)\n- No cleanup opportunity\n- Unsaved changes may be lost\n\ndocker restart:\n- Stops then starts the container\n- Preserves data and configuration\n- Same container ID",
+      "difficulty": "easy",
+      "tags": ["commands", "lifecycle"]
+    },
+    {
+      "id": "docker-007",
+      "question": "List the different Docker network drivers.",
+      "answer": "1. bridge: Default for standalone containers\n   - Creates isolated network on host\n   - Containers can communicate via bridge\n\n2. host: Removes network isolation\n   - Container uses host's network directly\n   - No port mapping needed\n\n3. overlay: Multi-host networking\n   - Docker Swarm mode\n   - Containers across hosts communicate\n\n4. macvlan: Assigns MAC address to containers\n   - Direct network access\n   - Appears as physical devices\n\n5. none: No networking\n   - Completely isolated container",
+      "difficulty": "medium",
+      "tags": ["networking", "drivers"]
+    },
+    {
+      "id": "docker-008",
+      "question": "What is the difference between COPY and ADD?",
+      "answer": "COPY:\n- Copies files from host to image\n- Straightforward, no magic\n- Best for local files\n- Example: COPY app.py /app/\n\nADD:\n- Same as COPY plus:\n- Can fetch URLs: ADD https://example.com/file /app/\n- Can extract tar: ADD archive.tar.gz /app/\n\nBest Practice:\n- Use COPY for local files\n- Use ADD only when you need URL or extraction",
+      "difficulty": "easy",
+      "tags": ["dockerfile", "commands"]
+    },
+    {
+      "id": "docker-009",
+      "question": "What is Docker Compose and when should you use it?",
+      "answer": "Docker Compose: Tool for defining multi-container apps\n\nUse cases:\n- Development environments\n- Microservices apps\n- Integration testing\n- Local deployment\n- CI/CD pipelines\n\nFeatures:\n- Single YAML file defines all services\n- docker-compose up starts everything\n- Networks and volumes management\n- Environment variables support\n- Easy cleanup with docker-compose down",
+      "difficulty": "easy",
+      "tags": ["compose", "orchestration"]
+    },
+    {
+      "id": "docker-010",
+      "question": "How do you write a Dockerfile?",
+      "answer": "Basic Dockerfile structure:\n\n1. FROM - Base image\n2. WORKDIR - Working directory\n3. COPY - Copy files\n4. RUN - Install dependencies\n5. EXPOSE - Port to expose\n6. ENV - Environment variables\n7. CMD - Default command\n\nExample:\nFROM python:3.9-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install -r requirements.txt\nCOPY . .\nEXPOSE 5000\nCMD [\"python\", \"app.py\"]",
+      "difficulty": "easy",
+      "tags": ["dockerfile", "basics"]
+    },
+    {
+      "id": "docker-011",
+      "question": "What are Docker volumes and why use them?",
+      "answer": "Volumes: Persistent data storage outside container lifecycle\n\nUse cases:\n- Database files (MySQL, PostgreSQL)\n- Application state\n- Shared data between containers\n- Keep data after container deletion\n\nTypes:\n1. Named volumes: docker volume create myvol\n2. Anonymous volumes: Docker manages storage\n3. Bind mounts: Map host directory to container\n\nBenefits:\n- Data persists beyond container lifecycle\n- Easy backup and migration\n- Share data between containers\n- Better performance than container filesystem",
+      "difficulty": "medium",
+      "tags": ["volumes", "storage"]
+    },
+    {
+      "id": "docker-012",
+      "question": "What is the difference between Docker bind mounts and volumes?",
+      "answer": "Bind Mounts:\n- Maps specific host directory to container\n- File changes immediately visible\n- Host-dependent (security concerns)\n- Example: -v /host/path:/container/path\n\nDocker Volumes:\n- Managed by Docker, stored in Docker directory\n- Independent of host OS\n- More secure and portable\n- Better performance\n- Example: -v myvolume:/container/path\n\nBest Practice: Use volumes for persistent data, bind mounts for development.",
+      "difficulty": "medium",
+      "tags": ["volumes", "storage"]
+    },
+    {
+      "id": "docker-013",
+      "question": "What is Docker Swarm and how does it work?",
+      "answer": "Docker Swarm: Native container orchestration in Docker\n\nFeatures:\n- Clustering: Combine multiple Docker hosts\n- Orchestration: Deploy and manage services\n- Scaling: Increase/decrease replicas\n- Load Balancing: Distribute traffic\n- Service Discovery: Automatic DNS\n- Rolling Updates: Zero downtime deployments\n\nCommands:\ndocker swarm init\ndocker stack deploy -c compose.yml myapp\ndocker service scale myapp=5",
+      "difficulty": "medium",
+      "tags": ["swarm", "orchestration"]
+    },
+    {
+      "id": "docker-014",
+      "question": "Explain Docker container lifecycle.",
+      "answer": "Container lifecycle stages:\n\n1. Create: docker create - creates container from image\n2. Run: docker start - starts the container\n   (docker run = create + start)\n3. Pause: docker pause - suspends processes\n4. Unpause: docker unpause - resumes processes\n5. Stop: docker stop - graceful shutdown\n6. Kill: docker kill - immediate termination\n7. Restart: docker restart - stop + start\n8. Remove: docker rm - delete container",
+      "difficulty": "easy",
+      "tags": ["lifecycle", "commands"]
+    },
+    {
+      "id": "docker-015",
+      "question": "What is a multi-stage Docker build?",
+      "answer": "Multi-stage builds: Multiple FROM statements in one Dockerfile\n\nPurpose: Reduce final image size by copying only needed artifacts\n\nExample:\n# Build stage\nFROM maven AS build\nCOPY . .\nRUN mvn package\n\n# Runtime stage\nFROM openjdk:11-jre-slim\nCOPY --from=build /app/target/myapp.jar .\nCMD [\"java\", \"-jar\", \"myapp.jar\"]\n\nBenefits:\n- Smaller final image (no build tools)\n- Security: fewer vulnerabilities\n- Faster deployments\n- Less storage required",
+      "difficulty": "hard",
+      "tags": ["dockerfile", "optimization"]
+    },
+    {
+      "id": "docker-016",
+      "question": "How do you reduce Docker image size?",
+      "answer": "Image size reduction strategies:\n\n1. Use minimal base images (alpine, slim)\n   FROM python:3.9-slim (not python:3.9)\n\n2. Multi-stage builds\n   Copy only compiled artifacts\n\n3. Combine RUN commands\n   RUN apt-get update && apt-get install -y package\n\n4. Remove unnecessary files\n   RUN apt-get clean && rm -rf /var/lib/apt/lists/*\n\n5. Use .dockerignore\n   Exclude node_modules, .git, build artifacts\n\n6. Install only production dependencies\n   npm ci --only=production",
+      "difficulty": "hard",
+      "tags": ["optimization", "dockerfile"]
+    },
+    {
+      "id": "docker-017",
+      "question": "What are Docker health checks?",
+      "answer": "HEALTHCHECK in Dockerfile:\nHEALTHCHECK --interval=30s --timeout=10s --retries=3 \\\n  CMD curl -f http://localhost:8080/health || exit 1\n\nStatus checks:\n- Starting: Initial state\n- Healthy: Passes health check\n- Unhealthy: Fails health check\n\nContainer inspection:\ndocker inspect --format='{{.State.Health}}' container\n\nUse cases:\n- Monitor application health\n- Load balancer knows which containers are ready\n- Auto-restart unhealthy containers",
+      "difficulty": "hard",
+      "tags": ["healthcheck", "monitoring"]
+    },
+    {
+      "id": "docker-018",
+      "question": "How does Docker bridge networking work?",
+      "answer": "Bridge network on single host:\n\n1. Docker creates bridge0 interface on host\n2. Each container gets veth pair (virtual eth)\n3. Containers connect to bridge\n4. Docker assigns IP addresses (172.17.x.x)\n5. Docker handles port mapping (host:container)\n\nCommunication:\n- Container to container: via bridge\n- Container to host: via NAT\n- Container to external: via NAT",
+      "difficulty": "hard",
+      "tags": ["networking", "bridge"]
+    },
+    {
+      "id": "docker-019",
+      "question": "What are Docker restart policies?",
+      "answer": "Restart policies (--restart flag):\n\n1. no: Never restart (default)\n2. on-failure: Restart only if exit code non-zero\n3. always: Always restart\n4. unless-stopped: Restart unless explicitly stopped\n5. on-failure:n: Restart up to n times\n\nExamples:\ndocker run --restart=always nginx\ndocker run --restart=on-failure:3 myapp",
+      "difficulty": "easy",
+      "tags": ["restart", "commands"]
+    },
+    {
+      "id": "docker-020",
+      "question": "What is the difference between a Docker image registry and repository?",
+      "answer": "Image Registry:\n- Server that stores and distributes images\n- Examples: Docker Hub, Amazon ECR, Google GCR\n- Contains multiple repositories\n\nImage Repository:\n- Collection of related images with same name\n- Distinguished by tags/versions\n- Example: nginx:latest, nginx:1.21\n\nFull image name:\nregistry.example.com/user/project:tag",
+      "difficulty": "easy",
+      "tags": ["registry", "repository"]
+    },
+    {
+      "id": "docker-021",
+      "question": "What are dangling Docker images and how to clean them?",
+      "answer": "Dangling images:\n- Image layers not associated with any tagged image\n- Usually from failed builds or re-tags\n- Consume disk space\n\nCommands:\n# List dangling images\ndocker images -f dangling=true\n\n# Remove all dangling\ndocker image prune\n\n# Remove all unused images\ndocker image prune -a\n\n# Remove everything unused\ndocker system prune -a",
+      "difficulty": "medium",
+      "tags": ["cleanup", "images"]
+    },
+    {
+      "id": "docker-022",
+      "question": "How do you share data between Docker containers?",
+      "answer": "Methods to share data between containers:\n\n1. Shared volumes:\ndocker run -v shared-data:/data --name container1\ndocker run --volumes-from container1\n\n2. Named volumes:\ndocker volume create sharedvol\ndocker run -v sharedvol:/data container1\ndocker run -v sharedvol:/data container2\n\n3. Bind mounts:\ndocker run -v /host/path:/container/path container1\ndocker run -v /host/path:/container/path container2\n\n4. Copy between containers:\ndocker cp container1:/file ./temp\ndocker cp ./temp container2:/file",
+      "difficulty": "medium",
+      "tags": ["volumes", "data-sharing"]
+    },
+    {
+      "id": "docker-023",
+      "question": "What is the purpose of .dockerignore file?",
+      "answer": ".dockerignore: Excludes files from build context\n\nPrevents copying:\n- .git (version control)\n- node_modules (reinstalled in container)\n- build artifacts (target/, dist/)\n- IDE files (.idea/, .vscode/)\n- Secrets (.env files)\n- Documentation (README, docs/)\n\nExample:\n.git\nnode_modules\n*.log\n.env*\n.vscode\n__pycache__\n*.md",
+      "difficulty": "easy",
+      "tags": ["dockerfile", "best-practices"]
+    },
+    {
+      "id": "docker-024",
+      "question": "What are Docker secrets and when to use them?",
+      "answer": "Docker Secrets: Secure way to manage sensitive data\n\nUse for:\n- Passwords\n- API tokens\n- TLS certificates\n- SSH keys\n\nFeatures:\n- Encrypted at rest and in transit\n- Only accessible to authorized services\n- Automatically mounted to containers\n- Rotatable without downtime\n\nUsage in Swarm:\ndocker secret create db_pass pass.txt\ndocker service create --secret db_pass myapp",
+      "difficulty": "hard",
+      "tags": ["secrets", "security"]
+    },
+    {
+      "id": "docker-025",
+      "question": "Explain Docker layer caching.",
+      "answer": "Docker caches each layer during build:\n\nHow it works:\n1. Each instruction creates new layer\n2. Cache checked: same instruction + same context?\n3. If yes: use cached layer\n4. If no: execute and cache new layer\n\nOptimization:\n- Put rarely changing instructions first\n- COPY requirements.txt before COPY source code\n- Combine apt-get commands with cleanup\n\nInvalidation:\n- Any instruction change invalidates ALL subsequent caches\n- Use --no-cache=true to disable cache",
+      "difficulty": "medium",
+      "tags": ["caching", "optimization"]
+    },
+    {
+      "id": "docker-026",
+      "question": "What is Docker overlay networking?",
+      "answer": "Overlay network: Multi-host container communication\n\nRequirements:\n- Docker Swarm mode enabled\n- Key-value store (Consul, etcd, ZooKeeper)\n\nHow it works:\n1. Each host runs Docker in Swarm mode\n2. Overlay network created on manager node\n3. Containers attached to overlay network\n4. VXLAN tunnels traffic between hosts\n5. Distributed routing by each Docker host\n\nCommand:\ndocker network create -d overlay my-overlay-net",
+      "difficulty": "hard",
+      "tags": ["networking", "overlay", "swarm"]
+    },
+    {
+      "id": "docker-027",
+      "question": "How does Docker handle container logging?",
+      "answer": "Logging drivers:\n\n1. json-file (default)\n2. syslog\n3. journald\n4. splunk\n5. awslogs\n6. fluentd\n\nCommands:\n# View logs\ndocker logs -f container_name\n\n# Limit log size\ndocker run --log-opt max-size=10m --log-opt max-file=3 nginx\n\n# Use specific driver\ndocker run --log-driver=syslog nginx",
+      "difficulty": "medium",
+      "tags": ["logging", "monitoring"]
+    },
+    {
+      "id": "docker-028",
+      "question": "What is the difference between Docker and VM?",
+      "answer": "Docker Containers:\n- Share host OS kernel\n- Lightweight (MBs)\n- Start in seconds\n- Lower isolation (same kernel)\n- Efficient resource use\n- One OS per host\n\nVirtual Machines:\n- Full OS with own kernel\n- Heavy (GBs)\n- Start in minutes\n- Strong isolation (separate kernels)\n- More resource overhead\n- Multiple OS types possible",
+      "difficulty": "easy",
+      "tags": ["comparison", "vm"]
+    },
+    {
+      "id": "docker-029",
+      "question": "What are namespacing and cgroups in Docker?",
+      "answer": "Namespaces: Isolates container processes\n\nTypes:\n- PID: Process isolation\n- Network: Own network stack\n- Mount: Filesystem isolation\n- UTS: Hostname/domain isolation\n- IPC: Shared memory isolation\n- User: User ID isolation\n\ncgroups (Control Groups): Resource management\n\nControls:\n- CPU usage limits\n- Memory limits\n- Disk I/O limits\n- Network bandwidth\n\nTogether they provide:\n- Isolation between containers\n- Resource guarantees\n- Prevention of resource hogging",
+      "difficulty": "hard",
+      "tags": ["namespaces", "cgroups", "security"]
+    },
+    {
+      "id": "docker-030",
+      "question": "How do you debug a Docker container?",
+      "answer": "Debugging commands:\n\n# Check container status\ndocker ps -a\ndocker inspect container_name\n\n# View logs\ndocker logs container_name\ndocker logs -f container_name\n\n# Execute commands in container\ndocker exec -it container_name /bin/sh\ndocker exec container_name ls /app\n\n# Check resource usage\ndocker stats\n\n# Network debugging\ndocker exec container_name netstat -tulpn\ndocker exec container_name nslookup hostname\n\n# Copy files from container\ndocker cp container_name:/app/logs ./local-logs",
+      "difficulty": "medium",
+      "tags": ["debugging", "troubleshooting"]
+    },
+    {
+      "id": "docker-031",
+      "question": "What is Docker content trust?",
+      "answer": "Docker Content Trust: Image signing and verification\n\nEnables:\n- Verify image publisher\n- Ensure image integrity\n- Prevent tampering\n\nEnvironment variable:\nexport DOCKER_CONTENT_TRUST=1\n\nBehavior:\n- Pull: Only signed images allowed\n- Push: Automatically signs images\n- Tags: Signature tied to specific tag\n\nSecurity:\n- Uses Notary for signing\n- Trust stored in trust data directory\n- Keys rotated periodically",
+      "difficulty": "hard",
+      "tags": ["security", "content-trust"]
+    },
+    {
+      "id": "docker-032",
+      "question": "What are Docker resource constraints?",
+      "answer": "CPU limits:\n--cpus=1.5          # 1.5 CPU cores\n--cpu-shares=512    # Relative weight\n\nMemory limits:\n--memory=512m       # Max memory\n--memory-reservation=256m  # Soft limit\n--memory-swap=1g    # Swap limit\n--memory-swappiness=10    # VM tendency\n\nBlock I/O:\n--device-read-bps=/dev/sda:1mb\n--device-write-iops=/dev/sda:10",
+      "difficulty": "medium",
+      "tags": ["resources", "limits"]
+    },
+    {
+      "id": "docker-033",
+      "question": "What is the difference between Docker daemon and Docker client?",
+      "answer": "Docker Client (CLI):\n- docker command tool\n- Sends commands to Docker daemon via API\n- Can connect to remote daemon\n- Examples: docker build, docker run, docker ps\n\nDocker Daemon (dockerd):\n- Background service\n- Listens for API requests\n- Manages Docker objects\n- Runs on host machine\n- Communicates with containerd\n\nCommunication:\n- Unix socket: /var/run/docker.sock (default)\n- TCP: remote connections",
+      "difficulty": "easy",
+      "tags": ["architecture", "components"]
+    },
+    {
+      "id": "docker-034",
+      "question": "How do you scale Docker containers?",
+      "answer": "Single host scaling:\n\ndocker-compose:\ndocker-compose up --scale web=5\n\nSwarm scaling:\ndocker service scale myservice=10\n\nKubernetes (Docker + K8s):\nkubectl scale deployment myapp --replicas=10\n\nConsiderations:\n- Stateless services scale better\n- Use load balancers\n- Configure health checks\n- Monitor resource usage\n- Plan for shared state (databases)",
+      "difficulty": "medium",
+      "tags": ["scaling", "orchestration"]
+    },
+    {
+      "id": "docker-035",
+      "question": "What are Docker container registries?",
+      "answer": "Container Registries: Store and distribute images\n\nPublic Registries:\n- Docker Hub (docker.io)\n- Quay (quay.io)\n- Google Container Registry\n\nPrivate Registries:\n- Amazon ECR\n- Azure Container Registry\n- Self-hosted registry\n\nCommands:\n# Login\ndocker login\n\n# Pull\ndocker pull nginx:latest\n\n# Tag\ndocker tag myapp registry.com/myapp:v1\n\n# Push\ndocker push registry.com/myapp:v1",
+      "difficulty": "easy",
+      "tags": ["registry", "distribution"]
+    },
+    {
+      "id": "docker-036",
+      "question": "What is Docker context?",
+      "answer": "Docker Context: Named configurations for Docker CLI\n\nUse cases:\n- Switch between Docker hosts\n- Work with remote Docker servers\n- CI/CD pipeline configurations\n\nCommands:\n# List contexts\ndocker context ls\n\n# Create context\ndocker context create my-remote \\\n  --docker host=tcp://remote-server:2376\n\n# Use context\ndocker context use my-remote\n\n# Current context\ndocker context show",
+      "difficulty": "medium",
+      "tags": ["context", "cli"]
+    },
+    {
+      "id": "docker-037",
+      "question": "What is Docker buildkit?",
+      "answer": "BuildKit: Next-generation Docker builder\n\nBenefits:\n- Faster builds (parallel layer processing)\n- Automatic garbage collection\n- Better caching\n- Improved debugging\n- Secrets without caching in image\n\nEnable:\n# Export\nDOCKER_BUILDKIT=1 docker build .\n\n# Or configure in daemon.json\n{\"features\": {\"buildkit\": true}}",
+      "difficulty": "hard",
+      "tags": ["buildkit", "build"]
+    },
+    {
+      "id": "docker-038",
+      "question": "How do you secure Docker containers?",
+      "answer": "Security best practices:\n\n1. Image security:\n- Use minimal base images\n- Scan for vulnerabilities (Trivy, Clair)\n- Sign images (Docker Content Trust)\n\n2. Runtime security:\n- Don't run as root (USER instruction)\n- Use read-only root filesystem\n- Drop capabilities: --cap-drop=ALL\n- No privileged mode\n\n3. Network security:\n- Use custom networks\n- Implement NetworkPolicies\n- Minimal port exposure\n\n4. Secrets management:\n- Use Docker secrets (Swarm)\n- External secret managers",
+      "difficulty": "hard",
+      "tags": ["security", "best-practices"]
+    },
+    {
+      "id": "docker-039",
+      "question": "What is the difference between docker run and docker exec?",
+      "answer": "docker run:\n- Creates and starts NEW container\n- Executes entrypoint/cmd\n- Can pull image if not local\n- Returns new container ID\n\ndocker exec:\n- Runs command in EXISTING container\n- For debugging and management\n- Container must be running\n- Multiple execs possible\n\nExamples:\ndocker run -it ubuntu bash\ndocker exec -it container_name /bin/sh\ndocker exec container_name ls /app",
+      "difficulty": "easy",
+      "tags": ["commands", "containers"]
+    },
+    {
+      "id": "docker-040",
+      "question": "What are Docker tmpfs mounts?",
+      "answer": "tmpfs: Memory-based filesystem in container\n\nCharacteristics:\n- Stored in memory only\n- Fast read/write\n- Data lost on container stop\n- Useful for sensitive data\n\nUsage:\ndocker run --tmpfs /tmp myapp\n\nOr with explicit options:\ndocker run \\\n  --mount type=tmpfs,destination=/tmp \\\n  myapp\n\nUse cases:\n- Temporary files\n- Sensitive data (passwords in memory)\n- Cache that doesn't need persistence",
+      "difficulty": "hard",
+      "tags": ["mounts", "tmpfs"]
+    },
+    {
+      "id": "docker-041",
+      "question": "What is Docker healthcheck in Compose?",
+      "answer": "Healthcheck in docker-compose.yml:\n\nservices:\n  web:\n    image: nginx\n    healthcheck:\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost\"]\n      interval: 30s\n      timeout: 10s\n      retries: 3\n      start_period: 40s\n\nBenefits:\n- Containers marked healthy/unhealthy\n- Dependencies wait for health\n- Load balancers route away from unhealthy",
+      "difficulty": "medium",
+      "tags": ["healthcheck", "compose"]
+    },
+    {
+      "id": "docker-042",
+      "question": "How does Docker image layering work?",
+      "answer": "Docker images are stack of read-only layers:\n\nEach Dockerfile instruction creates layer:\n1. FROM - Base layer\n2. RUN - New layer with changes\n3. COPY - Copy files layer\n4. ENV - Environment layer\n\nContainer adds writable layer on top:\n- All changes written to top layer\n- Lower layers unchanged\n- Copy-on-write for modifications\n\nBenefits:\n- Shared layers between images\n- Faster builds\n- Less storage\n- Efficient transfers",
+      "difficulty": "medium",
+      "tags": ["layers", "images"]
+    },
+    {
+      "id": "docker-043",
+      "question": "What is Docker build cache?",
+      "answer": "Build cache speeds up image builds:\n\nCache lookup:\n- Checksum of instruction + context\n- If match: use cached layer\n- If mismatch: execute and cache\n\nCache invalidation:\n- Any preceding layer change\n- Context changes\n- Instruction changes\n\nBusting cache:\n- docker build --no-cache .\n- Change instruction order\n- COPY dependency files first\n\nBest practice:\n- COPY package*.json first\n- RUN npm ci\n- COPY source code last",
+      "difficulty": "medium",
+      "tags": ["build", "caching"]
+    },
+    {
+      "id": "docker-044",
+      "question": "What is Docker system prune?",
+      "answer": "Clean up unused Docker resources:\n\n# Remove stopped containers\ndocker container prune\n\n# Remove unused images\ndocker image prune          # dangling only\ndocker image prune -a       # all unused\n\n# Remove unused volumes\ndocker volume prune\n\n# Remove unused networks\ndocker network prune\n\n# Nuclear option - everything\ndocker system prune\ndocker system prune -a      # plus all unused",
+      "difficulty": "easy",
+      "tags": ["cleanup", "maintenance"]
+    },
+    {
+      "id": "docker-045",
+      "question": "What is Docker ENTRYPOINT vs CMD with shell form?",
+      "answer": "Shell form vs Exec form:\n\nShell form:\nCMD python app.py\nENTRYPOINT python app.py\n- Runs as: /bin/sh -c \"python app.py\"\n- Signal handling issues\n- No PID 1\n\nExec form:\nCMD [\"python\", \"app.py\"]\nENTRYPOINT [\"python\", \"app.py\"]\n- Direct execution\n- Proper signal handling\n- PID 1 receives signals\n\nBest Practice: Always use exec form.",
+      "difficulty": "medium",
+      "tags": ["dockerfile", "entrypoint"]
+    },
+    {
+      "id": "docker-046",
+      "question": "What is Docker health check with initial delay?",
+      "answer": "start_period: Grace period for slow-starting apps\n\nExample:\nHEALTHCHECK \\\n  --interval=30s \\\n  --timeout=10s \\\n  --start-period=60s \\\n  --retries=3 \\\n  CMD curl -f http://localhost:8080/health\n\nBehavior:\n- First 60s: container status 'starting'\n- No health check failures counted\n- After 60s: normal health checks\n\nUse for: Databases, Java apps, anything with warmup time",
+      "difficulty": "medium",
+      "tags": ["healthcheck", "startup"]
+    },
+    {
+      "id": "docker-047",
+      "question": "What is the difference between Docker pause and unpause?",
+      "answer": "docker pause:\n- Suspends ALL processes in container\n- Sends SIGSTOP signal\n- State preserved (memory, CPU)\n- Useful for temporary freezes\n\ndocker unpause:\n- Resumes paused container\n- Sends SIGCONT signal\n- Container continues from where it stopped\n\nUse cases:\n- Admin operations\n- Troubleshooting (snapshot state)\n- Billing pauses\n\nNote: Different from docker stop which terminates processes.",
+      "difficulty": "easy",
+      "tags": ["pause", "lifecycle"]
+    },
+    {
+      "id": "docker-048",
+      "question": "How do you pass environment variables to Docker?",
+      "answer": "Methods to set environment variables:\n\n1. ENV in Dockerfile:\nENV APP_ENV=production\nENV DB_HOST=localhost\n\n2. docker run:\ndocker run -e APP_ENV=dev -e PORT=8080 myapp\n\n3. docker-compose:\nenvironment:\n  - APP_ENV=production\nenv_file:\n  - ./config.env\n\n4. .env file (compose):\nAPP_ENV=production\nDB_HOST=localhost\n\nVariables from host:\ndocker run -e HOST_HOME=\"$HOME\" myapp",
+      "difficulty": "easy",
+      "tags": ["environment", "variables"]
+    },
+    {
+      "id": "docker-049",
+      "question": "What are Docker ulimits?",
+      "answer": "Ulimits: Control resource limits per container\n\nCommon limits:\n--ulimit nofile=1024:4096  (file descriptors)\n--ulimit nproc=512        (processes)\n--ulimit memlock=8192     (memory lock)\n--ulimit fsize= unlimited (file size)\n\nIn docker-compose:\nservices:\n  app:\n    image: myapp\n    ulimits:\n      nofile:\n        soft: 1024\n        hard: 4096\n\nUse: Prevent containers from exhausting system resources.",
+      "difficulty": "hard",
+      "tags": ["resources", "ulimits"]
+    },
+    {
+      "id": "docker-050",
+      "question": "How does Docker handle container isolation?",
+      "answer": "Docker uses Linux kernel features for isolation:\n\nNamespaces (isolation):\n- PID: Process ID separation\n- Network: Independent network stack\n- Mount: Separate filesystem view\n- UTS: Own hostname/domain\n- IPC: Isolated inter-process communication\n- User: Separate user ID mapping\n\ncgroups (resource limits):\n- CPU time allocation\n- Memory limits\n- I/O bandwidth\n- Process count\n\nSecurity:\n- Seccomp: Restrict syscalls\n- AppArmor/SELinux: Mandatory access control\n- Capabilities: Fine-grained privilege control",
+      "difficulty": "hard",
+      "tags": ["isolation", "security", "namespaces"]
+    }
+  ]
+}

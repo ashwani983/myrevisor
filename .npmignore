@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Development
+.eslintrc.json
+.prettierrc.json
+
+# Scripts
+scripts/
+
+# Documentation
+ROADMAP.md
+CHANGELOG.md
+docs/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test
+coverage/
+
+# Misc
+*.tgz
+
+# Exclude old files
+Notes/
+Linux*
+*,json

@@ -1,0 +1,546 @@
+{
+  "subject": "Jenkins",
+  "description": "Jenkins is an open-source automation server used for setting up Continuous Integration (CI) and Continuous Delivery (CD) pipelines. It helps automate building, testing, and deploying software.",
+  "totalQuestions": 50,
+  "lastUpdated": "2025-07-23",
+  "questions": [
+    {
+      "id": "jenkins-001",
+      "question": "What is Jenkins used for?",
+      "answer": "Jenkins is used for automating software development tasks:\n\n- Code compilation\n- Running tests\n- Code quality checks\n- Artifact creation\n- Deployment\n\nIt streamlines the development process, ensuring reliability and quality by automating repetitive tasks in a DevOps context. Companies like Google, Netflix, and Amazon use Jenkins to speed up their software development process.",
+      "difficulty": "easy",
+      "tags": [
+        "basics",
+        "ci-cd"
+      ]
+    },
+    {
+      "id": "jenkins-002",
+      "question": "How to trigger a build in Jenkins manually?",
+      "answer": "To manually trigger a build in Jenkins:\n\n1. Access the Jenkins Dashboard\n2. Select the specific Jenkins job\n3. Click 'Build Now' to start the manual build\n4. Provide build parameters if necessary\n5. Confirm and monitor build progress\n6. Review build results on job's dashboard\n7. Access build artifacts if applicable\n8. Trigger additional builds as needed",
+      "difficulty": "easy",
+      "tags": [
+        "basics",
+        "builds"
+      ]
+    },
+    {
+      "id": "jenkins-003",
+      "question": "How to integrate Git with Jenkins?",
+      "answer": "To integrate Git with Jenkins:\n\n1. Install the 'Git Plugin' in Jenkins through plugin manager\n2. Configure Git in global tool configuration\n3. Create/configure a Jenkins job\n4. Select Git as the version control system\n5. Specify the Git repository URL\n6. Provide credentials for authentication if needed\n7. Define branches to monitor and build\n8. Set up build triggers\n9. Save configuration and trigger builds",
+      "difficulty": "medium",
+      "tags": [
+        "git",
+        "integration"
+      ]
+    },
+    {
+      "id": "jenkins-004",
+      "question": "What does 'Poll SCM' mean in Jenkins?",
+      "answer": "In Jenkins, 'Poll SCM' means periodically checking a version control system (e.g., Git) for changes.\n\nHow it works:\n- You schedule how often Jenkins checks for updates\n- When changes are detected, Jenkins triggers a build\n- It's a key feature for:\n  - Continuous integration\n  - Scheduled tasks\n  - Automated response to code changes\n\nNote: Webhooks are more efficient as they trigger immediately on changes.",
+      "difficulty": "easy",
+      "tags": [
+        "scm",
+        "triggers"
+      ]
+    },
+    {
+      "id": "jenkins-005",
+      "question": "What is the Jenkins schedule format for periodic builds?",
+      "answer": "Jenkins uses cron-like syntax with 5 fields:\n\nFormat: Minute Hour Day-of-Month Month Day-of-Week\n\nExamples:\n- 0 0 * * * → Every day at midnight\n- 30 * * * * → Every hour at :30\n- 0 15 * * 1 → Every Monday at 3 PM\n- 0 8,20 * * * → Daily at 8 AM and 8 PM\n- 30 22 * * 5 → Every Friday at 10:30 PM\n\nField ranges:\n- Minute: 0-59\n- Hour: 0-23\n- Day: 1-31\n- Month: 1-12\n- Day of week: 0-7 (0 and 7 are Sunday)",
+      "difficulty": "medium",
+      "tags": [
+        "scheduling",
+        "builds"
+      ]
+    },
+    {
+      "id": "jenkins-006",
+      "question": "What is a Jenkins Agent?",
+      "answer": "A Jenkins Agent (also called Slave or Node) is a separate machine that collaborates with Jenkins Master to execute jobs.\n\nKey Points:\n- Enables parallel and distributed builds\n- Scales Jenkins' capacity\n- Agents register with the master\n- Get assigned jobs and execute them\n- Report results back to master\n- Can run on various platforms (Linux, Windows, macOS)\n- Enable testing in different environments",
+      "difficulty": "easy",
+      "tags": [
+        "agents",
+        "architecture",
+        "distributed"
+      ]
+    },
+    {
+      "id": "jenkins-007",
+      "question": "How to restart Jenkins?",
+      "answer": "Multiple methods to restart Jenkins:\n\n1. Web Interface:\n   - Log in to Jenkins dashboard\n   - Click 'Restart' option (if available)\n\n2. Linux (systemd):\n   sudo systemctl restart jenkins\n\n3. Windows:\n   net stop \"Jenkins\"\n   net start \"Jenkins\"\n\n4. Docker:\n   docker restart jenkins-container\n\n5. CLI:\n   java -jar jenkins-cli.jar restart",
+      "difficulty": "easy",
+      "tags": [
+        "administration",
+        "maintenance"
+      ]
+    },
+    {
+      "id": "jenkins-008",
+      "question": "What is the default port number for Jenkins?",
+      "answer": "The default port number for Jenkins is 8080.\n\nAccess URL: http://your_jenkins_server:8080/\n\nThis can be changed by:\n1. Editing jenkins.xml configuration file\n2. Setting JENKINS_PORT environment variable\n3. Using command line: java -jar jenkins.war --httpPort=9090",
+      "difficulty": "easy",
+      "tags": [
+        "configuration",
+        "basics"
+      ]
+    },
+    {
+      "id": "jenkins-009",
+      "question": "What are the types of build triggers in Jenkins?",
+      "answer": "Build triggers in Jenkins:\n\n1. SCM Polling: Monitors VCS for changes\n2. Scheduled Build: Predefined schedule (cron-like)\n3. Webhook Trigger: External events/notifications\n4. Upstream/Downstream: Trigger based on other jobs\n5. Manual Build: Requires user intervention\n6. Dependency Build: Triggers when another job completes\n7. Parameterized Trigger: Passes parameters between jobs\n8. Pipeline Trigger: Custom logic within pipelines",
+      "difficulty": "medium",
+      "tags": [
+        "triggers",
+        "ci-cd"
+      ]
+    },
+    {
+      "id": "jenkins-010",
+      "question": "What language is used to write Jenkins CI/CD pipeline?",
+      "answer": "Jenkins pipelines are written using Groovy (Jenkins Pipeline DSL).\n\nTwo syntax flavors:\n\n1. Declarative (simplified):\n   pipeline {\n     agent any\n     stages {\n       stage('Build') {\n         steps {\n           sh 'mvn clean package'\n         }\n       }\n     }\n   }\n\n2. Scripted (more control):\n   node {\n     stage('Build') {\n       sh 'mvn clean package'\n     }\n   }\n\nGroovy runs on JVM and Jenkins provides domain-specific constructs for stages, steps, and post-build actions.",
+      "difficulty": "medium",
+      "tags": [
+        "pipelines",
+        "groovy",
+        "ci-cd"
+      ]
+    },
+    {
+      "id": "jenkins-011",
+      "question": "What is the difference between Declarative and Scripted Pipeline in Jenkins?",
+      "answer": "Declarative Pipeline:\n- Newer, simplified syntax\n- Enforces structure with predefined sections\n- Easier to learn and read\n- Has built-in error handling\n- Recommended for most users\n\nScripted Pipeline:\n- Uses Groovy syntax directly\n- More flexible and powerful\n- Requires Groovy knowledge\n- Better for complex logic\n- Uses node blocks and stage sections\n\nBest Practice: Use Declarative for most projects; use Scripted for complex requirements.",
+      "difficulty": "medium",
+      "tags": [
+        "pipelines",
+        "groovy"
+      ]
+    },
+    {
+      "id": "jenkins-012",
+      "question": "How do you configure Jenkins credentials for accessing repositories?",
+      "answer": "To configure credentials in Jenkins:\n\n1. Navigate to: Jenkins → Manage Jenkins → Manage Credentials\n2. Click 'Add Credentials'\n3. Select type (Username/Password, SSH Key, Secret File, etc.)\n4. Fill in required fields:\n   - Username/Password: username, password, ID\n   - SSH Key: private key, passphrase, ID\n5. Use credential ID in pipeline:\n   ```groovy\n   withCredentials([usernamePassword(credentialsId: 'my-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {\n     sh 'git clone https://$USER:$PASS@github.com/repo.git'\n   }\n   ```\n\nNever hardcode credentials in scripts!",
+      "difficulty": "medium",
+      "tags": [
+        "credentials",
+        "security"
+      ]
+    },
+    {
+      "id": "jenkins-013",
+      "question": "What is a Jenkinsfile and why is it important?",
+      "answer": "A Jenkinsfile is a text file containing the pipeline definition, stored in the source code repository.\n\nBenefits:\n- Version control: Pipeline is code, tracked with application\n- Code review: Changes reviewed like any code\n- Audit trail: Complete history of pipeline changes\n- Single source of truth: Everyone uses same pipeline\n- Branch-specific pipelines: Different configs per branch\n\nLocation: Root of repository\n\nKey practice: Treat Jenkinsfile as application code.",
+      "difficulty": "easy",
+      "tags": [
+        "jenkinsfile",
+        "pipelines",
+        "vcs"
+      ]
+    },
+    {
+      "id": "jenkins-014",
+      "question": "How do you set up email notifications in Jenkins?",
+      "answer": "Email notification setup:\n\n1. Configure SMTP:\n   Jenkins → Manage Jenkins → Configure System\n   Email Notification section:\n   - SMTP server\n   - Default user email suffix\n   - Enable 'Use SMTP Authentication'\n\n2. In Pipeline:\n   ```groovy\n   post {\n     always {\n       emailext (\n         subject: \"Build ${currentBuild.result}: ${env.JOB_NAME}\",\n         body: \"Check console output at ${env.BUILD_URL}\",\n         to: \"team@example.com\"\n       )\n     }\n   }\n   ```\n\n3. Install Email Extension Plugin for advanced features.",
+      "difficulty": "medium",
+      "tags": [
+        "notifications",
+        "email",
+        "post-build"
+      ]
+    },
+    {
+      "id": "jenkins-015",
+      "question": "What are the different ways to install Jenkins plugins?",
+      "answer": "Three methods to install Jenkins plugins:\n\n1. Web Interface (Recommended):\n   - Manage Jenkins → Manage Plugins\n   - Available tab: Search and install directly\n   - Advanced tab: Upload .hpi file\n\n2. Jenkins CLI:\n   java -jar jenkins-cli.jar install-plugin <plugin-name>\n\n3. Manual Installation:\n   - Download .hpi from Jenkins wiki\n   - Place in $JENKINS_HOME/plugins/\n   - Restart Jenkins\n\nTip: Use Jenkins Configuration as Code (JCasC) for reproducible setups.",
+      "difficulty": "easy",
+      "tags": [
+        "plugins",
+        "installation"
+      ]
+    },
+    {
+      "id": "jenkins-016",
+      "question": "How do you archive artifacts in Jenkins?",
+      "answer": "Archiving artifacts stores build outputs:\n\nPipeline syntax:\n```groovy\npipeline {\n  stages {\n    stage('Build') {\n      steps {\n        sh 'mvn package'\n      }\n    }\n  }\n  post {\n    success {\n      archiveArtifacts artifacts: 'target/*.jar', fingerprint: true\n    }\n  }\n}\n```\n\nKey points:\n- artifacts: Path pattern to archive\n- fingerprint: Track artifact usage across builds\n- Only available after successful build (success)\n- Artifacts accessible from build page\n- Can use wildcard patterns: '**/*.jar'\n- limit with 'excludes: 'failed-test/**'",
+      "difficulty": "medium",
+      "tags": [
+        "artifacts",
+        "storage",
+        "post-build"
+      ]
+    },
+    {
+      "id": "jenkins-017",
+      "question": "What is the Jenkins Master-Agent architecture?",
+      "answer": "Jenkins Master-Agent Architecture:\n\nMaster:\n- Central coordination point\n- Handles web UI, API, scheduling\n- Stores configuration and build history\n- Dispatches jobs to agents\n- Should NOT run heavy builds\n\nAgent:\n- Execute jobs assigned by master\n- Can run on any platform\n- Register with master via JNLP or SSH\n- Report results back to master\n- Enable parallel/distributed builds\n\nCommunication:\n- Master initiates connection to agents\n- Agents connect on port 50000 (configurable)\n- Can use cloud agents (dynamic scaling)",
+      "difficulty": "medium",
+      "tags": [
+        "architecture",
+        "agents",
+        "distributed"
+      ]
+    },
+    {
+      "id": "jenkins-018",
+      "question": "How do you pass parameters between Jenkins jobs?",
+      "answer": "Parameter passing methods:\n\n1. Parameterized Trigger Plugin:\n```groovy\nbuild job: 'Downstream-Job', parameters: [\n  string(name: 'BUILD_NUMBER', value: \"${env.BUILD_NUMBER}\"),\n  string(name: 'GIT_COMMIT', value: \"${env.GIT_COMMIT}\")\n]\n```\n\n2. Using Properties File:\n   - Write params to file in upstream\n   - Read file in downstream\n\n3. Environment Variables:\n   - Set in upstream, access in downstream\n\n4. Copy Artifacts Plugin:\n   - Share build artifacts between jobs\n\n5. Input Parameters:\n   - Use input step for manual parameters",
+      "difficulty": "hard",
+      "tags": [
+        "parameters",
+        "jobs",
+        "integration"
+      ]
+    },
+    {
+      "id": "jenkins-019",
+      "question": "What are Jenkins Environment Variables and how to use them?",
+      "answer": "Built-in Environment Variables:\n\nBUILD_NUMBER - Build identifier\nBUILD_URL - URL to build page\nJOB_NAME - Name of the job\nWORKSPACE - Path to build directory\nGIT_COMMIT - Current commit SHA\nGIT_BRANCH - Current branch\nNODE_NAME - Name of build node\nBUILD_TAG - Unique identifier\n\nDefining custom variables:\n```groovy\nenvironment {\n  APP_NAME = 'my-app'\n  DEPLOY_ENV = 'production'\n}\n```\n\nUsing in steps:\n- sh 'echo $BUILD_NUMBER'\n- sh \"echo ${env.WORKSPACE}\"\n- withEnv(['CUSTOM_VAR=value']) { }",
+      "difficulty": "medium",
+      "tags": [
+        "environment",
+        "variables"
+      ]
+    },
+    {
+      "id": "jenkins-020",
+      "question": "How do you set up Jenkins backup?",
+      "answer": "Jenkins backup strategy:\n\n1. Backup Plugins:\n   - ThinBackup: Scheduled backups\n   - Backup: Full backup solution\n   - TimeStamper: Records execution times\n\n2. Manual Backup (Recommended):\n   Backup $JENKINS_HOME:\n   - config.xml (configurations)\n   - /jobs/ (job definitions)\n   - /workspace/ (build files)\n   - /plugins/ (installed plugins)\n   - /secrets/ (credentials - secure!)\n\n3. Backup Commands:\n```bash\ntar -czf jenkins-backup-$(date +%Y%m%d).tar.gz $JENKINS_HOME\n```\n\n4. Best Practices:\n   - Automate with cron\n   - Store offsite\n   - Test restoration regularly\n   - Exclude workspace for space",
+      "difficulty": "hard",
+      "tags": [
+        "backup",
+        "administration",
+        "disaster-recovery"
+      ]
+    },
+    {
+      "id": "jenkins-021",
+      "question": "What is Jenkins Configuration as Code (JCasC)?",
+      "answer": "JCasC allows defining Jenkins configuration as YAML files.\n\nSetup:\n1. Install 'configuration-as-code' plugin\n2. Create jenkins.yaml with configuration\n3. Configure path in Jenkins system settings\n\nExample jenkins.yaml:\n```yaml\njenkins:\n  systemMessage: \"Jenkins Configured as Code\"\n  numExecutors: 5\n  mode: EXCLUSIVE\n  \ncredentials:\n  system:\n    domainCredentials:\n      - usernamePassword:\n          scope: GLOBAL\n          id: \"github-creds\"\n          username: \"user\"\n          password: \"${GITHUB_TOKEN}\"\n\njobs:\n  - file: /var/jobs/*.groovy\n```\n\nBenefits: Reproducible, version-controlled, self-documented.",
+      "difficulty": "hard",
+      "tags": [
+        "jcasc",
+        "configuration",
+        "automation"
+      ]
+    },
+    {
+      "id": "jenkins-022",
+      "question": "How do you implement parallel execution in Jenkins Pipeline?",
+      "answer": "Parallel execution in Declarative Pipeline:\n\n```groovy\npipeline {\n  stages {\n    stage('Test') {\n      parallel {\n        stage('Unit Tests') {\n          steps {\n            sh 'mvn test'\n          }\n        }\n        stage('Integration Tests') {\n          steps {\n            sh 'mvn verify -Pintegration'\n          }\n        }\n        stage('Security Scan') {\n          steps {\n            sh 'security-scan.sh'\n          }\n        }\n      }\n    }\n  }\n}\n```\n\nBenefits:\n- Faster builds\n- Independent stages run simultaneously\n- Better resource utilization\n- Reduced build time significantly",
+      "difficulty": "hard",
+      "tags": [
+        "parallel",
+        "performance",
+        "pipelines"
+      ]
+    },
+    {
+      "id": "jenkins-023",
+      "question": "What is Blue Ocean in Jenkins?",
+      "answer": "Blue Ocean is Jenkins' modern UI/UX.\n\nFeatures:\n- Visual pipeline editor\n- Clear status indicators\n- Actionable notifications\n- Personal dashboard\n- GitHub integration\n\nInstallation:\n- Install 'blue-ocean' plugin\n- Access via 'Open Blue Ocean' link\n\nBenefits:\n- Easier pipeline creation\n- Better visibility into pipelines\n- Modern, clean interface\n- Focuses on essential information\n\nNote: Blue Ocean is read-only for declarative pipelines in newer Jenkins versions.",
+      "difficulty": "easy",
+      "tags": [
+        "blue-ocean",
+        "ui",
+        "ux"
+      ]
+    },
+    {
+      "id": "jenkins-024",
+      "question": "How do you secure Jenkins?",
+      "answer": "Jenkins Security Best Practices:\n\n1. Access Control:\n   - Enable security: Configure Global Security\n   - Use matrix-based security\n   - Implement Role-Based Access Control (RBAC)\n\n2. Authentication:\n   - Use enterprise SSO/LDAP\n   - Enable Jenkins own user database\n   - Consider GitHub OAuth for cloud\n\n3. Authorization:\n   - Principle of least privilege\n   - Separate admin and developer roles\n   - Use folder-level permissions\n\n4. Secrets Management:\n   - Use Credentials binding\n   - Hash passwords in config\n   - Never commit secrets to repo\n\n5. Network:\n   - Run behind reverse proxy (HTTPS)\n   - Firewall access to port 8080\n   - Use private network for agents",
+      "difficulty": "hard",
+      "tags": [
+        "security",
+        "authentication",
+        "authorization"
+      ]
+    },
+    {
+      "id": "jenkins-025",
+      "question": "What are Webhooks and how to configure them in Jenkins?",
+      "answer": "Webhooks trigger builds automatically on code changes.\n\nGitHub Webhook Setup:\n1. In GitHub repo: Settings → Webhooks → Add webhook\n2. Payload URL: http://jenkins:8080/github-webhook/\n3. Content type: application/json\n4. Events: Just push the code\n5. Secret: (optional) for verification\n\nJenkins Configuration:\n1. Install GitHub plugin\n2. In job: Configure → Build Triggers → GitHub hook trigger for GITScm polling\n\nBenefits over Poll SCM:\n- Immediate response\n- Less server load\n- More efficient\n- Real-time builds",
+      "difficulty": "medium",
+      "tags": [
+        "webhooks",
+        "github",
+        "triggers"
+      ]
+    },
+    {
+      "id": "jenkins-026",
+      "question": "How do you handle long-running builds in Jenkins?",
+      "answer": "Strategies for long builds:\n\n1. Optimize Pipeline:\n   - Parallelize independent stages\n   - Cache dependencies\n   - Skip unnecessary steps\n\n2. Allocate Resources:\n   - Use powerful build agents\n   - Increase executors\n   - Use agent labels for specific jobs\n\n3. Timeout Configuration:\n```groovy\noptions {\n  timeout(time: 2, unit: 'HOURS')\n}\n```\n\n4. Time-Based Scheduling:\n   - Run long builds off-peak\n   - Batch similar jobs\n\n5. Build Monitoring:\n   - Enable build timestamper\n   - Set up Slack notifications\n   - Use build fail analysis plugins\n\n6. Incremental Builds:\n   - Only build changed modules\n   - Use affected builds plugins",
+      "difficulty": "hard",
+      "tags": [
+        "performance",
+        "optimization",
+        "builds"
+      ]
+    },
+    {
+      "id": "jenkins-027",
+      "question": "What is the difference between Multibranch Pipeline and Organization Folder?",
+      "answer": "Multibranch Pipeline:\n- Scans a single repository\n- Creates jobs for each branch\n- Automatically discovers branches\n- Great for repository-specific pipelines\n\nOrganization Folder:\n- Scans entire GitHub/GitLab organization\n- Creates Multibranch projects per repository\n- Automatically detects new repositories\n- Ideal for enterprise with many repos\n\nConfiguration:\n- Multibranch: Repository URL + credentials\n- Organization: Organization name + credentials\n\nUse Multibranch for single repo; Organization for entire team.",
+      "difficulty": "medium",
+      "tags": [
+        "multibranch",
+        "organization",
+        "pipelines"
+      ]
+    },
+    {
+      "id": "jenkins-028",
+      "question": "How do you use Docker with Jenkins?",
+      "answer": "Docker integration with Jenkins:\n\n1. Install Docker Plugin\n\n2. Use Docker Agent:\n```groovy\npipeline {\n  agent {\n    docker {\n      image 'maven:3.8-openjdk-11'\n      label 'docker-agent'\n    }\n  }\n  stages {\n    stage('Build') {\n      steps {\n        sh 'mvn clean package'\n      }\n    }\n  }\n}\n```\n\n3. Build Docker Images:\n```groovy\nstage('Docker Build') {\n  steps {\n    script {\n      def image = docker.build('my-app:${BUILD_NUMBER}')\n    }\n  }\n}\n```\n\n4. Run Tests in Containers:\n   - Isolated test environments\n   - Consistent across machines\n   - Easy cleanup",
+      "difficulty": "hard",
+      "tags": [
+        "docker",
+        "containers",
+        "integration"
+      ]
+    },
+    {
+      "id": "jenkins-029",
+      "question": "What are Jenkins shared libraries and when to use them?",
+      "answer": "Shared Libraries extend pipeline functionality across projects.\n\nDirectory Structure:\n```\nvars/\n  myStep.groovy\n  myStep.txt\nsrc/\n  com/company/Utils.groovy\nresources/\n  config.json\n```\n\nUsing in Jenkinsfile:\n```groovy\n@Library('shared-library')_\n\npipeline {\n  stages {\n    stage('Deploy') {\n      steps {\n        myStep()  // Use shared step\n      }\n    }\n  }\n}\n```\n\nBenefits:\n- DRY (Don't Repeat Yourself)\n- Consistent pipelines\n- Easy updates\n- Version control\n\nUse for: common steps, utilities, custom functions.",
+      "difficulty": "hard",
+      "tags": [
+        "shared-libraries",
+        "reusability",
+        "groovy"
+      ]
+    },
+    {
+      "id": "jenkins-030",
+      "question": "How do you troubleshoot a Jenkins build failure?",
+      "answer": "Troubleshooting steps:\n\n1. Check Console Output:\n   - Build page → Console Output\n   - Look for error messages\n   - Check build steps\n\n2. Common Issues:\n   - Compilation errors (check code)\n   - Missing dependencies (check env)\n   - Permission errors (check credentials)\n   - Timeout issues (increase timeout)\n   - Network problems (check connectivity)\n\n3. Enable Debug:\n   - Add 'set -x' in shell steps\n   - Enable verbose logging\n   - Check Jenkins logs\n\n4. Use Workspace:\n   - Access via 'Workspace' link\n   - Inspect files directly\n   - Run commands manually\n\n5. Test Locally:\n   - Replicate environment\n   - Run same commands\n   - Check differences",
+      "difficulty": "medium",
+      "tags": [
+        "troubleshooting",
+        "debugging",
+        "builds"
+      ]
+    },
+    {
+      "id": "jenkins-031",
+      "question": "What is the Jenkins startup process?",
+      "answer": "Jenkins Startup Process:\n\n1. Java Runtime starts\n2. Loads jenkins.war or exploded directory\n3. Reads $JENKINS_HOME/config.xml\n4. Initializes plugin system\n5. Loads installed plugins (alphabetically)\n6. Sets up security realm and authorization\n7. Initializes executors (agents)\n8. Starts web server (Jetty by default)\n9. Scans and loads job configurations\n10. Triggers initial builds (if configured)\n\nKey Directories:\n- $JENKINS_HOME: Root for all data\n- $JENKINS_HOME/plugins/: Installed plugins\n- $JENKINS_HOME/jobs/: Job configurations\n- $JENKINS_HOME/logs/: Log files",
+      "difficulty": "medium",
+      "tags": [
+        "startup",
+        "architecture",
+        "administration"
+      ]
+    },
+    {
+      "id": "jenkins-032",
+      "question": "How do you upgrade Jenkins safely?",
+      "answer": "Safe Jenkins Upgrade Steps:\n\n1. Backup First:\n   - Backup $JENKINS_HOME\n   - Backup configuration\n   - Document installed plugins\n\n2. Test Environment:\n   - Upgrade in test/staging first\n   - Verify plugins work\n   - Check pipeline compatibility\n\n3. Upgrade Process:\n   - Download new WAR/Docker image\n   - Stop Jenkins service\n   - Replace jenkins.war\n   - Start Jenkins\n\n4. Docker Upgrade:\n```bash\ndocker stop jenkins\ndocker pull jenkins/jenkins:lts\ndocker run -d --name jenkins jenkins/jenkins:lts\n```\n\n5. Post-Upgrade:\n   - Clear browser cache\n   - Check for migration warnings\n   - Test critical jobs",
+      "difficulty": "hard",
+      "tags": [
+        "upgrade",
+        "maintenance",
+        "administration"
+      ]
+    },
+    {
+      "id": "jenkins-033",
+      "question": "What is the difference between Freestyle and Pipeline jobs?",
+      "answer": "Freestyle Jobs:\n- Traditional Jenkins jobs\n- GUI-based configuration\n- Simple to set up\n- Good for simple tasks\n- Limited to linear flow\n\nPipeline Jobs:\n- Code-based configuration (Jenkinsfile)\n- Version controlled\n- Complex workflows\n- Conditional logic\n- Retry/failure handling\n- Parallel execution\n- Production-grade CI/CD\n\nRecommendation:\n- Freestyle: Simple tasks, one-time jobs\n- Pipeline: Complex workflows, production use",
+      "difficulty": "easy",
+      "tags": [
+        "freestyle",
+        "pipeline",
+        "comparison"
+      ]
+    },
+    {
+      "id": "jenkins-034",
+      "question": "How do you configure Jenkins with Kubernetes?",
+      "answer": "Kubernetes Plugin for Jenkins:\n\n1. Install kubernetes plugin\n\n2. Configure Cloud:\n   - Manage Jenkins → Manage Nodes → Configure Clouds\n   - Add Kubernetes cloud\n   - Kubernetes URL: https://kubernetes.default.svc\n   - Namespace: default\n   - Service Account token\n\n3. Configure Pod Template:\n   - Container template with jnlp agent\n   - Add additional containers (maven, node, etc.)\n   - Set resource limits\n   - Configure volumes\n\n4. Use in Pipeline:\n```groovy\nagent {\n  kubernetes {\n    label 'my-pod'\n    defaultContainer 'jnlp'\n  }\n}\n```\n\nBenefits: Dynamic scaling, isolated builds, resource efficiency.",
+      "difficulty": "hard",
+      "tags": [
+        "kubernetes",
+        "cloud",
+        "containers"
+      ]
+    },
+    {
+      "id": "jenkins-035",
+      "question": "What are Jenkins Views and how to use them?",
+      "answer": "Views organize jobs in Jenkins dashboard.\n\nTypes:\n1. List View: Custom filter for jobs\n2. My View: Personal job view\n3. Nested View: Folder-like hierarchy\n\nCreating a View:\n1. Click '+' tab next to All tab\n2. Name the view\n3. Select view type\n4. Configure job filters:\n   - By regex\n   - By job name pattern\n   - By folder\n\nUse Cases:\n- Team-specific views\n- Project-based views\n- Environment views (dev/staging/prod)\n- Status views (broken only)",
+      "difficulty": "easy",
+      "tags": [
+        "views",
+        "organization",
+        "ui"
+      ]
+    },
+    {
+      "id": "jenkins-036",
+      "question": "How do you implement retry logic in Jenkins Pipeline?",
+      "answer": "Retry logic in Pipeline:\n\n1. Retry Stage:\n```groovy\nstage('Deploy') {\n  retry(3) {\n    sh './deploy.sh'\n  }\n}\n```\n\n2. Retry with Condition:\n```groovy\nretry(count: 3, conditions: [\n  commandRunnerExhausted(),\n  initialFailure()\n]) {\n  sh './unreliable-command.sh'\n}\n```\n\n3. Try-Catch-Finally:\n```groovy\ntry {\n  sh './might-fail.sh'\n} catch (Exception e) {\n  echo \"Failed: ${e.message}\"\n  retry(2) {\n    sh './retry-command.sh'\n  }\n} finally {\n  echo 'Cleanup here'\n}\n```\n\nUse for: Network calls, flaky tests, transient failures.",
+      "difficulty": "medium",
+      "tags": [
+        "retry",
+        "error-handling",
+        "reliability"
+      ]
+    },
+    {
+      "id": "jenkins-037",
+      "question": "What is the 'when' directive in Jenkins Pipeline?",
+      "answer": "The 'when' directive controls stage execution.\n\nBasic Syntax:\n```groovy\nstage('Deploy') {\n  when {\n    condition\n  }\n  steps {\n    // steps\n  }\n}\n```\n\nConditions:\n```groovy\nwhen {\n  branch 'main'  // Only on main branch\n}\n\nwhen {\n  expression { env.BUILD_ENV == 'production' }\n}\n\nwhen {\n  not { branch 'feature-*' }\n}\n\nwhen {\n  anyOf {\n    branch 'main'\n    branch 'release/*'\n  }\n}\n\nwhen {\n  allOf {\n    branch 'main'\n    expression { env.CHANGES == 'true' }\n  }\n}\n```",
+      "difficulty": "medium",
+      "tags": [
+        "when",
+        "conditions",
+        "pipeline"
+      ]
+    },
+    {
+      "id": "jenkins-038",
+      "question": "How do you implement input approval in Jenkins Pipeline?",
+      "answer": "Input step pauses pipeline for manual approval:\n\nDeclarative:\n```groovy\nstage('Production Deploy') {\n  when {\n    branch 'main'\n  }\n  steps {\n    input message: 'Approve production deploy?',\n          ok: 'Deploy',\n          submitter: 'admin,release-team'\n    \n    sh './deploy-production.sh'\n  }\n}\n```\n\nScripted:\n```groovy\nnode {\n  stage('Deploy') {\n    def userInput = input(\n      id: 'deploy-input',\n      message: 'Deploy to environment?',\n      parameters: [\n        choice(name: 'ENV', choices: ['staging', 'production'], description: 'Target')\n      ]\n    )\n    echo \"Deploying to: ${userInput}\"\n  }\n}\n```",
+      "difficulty": "hard",
+      "tags": [
+        "input",
+        "approval",
+        "gates"
+      ]
+    },
+    {
+      "id": "jenkins-039",
+      "question": "What are Jenkins Build Wrappers?",
+      "answer": "Build Wrappers modify the build environment before execution.\n\nCommon Wrappers:\n\n1. Timestamper: Add timestamps to logs\n2. Color ANSI Output: ANSI color support\n3. SSH Agent: SSH key injection\n4. WithCredentials: Inject secrets\n5. Environment Variables: Set custom env vars\n\nPipeline Usage:\n```groovy\npipeline {\n  agent any\n  environment {\n    MY_VAR = 'value'\n  }\n  stages {\n    stage('Build') {\n      steps {\n        withCredentials([string(credentialsId: 'token', variable: 'API_TOKEN')]) {\n          sh 'build.sh'\n        }\n      }\n    }\n  }\n}\n```\n\nWrappers ensure consistent, isolated build environments.",
+      "difficulty": "medium",
+      "tags": [
+        "wrappers",
+        "environment",
+        "credentials"
+      ]
+    },
+    {
+      "id": "jenkins-040",
+      "question": "How do you use Jenkins CLI for automation?",
+      "answer": "Jenkins CLI commands:\n\n1. Download CLI:\n   java -jar jenkins-cli.jar -s http://localhost:8080\n\n2. Common Commands:\n```bash\n# List jobs\njava -jar jenkins-cli.jar -s http://localhost:8080 list-jobs\n\n# Build job\njava -jar jenkins-cli.jar -s http://localhost:8080 build job-name\n\n# Build with parameters\njava -jar jenkins-cli.jar -s http://localhost:8080 build -p VAR=value job-name\n\n# Copy job\njava -jar jenkins-cli.jar -s http://localhost:8080 copy-job source-job target-job\n\n# Disable job\njava -jar jenkins-cli.jar -s http://localhost:8080 disable-job job-name\n\n# Reload config\njava -jar jenkins-cli.jar -s http://localhost:8080 reload-configuration\n```\n\nUse -i key for authentication.",
+      "difficulty": "hard",
+      "tags": [
+        "cli",
+        "automation",
+        "administration"
+      ]
+    },
+    {
+      "id": "jenkins-041",
+      "question": "What is Jenkins Build Health and how is it calculated?",
+      "answer": "Build Health indicates project status:\n\nCalculation Factors:\n1. Latest build status (success/failure)\n2. Build stability over time\n3. Test pass rate\n4. Code coverage trends\n5. Days since last failure\n\nIndicators:\n- 🟢 Green: All builds successful\n- 🟡 Yellow: Unstable build(s)\n- 🔴 Red: Build failures\n- ⚪ Gray: Never built or disabled\n\nImproving Health:\n- Fix flaky tests\n- Increase test coverage\n- Speed up builds\n- Implement monitoring\n- Set up notifications",
+      "difficulty": "easy",
+      "tags": [
+        "health",
+        "metrics",
+        "status"
+      ]
+    },
+    {
+      "id": "jenkins-042",
+      "question": "How do you configure Jenkins behind a reverse proxy?",
+      "answer": "Reverse Proxy Configuration:\n\nNginx Config:\n```nginx\nserver {\n  listen 443 ssl;\n  server_name jenkins.example.com;\n  \n  location / {\n    proxy_pass http://localhost:8080;\n    proxy_set_header Host $host;\n    proxy_set_header X-Real-IP $remote_addr;\n    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    proxy_set_header X-Forwarded-Proto $scheme;\n    \n    # WebSocket support\n    proxy_http_version 1.1;\n    proxy_set_header Upgrade $http_upgrade;\n    proxy_set_header Connection \"upgrade\";\n  }\n}\n```\n\nJenkins System Configuration:\n- Jenkins URL: https://jenkins.example.com/\n- Enable 'Prevent Cross Site Request Forgery exploits'\n- Adjust timeout if needed",
+      "difficulty": "hard",
+      "tags": [
+        "proxy",
+        "network",
+        "ssl"
+      ]
+    },
+    {
+      "id": "jenkins-043",
+      "question": "What are Jenkins Slaves/Nodes and how to configure them?",
+      "answer": "Slaves (Agents/Nodes) execute builds:\n\nAdding via Jenkins UI:\n1. Manage Jenkins → Manage Nodes → New Node\n2. Configure:\n   - Name\n   - Number of executors\n   - Remote root directory\n   - Labels (tags)\n   - Usage: 'Only build jobs with label expressions'\n\nConnection Methods:\n1. SSH: Configure SSH credentials\n2. JNLP: Download agent.jar\n3. Launch via command:\n   java -jar agent.jar -jnlpUrl http://jenkins:8080/computer/node/slave-agent.jnlp\n\nNode Properties:\n- Environment variables\n- Tool locations\n- Labels for job targeting",
+      "difficulty": "medium",
+      "tags": [
+        "nodes",
+        "agents",
+        "distributed"
+      ]
+    },
+    {
+      "id": "jenkins-044",
+      "question": "How do you implement Jenkins matrix builds?",
+      "answer": "Matrix Project (Axis-based builds):\n\nConfiguration:\n1. Create new Item → Matrix project\n2. Add Axes (variables):\n   - Name: OS\n   - Values: ubuntu, centos, windows\n3. Add combination filter (optional):\n   - OS == 'windows' && ARCH == 'x64'\n4. Configure parent job steps\n5. Configure per-node steps\n\nPipeline Syntax:\n```groovy\nmatrix {\n  axes {\n    axis {\n      name 'PLATFORM'\n      values 'linux', 'windows', 'mac'\n    }\n  }\n  stages {\n    stage('Test') {\n      steps {\n        echo \"Testing on ${PLATFORM}\"\n      }\n    }\n  }\n}\n```\n\nGreat for testing across multiple environments.",
+      "difficulty": "hard",
+      "tags": [
+        "matrix",
+        "multi-configuration",
+        "cross-platform"
+      ]
+    },
+    {
+      "id": "jenkins-045",
+      "question": "What is the Jenkins fingerprinting feature?",
+      "answer": "Fingerprinting tracks artifact usage across builds.\n\nEnabling:\n1. Enable globally: Manage Jenkins → Configure System → Fingerprint\n2. Per-job: Check 'Fingerprint Artifacts'\n\nUsage:\n```groovy\npost {\n  success {\n    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true\n  }\n}\n```\n\nBenefits:\n- Track which build used which dependencies\n- Trace security vulnerabilities\n- Audit artifact lineage\n- Identify dependency conflicts\n\nView fingerprints:\n- Artifacts page\n- Job page → Fingerprints\n- Search by hash",
+      "difficulty": "medium",
+      "tags": [
+        "fingerprint",
+        "tracking",
+        "artifacts"
+      ]
+    },
+    {
+      "id": "jenkins-046",
+      "question": "How do you optimize Jenkins build performance?",
+      "answer": "Performance Optimization:\n\n1. Pipeline Optimization:\n   - Parallelize stages\n   - Cache dependencies\n   - Skip unnecessary steps\n   - Use lightweight containers\n\n2. Resource Management:\n   - Allocate appropriate executors\n   - Use agent labels\n   - Set timeouts\n\n3. Code Caching:\n   ```groovy\n   options {\n     buildDiscarder(logRotator(numToKeepStr: '10'))\n   }\n   ```\n\n4. Distributed Builds:\n   - Add more agents\n   - Use cloud agents\n\n5. Plugin Management:\n   - Update plugins regularly\n   - Remove unused plugins\n   - Use lightweight alternatives\n\n6. Monitoring:\n   - Monitor Jenkins metrics\n   - Track build times\n   - Identify bottlenecks",
+      "difficulty": "hard",
+      "tags": [
+        "performance",
+        "optimization",
+        "tuning"
+      ]
+    },
+    {
+      "id": "jenkins-047",
+      "question": "What are Jenkins Quiet Period and ScmCheckoutRetryCount?",
+      "answer": "Quiet Period:\n- Delays build start after trigger\n- Configurable per job (seconds)\n- Useful for batching commits\n- Helps avoid excessive builds\n\nScmCheckoutRetryCount:\n- Number of retry attempts for checkout\n- Handles temporary SCM failures\n- Default: 0 (no retry)\n\nConfiguration:\nJob → Configure → Build Triggers:\n- Quiet Period: 10 seconds\n- SCM checkout retry count: 3\n\nPipeline:\n```groovy\noptions {\n  checkoutToSubdirectory('workspace')\n  retry(3) {\n    checkout scm\n  }\n}\n```\n\nUse for: SCM reliability, batching quick commits.",
+      "difficulty": "medium",
+      "tags": [
+        "triggers",
+        "scm",
+        "configuration"
+      ]
+    },
+    {
+      "id": "jenkins-048",
+      "question": "How do you use Jenkins with Bitbucket/GitLab?",
+      "answer": "Bitbucket Integration:\n\n1. Install Bitbucket plugin\n2. Create webhook in Bitbucket:\n   - URL: http://jenkins:8080/bitbucket-hook/\n   - Events: Repository push\n\n3. Configure job:\n   - Source: Bitbucket\n   - Repository URL\n   - Credentials\n   - Branch specifier\n\nGitLab Integration:\n\n1. Install GitLab plugin\n2. Create webhook in GitLab:\n   - URL: http://jenkins:8080/gitlab/notify\n   - Secret token\n\n3. Configure job:\n   - Enable: 'Build when a change is pushed to GitLab'\n   - Add GitLab webhook\n\n4. GitLab API token for GitLab plugin authentication.",
+      "difficulty": "medium",
+      "tags": [
+        "bitbucket",
+        "gitlab",
+        "integration"
+      ]
+    },
+    {
+      "id": "jenkins-049",
+      "question": "What is the Jenkins Groovy sandbox?",
+      "answer": "Groovy Sandbox:\n- Security feature for Pipeline scripts\n- Restricts available methods\n- Prevents dangerous operations\n- No admin approval needed\n\nWithout Sandbox:\n- Full Groovy access\n- Requires admin approval per script\n- More powerful but riskier\n\nEnabling Sandbox:\n- Job → Pipeline → Use Groovy Sandbox (checkbox)\n\nIf blocked:\n- Request approval from Jenkins admin\n- Or use approved methods only\n\nSafe Methods: Standard pipeline steps, basic operations.\nUnsafe Methods: File system access, network calls, etc.",
+      "difficulty": "medium",
+      "tags": [
+        "groovy",
+        "security",
+        "sandbox"
+      ]
+    },
+    {
+      "id": "jenkins-050",
+      "question": "What are the best practices for Jenkins Pipeline development?",
+      "answer": "Pipeline Best Practices:\n\n1. Use Jenkinsfile:\n   - Store in version control\n   - Code review pipeline changes\n   - Single source of truth\n\n2. Declarative First:\n   - Start with Declarative syntax\n   - Use Scripted only when needed\n\n3. Error Handling:\n   - Always set options { timeout, buildDiscarder }\n   - Use try-catch for complex logic\n   - Implement proper error reporting\n\n4. Security:\n   - Use credentials binding\n   - Enable Groovy sandbox\n   - Never hardcode secrets\n\n5. Performance:\n   - Parallelize stages\n   - Cache dependencies\n   - Use appropriate agents\n\n6. Documentation:\n   - Comment complex logic\n   - Document parameters\n   - Keep stages small and focused\n\n7. Testing:\n   - Test locally with Jenkinsfile/Validator\n   - Use Shared Libraries for reuse",
+      "difficulty": "hard",
+      "tags": [
+        "best-practices",
+        "pipeline",
+        "standards"
+      ]
+    }
+  ]
+}

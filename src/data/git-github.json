@@ -1,0 +1,108 @@
+{
+  "subject": "Git and GitHub",
+  "description": "Git is a distributed version control system for tracking code changes. GitHub is a web-based hosting service for Git repositories with collaboration features.",
+  "totalQuestions": 10,
+  "lastUpdated": "2025-08-15",
+  "questions": [
+    {
+      "id": "git-001",
+      "question": "What is Git and how is it different from other VCS?",
+      "answer": "Git is a distributed version control system (DVCS) that tracks changes in source code during software development.\n\nKey Differences from Other VCS:\n- Distributed: Every user has complete copy of repository\n- Faster operations (works locally)\n- Works offline\n- Flexible branching and merging\n- Data integrity through SHA-1 hashing\n- No single point of failure\n\nUnlike SVN (centralized), Git doesn't need constant connection to a central server.",
+      "difficulty": "easy",
+      "tags": [
+        "basics",
+        "vcs"
+      ]
+    },
+    {
+      "id": "git-002",
+      "question": "What are the key features of Git?",
+      "answer": "Key Git features:\n\n1. Distributed Architecture: Full repository on every machine\n2. Branching: Lightweight pointers to commits\n3. Merging: Powerful algorithms for combining changes\n4. Staging Area: Selective commits before finalizing\n5. Data Integrity: SHA-1 hashing for content\n6. Speed: Optimized for performance\n7. Non-linear Development: Parallel branches\n8. Workflows: Feature branching, Gitflow, Forking",
+      "difficulty": "easy",
+      "tags": [
+        "features",
+        "basics"
+      ]
+    },
+    {
+      "id": "git-003",
+      "question": "Explain the difference between Git repository and working directory.",
+      "answer": "Git Repository (.git folder):\n- Database storing all project files, commits, branches\n- Contains complete history\n- Stores metadata and objects\n- Lives in .git directory\n\nWorking Directory:\n- Current folder with checked-out files\n- Where you make changes\n- Shows current state of project\n- Changes exist here until staged and committed\n\nFlow: Working Directory → Staging Area → Repository",
+      "difficulty": "easy",
+      "tags": [
+        "concepts",
+        "basics"
+      ]
+    },
+    {
+      "id": "git-004",
+      "question": "What is the purpose of .gitignore file?",
+      "answer": ".gitignore specifies files/directories that Git should ignore and not track.\n\nCommon uses:\n- Temporary files\n- Build artifacts (node_modules/, target/)\n- IDE settings (.idea/, .vscode/)\n- Sensitive data (API keys, .env)\n- Log files\n- Compiled code\n\nExample:\n```\nnode_modules/\n.env\n*.log\ndist/\n```\n\nProper .gitignore keeps repository clean and prevents accidental commits.",
+      "difficulty": "easy",
+      "tags": [
+        "gitignore",
+        "configuration"
+      ]
+    },
+    {
+      "id": "git-005",
+      "question": "What is the difference between git fetch and git pull?",
+      "answer": "git fetch:\n- Downloads commits, files, refs from remote\n- Does NOT modify working directory\n- Updates remote tracking branches locally\n- Allows review before merging\n- Safe operation\n\ngit pull:\n- Combination of git fetch + git merge\n- Downloads and auto-merges into current branch\n- Updates working directory\n- May create merge conflicts\n\nBest Practice: Use fetch to review changes before merging.",
+      "difficulty": "medium",
+      "tags": [
+        "commands",
+        "remote"
+      ]
+    },
+    {
+      "id": "git-006",
+      "question": "What is a commit in Git?",
+      "answer": "A commit represents a snapshot of the project at a specific point in time.\n\nEach commit records:\n- Changes to files\n- Author name and email\n- Timestamp\n- Unique SHA-1 hash identifier\n- Parent commit reference(s)\n\nGood commit practices:\n- Write clear, descriptive messages\n- Commit related changes together\n- Keep commits atomic (one logical change per commit)\n- Commits form a history tree that can be navigated.",
+      "difficulty": "easy",
+      "tags": [
+        "commits",
+        "basics"
+      ]
+    },
+    {
+      "id": "git-007",
+      "question": "What is the staging area (index) in Git?",
+      "answer": "The staging area (index) is an intermediate space where changes are gathered before committing.\n\nFlow:\n1. Modify files in Working Directory\n2. Stage changes with git add\n3. Commit staged changes to Repository\n\nBenefits:\n- Review changes before committing\n- Selectively include files in commit\n- Organize changes logically\n- Avoid accidentally committing files\n\nCommands:\n- git add <file> → Stage specific file\n- git add . → Stage all changes\n- git reset HEAD <file> → Unstage file",
+      "difficulty": "medium",
+      "tags": [
+        "staging",
+        "index"
+      ]
+    },
+    {
+      "id": "git-008",
+      "question": "What is the difference between git reset and git revert?",
+      "answer": "git reset:\n- Moves branch pointer to previous commit\n- Modifies history (rewrites commits)\n- Modes: --soft, --mixed, --hard\n- Use with caution on shared branches\n- Best for removing local commits\n\ngit revert:\n- Creates NEW commit that undoes changes\n- Does NOT modify history\n- Safe for shared/remote branches\n- Preserves complete history\n- Creates clear audit trail\n\nBest Practice: Use revert for undoing changes in shared branches.",
+      "difficulty": "medium",
+      "tags": [
+        "commands",
+        "undo"
+      ]
+    },
+    {
+      "id": "git-009",
+      "question": "How can conflicts arise in Git and how are they resolved?",
+      "answer": "Conflicts occur when changes from different branches/commits overlap and cannot be automatically merged.\n\nCauses:\n- Two developers modify same lines\n- Changes contradict each other\n- One branch deletes file, other modifies it\n\nResolution Steps:\n1. Git marks conflicting files\n2. Open files and find conflict markers:\n   <<<<<<< HEAD\n   your changes\n   =======\n   their changes\n   >>>>>>> branch-name\n3. Manually edit to reconcile differences\n4. git add <file> to stage resolved changes\n5. git commit to complete merge",
+      "difficulty": "medium",
+      "tags": [
+        "conflicts",
+        "merging"
+      ]
+    },
+    {
+      "id": "git-010",
+      "question": "What is the difference between Git and GitHub?",
+      "answer": "Git:\n- Distributed version control system\n- Manages and tracks code locally\n- Command-line tool\n- Works offline\n- No user management features\n\nGitHub:\n- Web-based hosting service for Git\n- Provides graphical interface\n- Social coding features\n- Collaboration tools (PRs, issues)\n- Requires internet for most features\n- Cloud backup of repositories\n\nAnalogy: Git is like a camera, GitHub is like a photo sharing platform.",
+      "difficulty": "easy",
+      "tags": [
+        "comparison",
+        "github"
+      ]
+    }
+  ]
+}

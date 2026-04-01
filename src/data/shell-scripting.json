@@ -1,0 +1,110 @@
+{
+  "subject": "Shell Scripting",
+  "description": "Shell scripting is writing scripts for Unix/Linux shells to automate tasks. It involves using command-line interpreters like Bash to execute sequences of commands.",
+  "totalQuestions": 10,
+  "lastUpdated": "2025-09-10",
+  "questions": [
+    {
+      "id": "shell-001",
+      "question": "What is the shebang line and why does every script need it?",
+      "answer": "The shebang (#!/bin/bash) is the first line of every shell script.\n\nPurpose:\n- Tells OS which interpreter to use\n- Without it, system guesses (unreliable)\n- Ensures script runs under correct shell\n\nExamples:\n- #!/bin/bash - Bash shell\n- #!/bin/sh - POSIX shell\n- #!/usr/bin/env python3 - Finds Python in PATH\n\nBest Practice: Always include explicit shebang for portability.",
+      "difficulty": "easy",
+      "tags": [
+        "basics",
+        "script-structure"
+      ]
+    },
+    {
+      "id": "shell-002",
+      "question": "How do you make a shell script executable and run it?",
+      "answer": "Two steps:\n\n1. Grant execute permission:\n   chmod +x myscript.sh\n\n2. Run the script:\n   ./myscript.sh       # If in current directory\n   /path/myscript.sh  # Absolute path\n   \nAlternative running methods:\n   bash myscript.sh    # Run with bash explicitly\n   sh myscript.sh     # Run with sh\n\nNote: Without chmod +x, only bash/sh can execute it.",
+      "difficulty": "easy",
+      "tags": [
+        "basics",
+        "execution"
+      ]
+    },
+    {
+      "id": "shell-003",
+      "question": "What are special variables in Bash? Name five.",
+      "answer": "Special variables in Bash:\n\n$0   - Name of the script\n$1   - First argument passed\n$2   - Second argument passed\n$#   - Number of arguments passed\n$?   - Exit code of last command (0=success)\n$$   - PID of current script\n$@   - All arguments as separate words\n$*   - All arguments as single string\n$!   - PID of last background process\n\nPro Tip: $? is essential for error handling in production scripts.",
+      "difficulty": "medium",
+      "tags": [
+        "variables",
+        "bash"
+      ]
+    },
+    {
+      "id": "shell-004",
+      "question": "How do you handle errors in a Bash script?",
+      "answer": "Error handling in Bash:\n\n1. set -euo pipefail:\n   set -e  → Exit on command failure\n   set -u  → Error on undefined variables\n   set -o pipefail → Catch pipe failures\n\n2. Check exit codes:\n   if [ $? -ne 0 ]; then\n     echo 'Command failed'\n     exit 1\n   fi\n\n3. Use trap for cleanup:\n   trap 'echo \"Error at line $LINENO\"' ERR\n\n4. Quote variables:\n   Always use \"$variable\" not $variable",
+      "difficulty": "medium",
+      "tags": [
+        "error-handling",
+        "production"
+      ]
+    },
+    {
+      "id": "shell-005",
+      "question": "Show a for loop and while loop. When to use each?",
+      "answer": "FOR Loop - Use when you know the list:\n```bash\nfor server in web01 web02 web03; do\n  echo \"Checking $server...\"\n  ssh \"$server\" \"systemctl status nginx\"\ndone\n```\n\nWHILE Loop - Use when condition drives iteration:\n```bash\nRETRIES=0\nwhile ! ping -c1 8.8.8.8 &>/dev/null; do\n  echo \"Network down...\"\n  RETRIES=$((RETRIES + 1))\n  sleep 5\n  [ $RETRIES -ge 10 ] && exit 1\ndone\n```\n\nUse for loops for fixed lists (servers, files). Use while for polling/retry logic.",
+      "difficulty": "medium",
+      "tags": [
+        "loops",
+        "control-flow"
+      ]
+    },
+    {
+      "id": "shell-006",
+      "question": "Write a script to check disk usage and alert if above threshold.",
+      "answer": "#!/bin/bash\nset -euo pipefail\nTHRESHOLD=80\n\ndf -h | awk 'NR>1 {\n  gsub(/%/,\"\",$5)\n  if($5+0 >= '$THRESHOLD')\n    print \"ALERT: \"$6\" is \"$5\"% full\"\n}'\n\nExplanation:\n- df -h gets disk usage\n- awk processes output\n- NR>1 skips header row\n- gsub removes % sign\n- Compares numeric value to threshold\n- Prints alert for partitions over threshold",
+      "difficulty": "hard",
+      "tags": [
+        "disk",
+        "monitoring",
+        "awk"
+      ]
+    },
+    {
+      "id": "shell-007",
+      "question": "How do you write a cron job and debug one that is not running?",
+      "answer": "Edit crontab:\ncrontab -e\n\nFormat: min hour day month weekday command\nExamples:\n0 2 * * *  /opt/scripts/backup.sh >> /var/log/backup.log 2>&1\n30 8 * * 1 /opt/scripts/weekly-report.sh\n\nDebug steps:\n1. Check if cron ran:\n   grep CRON /var/log/syslog | tail -20\n\n2. Run script manually (as cron would):\n   env -i HOME=/root PATH=/usr/bin:/bin bash /script.sh\n\n3. Check log output:\n   tail -50 /var/log/script.log\n\nCommon issue: PATH differences between shell and cron.",
+      "difficulty": "hard",
+      "tags": [
+        "cron",
+        "automation",
+        "debugging"
+      ]
+    },
+    {
+      "id": "shell-008",
+      "question": "What are functions in Bash and how do you use them?",
+      "answer": "Functions in Bash group commands for reuse:\n\nDefinition:\n```bash\ngreet() {\n  local name=\"$1\"\n  echo \"Hello, $name\"\n}\n```\n\nCalling:\ngreet \"World\"  # Output: Hello, World\n\nKey points:\n- local keyword keeps variables scoped\n- $1, $2 access parameters\n- Return only exits with status (0-255)\n- Use echo to return strings\n\nBenefits:\n- Code reusability\n- Better organization\n- Easier testing",
+      "difficulty": "medium",
+      "tags": [
+        "functions",
+        "organization"
+      ]
+    },
+    {
+      "id": "shell-009",
+      "question": "What is the difference between source and ./ when executing a script?",
+      "answer": "source (or .):\n- Runs script in CURRENT shell\n- Changes persist after script ends\n- Variables available in current session\n- Example: source script.sh\n\n./ (new process):\n- Runs script in NEW subshell\n- Changes DO NOT persist\n- Isolated from current session\n- Example: ./script.sh\n\nUse source when you need environment changes (like setting variables). Use ./ for regular scripts.",
+      "difficulty": "medium",
+      "tags": [
+        "execution",
+        "shell"
+      ]
+    },
+    {
+      "id": "shell-010",
+      "question": "How do you redirect output in Bash?",
+      "answer": "Output redirection operators:\n\n>   - Redirect stdout, overwrite file\necho \"hello\" > file.txt\n\n>>  - Redirect stdout, append to file\necho \"hello\" >> file.txt\n\n2>  - Redirect stderr\necho \"error\" 2> error.log\n\n&>  - Redirect both stdout and stderr\necho \"message\" &> output.log\n\n>&2 - Redirect to stderr\necho \"error\" >&2\n\n2>&1 - Redirect stderr to stdout\necho \"test\" > output.log 2>&1\n\n/dev/null - Discard output\necho \"silent\" > /dev/null 2>&1",
+      "difficulty": "medium",
+      "tags": [
+        "io",
+        "redirection"
+      ]
+    }
+  ]
+}

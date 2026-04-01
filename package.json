@@ -1,0 +1,55 @@
+{
+  "name": "myrevisor",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "DevOps Interview Study Application - Master your Kubernetes, AWS, Docker, Jenkins, Git, and Shell Scripting knowledge",
+  "main": "src/index.js",
+  "bin": {
+    "myrevisor": "./bin/myrevisor.js"
+  },
+  "scripts": {
+    "start": "node bin/myrevisor.js",
+    "lint": "eslint src/",
+    "format": "prettier --write \"src/**/*.js\"",
+    "validate": "node scripts/validate-data.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "devops",
+    "interview",
+    "study",
+    "quiz",
+    "kubernetes",
+    "k8s",
+    "aws",
+    "docker",
+    "jenkins",
+    "git",
+    "shell",
+    "cli"
+  ],
+  "author": "MyRevisor Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "boxen": "^7.1.1",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "conf": "^14.0.0",
+    "figlet": "^1.7.0",
+    "gradient-string": "^3.0.0",
+    "inquirer": "^10.0.0",
+    "ora": "^8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.0"
+  },
+  "publishConfig": {
+    "bin": {
+      "myrevisor": "./bin/myrevisor.js"
+    }
+  }
+}

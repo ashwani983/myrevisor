@@ -1,0 +1,358 @@
+{
+  "subject": "AWS",
+  "description": "Amazon Web Services (AWS) is a comprehensive cloud computing platform offering infrastructure-as-a-service, platform-as-a-service, and software-as-a-service solutions.",
+  "totalQuestions": 50,
+  "lastUpdated": "2025-10-04",
+  "questions": [
+    {
+      "id": "aws-001",
+      "question": "What is the difference between an AWS Region and an Availability Zone (AZ)?",
+      "answer": "AWS Region:\n- Separate geographical area (e.g., N. Virginia, Ireland)\n- Contains multiple Availability Zones\n- Independent and isolated\n\nAvailability Zone (AZ):\n- One or more data centers within a Region\n- Independent power and networking\n- Connected via low-latency links\n\nDeploy across multiple AZs for high availability.",
+      "difficulty": "easy",
+      "tags": ["regions", "availability", "infrastructure"]
+    },
+    {
+      "id": "aws-002",
+      "question": "Explain the AWS Shared Responsibility Model.",
+      "answer": "AWS manages:\n- Physical hardware and data centers\n- Network infrastructure\n- Virtualization layer\n\nCustomer manages:\n- Data encryption and access\n- IAM policies and access\n- Application security\n- OS patches (for EC2)\n\nBy service type:\n- IaaS: Customer manages OS and data\n- PaaS: AWS manages platform\n- SaaS: AWS manages everything",
+      "difficulty": "medium",
+      "tags": ["security", "shared-responsibility"]
+    },
+    {
+      "id": "aws-003",
+      "question": "What is an EC2 instance and instance type?",
+      "answer": "EC2 (Elastic Compute Cloud) provides resizable compute capacity.\n\nInstance Types:\n- General Purpose (T, M): Balanced CPU/memory\n- Compute Optimized (C): High CPU\n- Memory Optimized (R, X): Large RAM\n- Storage Optimized (I, D): Fast disk\n- GPU (P, G): ML/graphics\n\nPricing:\n- On-Demand: Pay per second\n- Reserved: 1-3 year commitment\n- Spot: Interruptible, cheap",
+      "difficulty": "medium",
+      "tags": ["ec2", "compute", "instances"]
+    },
+    {
+      "id": "aws-004",
+      "question": "What is Amazon S3 and what guarantees does it provide?",
+      "answer": "S3 (Simple Storage Service) is object storage.\n\nGuarantees:\n- 11 nines (99.999999999%) durability\n- 99.99% availability (Standard)\n\nStorage Classes:\n- S3 Standard: Frequent access\n- S3 IA: Infrequent (lower cost)\n- S3 Glacier: Archival\n- S3 Intelligent-Tiering: Auto-optimizes",
+      "difficulty": "easy",
+      "tags": ["s3", "storage"]
+    },
+    {
+      "id": "aws-005",
+      "question": "What are the core VPC components?",
+      "answer": "VPC Core Components:\n\n1. Subnets: Public & private networks\n2. Route Tables: Traffic routing rules\n3. Internet Gateway (IGW): Internet access\n4. NAT Gateway: Private subnet internet access\n5. Security Groups: Stateful instance firewall\n6. NACLs: Stateless subnet firewall\n7. VPC Peering: Direct VPC-to-VPC connection",
+      "difficulty": "medium",
+      "tags": ["vpc", "networking"]
+    },
+    {
+      "id": "aws-006",
+      "question": "What is IAM and why is it critical?",
+      "answer": "IAM (Identity and Access Management) controls AWS access.\n\nKey Concepts:\n- Users: Individual people\n- Groups: Collection of users\n- Roles: Temporary permissions\n- Policies: JSON permissions documents\n\nBest Practices:\n- Principle of least privilege\n- Enable MFA\n- Rotate access keys regularly",
+      "difficulty": "easy",
+      "tags": ["iam", "security", "access-control"]
+    },
+    {
+      "id": "aws-007",
+      "question": "What is the difference between stopping and terminating EC2?",
+      "answer": "Stop:\n- Shuts down gracefully\n- Preserves root EBS volume\n- Can restart later\n- No compute charges\n\nTerminate:\n- Permanently deletes instance\n- Root EBS deleted by default\n- Cannot restart\n- All charges stop",
+      "difficulty": "easy",
+      "tags": ["ec2", "lifecycle"]
+    },
+    {
+      "id": "aws-008",
+      "question": "What is Amazon RDS?",
+      "answer": "RDS (Relational Database Service) is managed database.\n\nSupported Engines:\n- PostgreSQL, MySQL, MariaDB\n- Oracle, SQL Server\n- Aurora (AWS-native)\n\nBenefits:\n- Automated backups and patching\n- Multi-AZ deployment\n- Read replicas for scaling",
+      "difficulty": "medium",
+      "tags": ["rds", "database"]
+    },
+    {
+      "id": "aws-009",
+      "question": "What is the difference between Lambda and EC2?",
+      "answer": "Lambda (Serverless):\n- No server management\n- Event-driven execution\n- Pay per 100ms invocation\n- Max 15 min execution\n- Cold starts possible\n\nEC2 (Virtual Servers):\n- Full control over server\n- Long-running applications\n- Pay per second/hour\n- You manage scaling",
+      "difficulty": "medium",
+      "tags": ["lambda", "ec2", "serverless"]
+    },
+    {
+      "id": "aws-010",
+      "question": "What is Amazon DynamoDB?",
+      "answer": "DynamoDB is a fully managed NoSQL database.\n\nFeatures:\n- Key-value and document data\n- Serverless or provisioned capacity\n- Single-digit millisecond latency\n- Automatic global tables\n- Encryption at rest",
+      "difficulty": "medium",
+      "tags": ["dynamodb", "nosql", "database"]
+    },
+    {
+      "id": "aws-011",
+      "question": "What is the difference between Security Groups and NACLs?",
+      "answer": "Security Groups (Stateful):\n- Instance-level firewall\n- Default: deny all inbound\n- Only allow rules\n\nNACLs (Stateless):\n- Subnet-level firewall\n- Default: allow all\n- Allow AND deny rules\n- Rules evaluated by number",
+      "difficulty": "medium",
+      "tags": ["security", "networking", "vpc"]
+    },
+    {
+      "id": "aws-012",
+      "question": "What is AWS CloudFront?",
+      "answer": "CloudFront is AWS CDN.\n\nFeatures:\n- Global edge locations\n- Low latency delivery\n- DDoS protection (Shield)\n- SSL/TLS encryption\n- Cache content at edge\n\nOrigins:\n- S3 bucket\n- EC2 instance\n- ALB",
+      "difficulty": "medium",
+      "tags": ["cloudfront", "cdn", "networking"]
+    },
+    {
+      "id": "aws-013",
+      "question": "What is Amazon EKS?",
+      "answer": "EKS (Elastic Kubernetes Service) is managed Kubernetes.\n\nBenefits:\n- Managed control plane\n- Integration with AWS services\n- VPC-native networking\n- Load balancing with ALB\n\nUse when:\n- Running containerized apps\n- Using Kubernetes\n- Need multi-cloud portability",
+      "difficulty": "medium",
+      "tags": ["eks", "kubernetes", "containers"]
+    },
+    {
+      "id": "aws-014",
+      "question": "What is Amazon ECS?",
+      "answer": "ECS (Elastic Container Service) is AWS container orchestration.\n\nLaunch Types:\n- Fargate: Serverless\n- EC2: You manage instances\n\nFeatures:\n- Native AWS integration\n- ELB integration\n- IAM task roles",
+      "difficulty": "medium",
+      "tags": ["ecs", "containers", "orchestration"]
+    },
+    {
+      "id": "aws-015",
+      "question": "What is AWS Auto Scaling?",
+      "answer": "Auto Scaling automatically adjusts capacity.\n\nComponents:\n- Auto Scaling Group (ASG)\n- Launch Template\n- Scaling Policies\n\nTypes:\n- Target tracking: CPU at 50%\n- Step scaling: Based on metrics\n- Scheduled: Time-based",
+      "difficulty": "medium",
+      "tags": ["autoscaling", "ec2"]
+    },
+    {
+      "id": "aws-016",
+      "question": "What is Amazon SNS?",
+      "answer": "SNS (Simple Notification Service) is pub/sub messaging.\n\nFeatures:\n- Publish to topics\n- Multiple subscribers:\n  - SQS queues\n  - Email\n  - HTTP endpoints\n  - Lambda\n- Mobile push, SMS",
+      "difficulty": "medium",
+      "tags": ["sns", "messaging"]
+    },
+    {
+      "id": "aws-017",
+      "question": "What is Amazon SQS?",
+      "answer": "SQS (Simple Queue Service) is managed message queuing.\n\nTypes:\n- Standard: At-least-once delivery\n- FIFO: Exactly-once, ordered\n\nFeatures:\n- Decouple microservices\n- Buffer database writes\n- Dead letter queues",
+      "difficulty": "medium",
+      "tags": ["sqs", "messaging", "queues"]
+    },
+    {
+      "id": "aws-018",
+      "question": "What is AWS CloudWatch?",
+      "answer": "CloudWatch is monitoring and observability.\n\nFeatures:\n- Metrics: CPU, memory, custom\n- Logs: Centralized storage\n- Alarms: Threshold-based alerts\n- Events: Automated responses\n- Dashboards: Visualizations",
+      "difficulty": "medium",
+      "tags": ["cloudwatch", "monitoring"]
+    },
+    {
+      "id": "aws-019",
+      "question": "What is AWS IAM Roles and when to use them?",
+      "answer": "IAM Roles provide temporary credentials.\n\nUse cases:\n- EC2 accessing S3\n- Lambda accessing DynamoDB\n- Cross-account access\n- Federation users\n\nHow it works:\n1. Attach role with policy\n2. Entity assumes role\n3. Gets temp credentials\n4. Access expires automatically",
+      "difficulty": "medium",
+      "tags": ["iam", "roles", "security"]
+    },
+    {
+      "id": "aws-020",
+      "question": "What is Amazon Route 53?",
+      "answer": "Route 53 is AWS DNS and domain management.\n\nServices:\n- Domain registration\n- DNS routing\n- Health checking\n\nRouting Policies:\n- Simple: Single resource\n- Weighted: Traffic split\n- Latency-based: Lowest latency\n- Geolocation: User location\n- Failover: Primary/secondary",
+      "difficulty": "medium",
+      "tags": ["route53", "dns"]
+    },
+    {
+      "id": "aws-021",
+      "question": "What is AWS Elastic Beanstalk?",
+      "answer": "Elastic Beanstalk is Platform as a Service.\n\nFeatures:\n- Deploy without managing infra\n- Supports: Node.js, Python, Java, .NET, Go, Docker\n- Managed capacity, load balancing, scaling\n\nWorkflow:\n1. Upload application code\n2. Beanstalk provisions resources\n3. Deployed automatically",
+      "difficulty": "medium",
+      "tags": ["elastic-beanstalk", "paas"]
+    },
+    {
+      "id": "aws-022",
+      "question": "What is Amazon Aurora?",
+      "answer": "Aurora is MySQL/PostgreSQL-compatible database.\n\nFeatures:\n- 5x faster than standard MySQL\n- Auto-scaling storage (up to 64TB)\n- Up to 15 read replicas\n- Continuous backup to S3\n- Multi-AZ with automatic failover",
+      "difficulty": "medium",
+      "tags": ["aurora", "database", "rds"]
+    },
+    {
+      "id": "aws-023",
+      "question": "What is AWS Lambda and its limitations?",
+      "answer": "Lambda is serverless compute.\n\nLimits:\n- Execution time: 15 minutes max\n- Memory: 128MB to 10GB\n- Payload: 6MB (sync)\n- Concurrent: 1000 (adjustable)\n- Deployment size: 50MB zipped\n\nSupported:\nNode.js, Python, Java, Go, C#, Ruby",
+      "difficulty": "medium",
+      "tags": ["lambda", "serverless"]
+    },
+    {
+      "id": "aws-024",
+      "question": "What is Amazon API Gateway?",
+      "answer": "API Gateway creates REST, WebSocket, HTTP APIs.\n\nFeatures:\n- Serverless backend for Lambda\n- Throttling and rate limiting\n- JWT authentication\n- API versioning\n\nTypes:\n- REST API: Full features\n- HTTP API: Lightweight\n- WebSocket: Real-time",
+      "difficulty": "medium",
+      "tags": ["api-gateway", "serverless"]
+    },
+    {
+      "id": "aws-025",
+      "question": "What is AWS CloudFormation?",
+      "answer": "CloudFormation is Infrastructure as Code.\n\nFeatures:\n- Declarative JSON/YAML templates\n- Provision AWS resources\n- Stack lifecycle management\n- Drift detection\n- Nested stacks\n\nBenefits:\n- Reproducible environments\n- Version control\n- Automated provisioning",
+      "difficulty": "medium",
+      "tags": ["cloudformation", "iac"]
+    },
+    {
+      "id": "aws-026",
+      "question": "What is AWS CodePipeline?",
+      "answer": "CodePipeline is continuous delivery.\n\nStages:\n- Source: CodeCommit, S3, GitHub\n- Build: CodeBuild, Jenkins\n- Test: CodeBuild\n- Deploy: CodeDeploy, ECS, Beanstalk\n\nFeatures:\n- Visual workflow editor\n- Approval gates",
+      "difficulty": "medium",
+      "tags": ["codepipeline", "cicd"]
+    },
+    {
+      "id": "aws-027",
+      "question": "What is AWS Direct Connect?",
+      "answer": "Direct Connect creates private connection to AWS.\n\nBenefits:\n- Dedicated connection\n- Lower latency\n- Consistent performance\n- Reduced bandwidth costs\n\nOptions:\n- Dedicated Connection\n- Hosted Connection (via partner)",
+      "difficulty": "hard",
+      "tags": ["direct-connect", "networking"]
+    },
+    {
+      "id": "aws-028",
+      "question": "What is Amazon VPC Endpoint?",
+      "answer": "VPC Endpoints allow private access to AWS services.\n\nTypes:\n1. Interface Endpoints:\n   - ENI with private IP\n   - Many AWS services\n\n2. Gateway Endpoints:\n   - S3 and DynamoDB only\n   - Route table entry\n   - No cost",
+      "difficulty": "medium",
+      "tags": ["vpc", "endpoints"]
+    },
+    {
+      "id": "aws-029",
+      "question": "What is AWS WAF and Shield?",
+      "answer": "WAF (Web Application Firewall) protects web apps.\n\nFeatures:\n- SQL injection, XSS protection\n- Geo-blocking\n- Rate limiting\n- AWS Managed Rules\n\nShield:\n- DDoS protection\n- Standard: Free, always on\n- Advanced: Paid",
+      "difficulty": "medium",
+      "tags": ["waf", "shield", "security"]
+    },
+    {
+      "id": "aws-030",
+      "question": "What is Amazon Cognito?",
+      "answer": "Cognito provides user authentication.\n\nFeatures:\n- Sign-up and sign-in\n- Social identity providers\n- SAML/Federation\n- JWT token issuance\n\nTypes:\n- User Pools: App authentication\n- Identity Pools: AWS resource access",
+      "difficulty": "medium",
+      "tags": ["cognito", "authentication"]
+    },
+    {
+      "id": "aws-031",
+      "question": "What is Amazon ElastiCache?",
+      "answer": "ElastiCache is in-memory caching.\n\nEngines:\n- Redis: Complex data structures, persistence\n- Memcached: Simple, multi-threaded\n\nUse cases:\n- Session storage\n- Database query cache\n- Real-time leaderboards",
+      "difficulty": "medium",
+      "tags": ["elasticache", "cache"]
+    },
+    {
+      "id": "aws-032",
+      "question": "What is AWS Secrets Manager?",
+      "answer": "Secrets Manager securely stores secrets.\n\nFeatures:\n- Database credentials\n- API keys, OAuth tokens\n- Automatic rotation\n- Encryption at rest\n- Fine-grained IAM\n\nIntegration:\n- RDS, Redshift, Lambda",
+      "difficulty": "medium",
+      "tags": ["secrets-manager", "security"]
+    },
+    {
+      "id": "aws-033",
+      "question": "What is Amazon Redshift?",
+      "answer": "Redshift is data warehouse.\n\nFeatures:\n- Columnar storage\n- Massively parallel (MPP)\n- SQL interface\n- ML integration\n- Serverless option\n\nUse for:\n- Business intelligence\n- Analytics",
+      "difficulty": "medium",
+      "tags": ["redshift", "data-warehouse"]
+    },
+    {
+      "id": "aws-034",
+      "question": "What is AWS Global Accelerator?",
+      "answer": "Global Accelerator improves app availability.\n\nFeatures:\n- Anycast IP addresses\n- Traffic via AWS edge\n- Automatic failover\n- Fixed IP addresses\n- Health checks integration\n\nUse for:\n- Global applications\n- UDP/TCP traffic",
+      "difficulty": "hard",
+      "tags": ["global-accelerator", "networking"]
+    },
+    {
+      "id": "aws-035",
+      "question": "What is Amazon S3 Transfer Acceleration?",
+      "answer": "S3 Transfer Acceleration uses CloudFront.\n\nHow it works:\n1. Upload to edge location\n2. Transfer over AWS network\n3. Reach S3 bucket\n\nBenefits:\n- Faster uploads globally\n- No code changes",
+      "difficulty": "medium",
+      "tags": ["s3", "performance"]
+    },
+    {
+      "id": "aws-036",
+      "question": "What is AWS Step Functions?",
+      "answer": "Step Functions is serverless workflow.\n\nFeatures:\n- Visual workflow designer\n- JSON-based state machine\n- Built-in error handling\n- Parallel execution\n\nIntegrates with:\n- Lambda\n- ECS\n- DynamoDB",
+      "difficulty": "medium",
+      "tags": ["step-functions", "orchestration"]
+    },
+    {
+      "id": "aws-037",
+      "question": "What is Amazon EventBridge?",
+      "answer": "EventBridge is serverless event bus.\n\nFeatures:\n- Connect apps with events\n- Schema registry\n- Built-in AWS events\n- Custom events\n- Scheduled rules\n\nUse for:\n- Decoupled microservices\n- Automated workflows",
+      "difficulty": "medium",
+      "tags": ["eventbridge", "events"]
+    },
+    {
+      "id": "aws-038",
+      "question": "What is AWS Systems Manager?",
+      "answer": "Systems Manager manages AWS resources.\n\nCapabilities:\n- Run Command: Execute scripts\n- Session Manager: Browser SSH/RDP\n- Parameter Store: Config storage\n- Automation: Workflows\n- Patch Manager: OS patching",
+      "difficulty": "medium",
+      "tags": ["systems-manager", "operations"]
+    },
+    {
+      "id": "aws-039",
+      "question": "What is Amazon Kinesis?",
+      "answer": "Kinesis is real-time data streaming.\n\nServices:\n- Data Streams: Build custom apps\n- Data Firehose: Load to storage\n- Data Analytics: SQL queries\n\nUse for:\n- Log processing\n- Analytics\n- IoT telemetry",
+      "difficulty": "hard",
+      "tags": ["kinesis", "streaming"]
+    },
+    {
+      "id": "aws-040",
+      "question": "What is AWS CodeBuild?",
+      "answer": "CodeBuild is fully managed build.\n\nFeatures:\n- Code compilation\n- Unit test execution\n- Artifact generation\n- Pay per minute\n- Pre-built environments\n\nbuildspec.yml:\nversion: 0.2\nphases:\n  build:\n    commands:\n      - npm install",
+      "difficulty": "medium",
+      "tags": ["codebuild", "cicd"]
+    },
+    {
+      "id": "aws-041",
+      "question": "What is Amazon EFS?",
+      "answer": "EFS is scalable file storage for EC2.\n\nFeatures:\n- NFSv4 protocol\n- Elastic capacity\n- Multi-AZ storage\n- Shared between instances\n- Pay per use\n\nUse for:\n- Web servers\n- CMS\n- Shared data",
+      "difficulty": "medium",
+      "tags": ["efs", "storage"]
+    },
+    {
+      "id": "aws-042",
+      "question": "What is Amazon FSx?",
+      "answer": "FSx provides managed file systems.\n\nOptions:\n- FSx for Windows File Server\n- FSx for Lustre (HPC)\n- FSx for NetApp ONTAP\n- FSx for OpenZFS\n\nUse for:\n- Windows workloads\n- High-performance computing",
+      "difficulty": "hard",
+      "tags": ["fsx", "storage"]
+    },
+    {
+      "id": "aws-043",
+      "question": "What is AWS Organizations?",
+      "answer": "Organizations manages multiple AWS accounts.\n\nFeatures:\n- Hierarchical structure (OUs)\n- Consolidated billing\n- Service Control Policies (SCPs)\n\nBenefits:\n- Simplified billing\n- Policy-based governance",
+      "difficulty": "medium",
+      "tags": ["organizations", "management"]
+    },
+    {
+      "id": "aws-044",
+      "question": "What is AWS Config?",
+      "answer": "AWS Config provides resource tracking.\n\nFeatures:\n- Resource inventory\n- Configuration history\n- Change notifications\n- Compliance checking\n- Rules (managed/custom)\n\nUse for:\n- Security auditing\n- Compliance tracking",
+      "difficulty": "hard",
+      "tags": ["config", "governance"]
+    },
+    {
+      "id": "aws-045",
+      "question": "What is AWS Control Tower?",
+      "answer": "Control Tower sets up secure multi-account AWS.\n\nFeatures:\n- Landing zone creation\n- Guardrails\n- Account factory\n- Dashboard\n\nLanding Zone:\n- OU structure\n- Shared services\n- Logging account",
+      "difficulty": "hard",
+      "tags": ["control-tower", "governance"]
+    },
+    {
+      "id": "aws-046",
+      "question": "What is AWS Storage Gateway?",
+      "answer": "Storage Gateway connects on-prem to AWS storage.\n\nTypes:\n- File Gateway: NFS/SMB to S3\n- Volume Gateway: iSCSI to EBS\n- Tape Gateway: VTL to S3/Glacier\n\nUse for:\n- Cloud backup\n- Hybrid storage\n- Migration",
+      "difficulty": "hard",
+      "tags": ["storage-gateway", "hybrid"]
+    },
+    {
+      "id": "aws-047",
+      "question": "What is AWS DataSync?",
+      "answer": "DataSync is online data transfer.\n\nFeatures:\n- S3, EFS, FSx support\n- Scheduled or on-demand\n- Bandwidth control\n- Encryption in transit\n- Verification\n\nUse for:\n- Migration\n- Replication",
+      "difficulty": "hard",
+      "tags": ["datasync", "transfer"]
+    },
+    {
+      "id": "aws-048",
+      "question": "What is AWS Lake Formation?",
+      "answer": "Lake Formation builds secure data lakes.\n\nFeatures:\n- Automated data ingestion\n- Fine-grained access control\n- Column-level security\n- Built on S3 and Glue\n\nUse for:\n- Data analytics\n- ML data preparation",
+      "difficulty": "hard",
+      "tags": ["lake-formation", "data-lake"]
+    },
+    {
+      "id": "aws-049",
+      "question": "What is AWS Well-Architected Framework?",
+      "answer": "Well-Architected Framework guides cloud architecture.\n\nPillars:\n1. Operational Excellence\n2. Security\n3. Reliability\n4. Performance Efficiency\n5. Cost Optimization\n6. Sustainability\n\nUse to:\n- Evaluate architectures\n- Improve designs",
+      "difficulty": "medium",
+      "tags": ["well-architected", "best-practices"]
+    },
+    {
+      "id": "aws-050",
+      "question": "What is Amazon Cognito User Pools vs Identity Pools?",
+      "answer": "User Pools:\n- User directory\n- Sign-up, sign-in\n- App authentication\n- JWT tokens\n\nIdentity Pools:\n- AWS credentials\n- Access to AWS resources\n- Unauthenticated/guest access\n\nCan use both together.",
+      "difficulty": "medium",
+      "tags": ["cognito", "authentication"]
+    }
+  ]
+}
