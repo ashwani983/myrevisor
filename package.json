@@ -33,6 +33,14 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashwani983/myrevisor.git"
+  },
+  "homepage": "https://github.com/ashwani983/myrevisor#readme",
+  "bugs": {
+    "url": "https://github.com/ashwani983/myrevisor/issues"
+  },
   "dependencies": {
     "boxen": "^7.1.1",
     "chalk": "^5.3.0",
