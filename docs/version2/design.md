@@ -2,117 +2,79 @@
 
 ## 1. Architecture Overview
 
-### 1.1 System Architecture
+### 1.1 System Architecture (Client-Side Only)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                          CLIENT (SPA)                            │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐ │
-│  │   React     │  │   Study     │  │      Quiz Module        │ │
-│  │   Router    │  │   Mode      │  │                         │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────────┘ │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐ │
-│  │   Chatbot   │  │  Progress   │  │     Admin Panel         │ │
-│  │   Module    │  │   Dashboard │  │                         │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                        API GATEWAY                              │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐ │
-│  │   Auth      │  │   Rate      │  │       Logging           │ │
-│  │   Middleware│  │   Limiter   │  │                         │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-          ┌───────────────────┼───────────────────┐
-          ▼                   ▼                   ▼
-┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│   Auth Service  │ │  Quiz Service   │ │  Chat Service   │
-│                 │ │                 │ │                 │
-│ - JWT handling  │ │ - Quiz logic   │ │ - AI integration│
-│ - OAuth         │ │ - Scoring      │ │ - NLP           │
-│ - Sessions      │ │ - History      │ │ - Context       │
-└─────────────────┘ └─────────────────┘ └─────────────────┘
-          │                   │                   │
-          └───────────────────┼───────────────────┘
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                         DATABASE LAYER                           │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐ │
-│  │ PostgreSQL  │  │   Redis     │  │     Question Bank       │ │
-│  │  (Users,   │  │  (Cache,    │  │       (JSON/Files)       │ │
-│  │   Quiz)     │  │   Sessions) │  │                         │ │
-│  └─────────────┘  └─────────────┘  └─────────────────────────┘ │
+│                          BROWSER                                  │
+│  ┌─────────────────────────────────────────────────────────────┐│
+│  │                    React Application                        ││
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐   ││
+│  │  │   React     │  │   Study     │  │    Quiz Module  │   ││
+│  │  │   Router    │  │   Mode      │  │                 │   ││
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘   ││
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐   ││
+│  │  │   Chatbot   │  │  Progress   │  │    Profile      │   ││
+│  │  │   Module    │  │   Display   │  │    (Local)      │   ││
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘   ││
+│  └─────────────────────────────────────────────────────────────┘│
+│                              │                                   │
+│  ┌──────────────────────────┴───────────────────────────────┐  │
+│  │                     LOCAL DATA LAYER                       │  │
+│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐   │  │
+│  │  │ localStorage│  │ IndexedDB   │  │   SQL.js        │   │  │
+│  │  │ (Profile,   │  │ (Quiz       │  │   (Questions   │   │  │
+│  │  │ Progress)   │  │  History,   │  │    Database)   │   │  │
+│  │  │             │  │  Chat)      │  │                 │   │  │
+│  │  └─────────────┘  └─────────────┘  └─────────────────┘   │  │
+│  └───────────────────────────────────────────────────────────┘  │
+│                              │                                   │
+│  ┌──────────────────────────┴───────────────────────────────┐  │
+│  │                    EXTERNAL SERVICES                       │  │
+│  │  ┌─────────────────────────────────────────────────┐     │  │
+│  │  │            OpenAI API (Optional)                 │     │  │
+│  │  │  - User provides their own API key               │     │  │
+│  │  │  - Direct browser → OpenAI (no server)          │     │  │
+│  │  └─────────────────────────────────────────────────┘     │  │
+│  └───────────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ### 1.2 Tech Stack
 
-#### Frontend
+#### Frontend Only (No Backend)
 
 - **Framework:** React 18+ with TypeScript
+- **Build Tool:** Vite
 - **Routing:** React Router v6
-- **State Management:** Zustand or Redux Toolkit
+- **State Management:** Zustand (lightweight)
 - **Styling:** Tailwind CSS
 - **UI Components:** shadcn/ui or Radix UI
 - **Forms:** React Hook Form + Zod
-- **HTTP Client:** Axios or Fetch API
+- **SQLite:** SQL.js (client-side SQLite)
+- **Local Storage:** localStorage + IndexedDB
 
-#### Backend
+#### AI Integration (Optional)
 
-- **Runtime:** Node.js 20+ or Bun
-- **Framework:** Express.js or Fastify
-- **Language:** TypeScript
-- **ORM:** Prisma or Drizzle
-- **Validation:** Zod
-
-#### Database
-
-- **Primary:** PostgreSQL
-- **Cache:** Redis
-- **Search:** PostgreSQL full-text search (pg_trgm)
-
-#### AI/Chatbot
-
-- **LLM Provider:** OpenAI GPT-4 or Anthropic Claude
-- **Vector DB (optional):** Pinecone or Weaviate for semantic search
+- **LLM Provider:** OpenAI GPT-4 (user provides own API key)
+- **Direct browser calls** - no backend server needed
 
 ---
 
 ## 2. Page Structure
 
-### 2.1 Public Pages
+### 2.1 All Public (No Auth Required)
 
 ```
-/                     - Landing page
-/login                - Login page
-/register             - Registration page
-/forgot-password      - Password reset request
-/reset-password/:token - Password reset
-```
-
-### 2.2 Authenticated Pages
-
-```
-/app                  - Dashboard (default)
-/app/study            - Study mode
-/app/study/:subject   - Study specific subject
-/app/quiz             - Quiz mode
-/app/quiz/:subject    - Quiz specific subject
-/app/chat             - AI Chatbot
-/app/progress         - Progress tracking
-/app/settings         - User settings
-```
-
-### 2.3 Admin Pages
-
-```
-/admin                - Admin dashboard
-/admin/questions      - Question management
-/admin/users          - User management
-/admin/analytics      - Analytics
+/                     - Landing page / Dashboard
+/study                - Study mode
+/study/:subject       - Study specific subject
+/quiz                - Quiz mode
+/quiz/:subject        - Quiz specific subject
+/chat                - AI Chatbot
+/progress             - Progress tracking
+/profile              - User profile (local)
+/settings             - App settings
 ```
 
 ---
@@ -125,41 +87,32 @@
 
 ```css
 :root {
-  /* Primary */
+  /* Primary - Blue */
   --primary-50: #eff6ff;
   --primary-100: #dbeafe;
-  --primary-200: #bfdbfe;
   --primary-500: #3b82f6;
   --primary-600: #2563eb;
   --primary-700: #1d4ed8;
 
-  /* Secondary */
-  --secondary-50: #f5f3ff;
+  /* Secondary - Purple */
   --secondary-500: #8b5cf6;
   --secondary-600: #7c3aed;
 
   /* Success */
   --success-500: #22c55e;
-  --success-600: #16a34a;
 
   /* Warning */
   --warning-500: #f59e0b;
-  --warning-600: #d97706;
 
   /* Error */
   --error-500: #ef4444;
-  --error-600: #dc2626;
 
   /* Neutrals */
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
   --gray-500: #6b7280;
-  --gray-600: #4b5563;
   --gray-700: #374151;
-  --gray-800: #1f2937;
   --gray-900: #111827;
 }
 ```
@@ -167,31 +120,8 @@
 #### Typography
 
 ```css
-/* Font Family */
 --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
---font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-
-/* Font Sizes */
---text-xs: 0.75rem; /* 12px */
---text-sm: 0.875rem; /* 14px */
---text-base: 1rem; /* 16px */
---text-lg: 1.125rem; /* 18px */
---text-xl: 1.25rem; /* 20px */
---text-2xl: 1.5rem; /* 24px */
---text-3xl: 1.875rem; /* 30px */
---text-4xl: 2.25rem; /* 36px */
-```
-
-#### Spacing
-
-```css
---space-1: 0.25rem; /* 4px */
---space-2: 0.5rem; /* 8px */
---space-3: 0.75rem; /* 12px */
---space-4: 1rem; /* 16px */
---space-6: 1.5rem; /* 24px */
---space-8: 2rem; /* 32px */
---space-12: 3rem; /* 48px */
+--font-mono: 'JetBrains Mono', monospace;
 ```
 
 #### Border Radius
@@ -201,86 +131,43 @@
 --radius-md: 0.5rem;
 --radius-lg: 0.75rem;
 --radius-xl: 1rem;
---radius-full: 9999px;
 ```
 
-### 3.2 Component Library
-
-#### Buttons
-
-| Variant     | Use Case                          |
-| ----------- | --------------------------------- |
-| Primary     | Main actions (Start Quiz, Submit) |
-| Secondary   | Secondary actions (Cancel, Back)  |
-| Outline     | Alternative actions               |
-| Ghost       | Tertiary actions                  |
-| Destructive | Delete, dangerous actions         |
-
-#### Cards
-
-- **Question Card** - Display question with answer reveal
-- **Quiz Card** - Quiz preview with stats
-- **Progress Card** - Progress visualization
-- **Chat Card** - Message bubble
-
-#### Forms
-
-- Text Input
-- Select Dropdown
-- Checkbox / Radio
-- Toggle Switch
-- Textarea
-- File Upload
-
-#### Feedback
-
-- Toast Notifications
-- Modal Dialogs
-- Loading Spinners
-- Progress Bars
-- Badges / Tags
-
-### 3.3 Layout System
+### 3.2 Layout System
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         HEADER (64px)                           │
-│  Logo          Navigation                    User Menu          │
+│  Logo          Navigation                    Settings Icon       │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ┌─────────┐  ┌─────────────────────────────────────────────┐│
-│  │ SIDEBAR │  │                                             ││
-│  │ (240px) │  │              MAIN CONTENT                   ││
-│  │         │  │                                             ││
-│  │ - Home  │  │                                             ││
-│  │ - Study │  │                                             ││
-│  │ - Quiz  │  │                                             ││
-│  │ - Chat  │  │                                             ││
-│  │ - Progress│ │                                             ││
-│  │         │  │                                             ││
-│  └─────────┘  └─────────────────────────────────────────────┘│
+│  ┌─────────────────────────────────────────────────────────┐  │
+│  │                                                         │  │
+│  │                    MAIN CONTENT                          │  │
+│  │                                                         │  │
+│  │                                                         │  │
+│  │                                                         │  │
+│  │                                                         │  │
+│  │                                                         │  │
+│  └─────────────────────────────────────────────────────────┘  │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 3.4 Responsive Breakpoints
+### 3.3 Responsive Breakpoints
 
 ```css
-/* Mobile First */
 @media (min-width: 640px) {
-  /* sm - Tablet */
+  /* sm */
 }
 @media (min-width: 768px) {
-  /* md - Tablet landscape */
+  /* md */
 }
 @media (min-width: 1024px) {
-  /* lg - Desktop */
+  /* lg */
 }
 @media (min-width: 1280px) {
-  /* xl - Large desktop */
-}
-@media (min-width: 1536px) {
-  /* 2xl - Extra large */
+  /* xl */
 }
 ```
 
@@ -288,38 +175,39 @@
 
 ## 4. Feature Wireframes
 
-### 4.1 Dashboard
+### 4.1 Dashboard (Home)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  Welcome back, Ashwani!                    [Notifications] [⚙️] │
+│  MyRevisor                    [Chat] [Profile] [Settings]       │
 ├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Welcome! Ready to study?                                       │
+│                                                                 │
+│  ┌─────────────────────┐  ┌─────────────────────┐              │
+│  │ 📚 Study            │  │ 🎯 Quiz             │              │
+│  │                     │  │                     │              │
+│  │ Pick a topic and    │  │ Test your knowledge  │              │
+│  │ learn at your pace   │  │                     │              │
+│  │                     │  │ [Start Quiz →]      │              │
+│  │ [Start Study →]     │  │                     │              │
+│  └─────────────────────┘  └─────────────────────┘              │
 │                                                                 │
 │  ┌──────────────────────────────────────────────────────────┐  │
 │  │  📊 Your Progress                                        │  │
 │  │                                                          │  │
-│  │  Kubernetes    ████████████░░░░  85%                   │  │
-│  │  Docker        ██████████░░░░░░░  70%                   │  │
-│  │  AWS           ██████░░░░░░░░░░░  45%                   │  │
-│  │  Jenkins       ████░░░░░░░░░░░░░  25%                   │  │
-│  │  Git           ██░░░░░░░░░░░░░░░░  10%                   │  │
+│  │  Kubernetes    ████████████░░░░░░░░░░░  75%           │  │
+│  │  Docker        ██████████░░░░░░░░░░░░░░  55%           │  │
+│  │  AWS           ████░░░░░░░░░░░░░░░░░░░░  20%           │  │
 │  └──────────────────────────────────────────────────────────┘  │
-│                                                                 │
-│  ┌─────────────────────┐  ┌─────────────────────┐              │
-│  │ 🎯 Continue where   │  │ 🤖 AI Assistant     │              │
-│  │ you left off        │  │ Ask questions in    │              │
-│  │                     │  │ natural language    │              │
-│  │  [Kubernetes] 65%    │  │                     │              │
-│  │  [Continue →]       │  │  [Start Chat →]     │              │
-│  └─────────────────────┘  └─────────────────────┘              │
 │                                                                 │
 │  ┌──────────────────────────────────────────────────────────┐  │
-│  │  📝 Recent Quizzes                                       │  │
-│  │  ┌────────────┬────────────┬────────────┬────────────┐   │  │
-│  │  │ K8s Quiz   │ 85%  ✓    │ Docker Quiz│ 70%  ✓    │   │  │
-│  │  │ 2 hours ago│           │ 1 day ago  │           │   │  │
-│  │  └────────────┴────────────┴────────────┴────────────┘   │  │
+│  │  🤖 AI Assistant                                        │  │
+│  │  Ask anything about DevOps topics!                      │  │
+│  │                                                          │  │
+│  │  [Try the Chatbot →]                                    │  │
 │  └──────────────────────────────────────────────────────────┘  │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -327,31 +215,29 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  ← Back to Dashboard      Study: Kubernetes      [1/50]        │
+│  ← Back              Study: Kubernetes           [1/50]         │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ┌────────────────────────────────────────────────────────────┐ │
-│  │                                                            │ │
-│  │  Q1. Explain Kubernetes Architecture...                     │ │
-│  │                                                            │ │
-│  │  Difficulty: Medium  │  Tags: architecture, core-concepts │ │
-│  │                                                            │ │
-│  │  ────────────────────────────────────────────────────────  │ │
-│  │                                                            │ │
-│  │  [                    ANSWER HIDDEN                    ]   │ │
-│  │                                                            │ │
-│  │  ────────────────────────────────────────────────────────  │ │
-│  │                                                            │ │
-│  │        [👁 Reveal Answer]                                 │ │
-│  │                                                            │ │
-│  └────────────────────────────────────────────────────────────┘ │
-│                                                                 │
 │  ┌──────────────────────────────────────────────────────────┐  │
-│  │  [✓ Known]  [🔄 Review]  [→ Skip]  [💡 Hint]           │  │
+│  │                                                          │  │
+│  │  Q1. Explain Kubernetes Architecture...                   │  │
+│  │                                                          │  │
+│  │  Difficulty: Medium  │  Tags: architecture, core-concepts│  │
+│  │                                                          │  │
+│  │  ─────────────────────────────────────────────────────── │  │
+│  │                                                          │  │
+│  │  [                    ANSWER HIDDEN                     ] │  │
+│  │                                                          │  │
+│  │              [👁 Reveal Answer]                         │  │
+│  │                                                          │  │
 │  └──────────────────────────────────────────────────────────┘  │
 │                                                                 │
-│  ████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
-│  Progress: 2%                              1 of 50 completed    │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  [✓ Known]  [🔄 Review]  [→ Skip]  [💡 Hint]          │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│  Progress: 2%                              1 of 50 completed   │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -360,7 +246,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  ← Back to Dashboard              AI Interview Assistant         │
+│  ← Back                        AI Interview Assistant            │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌───────────────────────────────────────────────────────────┐  │
@@ -379,22 +265,18 @@
 │  │  │ 🤖 Assistant                               10:30  │ │  │
 │  │  │ A Pod is the smallest deployable unit in K8s...     │ │  │
 │  │  │                                                     │ │  │
-│  │  │ 📚 Source: kubernetes.json (k8s-005)               │ │  │
+│  │  │ 📚 Source: kubernetes.json                          │ │  │
 │  │  │ [Study this topic →]                                │ │  │
-│  │  └─────────────────────────────────────────────────────┘ │  │
-│  │                                                           │  │
-│  │  ┌─────────────────────────────────────────────────────┐ │  │
-│  │  │ 👤 You                                       10:31  │ │  │
-│  │  │ How does it differ from a container?                │ │  │
 │  │  └─────────────────────────────────────────────────────┘ │  │
 │  │                                                           │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │                                                                 │
 │  ┌───────────────────────────────────────────────────────────┐  │
-│  │ [💬 Type your question...                    ] [Send ➤]  │  │
+│  │ [💬 Type your question...                      ] [Send ➤] │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │                                                                 │
-│  Quick Topics: [Kubernetes] [Docker] [AWS] [Git] [Jenkins]    │
+│  🔑 OpenAI API Key: [•••••••••••••••••••] [Save]              │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -402,10 +284,10 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  ← Back to Dashboard      Quiz: Kubernetes      ⏱️ 14:32       │
+│  ← Back              Quiz: Kubernetes              ⏱️ 14:32      │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  ████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│  ████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
 │  Question 5 of 20                                          25%  │
 │                                                                 │
 │  ┌───────────────────────────────────────────────────────────┐  │
@@ -416,18 +298,51 @@
 │                                                                 │
 │  ┌───────────────────────────────────────────────────────────┐  │
 │  │  ○  A) To store configuration data                        │  │
-│  │  ●  B) To expose applications to network                   │  │
+│  │  ●  B) To expose applications to network                  │  │
 │  │  ○  C) To manage container storage                        │  │
-│  │  ○  D) To monitor application health                      │  │
-│  └───────────────────────────────────────────────────────────┘  │
-│                                                                 │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │  [A]    [B ✓]    [C]    [D]                            │  │
+│  │  ○  D) To monitor application health                     │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │                                                                 │
 │                              [Submit Answer →]                  │
 │                                                                 │
-│  Score: 4/5 (80%)                           Streak: 🔥 4      │
+│  Score: 4/5 (80%)                           Streak: 🔥 4       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 4.5 Profile Page
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  ← Back                         Your Profile                    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  👤 Profile (Stored Locally)                             │  │
+│  │                                                          │  │
+│  │  Display Name:                                           │  │
+│  │  ┌──────────────────────────────────────────────────┐   │  │
+│  │  │ Ashwani                                           │   │  │
+│  │  └──────────────────────────────────────────────────┘   │  │
+│  │                                                          │  │
+│  │  Target Role:                                            │  │
+│  │  ┌──────────────────────────────────────────────────┐   │  │
+│  │  │ DevOps Engineer                                   │   │  │
+│  │  └──────────────────────────────────────────────────┘   │  │
+│  │                                                          │  │
+│  │  [💾 Save Profile]                                      │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  📤 Export Your Data                                    │  │
+│  │                                                          │  │
+│  │  [Export Progress as JSON]  [Import Progress]           │  │
+│  │                                                          │  │
+│  │  [🗑️ Clear All Local Data]                             │  │
+│  │                                                          │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                 │
+│  🔒 Your data never leaves your browser.                       │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -470,191 +385,169 @@ interface QuizQuestionProps {
 
 ---
 
-## 6. API Design
+## 6. Data Flow
 
-### 6.1 Request/Response Format
-
-**Request Headers:**
-
-```http
-Content-Type: application/json
-Authorization: Bearer <jwt_token>
-```
-
-**Success Response:**
-
-```json
-{
-  "success": true,
-  "data": { ... },
-  "meta": {
-    "page": 1,
-    "total": 100
-  }
-}
-```
-
-**Error Response:**
-
-```json
-{
-  "success": false,
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "Invalid email format",
-    "details": { ... }
-  }
-}
-```
-
-### 6.2 Authentication Flow
+### 6.1 Question Database (SQL.js)
 
 ```
-┌─────────┐      ┌─────────┐      ┌─────────┐
-│  User   │ ──▶ │  React  │ ──▶ │ Express │
-│ Browser │ ◀── │   App   │ ◀── │   API   │
-└─────────┘      └─────────┘      └─────────┘
-                                  │       │
-                                  ▼       ▼
-                              ┌───────┐ ┌───────┐
-                              │Redis  │ │ Postgres│
-                              │Session│ │  DB    │
-                              └───────┘ └───────┘
+┌─────────────────┐
+│   questions.db   │
+│   (embedded)    │
+│                 │
+│  - Kubernetes   │
+│  - Docker       │
+│  - AWS          │
+│  - Jenkins      │
+│  - Git          │
+│  - Shell        │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐     ┌─────────────────┐
+│   SQL.js       │────▶│   Browser       │
+│ (WASM SQLite)  │     │   Runtime       │
+└─────────────────┘     └────────┬────────┘
+                                 │
+                                 ▼
+                        ┌─────────────────┐
+                        │   React App    │
+                        │   Queries      │
+                        └─────────────────┘
 ```
 
-### 6.3 Chat Flow with AI
+### 6.2 Local Storage Structure
+
+```javascript
+localStorage:
+  - myrevisor_profile: { displayName, targetRole, preferences }
+  - myrevisor_progress: { [subject]: { known[], review[], streak } }
+  - myrevisor_settings: { theme, quizCount }
+
+IndexedDB:
+  - quizHistory: QuizResult[]
+  - chatHistory: ChatMessage[]
+```
+
+### 6.3 AI Chat Flow
 
 ```
 User Message
      │
      ▼
-┌─────────┐      ┌─────────┐      ┌─────────┐
-│  API    │ ──▶ │  OpenAI │ ──▶ │  Parse  │
-│ Handler │ ◀── │   GPT    │ ◀── │ Response│
-└─────────┘      └─────────┘      └─────────┘
-     │
-     ▼
-┌─────────┐
-│ Question│
-│  Bank   │
-│ Search  │
-└─────────┘
+┌─────────────┐      ┌─────────────┐
+│   React    │────▶│  OpenAI     │
+│   App      │◀────│  API        │
+└─────────────┘      └─────────────┘
+     │                     ▲
+     │                     │
+     ▼                     │
+┌─────────────┐            │
+│   Search    │────────────┘
+│   Question  │
+│   Database  │
+└─────────────┘
 ```
 
 ---
 
-## 7. Security Considerations
+## 7. Security & Privacy
 
-### 7.1 Authentication
+### 7.1 Data Storage
 
-- JWT tokens with 15-minute expiry
-- Refresh tokens with 7-day expiry
-- Rate limiting: 5 login attempts per minute
-- Password requirements: 8+ chars, mixed case, number
+- All user data stored in browser only
+- No server, no cloud, no data collection
+- Data persists until user clears it
 
-### 7.2 API Security
+### 7.2 AI API Calls
 
-- Input validation on all endpoints (Zod)
-- SQL injection prevention (parameterized queries)
-- XSS prevention (React's built-in escaping)
-- CORS configuration for allowed origins
-- Helmet.js for security headers
+- Direct browser → OpenAI (no middleman)
+- User must provide their own API key
+- API key stored in localStorage (user's responsibility)
 
-### 7.3 Data Protection
+### 7.3 Privacy
 
-- Passwords hashed with bcrypt (10 rounds)
-- Sensitive data encrypted at rest
-- HTTPS only (TLS 1.3)
-- Secure cookie settings (httpOnly, secure, sameSite)
+- No cookies used
+- No analytics/tracking
+- No external requests except OpenAI (if enabled)
+- Works fully offline
 
 ---
 
-## 8. Deployment Architecture
+## 8. Deployment
 
-### 8.1 Production Environment
-
-```
-                    ┌─────────────────┐
-                    │   Cloudflare    │
-                    │   (CDN + SSL)   │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │    Vercel       │
-                    │  (Frontend)     │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   Railway       │
-                    │  (Backend API)  │
-                    └────────┬────────┘
-                             │
-              ┌──────────────┼──────────────┐
-              │              │              │
-       ┌──────▼─────┐ ┌─────▼─────┐ ┌─────▼─────┐
-       │ PostgreSQL  │ │   Redis   │ │    AI     │
-       │ (Neon)     │ │ (Upstash) │ │ (OpenAI)  │
-       └────────────┘ └───────────┘ └───────────┘
-```
-
-### 8.2 Environment Variables
+### 8.1 Static Site
 
 ```
-# Database
-DATABASE_URL=
-REDIS_URL=
-
-# Auth
-JWT_SECRET=
-JWT_REFRESH_SECRET=
-
-# OAuth
-GITHUB_CLIENT_ID=
-GITHUB_CLIENT_SECRET=
-
-# AI
-OPENAI_API_KEY=
-
-# App
-APP_URL=
-NODE_ENV=production
+┌─────────────────────────────────────┐
+│         GitHub Pages                 │
+│         Netlify                      │
+│         Vercel                       │
+│         Cloudflare Pages             │
+│              OR                     │
+│         Any static file host         │
+└─────────────────────────────────────┘
 ```
+
+### 8.2 Self-Hosted Option
+
+- Download the HTML/JS/CSS bundle
+- Host on any web server
+- No backend required
+
+### 8.3 Offline Installation (PWA)
+
+- Service Worker caches all assets
+- Questions embedded in the app
+- Full functionality without internet
 
 ---
 
 ## 9. Development Roadmap
 
-### Phase 1: Foundation (4 weeks)
+### Phase 1: Foundation (1 week)
 
-- [ ] Project setup (monorepo)
-- [ ] Database schema design
-- [ ] Authentication system
+- [ ] Project setup (React + Vite + TypeScript)
+- [ ] SQL.js integration for question database
 - [ ] Basic layout and navigation
+- [ ] Question display components
 
-### Phase 2: Core Features (6 weeks)
+### Phase 2: Study Mode (1 week)
 
-- [ ] Question bank display
-- [ ] Study mode
-- [ ] Quiz mode
-- [ ] Progress tracking
+- [ ] Study page UI
+- [ ] Answer reveal functionality
+- [ ] Known/Review marking
+- [ ] Progress tracking (localStorage)
 
-### Phase 3: AI Integration (4 weeks)
+### Phase 3: Quiz Mode (1 week)
 
-- [ ] Chatbot UI
-- [ ] OpenAI integration
+- [ ] Quiz configuration
+- [ ] MCQ quiz flow
+- [ ] Timed quiz
+- [ ] Results display
+- [ ] Quiz history (IndexedDB)
+
+### Phase 4: AI Chatbot (1 week)
+
+- [ ] Chat UI
+- [ ] OpenAI integration (user API key)
 - [ ] Question database search
 - [ ] Context-aware responses
 
-### Phase 4: Polish (2 weeks)
+### Phase 5: Profile & Settings (2 days)
 
-- [ ] UI/UX refinements
-- [ ] Performance optimization
-- [ ] Mobile responsiveness
-- [ ] Testing
+- [ ] Profile page (localStorage)
+- [ ] Settings page
+- [ ] Data export/import
 
-### Phase 5: Launch (2 weeks)
+### Phase 6: Polish (3 days)
 
-- [ ] Deployment setup
-- [ ] Monitoring & logging
+- [ ] Responsive design
+- [ ] PWA setup
+- [ ] Accessibility improvements
+- [ ] Error handling
+
+### Phase 7: Launch (1 day)
+
+- [ ] Deploy to GitHub Pages/Netlify
 - [ ] Documentation
-- [ ] Marketing
+- [ ] Announcement

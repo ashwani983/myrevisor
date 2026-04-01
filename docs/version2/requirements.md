@@ -2,32 +2,27 @@
 
 ## Project Overview
 
-**MyRevisor** is evolving from a CLI tool to a full-featured web application with an AI-powered chatbot for DevOps interview preparation.
+**MyRevisor Web** - A privacy-first, offline-capable web application with AI chatbot for DevOps interview preparation.
 
-**Vision:** Transform interview preparation from passive reading to interactive, AI-assisted learning with instant feedback and personalized study paths.
+**Vision:** A free, cloud-free interview preparation tool that puts users in complete control of their data while providing AI-powered learning assistance.
 
----
+### 1.1 Product Type
 
-## 1. Product Overview
+Web Application (Static Site - can run offline)
 
-### 1.1 Product Name
-
-**MyRevisor Web** (myrevisor.app)
-
-### 1.2 Product Type
-
-Web Application - SaaS
-
-### 1.3 Target Users
+### 1.2 Target Users
 
 - DevOps engineers preparing for interviews
 - Software developers learning cloud technologies
 - IT professionals transitioning to DevOps roles
-- Students learning Kubernetes, Docker, AWS, etc.
+- Privacy-conscious users who don't want cloud accounts
 
-### 1.4 Core Value Proposition
+### 1.3 Core Value Proposition
 
-AI-powered interview preparation that adapts to your knowledge gaps, provides instant feedback, and simulates real interview conversations.
+- **100% Free** - No accounts, no subscriptions, no data collection
+- **Privacy First** - All data stays in your browser (localStorage/IndexedDB)
+- **AI-Powered** - Chatbot for instant answers from the question database
+- **Offline Capable** - Works without internet after initial load
 
 ---
 
@@ -35,14 +30,13 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 
 ### 2.1 As a User, I can...
 
-#### Authentication & Profile
+#### Profile (Optional - Local Only)
 
-- [ ] Sign up with email/password
-- [ ] Sign in with email/password
-- [ ] Sign in with GitHub OAuth
-- [ ] Reset my password via email
-- [ ] View and edit my profile
-- [ ] Delete my account
+- [ ] Set my display name (stored locally in browser)
+- [ ] Set my target role/industry (stored locally)
+- [ ] Customize study preferences (stored locally)
+- [ ] Export/import my profile data
+- [ ] Clear all local data anytime
 
 #### Study Mode
 
@@ -71,38 +65,30 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 - [ ] Receive hints when stuck on a question
 - [ ] Get suggested follow-up questions
 
-#### Progress Tracking
+#### Progress Tracking (Local Only)
 
 - [ ] View overall progress dashboard
 - [ ] See scores by topic
 - [ ] Track streaks and achievements
 - [ ] View quiz history
-- [ ] Export progress reports
-
-### 2.2 As an Admin, I can...
-
-- [ ] Add new questions to the database
-- [ ] Edit existing questions
-- [ ] Delete outdated questions
-- [ ] View user statistics
-- [ ] Manage user accounts
+- [ ] Export progress reports (JSON file)
 
 ---
 
 ## 3. Functional Requirements
 
-### 3.1 Authentication Module
+### 3.1 Profile Module (Local Storage - localStorage/IndexedDB)
 
-| ID      | Requirement                                  | Priority |
-| ------- | -------------------------------------------- | -------- |
-| AUTH-01 | User registration with email validation      | P0       |
-| AUTH-02 | User login with session management           | P0       |
-| AUTH-03 | JWT-based authentication for API             | P0       |
-| AUTH-04 | GitHub OAuth integration                     | P1       |
-| AUTH-05 | Password reset via email                     | P1       |
-| AUTH-06 | Session timeout after 24 hours of inactivity | P1       |
+| ID         | Requirement                 | Priority |
+| ---------- | --------------------------- | -------- |
+| PROFILE-01 | Set display name            | P1       |
+| PROFILE-02 | Set target role/industry    | P1       |
+| PROFILE-03 | Customize study preferences | P1       |
+| PROFILE-04 | Export profile as JSON      | P2       |
+| PROFILE-05 | Import profile from JSON    | P2       |
+| PROFILE-06 | Clear all local data        | P0       |
 
-### 3.2 Question Bank Module
+### 3.2 Question Bank Module (SQLite via SQL.js)
 
 | ID    | Requirement                                                            | Priority |
 | ----- | ---------------------------------------------------------------------- | -------- |
@@ -110,18 +96,18 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 | QB-02 | Support for code snippets in answers (syntax highlighting)             | P0       |
 | QB-03 | Tag-based categorization                                               | P0       |
 | QB-04 | Search functionality                                                   | P0       |
-| QB-05 | Import/export questions as JSON                                        | P2       |
+| QB-05 | Import/export questions as JSON                                        | P1       |
 
 ### 3.3 Study Mode Module
 
-| ID       | Requirement                     | Priority |
-| -------- | ------------------------------- | -------- |
-| STUDY-01 | Display questions one at a time | P0       |
-| STUDY-02 | Reveal/hide answer toggle       | P0       |
-| STUDY-03 | Mark as Known/Review            | P0       |
-| STUDY-04 | Progress tracking               | P0       |
-| STUDY-05 | Filter by topic and difficulty  | P1       |
-| STUDY-06 | Spaced repetition algorithm     | P2       |
+| ID       | Requirement                       | Priority |
+| -------- | --------------------------------- | -------- |
+| STUDY-01 | Display questions one at a time   | P0       |
+| STUDY-02 | Reveal/hide answer toggle         | P0       |
+| STUDY-03 | Mark as Known/Review              | P0       |
+| STUDY-04 | Progress tracking (local storage) | P0       |
+| STUDY-05 | Filter by topic and difficulty    | P1       |
+| STUDY-06 | Spaced repetition algorithm       | P2       |
 
 ### 3.4 Quiz Module
 
@@ -143,25 +129,7 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 | CHAT-03 | Provide explanations with context       | P0       |
 | CHAT-04 | Simulate interview Q&A flow             | P1       |
 | CHAT-05 | Suggest related questions               | P1       |
-| CHAT-06 | Conversation history                    | P1       |
-
-### 3.6 Progress & Gamification Module
-
-| ID      | Requirement                   | Priority |
-| ------- | ----------------------------- | -------- |
-| PROG-01 | Per-topic progress percentage | P0       |
-| PROG-02 | Quiz history with scores      | P0       |
-| PROG-03 | Study streaks                 | P1       |
-| PROG-04 | Achievement badges            | P2       |
-| PROG-05 | Leaderboard (optional)        | P3       |
-
-### 3.7 Admin Module
-
-| ID       | Requirement              | Priority |
-| -------- | ------------------------ | -------- |
-| ADMIN-01 | Question CRUD operations | P0       |
-| ADMIN-02 | User management          | P1       |
-| ADMIN-03 | Analytics dashboard      | P2       |
+| CHAT-06 | Conversation history (local storage)    | P1       |
 
 ---
 
@@ -170,30 +138,27 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 ### 4.1 Performance
 
 - Page load time < 3 seconds
-- API response time < 500ms
-- Support for 100 concurrent users
+- Initial bundle size < 500KB (gzipped)
+- Lazy load routes for faster initial load
 
-### 4.2 Security
+### 4.2 Privacy & Security
 
-- HTTPS only
-- Password hashing with bcrypt
-- Input sanitization
-- Rate limiting on API endpoints
-- CORS configuration
+- No data sent to any server (except AI API if user enables)
+- All progress stored in browser localStorage/IndexedDB
+- No cookies, no tracking, no analytics
+- HTTPS only (for AI API calls)
 
-### 4.3 Scalability
+### 4.3 Offline Capability
 
-- Stateless API design
-- Database indexing for search
-- CDN for static assets
-- Horizontal scaling ready
+- Service Worker for offline access
+- Questions embedded in the app (SQLite/SQL.js)
+- Works without internet after first load
 
 ### 4.4 Accessibility
 
 - WCAG 2.1 AA compliance
 - Keyboard navigation
 - Screen reader support
-- High contrast mode
 
 ### 4.5 Browser Support
 
@@ -206,26 +171,21 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 
 ## 5. Data Models
 
-### 5.1 User
+### 5.1 Profile (localStorage)
 
 ```javascript
 {
-  id: UUID,
-  email: String,
-  passwordHash: String,
-  name: String,
-  avatarUrl: String,
-  role: 'user' | 'admin',
-  createdAt: Date,
-  updatedAt: Date,
+  displayName: String,
+  targetRole: String,
   preferences: {
-    theme: 'light' | 'dark',
-    defaultQuizCount: Number
+    defaultQuizCount: Number,
+    showTimer: Boolean,
+    theme: 'light' | 'dark'
   }
 }
 ```
 
-### 5.2 Question
+### 5.2 Question (SQLite/SQL.js)
 
 ```javascript
 {
@@ -237,18 +197,15 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
   difficulty: 'easy' | 'medium' | 'hard',
   tags: [String],
   hints: [String],
-  relatedQuestions: [String],
-  createdAt: Date,
-  updatedAt: Date
+  relatedQuestions: [String]
 }
 ```
 
-### 5.3 QuizResult
+### 5.3 QuizResult (localStorage)
 
 ```javascript
 {
   id: UUID,
-  userId: UUID,
   subject: String,
   mode: 'mcq' | 'flashcard' | 'timed',
   totalQuestions: Number,
@@ -264,11 +221,10 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 }
 ```
 
-### 5.4 UserProgress
+### 5.4 UserProgress (localStorage)
 
 ```javascript
 {
-  userId: UUID,
   subject: String,
   questionsStudied: [String],
   questionsKnown: [String],
@@ -278,13 +234,11 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 }
 ```
 
-### 5.5 ChatMessage
+### 5.5 ChatMessage (localStorage)
 
 ```javascript
 {
-  id: UUID,
   sessionId: UUID,
-  userId: UUID,
   role: 'user' | 'assistant',
   content: String,
   questionRef: String | null,
@@ -294,63 +248,39 @@ AI-powered interview preparation that adapts to your knowledge gaps, provides in
 
 ---
 
-## 6. API Endpoints
+## 6. API Endpoints (Local - SQL.js)
 
-### 6.1 Authentication
+Since this is a client-side app with SQLite (via SQL.js), no traditional API endpoints exist. Instead, we use local functions:
 
-```
-POST   /api/auth/register     - Register new user
-POST   /api/auth/login        - Login
-POST   /api/auth/logout       - Logout
-POST   /api/auth/refresh      - Refresh token
-POST   /api/auth/forgot       - Request password reset
-POST   /api/auth/reset        - Reset password
-GET    /api/auth/me           - Get current user
-```
+### 6.1 Questions (SQL.js queries)
 
-### 6.2 Questions
+```javascript
+// Get all questions
+db.query('SELECT * FROM questions WHERE subject = ?', [subject]);
 
-```
-GET    /api/questions              - List all questions (with filters)
-GET    /api/questions/:id          - Get single question
-GET    /api/questions/subjects     - Get all subjects
-GET    /api/questions/random       - Get random questions
-POST   /api/questions/search       - Search questions
+// Search questions
+db.query('SELECT * FROM questions WHERE question LIKE ?', [`%${query}%`]);
+
+// Get random questions
+db.query('SELECT * FROM questions ORDER BY RANDOM() LIMIT ?', [count]);
 ```
 
-### 6.3 Quiz
+### 6.2 Local Storage Operations
 
-```
-POST   /api/quiz/start             - Start a quiz session
-POST   /api/quiz/:id/submit        - Submit quiz answers
-GET    /api/quiz/history           - Get quiz history
-GET    /api/quiz/:id               - Get quiz details
-```
+```javascript
+// Profile
+localStorage.getItem('myrevisor_profile')
+localStorage.setItem('myrevisor_profile', JSON.stringify(profile))
 
-### 6.4 Progress
+// Progress
+localStorage.getItem('myrevisor_progress')
+localStorage.setItem('myrevisor_progress', JSON.stringify(progress))
 
-```
-GET    /api/progress               - Get overall progress
-GET    /api/progress/:subject      - Get subject progress
-PUT    /api/progress/:subject      - Update subject progress
-```
+// Quiz History
+IndexedDB.open('myrevisor', { quizHistory: [...] })
 
-### 6.5 Chat
-
-```
-POST   /api/chat/message            - Send message to chatbot
-GET    /api/chat/history            - Get chat history
-DELETE /api/chat/history            - Clear chat history
-```
-
-### 6.6 Admin
-
-```
-POST   /api/admin/questions         - Create question
-PUT    /api/admin/questions/:id     - Update question
-DELETE /api/admin/questions/:id     - Delete question
-GET    /api/admin/users             - List users
-GET    /api/admin/stats             - Get statistics
+// Chat History
+IndexedDB.open('myrevisor', { chatHistory: [...] })
 ```
 
 ---
@@ -359,27 +289,24 @@ GET    /api/admin/stats             - Get statistics
 
 ### 7.1 Required
 
-- **Database:** PostgreSQL (or MongoDB)
-- **Authentication:** JWT + bcrypt
-- **File Storage:** S3/Cloudflare R2 (for future features)
+- **SQLite:** SQL.js (client-side SQLite)
+- **AI:** OpenAI GPT-4 API (user provides their own API key)
 
 ### 7.2 Optional
 
-- **AI/LLM:** OpenAI GPT-4 API or Anthropic Claude API
-- **Email:** SendGrid or AWS SES
-- **Analytics:** Google Analytics, Plausible
-- **Error Tracking:** Sentry
-- **Hosting:** Vercel, Railway, or AWS
+- **Syntax Highlighting:** Prism.js or Highlight.js
+- **Markdown:** marked.js
+- **Icons:** Lucide React or Heroicons
+- **Storage:** localStorage + IndexedDB
 
 ---
 
 ## 8. Future Enhancements (v2.1+)
 
 - [ ] Video explanations for questions
-- [ ] Community-contributed questions
-- [ ] Team/group study mode
-- [ ] API access for third-party integrations
-- [ ] Mobile app (React Native)
-- [ ] Offline mode
+- [ ] Import custom question sets
 - [ ] Custom quiz creator
-- [ ] Integration with LinkedIn Learning/Coursera
+- [ ] Dark mode toggle
+- [ ] Keyboard shortcuts
+- [ ] Mobile app (Electron/Tauri)
+- [ ] Self-hosted option
