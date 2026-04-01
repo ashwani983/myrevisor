@@ -1,6 +1,6 @@
 # MyRevisor
 
-**DevOps Interview Study Application** - Master your Kubernetes, AWS, Docker, Jenkins, Git, and Shell Scripting knowledge through interactive CLI quizzes.
+**DevOps Interview Study Application** - Master your Kubernetes, AWS, Docker, Jenkins, Git, and Shell Scripting knowledge through interactive study modes and quizzes.
 
 [![npm version](https://badge.fury.io/js/myrevisor.svg)](https://badge.fury.io/js/myrevisor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -26,44 +26,29 @@
 npm install -g myrevisor
 ```
 
-## Features
-
-- **Interactive Study Mode** - Learn concepts with detailed explanations
-- **Timed Quiz Mode** - Test your knowledge with time constraints
-- **MCQ Quizzes** - Multiple choice questions for quick assessments
-- **Progress Tracking** - Track your scores and performance history
-- **Multiple Topics** - Kubernetes, AWS, Docker, Jenkins, Git, Shell Scripting
-- **Persistent Scores** - Your progress is saved between sessions
-
-## Installation
-
-### Prerequisites
-
-- Node.js >= 18.0.0
-- npm or yarn
-
-### Global Installation
-
-```bash
-npm install -g myrevisor
-```
-
-### Local Development
-
-```bash
-git clone <repository-url>
-cd myrevisor
-npm install
-npm start
-```
-
 ## Usage
 
-### Commands
+After installation, you get **both CLI and Web** in one package!
+
+### Launch Web App
+
+```bash
+myrevisor web
+```
+
+This opens the beautiful web interface in your browser with:
+
+- Study Mode with flashcards
+- Quiz Mode with MCQ testing
+- AI Chatbot support
+- Progress tracking
+- PWA support (install as app)
+
+### CLI Commands
 
 | Command                            | Description                      |
 | ---------------------------------- | -------------------------------- |
-| `myrevisor` or `myrevisor study`   | Start study mode                 |
+| `myrevisor` or `myrevisor study`   | Start interactive study mode     |
 | `myrevisor test [subject]`         | Start quiz mode                  |
 | `myrevisor test --timed [subject]` | Timed quiz (30 seconds/question) |
 | `myrevisor test --mcq [subject]`   | Multiple choice quiz             |
@@ -71,6 +56,7 @@ npm start
 | `myrevisor list`                   | List all available subjects      |
 | `myrevisor reset`                  | Reset all scores                 |
 | `myrevisor help`                   | Show help information            |
+| `myrevisor web`                    | Launch the web application       |
 
 ### Options
 
@@ -85,24 +71,18 @@ npm start
 ### Examples
 
 ```bash
-# Study all topics
-myrevisor study
+# Launch the web app (recommended)
+myrevisor web
 
-# Test specific subject
-myrevisor test kubernetes
-
-# Timed quiz with 10 questions
+# Or use CLI directly
+myrevisor study kubernetes
 myrevisor test aws --timed --number 10
-
-# MCQ quiz on Docker
 myrevisor test docker --mcq
-
-# View your scores
 myrevisor scores
-
-# List available subjects
 myrevisor list
 ```
+
+---
 
 ## Available Subjects
 
@@ -115,45 +95,64 @@ myrevisor list
 | git        | Version control system fundamentals     |
 | shell      | Bash scripting and command line         |
 
-## Quiz Modes
+---
 
-### Study Mode
+## Web Application Features
 
-- Browse questions at your own pace
-- Read detailed explanations
-- Navigate with arrow keys
-- Press Enter to continue
+When you run `myrevisor web`:
 
-### Timed Quiz
+- **Dashboard** - Overview with progress cards for each subject
+- **Study Mode** - Flashcard-style review with keyboard shortcuts (Space to reveal, K for Known, R for Review)
+- **Quiz Mode** - MCQ testing with immediate feedback
+- **AI Chatbot** - Ask questions using OpenRouter API (bring your own key)
+- **Progress Tracking** - Track known/review questions per subject
+- **PWA Support** - Install as an app on your device for offline use
 
-- 30 seconds per question
-- Score based on correct answers and time remaining
-- Instant feedback after each question
-- Final score summary
+### Web Routes
 
-### MCQ Quiz
+| Route               | Description                  |
+| ------------------- | ---------------------------- |
+| `/`                 | Dashboard with subject cards |
+| `/study/:subjectId` | Study mode for a subject     |
+| `/quiz`             | Quiz configuration           |
+| `/chat`             | AI chatbot                   |
+| `/progress`         | Progress and statistics      |
+| `/settings`         | App settings                 |
 
-- 4 options per question
-- Select the correct answer
-- Instant feedback
-- Good for quick assessments
-
-## Configuration
-
-Scores and settings are stored in:
-
-- **macOS**: `~/.config/myrevisor/`
-- **Linux**: `~/.config/myrevisor/`
-- **Windows**: `%APPDATA%/myrevisor/`
+---
 
 ## Development
 
+### Prerequisites
+
+- Node.js >= 18.0.0
+- npm or yarn
+
+### Setup
+
 ```bash
-# Install dependencies
+# Clone the repository
+git clone https://github.com/yourusername/myrevisor.git
+cd myrevisor
+
+# Install root dependencies (CLI)
 npm install
 
-# Run locally
+# Build the web app
+npm run build
+```
+
+### Development Commands
+
+```bash
+# Run CLI
 npm start
+
+# Launch web app
+npm run web
+
+# Build web app
+npm run build:web
 
 # Lint code
 npm run lint
@@ -161,6 +160,58 @@ npm run lint
 # Format code
 npm run format
 ```
+
+### Project Structure
+
+```
+myrevisor/
+├── bin/
+│   └── myrevisor.js      # CLI entry point
+├── src/
+│   ├── app.js            # Main CLI app
+│   ├── commands/         # CLI commands
+│   │   ├── study.js
+│   │   ├── test.js
+│   │   ├── scores.js
+│   │   ├── list.js
+│   │   ├── reset.js
+│   │   ├── help.js
+│   │   └── web.js        # Web server command
+│   ├── config/
+│   ├── data/
+│   ├── ui/
+│   └── utils/
+├── web/                   # Web application (React + TypeScript)
+│   ├── src/
+│   └── public/
+├── dist/                  # Built web app (generated)
+├── docs/
+├── package.json
+└── README.md
+```
+
+---
+
+## Configuration
+
+### CLI App
+
+Scores and settings are stored in:
+
+- **macOS**: `~/.config/myrevisor/`
+- **Linux**: `~/.config/myrevisor/`
+- **Windows**: `%APPDATA%/myrevisor/`
+
+### Web App
+
+Data is stored in your browser's localStorage:
+
+- Progress (known/review questions)
+- Settings
+- Quiz history
+- Chat conversations
+
+---
 
 ## License
 

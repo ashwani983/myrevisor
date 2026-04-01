@@ -5,6 +5,8 @@ import { Study } from '@/pages/Study';
 import { Quiz } from '@/pages/Quiz';
 import { Chat } from '@/pages/Chat';
 import { Settings } from '@/pages/Settings';
+import { ProgressPage } from '@/pages/Progress';
+import { Profile } from '@/pages/Profile';
 
 function App() {
   return (
@@ -13,9 +15,12 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="study" element={<Study />} />
+          <Route path="study/:subjectId" element={<Study />} />
           <Route path="quiz" element={<Quiz />} />
           <Route path="chat" element={<Chat />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="progress" element={<ProgressPage />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

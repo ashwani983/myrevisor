@@ -1,6 +1,6 @@
 {
   "name": "myrevisor",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "DevOps Interview Study Application - Master your Kubernetes, AWS, Docker, Jenkins, Git, and Shell Scripting knowledge",
   "main": "src/index.js",
@@ -9,6 +9,10 @@
   },
   "scripts": {
     "start": "node bin/myrevisor.js",
+    "web": "node bin/myrevisor.js web",
+    "build:web": "cd web && npm install --legacy-peer-deps && npm run build",
+    "build": "npm run build:web",
+    "postinstall": "npm run build",
     "lint": "eslint src/",
     "format": "prettier --write \"src/**/*.js\"",
     "validate": "node scripts/validate-data.js",
@@ -49,6 +53,7 @@
     "figlet": "^1.7.0",
     "gradient-string": "^3.0.0",
     "inquirer": "^10.0.0",
+    "myrevisor": "^2.0.0",
     "ora": "^8.0.0"
   },
   "devDependencies": {

@@ -9,6 +9,8 @@ import {
   Bot,
   Menu,
   X,
+  Trophy,
+  User,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -17,6 +19,8 @@ const navItems = [
   { path: '/study', label: 'Study', icon: GraduationCap },
   { path: '/quiz', label: 'Quiz', icon: BarChart3 },
   { path: '/chat', label: 'AI Chat', icon: Bot },
+  { path: '/progress', label: 'Progress', icon: Trophy },
+  { path: '/profile', label: 'Profile', icon: User },
 ];
 
 export function Header() {
