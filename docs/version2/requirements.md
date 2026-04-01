@@ -2,198 +2,290 @@
 
 ## Project Overview
 
-**MyRevisor Web** - A privacy-first, offline-capable web application with AI chatbot for DevOps interview preparation.
+**MyRevisor Web** - A beautifully designed, privacy-first web application with AI chatbot for DevOps interview preparation.
 
-**Vision:** A free, cloud-free interview preparation tool that puts users in complete control of their data while providing AI-powered learning assistance.
+**Vision:** Transform interview preparation into an engaging, visually stunning experience that makes learning feel rewarding and enjoyable.
+
+---
+
+## 1. Product Overview
 
 ### 1.1 Product Type
 
 Web Application (Static Site - can run offline)
 
-### 1.2 Target Users
+### 1.2 Core Principles
 
-- DevOps engineers preparing for interviews
-- Software developers learning cloud technologies
-- IT professionals transitioning to DevOps roles
-- Privacy-conscious users who don't want cloud accounts
-
-### 1.3 Core Value Proposition
-
-- **100% Free** - No accounts, no subscriptions, no data collection
-- **Privacy First** - All data stays in your browser (localStorage/IndexedDB)
-- **AI-Powered** - Chatbot for instant answers from the question database
-- **Offline Capable** - Works without internet after initial load
+- **Beautiful UI** - Modern, polished, visually stunning design
+- **Privacy First** - All data stays in your browser
+- **AI-Powered** - Smart chatbot for instant answers
+- **Study Focused** - Rich study experience with visual feedback
+- **Offline Capable** - Works without internet after first load
 
 ---
 
 ## 2. User Stories
 
-### 2.1 As a User, I can...
+### 2.1 Dashboard
 
-#### Profile (Optional - Local Only)
+- [ ] View beautiful welcome dashboard with animated elements
+- [ ] See visual progress cards with charts
+- [ ] Quick access to recent study sessions
+- [ ] Streak counter with celebration animations
+- [ ] AI assistant quick access card
 
-- [ ] Set my display name (stored locally in browser)
-- [ ] Set my target role/industry (stored locally)
-- [ ] Customize study preferences (stored locally)
-- [ ] Export/import my profile data
-- [ ] Clear all local data anytime
+### 2.2 Study Mode
 
-#### Study Mode
+- [ ] Immersive study experience with visual feedback
+- [ ] Smooth animations for answer reveal
+- [ ] Progress visualization with satisfying animations
+- [ ] Quick keyboard navigation
+- [ ] Focus mode (hide distractions)
+- [ ] Dark/Light theme toggle
+- [ ] Spaced repetition suggestions
 
-- [ ] Browse questions by topic
-- [ ] Filter questions by difficulty
-- [ ] Mark questions as "Known" or "Need Review"
-- [ ] Track my progress through topics
-- [ ] Review questions I've marked for later
-- [ ] Search questions by keyword
+### 2.3 Quiz Mode
 
-#### Quiz Mode
+- [ ] Engaging quiz interface with animations
+- [ ] Real-time score visualization
+- [ ] Streak indicators with fire animations
+- [ ] Timer with visual urgency
+- [ ] Celebration on quiz completion
+- [ ] Review incorrect answers with explanations
 
-- [ ] Take timed quizzes (selectable duration)
-- [ ] Take multiple-choice quizzes
-- [ ] Take flashcard-style quizzes
-- [ ] See real-time score during quiz
-- [ ] Review incorrect answers after quiz
-- [ ] Re-take quizzes on missed questions
+### 2.4 AI Chatbot
 
-#### AI Chatbot
+- [ ] Beautiful chat interface
+- [ ] Typing indicators and animations
+- [ ] Source citations with links
+- [ ] Quick topic suggestions
+- [ ] Conversation history
 
-- [ ] Ask questions in natural language
-- [ ] Get instant answers from the question database
-- [ ] Start a simulated interview conversation
-- [ ] Get explanations for complex topics
-- [ ] Receive hints when stuck on a question
-- [ ] Get suggested follow-up questions
+### 2.5 Profile & Settings
 
-#### Progress Tracking (Local Only)
-
-- [ ] View overall progress dashboard
-- [ ] See scores by topic
-- [ ] Track streaks and achievements
-- [ ] View quiz history
-- [ ] Export progress reports (JSON file)
+- [ ] Beautiful profile customization
+- [ ] Theme preference (Dark/Light/System)
+- [ ] Export/Import data
+- [ ] Clear data with confirmation
 
 ---
 
 ## 3. Functional Requirements
 
-### 3.1 Profile Module (Local Storage - localStorage/IndexedDB)
+### 3.1 UI/UX Features
 
-| ID         | Requirement                 | Priority |
-| ---------- | --------------------------- | -------- |
-| PROFILE-01 | Set display name            | P1       |
-| PROFILE-02 | Set target role/industry    | P1       |
-| PROFILE-03 | Customize study preferences | P1       |
-| PROFILE-04 | Export profile as JSON      | P2       |
-| PROFILE-05 | Import profile from JSON    | P2       |
-| PROFILE-06 | Clear all local data        | P0       |
+#### Dashboard
 
-### 3.2 Question Bank Module (SQLite via SQL.js)
+| ID      | Requirement                                      | Priority |
+| ------- | ------------------------------------------------ | -------- |
+| DASH-01 | Animated welcome section with user greeting      | P0       |
+| DASH-02 | Visual progress cards with circular/bar charts   | P0       |
+| DASH-03 | Recent activity timeline                         | P1       |
+| DASH-04 | Streak display with flame animation              | P1       |
+| DASH-05 | Quick action buttons                             | P0       |
+| DASH-06 | Subject cards with icons and progress            | P0       |
+| DASH-07 | Statistics overview (total studied, quiz scores) | P1       |
 
-| ID    | Requirement                                                            | Priority |
-| ----- | ---------------------------------------------------------------------- | -------- |
-| QB-01 | Store questions with structure: id, question, answer, difficulty, tags | P0       |
-| QB-02 | Support for code snippets in answers (syntax highlighting)             | P0       |
-| QB-03 | Tag-based categorization                                               | P0       |
-| QB-04 | Search functionality                                                   | P0       |
-| QB-05 | Import/export questions as JSON                                        | P1       |
+#### Study Mode
 
-### 3.3 Study Mode Module
+| ID       | Requirement                              | Priority |
+| -------- | ---------------------------------------- | -------- |
+| STUDY-01 | Question card with smooth animations     | P0       |
+| STUDY-02 | Reveal answer with flip/expand animation | P0       |
+| STUDY-03 | Progress bar with percentage             | P0       |
+| STUDY-04 | Known/Review buttons with feedback       | P0       |
+| STUDY-05 | Keyboard shortcuts display               | P1       |
+| STUDY-06 | Focus mode (dim background)              | P2       |
+| STUDY-07 | Timer for timed study sessions           | P2       |
+| STUDY-08 | Study session summary                    | P0       |
+| STUDY-09 | Confetti on completion                   | P1       |
+| STUDY-10 | Drag to reorder questions                | P2       |
 
-| ID       | Requirement                       | Priority |
-| -------- | --------------------------------- | -------- |
-| STUDY-01 | Display questions one at a time   | P0       |
-| STUDY-02 | Reveal/hide answer toggle         | P0       |
-| STUDY-03 | Mark as Known/Review              | P0       |
-| STUDY-04 | Progress tracking (local storage) | P0       |
-| STUDY-05 | Filter by topic and difficulty    | P1       |
-| STUDY-06 | Spaced repetition algorithm       | P2       |
+#### Quiz Mode
 
-### 3.4 Quiz Module
+| ID      | Requirement                              | Priority |
+| ------- | ---------------------------------------- | -------- |
+| QUIZ-01 | Beautiful MCQ options with hover effects | P0       |
+| QUIZ-02 | Real-time score counter                  | P0       |
+| QUIZ-03 | Timer with visual countdown              | P0       |
+| QUIZ-04 | Streak indicator with fire animation     | P1       |
+| QUIZ-05 | Correct/Incorrect feedback animations    | P0       |
+| QUIZ-06 | Progress bar with question dots          | P0       |
+| QUIZ-07 | Quiz configuration modal                 | P0       |
+| QUIZ-08 | Results page with share options          | P1       |
+| QUIZ-09 | Review incorrect answers                 | P0       |
+| QUIZ-10 | Celebration animation on high score      | P1       |
 
-| ID      | Requirement                    | Priority |
-| ------- | ------------------------------ | -------- |
-| QUIZ-01 | Multiple choice (4 options)    | P0       |
-| QUIZ-02 | Timed quiz mode                | P0       |
-| QUIZ-03 | Flashcard mode (self-graded)   | P0       |
-| QUIZ-04 | Question count selection       | P0       |
-| QUIZ-05 | Results summary with breakdown | P0       |
-| QUIZ-06 | Review incorrect answers       | P1       |
+#### AI Chatbot
 
-### 3.5 AI Chatbot Module
+| ID      | Requirement                       | Priority |
+| ------- | --------------------------------- | -------- |
+| CHAT-01 | Beautiful chat interface          | P0       |
+| CHAT-02 | Typing indicator animation        | P0       |
+| CHAT-03 | User message bubbles              | P0       |
+| CHAT-04 | AI message bubbles with markdown  | P0       |
+| CHAT-05 | Source citation cards             | P1       |
+| CHAT-06 | Quick topic buttons               | P1       |
+| CHAT-07 | Conversation history sidebar      | P2       |
+| CHAT-08 | Clear conversation button         | P1       |
+| CHAT-09 | API key input with secure storage | P0       |
 
-| ID      | Requirement                             | Priority |
-| ------- | --------------------------------------- | -------- |
-| CHAT-01 | Natural language question understanding | P0       |
-| CHAT-02 | Query the question database             | P0       |
-| CHAT-03 | Provide explanations with context       | P0       |
-| CHAT-04 | Simulate interview Q&A flow             | P1       |
-| CHAT-05 | Suggest related questions               | P1       |
-| CHAT-06 | Conversation history (local storage)    | P1       |
+#### General UI
+
+| ID    | Requirement             | Priority |
+| ----- | ----------------------- | -------- |
+| UI-01 | Smooth page transitions | P0       |
+| UI-02 | Loading skeletons       | P0       |
+| UI-03 | Toast notifications     | P0       |
+| UI-04 | Modal dialogs           | P0       |
+| UI-05 | Dark/Light theme toggle | P0       |
+| UI-06 | Responsive design       | P0       |
+| UI-07 | Keyboard navigation     | P1       |
+| UI-08 | Back to top button      | P2       |
+
+### 3.2 Profile Module (Local Storage)
+
+| ID         | Requirement               | Priority |
+| ---------- | ------------------------- | -------- |
+| PROFILE-01 | Set display name          | P1       |
+| PROFILE-02 | Set avatar (emoji picker) | P1       |
+| PROFILE-03 | Set target role           | P1       |
+| PROFILE-04 | Customize theme           | P1       |
+| PROFILE-05 | Export profile as JSON    | P2       |
+| PROFILE-06 | Import profile from JSON  | P2       |
+| PROFILE-07 | Clear all local data      | P0       |
+
+### 3.3 Question Bank Module
+
+| ID    | Requirement                        | Priority |
+| ----- | ---------------------------------- | -------- |
+| QB-01 | Store questions with full metadata | P0       |
+| QB-02 | Syntax highlighting for code       | P0       |
+| QB-03 | Markdown support for answers       | P0       |
+| QB-04 | Tag-based filtering                | P0       |
+| QB-05 | Search functionality               | P0       |
+| QB-06 | Import/export questions            | P2       |
 
 ---
 
-## 4. Non-Functional Requirements
+## 4. Visual Design Requirements
 
-### 4.1 Performance
+### 4.1 Color System
 
-- Page load time < 3 seconds
-- Initial bundle size < 500KB (gzipped)
-- Lazy load routes for faster initial load
+- Consistent color palette with primary, secondary, accent colors
+- Semantic colors for success, warning, error states
+- Proper contrast ratios for accessibility
+- Dark mode color palette
 
-### 4.2 Privacy & Security
+### 4.2 Typography
 
-- No data sent to any server (except AI API if user enables)
-- All progress stored in browser localStorage/IndexedDB
-- No cookies, no tracking, no analytics
-- HTTPS only (for AI API calls)
+- Readable font sizes and line heights
+- Proper heading hierarchy
+- Monospace font for code snippets
+- Responsive font scaling
 
-### 4.3 Offline Capability
+### 4.3 Spacing & Layout
 
-- Service Worker for offline access
-- Questions embedded in the app (SQLite/SQL.js)
-- Works without internet after first load
+- Consistent spacing scale (4px base)
+- Card-based layouts
+- Proper visual hierarchy
+- Responsive breakpoints
 
-### 4.4 Accessibility
+### 4.4 Animation & Motion
 
-- WCAG 2.1 AA compliance
-- Keyboard navigation
-- Screen reader support
+- Smooth transitions (200-300ms)
+- Micro-interactions on buttons
+- Page transition animations
+- Loading states
+- Celebration effects
 
-### 4.5 Browser Support
+### 4.5 Icons & Graphics
 
-- Chrome (last 2 versions)
-- Firefox (last 2 versions)
-- Safari (last 2 versions)
-- Edge (last 2 versions)
+- Consistent icon library (Lucide, Heroicons)
+- Subject-specific icons/emojis
+- Progress visualizations
+- Achievement badges
 
 ---
 
-## 5. Data Models
+## 5. Gamification Features
 
-### 5.1 Profile (localStorage)
+### 5.1 Progress Tracking
+
+- Visual progress bars and circles
+- Percentage completion per subject
+- Total questions mastered count
+- Daily/weekly study time
+
+### 5.2 Streaks
+
+- Daily streak counter
+- Streak freeze (optional)
+- Streak milestone celebrations
+- Streak restoration
+
+### 5.3 Achievements
+
+- First question answered
+- First quiz completed
+- Subject mastery badges
+- Streak badges
+- Quiz score badges
+
+### 5.4 Motivation
+
+- Celebration animations
+- Encouraging messages
+- Progress milestones
+- Completion certificates (downloadable)
+
+---
+
+## 6. Data Models
+
+### 6.1 Profile (localStorage)
 
 ```javascript
 {
   displayName: String,
+  avatar: String,  // emoji
   targetRole: String,
-  preferences: {
-    defaultQuizCount: Number,
-    showTimer: Boolean,
-    theme: 'light' | 'dark'
-  }
+  theme: 'light' | 'dark' | 'system',
+  openaiApiKey: String,  // encrypted
+  createdAt: Date
 }
 ```
 
-### 5.2 Question (SQLite/SQL.js)
+### 6.2 Progress (localStorage)
 
 ```javascript
 {
-  id: String,           // e.g., "k8s-001"
-  subject: String,      // e.g., "Kubernetes"
-  topic: String,        // e.g., "Architecture"
+  subjects: {
+    [subjectName]: {
+      questionsKnown: [String],
+      questionsReview: [String],
+      lastStudied: Date,
+      totalTimeSpent: Number  // seconds
+    }
+  },
+  streaks: {
+    current: Number,
+    longest: Number,
+    lastStudyDate: Date
+  },
+  achievements: [String]
+}
+```
+
+### 6.3 Question (SQL.js)
+
+```javascript
+{
+  id: String,
+  subject: String,
+  topic: String,
   question: String,
-  answer: String,       // Supports markdown
+  answer: String,
   difficulty: 'easy' | 'medium' | 'hard',
   tags: [String],
   hints: [String],
@@ -201,112 +293,52 @@ Web Application (Static Site - can run offline)
 }
 ```
 
-### 5.3 QuizResult (localStorage)
+### 6.4 Quiz Result (IndexedDB)
 
 ```javascript
 {
-  id: UUID,
+  id: String,
   subject: String,
-  mode: 'mcq' | 'flashcard' | 'timed',
+  mode: String,
   totalQuestions: Number,
   correctAnswers: Number,
   score: Number,
-  duration: Number,     // seconds
-  answers: [{
-    questionId: String,
-    userAnswer: String,
-    correct: Boolean
-  }],
-  createdAt: Date
-}
-```
-
-### 5.4 UserProgress (localStorage)
-
-```javascript
-{
-  subject: String,
-  questionsStudied: [String],
-  questionsKnown: [String],
-  questionsReview: [String],
-  lastStudied: Date,
-  streak: Number
-}
-```
-
-### 5.5 ChatMessage (localStorage)
-
-```javascript
-{
-  sessionId: UUID,
-  role: 'user' | 'assistant',
-  content: String,
-  questionRef: String | null,
+  duration: Number,
+  answers: [{ questionId, userAnswer, correct }],
   createdAt: Date
 }
 ```
 
 ---
 
-## 6. API Endpoints (Local - SQL.js)
+## 7. Third-Party Libraries
 
-Since this is a client-side app with SQLite (via SQL.js), no traditional API endpoints exist. Instead, we use local functions:
+### 7.1 UI Libraries
 
-### 6.1 Questions (SQL.js queries)
+- **Tailwind CSS** - Styling
+- **shadcn/ui** or **Radix UI** - Components
+- **Framer Motion** - Animations
+- **Lucide React** - Icons
+- **clsx/tailwind-merge** - Class utilities
 
-```javascript
-// Get all questions
-db.query('SELECT * FROM questions WHERE subject = ?', [subject]);
+### 7.2 Functionality
 
-// Search questions
-db.query('SELECT * FROM questions WHERE question LIKE ?', [`%${query}%`]);
+- **SQL.js** - SQLite in browser
+- **localStorage** - Profile & settings
+- **IndexedDB** - Quiz & chat history
+- **Vite PWA** - Offline support
 
-// Get random questions
-db.query('SELECT * FROM questions ORDER BY RANDOM() LIMIT ?', [count]);
-```
+### 7.3 AI (Optional)
 
-### 6.2 Local Storage Operations
-
-```javascript
-// Profile
-localStorage.getItem('myrevisor_profile')
-localStorage.setItem('myrevisor_profile', JSON.stringify(profile))
-
-// Progress
-localStorage.getItem('myrevisor_progress')
-localStorage.setItem('myrevisor_progress', JSON.stringify(progress))
-
-// Quiz History
-IndexedDB.open('myrevisor', { quizHistory: [...] })
-
-// Chat History
-IndexedDB.open('myrevisor', { chatHistory: [...] })
-```
+- **OpenAI SDK** - AI chatbot
+- User provides their own API key
 
 ---
 
-## 7. Third-Party Integrations
+## 8. Future Enhancements
 
-### 7.1 Required
-
-- **SQLite:** SQL.js (client-side SQLite)
-- **AI:** OpenAI GPT-4 API (user provides their own API key)
-
-### 7.2 Optional
-
-- **Syntax Highlighting:** Prism.js or Highlight.js
-- **Markdown:** marked.js
-- **Icons:** Lucide React or Heroicons
-- **Storage:** localStorage + IndexedDB
-
----
-
-## 8. Future Enhancements (v2.1+)
-
-- [ ] Video explanations for questions
-- [ ] Import custom question sets
+- [ ] Video explanations
+- [ ] Community question sharing
 - [ ] Custom quiz creator
-- [ ] Dark mode toggle
-- [ ] Keyboard shortcuts
-- [ ] Mobile app (Electron/Tauri)
-- [ ] Self-hosted option
+- [ ] Study groups
+- [ ] Mobile app (React Native)
