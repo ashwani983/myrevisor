@@ -1,7 +1,7 @@
 {
   "subject": "AWS",
   "description": "Amazon Web Services (AWS) is a comprehensive cloud computing platform offering infrastructure-as-a-service, platform-as-a-service, and software-as-a-service solutions.",
-  "totalQuestions": 90,
+  "totalQuestions": 130,
   "lastUpdated": "2026-04-02",
   "questions": [
     {
@@ -633,6 +633,286 @@
       "answer": "Migration Hub is a central dashboard for tracking application migrations.\n\nFeatures:\n- Centralized progress tracking\n- Unified view across tools\n- Integrations with migration tools\n\nSupported Tools:\n- AWS DMS\n- Server Migration Service\n- CloudEndure\n- 150+ partner tools\n\nUse Cases:\n- Portfolio assessment\n- Progress tracking\n- Resource grouping\n- Cutover coordination",
       "difficulty": "medium",
       "tags": ["migration-hub", "migration", "tracking"]
+    },
+    {
+      "id": "aws-091",
+      "question": "What is cloud computing?",
+      "answer": "Cloud computing provides on-demand access to IT resources like compute, storage, and databases over the internet. Users pay only for what they use instead of owning physical infrastructure.\n\nKey benefits:\n- No upfront infrastructure investment\n- Pay-as-you-go based on usage\n- Rapid scaling to meet demand\n- Reduced maintenance overhead\n- Faster innovation and agility",
+      "difficulty": "easy",
+      "tags": ["cloud-computing", "fundamentals"]
+    },
+    {
+      "id": "aws-092",
+      "question": "What are the three types of cloud deployment models?",
+      "answer": "Three deployment models:\n\n1. Private Cloud: Used by a single organization, not exposed to public. Ideal for sensitive applications requiring strict control.\n\n2. Public Cloud: Resources owned and operated by third-party providers like AWS, Azure. Available to anyone over the internet.\n\n3. Hybrid Cloud: Combination of private and public clouds. Keeps some servers on-premises while extending capabilities to the cloud.",
+      "difficulty": "easy",
+      "tags": ["deployment-models", "cloud-types"]
+    },
+    {
+      "id": "aws-093",
+      "question": "What are the five characteristics of cloud computing?",
+      "answer": "Five characteristics of cloud computing:\n\n1. On-demand self-service: Users can provision services without human interaction\n\n2. Broad network access: Services available over network via standard mechanisms\n\n3. Multi-tenancy and resource pooling: Resources dynamically assigned based on demand\n\n4. Rapid elasticity and scalability: Auto-scale up/down quickly\n\n5. Measured service: Usage monitored, controlled, and billed transparently",
+      "difficulty": "easy",
+      "tags": ["cloud-characteristics", "fundamentals"]
+    },
+    {
+      "id": "aws-094",
+      "question": "What are the three main types of cloud computing services (IaaS, PaaS, SaaS)?",
+      "answer": "Three main types of cloud computing:\n\n1. IaaS (Infrastructure as a Service): Provides basic building blocks like compute, storage, networking. Examples: EC2, S3, VPC\n\n2. PaaS (Platform as a Service): Managed platform for developing, deploying, managing apps without building infrastructure. Examples: Elastic Beanstalk, Heroku\n\n3. SaaS (Software as a Service): Complete end-user applications running in cloud. Examples: SES, Google Docs, Salesforce CRM",
+      "difficulty": "easy",
+      "tags": ["iaas", "paas", "saas", "cloud-services"]
+    },
+    {
+      "id": "aws-095",
+      "question": "What is Amazon EC2 and what are its main uses?",
+      "answer": "Amazon EC2 (Elastic Compute Cloud) provides scalable virtual servers called instances in AWS.\n\nMain uses:\n- Host websites and web applications\n- Run backend processes and batch jobs\n- Implement hybrid cloud solutions\n- Achieve high availability and scalability\n- Reduce time to market for new use cases",
+      "difficulty": "easy",
+      "tags": ["ec2", "compute", "fundamentals"]
+    },
+    {
+      "id": "aws-096",
+      "question": "Why is Amazon S3 important and what are its key features?",
+      "answer": "Amazon S3 is a versatile, scalable, and secure object storage service.\n\nKey features:\n- 99.999999999% durability, 99.99% availability\n- Robust security with access policies and encryption\n- Seamless integration with Lambda, EC2, EBS\n- Low latency and high throughput for analytics\n- Flexible management: monitoring, versioning, lifecycle policies\n- Global infrastructure for worldwide access",
+      "difficulty": "easy",
+      "tags": ["s3", "storage", "fundamentals"]
+    },
+    {
+      "id": "aws-097",
+      "question": "What is the difference between traditional databases and Amazon RDS?",
+      "answer": "Traditional DB vs Amazon RDS:\n\n| Feature | RDS | Traditional DB |\n|---------|-----|---------------|\n| Scalability | Easy vertical/horizontal | Hardware upgrades needed |\n| Availability | Multi-AZ with automatic failover | Complex HA setup |\n| Maintenance | Managed by AWS | Manual updates/backups |\n| Backup | Automated backups | Manual processes |\n| Cost | Pay-as-you-go | Fixed, higher upfront |",
+      "difficulty": "medium",
+      "tags": ["rds", "database", "comparison"]
+    },
+    {
+      "id": "aws-098",
+      "question": "What is the role of an AWS Solutions Architect?",
+      "answer": "AWS Solutions Architects design and oversee applications on AWS, ensuring scalability and optimal performance.\n\nResponsibilities:\n- Guide developers and system administrators\n- Help customers utilize AWS effectively\n- Design scalable, efficient, cost-effective systems\n- Communicate complex concepts to technical/non-technical stakeholders\n- Ensure security and compliance requirements are met",
+      "difficulty": "medium",
+      "tags": ["solutions-architect", "role", "career"]
+    },
+    {
+      "id": "aws-099",
+      "question": "What are the key security best practices for AWS EC2?",
+      "answer": "Essential EC2 security practices:\n\n1. Use IAM for access management with least privilege\n2. Restrict access to trusted hosts only\n3. Minimize permissions - only grant what's needed\n4. Disable password-based logins for AMIs\n5. Implement Multi-Factor Authentication (MFA)\n6. Use Security Groups as firewalls\n7. Regularly patch and update instances\n8. Enable VPC for network isolation",
+      "difficulty": "medium",
+      "tags": ["ec2", "security", "best-practices"]
+    },
+    {
+      "id": "aws-100",
+      "question": "How do you ensure multi-region redundancy in AWS architecture?",
+      "answer": "Multi-region redundancy strategies:\n\n1. Deploy critical resources (EC2, RDS, S3) in multiple AWS Regions\n2. Use Route 53 for geo-based DNS routing and failover\n3. Implement S3 Cross-Region Replication for data backup\n4. Configure active-active or active-passive failover\n5. Use CloudWatch for monitoring performance\n6. Leverage AWS Global Accelerator for improved latency\n7. Test failover procedures regularly",
+      "difficulty": "hard",
+      "tags": ["multi-region", "redundancy", "disaster-recovery"]
+    },
+    {
+      "id": "aws-101",
+      "question": "What strategies create a highly available and fault-tolerant AWS architecture?",
+      "answer": "High availability strategies:\n\n1. Implement redundancy across all components\n2. Use load balancing to distribute traffic evenly\n3. Set up automated monitoring for real-time failure detection\n4. Design for scalability to handle varying loads\n5. Implement fault isolation and regular backups\n6. Create comprehensive disaster recovery plans\n7. Design for graceful degradation\n8. Practice continuous testing and deployment",
+      "difficulty": "hard",
+      "tags": ["high-availability", "fault-tolerance", "architecture"]
+    },
+    {
+      "id": "aws-102",
+      "question": "How do you optimize AWS costs for a high-traffic web application?",
+      "answer": "Cost optimization strategies:\n\n1. Use AWS Cost Explorer and Budgets to monitor spending\n2. Use Reserved Instances for predictable workloads\n3. Use Spot Instances for flexible, fault-tolerant workloads\n4. Implement Auto Scaling based on demand\n5. Optimize storage with S3 lifecycle policies\n6. Use S3 Intelligent-Tiering for unpredictable access\n7. Implement caching with CloudFront and ElastiCache\n8. Choose right-sized instances based on actual usage",
+      "difficulty": "medium",
+      "tags": ["cost-optimization", "budgets", "savings"]
+    },
+    {
+      "id": "aws-103",
+      "question": "What are the key differences between batch and real-time data processing?",
+      "answer": "Batch vs Real-time processing:\n\nBatch Processing:\n- Collects data over time, processes in large chunks\n- Good for historical, less frequent data analysis\n- Lower processing costs\n- Complex modeling and forecasting\n\nReal-time (Streaming):\n- Processes data continuously as it arrives\n- Immediate insights and analysis\n- Good for fraud detection, social media monitoring\n- Low latency requirements like trading systems\n\nChoose batch for historical analysis, real-time for immediate insights.",
+      "difficulty": "medium",
+      "tags": ["batch-processing", "streaming", "data-engineering"]
+    },
+    {
+      "id": "aws-104",
+      "question": "When would you choose Amazon Kinesis over AWS Lambda for data processing?",
+      "answer": "Choose Kinesis over Lambda when:\n\n- High data volume: Kinesis handles MB/s vs Lambda's 6MB/invocation\n- Streaming processing: Continuous real-time processing vs batch invocations\n- Replay capability: Kinesis retains data for reprocessing\n- Ordering: Kinesis shards ensure ordered processing\n- Scaling: Kinesis shards scale for high throughput\n- Integration: Better with Firehose, Redshift, EMR for analytics",
+      "difficulty": "hard",
+      "tags": ["kinesis", "lambda", "data-processing", "streaming"]
+    },
+    {
+      "id": "aws-105",
+      "question": "How do you handle schema-on-read vs schema-on-write in AWS data lakes?",
+      "answer": "Schema handling in data lakes:\n\nSchema-on-Read (Data Lakes):\n- Raw, semi-structured data stored in S3\n- Schema applied only during query time\n- Tools: Athena, Redshift Spectrum\n- Flexibility for diverse data sources\n\nSchema-on-Write (Traditional):\n- Structure enforced upfront\n- Preferred for transactional data\n- Tools: RDS, Redshift\n- Strict data validation required\n\nData lakes offer flexibility; traditional DBs offer structure.",
+      "difficulty": "medium",
+      "tags": ["data-lake", "schema", "athena", "redshift"]
+    },
+    {
+      "id": "aws-106",
+      "question": "How do you automate schema evolution in an AWS data pipeline?",
+      "answer": "Automating schema evolution:\n\n1. Use AWS Glue's dynamic frame for schema inference\n2. Leverage Glue Data Catalog to track schema changes\n3. Implement schema validation with AWS Deequ\n4. Add custom logic in ETL scripts to log mismatches\n5. Use Lambda for schema change notifications\n6. Set up CloudWatch events for schema drift alerts\n7. Document schema versions for audit trail",
+      "difficulty": "hard",
+      "tags": ["schema-evolution", "glue", "data-pipeline"]
+    },
+    {
+      "id": "aws-107",
+      "question": "What is an Operational Data Store (ODS) and how does it complement a data warehouse?",
+      "answer": "ODS (Operational Data Store):\n- Database for real-time business operations\n- Acts as interim platform between transactional systems and data warehouse\n- Provides real-time data for operations monitoring\n- Integrates live data from multiple sources\n- Optimized for fast queries\n\nData Warehouse:\n- High-quality data for BI and reporting\n- Historical, integrated data\n- Strategic reporting and analysis\n\nODS + Data Warehouse = comprehensive platform for operations and analytics",
+      "difficulty": "hard",
+      "tags": ["ods", "data-warehouse", "data-engineering"]
+    },
+    {
+      "id": "aws-108",
+      "question": "How would you set up a data lake on AWS?",
+      "answer": "AWS Data Lake Setup:\n\n1. Storage Layer: Amazon S3 for raw, structured, unstructured data\n2. Data Cataloging: AWS Glue for metadata definitions\n3. Transformation: AWS Glue ETL to prepare data for analysis\n4. Security: IAM and Lake Formation for access control\n5. Analytics: Athena for ad-hoc queries, Redshift Spectrum\n6. Visualization: Amazon QuickSight for dashboards\n\nOrganize S3 with structured folder hierarchy by data type/source.",
+      "difficulty": "hard",
+      "tags": ["data-lake", "s3", "glue", "athena", "architecture"]
+    },
+    {
+      "id": "aws-109",
+      "question": "What are the different S3 storage classes and when to use each?",
+      "answer": "S3 Storage Classes:\n\n| Class | Use Case | Access | Cost |\n|-------|----------|--------|------|\n| S3 Standard | Frequently accessed | High | Standard |\n| Intelligent-Tiering | Unpredictable patterns | Auto | Cost-effective |\n| Standard-IA | Infrequent, quick retrieval | Low | Lower + retrieval fee |\n| One Zone-IA | Single AZ, infrequent | Low | Lower, less redundancy |\n| Glacier | Long-term archival | Rare | Lowest |\n| Glacier Deep Archive | Compliance, 12+ years | Very rare | Lowest ever |",
+      "difficulty": "medium",
+      "tags": ["s3", "storage-classes", "cost-optimization"]
+    },
+    {
+      "id": "aws-110",
+      "question": "How do you use AWS CodePipeline to automate a CI/CD pipeline?",
+      "answer": "AWS CodePipeline CI/CD automation:\n\n1. Create Pipeline: Specify source repository (GitHub, CodeCommit)\n2. Build Stage: Connect CodeBuild to compile, run tests, create artifacts\n3. Deploy Stages: Configure for each tier using CodeDeploy, Beanstalk, or ECS\n4. Add Approval Gates: Manual approvals for critical environments\n5. Monitor: Track pipeline performance, iterate based on feedback",
+      "difficulty": "medium",
+      "tags": ["codepipeline", "cicd", "devops", "automation"]
+    },
+    {
+      "id": "aws-111",
+      "question": "What are blue/green deployment strategies on AWS?",
+      "answer": "Blue/Green Deployments:\n\nConcept: Run two identical environments - blue (current) and green (new)\n\nAWS Implementation:\n1. Deploy green environment with new version\n2. Test green environment thoroughly\n3. Shift traffic using Route 53 or ALB\n4. Monitor for issues\n5. If problems: instant rollback to blue\n6. Keep blue running until green is stable\n\nServices: Elastic Beanstalk, CodeDeploy, ECS\n\nBenefits: Zero downtime, instant rollback, reduced risk",
+      "difficulty": "medium",
+      "tags": ["blue-green", "deployment", "devops"]
+    },
+    {
+      "id": "aws-112",
+      "question": "How do you manage and secure secrets for CI/CD pipeline in AWS?",
+      "answer": "Secrets Management in CI/CD:\n\n1. AWS Secrets Manager:\n   - Store API keys, DB passwords, certificates\n   - Automatic rotation with Lambda\n   - Integration with CodePipeline/CodeBuild\n\n2. Systems Manager Parameter Store:\n   - SecureString for encrypted parameters\n   - Hierarchical structure\n   - Free tier available\n\n3. IAM Controls:\n   - Granular access policies\n   - Role-based access for pipeline\n   - No hardcoded secrets in code",
+      "difficulty": "medium",
+      "tags": ["secrets-manager", "parameter-store", "cicd", "security"]
+    },
+    {
+      "id": "aws-113",
+      "question": "How do you use AWS Systems Manager in a production environment?",
+      "answer": "AWS Systems Manager in Production:\n\nUse Cases:\n1. Patch Management: Auto-apply OS/app patches across instances\n2. Run Command: Execute scripts on multiple instances\n3. Inventory: Collect software inventory from instances\n4. Parameter Store: Store configs and secrets securely\n5. Session Manager: Secure shell access without SSH\n6. Automation: Trigger runbooks for operational tasks\n7. State Manager: Enforce consistent configurations",
+      "difficulty": "medium",
+      "tags": ["systems-manager", "operations", "automation"]
+    },
+    {
+      "id": "aws-114",
+      "question": "What is the relationship between AWS Glue and AWS Lake Formation?",
+      "answer": "AWS Glue and Lake Formation relationship:\n\nAWS Glue provides:\n- ETL capabilities for data transformation\n- Control console and Data Catalog\n- Serverless architecture for processing\n\nAWS Lake Formation builds on Glue:\n- Adds features for building data lakes\n- Security and access management\n- Data governance and auditing\n\nIn essence: Lake Formation = Glue + Data Lake Management\n\nGlue handles ETL; Lake Formation handles security and governance.",
+      "difficulty": "medium",
+      "tags": ["glue", "lake-formation", "data-lake"]
+    },
+    {
+      "id": "aws-115",
+      "question": "What factors should be considered in designing a deployment solution on AWS?",
+      "answer": "AWS Deployment Design Factors:\n\n1. Provisioning: Set up EC2, VPC, S3, RDS, CloudFront infrastructure\n2. Configuring: Adjust for environment, security, availability, performance\n3. Deploying: Efficiently roll out updates with smooth transitions\n4. Scaling: Dynamically modify resources based on demand\n5. Monitoring: Track usage, health, logs continuously\n6. Security: Implement IAM, encryption, network controls\n7. Cost: Right-size resources, use appropriate pricing models",
+      "difficulty": "hard",
+      "tags": ["deployment", "architecture", "best-practices"]
+    },
+    {
+      "id": "aws-116",
+      "question": "How would you implement a microservices architecture on AWS?",
+      "answer": "Microservices Architecture on AWS:\n\n1. Adopt Agile Development for rapid iteration\n2. Use API-First Design for clear service contracts\n3. Implement CI/CD with CodePipeline/CodeBuild\n4. Containerize with ECS/EKS or use Lambda\n5. Apply Twelve-Factor App principles\n6. Choose API-driven or event-driven patterns\n7. Implement service discovery\n8. Add distributed monitoring with CloudWatch/X-Ray\n9. Design for fault tolerance and resilience\n10. Use Well-Architected Framework for review",
+      "difficulty": "hard",
+      "tags": ["microservices", "architecture", "ecs", "eks"]
+    },
+    {
+      "id": "aws-117",
+      "question": "What is the difference between Amazon Redshift, RDS, and S3? When to use each?",
+      "answer": "S3 vs RDS vs Redshift:\n\nAmazon S3:\n- Object storage for raw, unstructured data\n- Log files, CSVs, images, backups\n- Infinite scalability, pay per usage\n\nAmazon RDS:\n- Managed relational databases (PostgreSQL, MySQL, etc.)\n- ACID-compliant transactions\n- Indexing, constraints, complex queries\n- Transactional applications\n\nAmazon Redshift:\n- Cloud data warehouse for analytics\n- Complex queries over large datasets\n- Columnar storage, massive parallelism\n- BI and business intelligence",
+      "difficulty": "medium",
+      "tags": ["redshift", "rds", "s3", "database", "comparison"]
+    },
+    {
+      "id": "aws-118",
+      "question": "What considerations for migrating an on-premises application to AWS?",
+      "answer": "AWS Migration Considerations:\n\n1. Assessment: Catalog components, identify dependencies\n2. Strategy: Choose migration techniques (lift-and-shift, replatform, refactor)\n3. Network: Plan connection (Direct Connect or VPN)\n4. Security: Implement IAM, encryption, compliance\n5. Data: Use DMS for database migration\n6. Testing: Validate functionality, performance\n7. Cutover: Plan minimal downtime migration\n8. Post-migration: Monitor, optimize, train team\n\nUse AWS Migration Hub for tracking.",
+      "difficulty": "hard",
+      "tags": ["migration", "dms", "planning"]
+    },
+    {
+      "id": "aws-119",
+      "question": "Design a scalable web application with DDoS protection on AWS.",
+      "answer": "Scalable Web App with DDoS Protection:\n\nArchitecture:\n1. CloudFront: Edge caching, DDoS protection layer 1-3\n2. Route 53: DNS management with health checks\n3. WAF: Filter malicious requests, rate limiting\n4. Shield: Additional DDoS protection for layer 3-7\n5. ALB: Distribute traffic across instances\n6. ASG: Auto-scale EC2 across multiple AZs\n7. RDS (Multi-AZ): Fault-tolerant database\n8. ElastiCache: Session and data caching\n9. CloudWatch: Monitoring and alerting",
+      "difficulty": "hard",
+      "tags": ["ddos", "scalability", "architecture", "shield", "waf"]
+    },
+    {
+      "id": "aws-120",
+      "question": "Design a disaster recovery solution with RPO of 5 minutes and RTO of 1 hour.",
+      "answer": "DR Solution (RPO: 5min, RTO: 1hr):\n\nServices Used:\n1. AWS Backup: Regular backups with 5-minute RPO\n2. CloudFormation: Define DR infrastructure as code\n3. S3 Cross-Region Replication: Replicate backups across regions\n4. CloudWatch Alarms: Monitor and trigger failover\n5. Route 53: DNS failover to DR region\n\nStrategy:\n- Warm standby in secondary region\n- Automated failover based on health checks\n- Regular DR drills and testing",
+      "difficulty": "hard",
+      "tags": ["disaster-recovery", "rpo", "rto", "backup"]
+    },
+    {
+      "id": "aws-121",
+      "question": "What is AWS Glue and what are its main components?",
+      "answer": "AWS Glue - Serverless ETL service:\n\nComponents:\n1. Data Catalog: Centralized metadata repository\n2. Crawlers: Auto-discover schemas from data sources\n3. ETL Jobs: Transform and load data\n4. Triggers: Schedule or event-based execution\n5. Dev Endpoints: Interactive development\n6. Dynamic Frames: Schema evolution handling\n\nIntegrations: S3, RDS, Redshift, DynamoDB\n\nUse Cases: Data migration, data lake preparation, analytics pipeline",
+      "difficulty": "medium",
+      "tags": ["glue", "etl", "data-pipeline"]
+    },
+    {
+      "id": "aws-122",
+      "question": "What is the AWS Well-Architected Framework and its five pillars?",
+      "answer": "AWS Well-Architected Framework - Five Pillars:\n\n1. Operational Excellence: Run/monitor systems, improve processes\n2. Security: Protect data, systems through risk management\n3. Reliability: Recover from failures, maintain availability\n4. Performance Efficiency: Optimize resources, adapt to changes\n5. Cost Optimization: Minimize expenses, maximize value\n\nEach pillar provides best practices and design principles for building secure, high-performing, resilient, and efficient infrastructure.",
+      "difficulty": "medium",
+      "tags": ["well-architected", "architecture", "best-practices"]
+    },
+    {
+      "id": "aws-123",
+      "question": "What is the difference between IAM Users, Groups, Roles, and Policies?",
+      "answer": "IAM Components:\n\nUsers:\n- Individual identities for people or applications\n- Long-term credentials (access keys, passwords)\n- Direct access to AWS services\n\nGroups:\n- Collection of users with shared permissions\n- Easier permission management\n- Apply policies to multiple users at once\n\nRoles:\n- Temporary permissions for trusted entities\n- No permanent credentials\n- Used by EC2, Lambda, cross-account access\n\nPolicies:\n- JSON documents defining permissions\n- Attached to users, groups, or roles\n- Can be AWS-managed or customer-managed",
+      "difficulty": "easy",
+      "tags": ["iam", "users", "groups", "roles", "policies"]
+    },
+    {
+      "id": "aws-124",
+      "question": "What is Amazon EFS and when would you use it?",
+      "answer": "Amazon EFS - Elastic File System:\n\nWhat it is:\n- Managed NFS (Network File System) file storage\n- Scalable, pay-per-use\n- Multi-AZ for high availability\n\nUse Cases:\n- Shared storage for multiple EC2 instances\n- CMS and content management systems\n- Code repositories and build systems\n- Big data and analytics workloads\n- Container storage (ECS, EKS)\n\nvs EBS: EFS scales automatically, supports multiple connections",
+      "difficulty": "easy",
+      "tags": ["efs", "file-storage", "nfs"]
+    },
+    {
+      "id": "aws-125",
+      "question": "What is AWS Snowball and what are its use cases?",
+      "answer": "AWS Snowball - Physical data transfer:\n\nTypes:\n- Snowball: 80TB storage, standard transfer\n- Snowball Edge: 100TB with compute (Lambda, S3)\n- Snowmobile: Container, up to 100PB\n\nUse Cases:\n- Large-scale data migration (TB/PB scale)\n- Limited or no internet connectivity\n- Disaster recovery data transfer\n- Cloud migration for large enterprises\n\nBenefits: Fast (Gbps speeds), secure (encrypted), cost-effective",
+      "difficulty": "medium",
+      "tags": ["snowball", "data-transfer", "migration"]
+    },
+    {
+      "id": "aws-126",
+      "question": "What is AWS Simple Notification Service (SNS)?",
+      "answer": "Amazon SNS - Pub/Sub messaging and mobile notifications:\n\nFeatures:\n- Pub/Sub: One message to many subscribers\n- Push model: Pushes to multiple endpoints\n- Topics: Organize subscribers by category\n\nSupported Subscribers:\n- Lambda, SQS, HTTP/S\n- Email, SMS, Mobile push\n- Kinesis Data Firehose\n\nUse Cases:\n- Application alerts and notifications\n- Event-driven architectures\n- Fan-out patterns\n- Mobile push notifications",
+      "difficulty": "easy",
+      "tags": ["sns", "messaging", "pub-sub"]
+    },
+    {
+      "id": "aws-127",
+      "question": "What is AWS Simple Queue Service (SQS) and the difference between Standard and FIFO queues?",
+      "answer": "Amazon SQS - Managed message queuing:\n\nStandard Queue:\n- At-least-once delivery\n- Best-effort ordering\n- Unlimited throughput\n- Millions of messages per second\n\nFIFO Queue:\n- Exactly-once processing\n- Guaranteed ordering (first-in-first-out)\n- Limited to 300 TPS\n- No duplicates\n\nShared Features:\n- Message retention (1 min to 14 days)\n- Dead-letter queues\n- Visibility timeout",
+      "difficulty": "easy",
+      "tags": ["sqs", "queue", "messaging"]
+    },
+    {
+      "id": "aws-128",
+      "question": "What is AWS Elastic Beanstalk and when should you use it?",
+      "answer": "AWS Elastic Beanstalk - PaaS for deploying apps:\n\nWhat it is:\n- Managed platform for deploying apps\n- Supports: Node.js, Python, Java, .NET, Go, Docker\n- Handles provisioning, scaling, monitoring\n\nUse Cases:\n- Quick deployment without infrastructure knowledge\n- Simple web applications\n- Microservices architecture\n- API backends\n\nBenefits:\n- No additional cost (pay for underlying resources)\n- Auto-scaling and load balancing\n- Multiple environment support",
+      "difficulty": "medium",
+      "tags": ["elastic-beanstalk", "paas", "deployment"]
+    },
+    {
+      "id": "aws-129",
+      "question": "What is AWS Global Accelerator and how does it improve performance?",
+      "answer": "AWS Global Accelerator:\n\nWhat it is:\n- Networking service that improves availability and performance\n- Routes traffic through AWS edge locations\n- Uses anycast IP addresses\n\nHow it works:\n1. Traffic enters nearest edge location\n2. Routes over AWS network (not public internet)\n3. Reaches your application in one or more regions\n\nBenefits:\n- 60% performance improvement for global apps\n- Instant failover to healthy endpoints\n- DDoS protection with Shield Standard\n- Consistent performance regardless of location",
+      "difficulty": "medium",
+      "tags": ["global-accelerator", "networking", "performance"]
+    },
+    {
+      "id": "aws-130",
+      "question": "What is AWS WAF and what protections does it offer?",
+      "answer": "AWS WAF - Web Application Firewall:\n\nProtections:\n- SQL injection and XSS filtering\n- IP blocking/allowing\n- Rate limiting (prevent DDoS)\n- Geo-blocking\n- Bot control\n- Custom rules with regex\n\nIntegration Points:\n- CloudFront\n- Application Load Balancer\n- API Gateway\n- AppSync\n\nManaged Rules:\n- AWS managed rule groups\n- Third-party vendor rules (Fortinet, CrowdStrike)",
+      "difficulty": "medium",
+      "tags": ["waf", "security", "firewall"]
     }
   ]
 }
