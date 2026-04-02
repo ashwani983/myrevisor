@@ -12,6 +12,7 @@ import { listSubjects } from '../src/commands/list.js';
 import { reset } from '../src/commands/reset.js';
 import { help } from '../src/commands/help.js';
 import { web } from '../src/commands/web.js';
+import { DataSync } from '../src/commands/sync.js';
 
 const program = new Command();
 
@@ -23,9 +24,9 @@ program
     gradient.pastel(figlet.textSync('MyRevisor', { font: 'ANSI Shadow' })) +
       '\n\n' +
       chalk.cyan('Master your DevOps interviews!') +
-      '\nStudy Kubernetes, AWS, Docker, Jenkins, Git & Shell Scripting'
+      '\nStudy Kubernetes, AWS, Docker, Jenkins, Git, Linux & Shell Scripting'
   )
-  .version('1.0.0')
+  .version('2.0.1')
   .action(async () => {
     const app = new App();
     await app.start();
@@ -92,6 +93,37 @@ program
   .option('-p, --port <number>', 'Port to run on', '3000')
   .action(async options => {
     await web(options);
+  });
+
+program
+  .command('sync')
+  .description('Sync latest question data from GitHub')
+  .option('-f, --force', 'Force sync all files')
+  .option('-s, --subject <name>', 'Sync specific subject only')
+  .action(async options => {
+    const dataSync = new DataSync();
+
+    if (options.subject) {
+      try {
+        await dataSync.syncSubject(options.subject);
+      } catch (error) {
+        console.error(chalk.red(`❌ Error: ${error.message}`));
+        process.exit(1);
+      }
+    } else {
+      const result = await dataSync.sync(options.force);
+      if (!result.success) {
+        process.exit(1);
+      }
+    }
+  });
+
+program
+  .command('update')
+  .description('Check for and install data updates (alias for sync)')
+  .action(async () => {
+    const dataSync = new DataSync();
+    await dataSync.sync(false);
   });
 
 program.parse();

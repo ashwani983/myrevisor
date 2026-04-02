@@ -1,8 +1,8 @@
 {
   "name": "myrevisor",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
-  "description": "DevOps Interview Study Application - Master your Kubernetes, AWS, Docker, Jenkins, Git, and Shell Scripting knowledge",
+  "description": "DevOps Interview Study Application - Master your Kubernetes, AWS, Docker, Jenkins, Git, Linux and Shell Scripting knowledge",
   "main": "src/index.js",
   "bin": {
     "myrevisor": "./bin/myrevisor.js"

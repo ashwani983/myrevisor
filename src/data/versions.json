@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "description": "Tracks data file versions for MyRevisor updates",
+  "lastUpdated": "2026-04-02",
+  "dataFiles": {
+    "aws": {
+      "file": "aws.json",
+      "lastUpdated": "2026-04-02",
+      "questionCount": 130,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/aws.json"
+    },
+    "docker": {
+      "file": "docker.json",
+      "lastUpdated": "2026-04-02",
+      "questionCount": 100,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/docker.json"
+    },
+    "git-github": {
+      "file": "git-github.json",
+      "lastUpdated": "2026-04-02",
+      "questionCount": 110,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/git-github.json"
+    },
+    "jenkins": {
+      "file": "jenkins.json",
+      "lastUpdated": "2026-04-02",
+      "questionCount": 110,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/jenkins.json"
+    },
+    "kubernetes": {
+      "file": "kubernetes.json",
+      "lastUpdated": "2026-04-02",
+      "questionCount": 110,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/kubernetes.json"
+    },
+    "linux": {
+      "file": "linux.json",
+      "lastUpdated": "2026-04-02",
+      "questionCount": 110,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/linux.json"
+    },
+    "shell-scripting": {
+      "file": "shell-scripting.json",
+      "lastUpdated": "2026-04-02",
+      "questionCount": 100,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/shell-scripting.json"
+    }
+  }
+}
