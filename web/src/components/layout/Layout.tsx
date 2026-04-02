@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Header } from './Header';
@@ -55,6 +56,39 @@ export function Layout() {
           </motion.div>
         </AnimatePresence>
       </main>
+      <footer className="py-6 px-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="max-w-2xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
+          <Link
+            to="/about"
+            className="hover:text-primary-500 transition-colors"
+          >
+            About
+          </Link>
+          <Link
+            to="/terms"
+            className="hover:text-primary-500 transition-colors"
+          >
+            Terms & Conditions
+          </Link>
+          <Link
+            to="/copyright"
+            className="hover:text-primary-500 transition-colors"
+          >
+            Copyright
+          </Link>
+          <a
+            href="https://github.com/ashwani983"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary-500 transition-colors"
+          >
+            Developer
+          </a>
+        </div>
+        <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-2">
+          © 2026 MyRevisor. All rights reserved.
+        </p>
+      </footer>
       <KeyboardShortcutsModal
         isOpen={showShortcuts}
         onClose={() => setShowShortcuts(false)}

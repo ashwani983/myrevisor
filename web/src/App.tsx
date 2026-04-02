@@ -7,6 +7,9 @@ import { Chat } from '@/pages/Chat';
 import { Settings } from '@/pages/Settings';
 import { ProgressPage } from '@/pages/Progress';
 import { Profile } from '@/pages/Profile';
+import { About } from '@/pages/About';
+import { Terms } from '@/pages/Terms';
+import { Copyright } from '@/pages/Copyright';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path="settings" element={<Settings />} />
           <Route path="progress" element={<ProgressPage />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="about" element={<About />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="copyright" element={<Copyright />} />
         </Route>
       </Routes>
     </BrowserRouter>
