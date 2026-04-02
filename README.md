@@ -1,6 +1,6 @@
 # MyRevisor
 
-**DevOps Interview Study Application** - Master your Kubernetes, AWS, Docker, Jenkins, Git, and Shell Scripting knowledge through interactive study modes and quizzes.
+**DevOps Interview Study Application** - Master your Kubernetes, AWS, Docker, Jenkins, Git, Linux, and Shell Scripting knowledge through interactive study modes and quizzes.
 
 [![npm version](https://badge.fury.io/js/myrevisor.svg)](https://badge.fury.io/js/myrevisor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -55,18 +55,33 @@ This opens the beautiful web interface in your browser with:
 | `myrevisor scores`                 | View your score history          |
 | `myrevisor list`                   | List all available subjects      |
 | `myrevisor reset`                  | Reset all scores                 |
+| `myrevisor sync`                   | Sync latest data from GitHub     |
+| `myrevisor update`                 | Alias for sync                   |
 | `myrevisor help`                   | Show help information            |
 | `myrevisor web`                    | Launch the web application       |
 
 ### Options
 
-| Option                 | Description                          |
-| ---------------------- | ------------------------------------ |
-| `-n, --number <count>` | Number of questions to answer        |
-| `-t, --timed`          | Enable timed mode (30s per question) |
-| `-m, --mcq`            | Multiple choice questions            |
-| `-h, --help`           | Show help information                |
-| `-v, --version`        | Show version number                  |
+| Option                 | Description                           |
+| ---------------------- | ------------------------------------- |
+| `-n, --number <count>` | Number of questions to answer         |
+| `-t, --timed`          | Enable timed mode (30s per question)  |
+| `-m, --mcq`            | Multiple choice questions             |
+| `-f, --force`          | Force sync all files (with sync cmd)  |
+| `-s, --subject`        | Sync specific subject (with sync cmd) |
+| `-h, --help`           | Show help information                 |
+| `-v, --version`        | Show version number                   |
+
+### Sync Command
+
+Keep your question database up to date:
+
+```bash
+myrevisor sync          # Check for updates
+myrevisor sync --force  # Force sync all files
+myrevisor sync -s aws   # Sync specific subject
+myrevisor update        # Alias for sync
+```
 
 ### Examples
 
@@ -80,20 +95,22 @@ myrevisor test aws --timed --number 10
 myrevisor test docker --mcq
 myrevisor scores
 myrevisor list
+myrevisor sync
 ```
 
 ---
 
-## Available Subjects
+## Available Subjects (770+ Questions)
 
-| Subject    | Description                             |
-| ---------- | --------------------------------------- |
-| kubernetes | Container orchestration and management  |
-| docker     | Container technology and best practices |
-| aws        | Amazon Web Services cloud platform      |
-| jenkins    | CI/CD automation and pipelines          |
-| git        | Version control system fundamentals     |
-| shell      | Bash scripting and command line         |
+| Subject    | Questions | Description                             |
+| ---------- | --------- | --------------------------------------- |
+| kubernetes | 110       | Container orchestration and management  |
+| docker     | 100       | Container technology and best practices |
+| aws        | 130       | Amazon Web Services cloud platform      |
+| jenkins    | 110       | CI/CD automation and pipelines          |
+| git        | 110       | Version control system fundamentals     |
+| linux      | 110       | Linux administration and commands       |
+| shell      | 100       | Bash scripting and command line         |
 
 ---
 
@@ -132,7 +149,7 @@ When you run `myrevisor web`:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/myrevisor.git
+git clone https://github.com/ashwani983/myrevisor.git
 cd myrevisor
 
 # Install root dependencies (CLI)
@@ -176,10 +193,18 @@ myrevisor/
 │   │   ├── list.js
 │   │   ├── reset.js
 │   │   ├── help.js
+│   │   ├── sync.js       # Data sync command
 │   │   └── web.js        # Web server command
 │   ├── config/
-│   ├── data/
-│   ├── ui/
+│   ├── data/             # Question databases (JSON)
+│   │   ├── aws.json
+│   │   ├── docker.json
+│   │   ├── git-github.json
+│   │   ├── jenkins.json
+│   │   ├── kubernetes.json
+│   │   ├── linux.json
+│   │   ├── shell-scripting.json
+│   │   └── versions.json  # Version tracking
 │   └── utils/
 ├── web/                   # Web application (React + TypeScript)
 │   ├── src/

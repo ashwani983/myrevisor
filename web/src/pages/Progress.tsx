@@ -19,7 +19,7 @@ import { Progress } from '@/components/ui/Progress';
 import { Badge } from '@/components/ui/Badge';
 import { useStudyStore } from '@/stores/studyStore';
 import { useQuizStore } from '@/stores/quizStore';
-import { getAllSubjects, subjectNames } from '@/data/questions';
+import { getAllSubjects, getSubjectName } from '@/data/questions';
 import { cn } from '@/lib/utils';
 
 interface Achievement {
@@ -370,7 +370,7 @@ export function ProgressPage() {
                     >
                       <div>
                         <div className="font-medium text-gray-900 dark:text-white">
-                          {subjectNames[quiz.subject] || quiz.subject}
+                          {getSubjectName(quiz.subject) || quiz.subject}
                         </div>
                         <div className="text-sm text-gray-500 dark:text-gray-400">
                           {new Date(quiz.createdAt).toLocaleDateString()}

@@ -10,7 +10,7 @@ import { Progress } from '@/components/ui/Progress';
 import { KeyboardShortcutsModal } from '@/components/ui/KeyboardShortcuts';
 import {
   getQuestionsForSubject,
-  subjectNames,
+  getSubjectName,
   getAllSubjects,
 } from '@/data/questions';
 import type { Question } from '@/stores/studyStore';
@@ -268,7 +268,7 @@ export function Study() {
             </Button>
             <div>
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                {subjectNames[sessionData.subject] || sessionData.subject}
+                {getSubjectName(sessionData.subject) || sessionData.subject}
               </h1>
               <p className="text-sm text-gray-500 dark:text-gray-400">
                 Study Mode

@@ -39,7 +39,8 @@ export class DataSync {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      return await response.json();
+      const text = await response.text();
+      return JSON.parse(text);
     } catch (error) {
       throw new Error(`Failed to fetch remote versions: ${error.message}`);
     }

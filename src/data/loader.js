@@ -13,7 +13,9 @@ export class DataLoader {
   }
 
   async loadAllSubjects() {
-    const files = fs.readdirSync(this.dataDir).filter(f => f.endsWith('.json'));
+    const files = fs
+      .readdirSync(this.dataDir)
+      .filter(f => f.endsWith('.json') && f !== 'versions.json');
     const spinner = ora({
       text: 'Loading subjects...',
       spinner: 'dots',

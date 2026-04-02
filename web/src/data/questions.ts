@@ -1,9 +1,3 @@
-import kubernetesQuestions from '../../../src/data/kubernetes.json';
-import dockerQuestions from '../../../src/data/docker.json';
-import awsQuestions from '../../../src/data/aws.json';
-import jenkinsQuestions from '../../../src/data/jenkins.json';
-import gitQuestions from '../../../src/data/git-github.json';
-import shellQuestions from '../../../src/data/shell-scripting.json';
 import type { Question } from '@/stores/studyStore';
 
 export interface QuestionData {
@@ -20,35 +14,42 @@ export interface QuestionData {
   }>;
 }
 
-export const questionData: Record<string, QuestionData> = {
-  kubernetes: kubernetesQuestions as QuestionData,
-  docker: dockerQuestions as QuestionData,
-  aws: awsQuestions as QuestionData,
-  jenkins: jenkinsQuestions as QuestionData,
-  git: gitQuestions as QuestionData,
-  shell: shellQuestions as QuestionData,
+const subjectOverrides: Record<
+  string,
+  { name?: string; description?: string }
+> = {
+  aws: { name: 'AWS' },
+  docker: { name: 'Docker' },
+  git: { name: 'Git & GitHub' },
+  jenkins: { name: 'Jenkins' },
+  kubernetes: { name: 'Kubernetes' },
+  linux: { name: 'Linux' },
+  shell: { name: 'Shell Scripting' },
 };
 
-export const subjectNames: Record<string, string> = {
-  kubernetes: 'Kubernetes',
-  docker: 'Docker',
-  aws: 'AWS',
-  jenkins: 'Jenkins',
-  git: 'Git & GitHub',
-  shell: 'Shell Scripting',
-};
+const globModules = import.meta.glob<{ default: QuestionData }>(
+  '../../../src/data/*.json',
+  { eager: true }
+);
 
-export const subjectDescriptions: Record<string, string> = {
-  kubernetes:
-    'Container orchestration platform for automating deployment, scaling, and management',
-  docker:
-    'Containerization platform for building, shipping, and running applications',
-  aws: 'Amazon Web Services cloud platform for infrastructure and services',
-  jenkins: 'Open source automation server for CI/CD pipelines',
-  git: 'Version control system for tracking changes in source code',
-  shell:
-    'Shell scripting for command-line automation and system administration',
-};
+const questionData: Record<string, QuestionData> = {};
+
+for (const [path, module] of Object.entries(globModules)) {
+  const filename = path.split('/').pop()?.replace('.json', '') || '';
+  if (filename !== 'versions') {
+    questionData[filename] = module.default;
+  }
+}
+
+export function getSubjectName(id: string): string {
+  return subjectOverrides[id]?.name || questionData[id]?.subject || id;
+}
+
+export function getSubjectDescription(id: string): string {
+  return (
+    subjectOverrides[id]?.description || questionData[id]?.description || ''
+  );
+}
 
 export function getQuestionsForSubject(subject: string): Question[] {
   const data = questionData[subject];
@@ -72,8 +73,8 @@ export function getAllSubjects(): Array<{
 }> {
   return Object.entries(questionData).map(([id, data]) => ({
     id,
-    name: subjectNames[id] || id,
-    description: data.description,
-    questionCount: data.totalQuestions,
+    name: getSubjectName(id),
+    description: data.description || getSubjectDescription(id),
+    questionCount: data.questions?.length || data.totalQuestions || 0,
   }));
 }
