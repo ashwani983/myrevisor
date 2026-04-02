@@ -260,7 +260,7 @@ export function Settings() {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              MyRevisor v2.0 - DevOps Interview Study Application
+              MyRevisor v2.1 - DevOps Interview Study Application
             </p>
             <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">
               All data is stored locally in your browser.
