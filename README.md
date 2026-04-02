@@ -4,6 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/myrevisor.svg)](https://badge.fury.io/js/myrevisor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://myrevisor.vercel.app)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -19,6 +20,18 @@
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+## Live Demo
+
+Try the web application live: **https://myrevisor.vercel.app**
+
+The web app features:
+
+- Study Mode with flashcards
+- Quiz Mode with MCQ testing
+- AI Chatbot support (bring your own OpenRouter API key)
+- Progress tracking
+- PWA support (install as app)
 
 ## Quick Install
 
@@ -135,6 +148,9 @@ When you run `myrevisor web`:
 | `/chat`             | AI chatbot                   |
 | `/progress`         | Progress and statistics      |
 | `/settings`         | App settings                 |
+| `/about`            | About page                   |
+| `/terms`            | Terms & Conditions           |
+| `/copyright`        | Copyright info               |
 
 ---
 
@@ -241,3 +257,12 @@ Data is stored in your browser's localStorage:
 ## License
 
 MIT
+
+---
+
+## Links
+
+- **Live Demo**: https://myrevisor.vercel.app
+- **GitHub**: https://github.com/ashwani983/myrevisor
+- **NPM Package**: https://www.npmjs.com/package/myrevisor
+- **Developer**: https://github.com/ashwani983
