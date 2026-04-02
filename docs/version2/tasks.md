@@ -540,6 +540,54 @@
 
 ---
 
+## Database Expansion
+
+### Linux Questions (Completed 2026-04-02)
+
+| Metric       | Before | After                                               |
+| ------------ | ------ | --------------------------------------------------- |
+| Questions    | 0      | 110                                                 |
+| Sources      | N/A    | GeeksforGeeks, InterviewBit, Naukri Code360, Medium |
+| Last Updated | N/A    | 2026-04-02                                          |
+
+**Sources Used:**
+
+- GeeksforGeeks (geeksforgeeks.org/linux-unix/linux-interview-questions)
+- InterviewBit (interviewbit.com/linux-interview-questions)
+- Naukri Code360 (naukri.com/code360/library/linux-interview-questions)
+- Medium (@18cs089.prashant/250-linux-scenario-based-interview-questions)
+
+**Topics Covered:**
+
+- Linux basics and architecture
+- Kernel and shell concepts
+- Process management
+- File system and permissions
+- User and group management
+- Network configuration
+- Services and systemd
+- Security and firewall
+- Troubleshooting
+- Performance monitoring
+
+---
+
+### Shell Scripting Questions (Completed 2026-04-02)
+
+| Metric       | Before        | After                                  |
+| ------------ | ------------- | -------------------------------------- |
+| Questions    | 10            | 100                                    |
+| Sources      | Original only | InterviewBit, LinuxTeck, DEV Community |
+| Last Updated | 2025-09-10    | 2026-04-02                             |
+
+**Sources Used:**
+
+- InterviewBit (interviewbit.com/shell-scripting-interview-questions)
+- LinuxTeck (linuxteck.com/linux-shell-scripting-interview-questions)
+- DEV Community (dev.to/pratik_nalawade/shell-scripting-interview-questions-16ff)
+
+---
+
 ## Next Steps
 
 🎉 **All phases completed!** MyRevisor v2.0.0 is ready for use.

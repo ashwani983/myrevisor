@@ -1,110 +1,709 @@
 {
   "subject": "Shell Scripting",
   "description": "Shell scripting is writing scripts for Unix/Linux shells to automate tasks. It involves using command-line interpreters like Bash to execute sequences of commands.",
-  "totalQuestions": 10,
-  "lastUpdated": "2025-09-10",
+  "totalQuestions": 100,
+  "lastUpdated": "2026-04-02",
+  "sources": ["InterviewBit", "LinuxTeck", "DEV Community"],
   "questions": [
     {
       "id": "shell-001",
       "question": "What is the shebang line and why does every script need it?",
       "answer": "The shebang (#!/bin/bash) is the first line of every shell script.\n\nPurpose:\n- Tells OS which interpreter to use\n- Without it, system guesses (unreliable)\n- Ensures script runs under correct shell\n\nExamples:\n- #!/bin/bash - Bash shell\n- #!/bin/sh - POSIX shell\n- #!/usr/bin/env python3 - Finds Python in PATH\n\nBest Practice: Always include explicit shebang for portability.",
       "difficulty": "easy",
-      "tags": [
-        "basics",
-        "script-structure"
-      ]
+      "tags": ["basics", "script-structure"]
     },
     {
       "id": "shell-002",
       "question": "How do you make a shell script executable and run it?",
       "answer": "Two steps:\n\n1. Grant execute permission:\n   chmod +x myscript.sh\n\n2. Run the script:\n   ./myscript.sh       # If in current directory\n   /path/myscript.sh  # Absolute path\n   \nAlternative running methods:\n   bash myscript.sh    # Run with bash explicitly\n   sh myscript.sh     # Run with sh\n\nNote: Without chmod +x, only bash/sh can execute it.",
       "difficulty": "easy",
-      "tags": [
-        "basics",
-        "execution"
-      ]
+      "tags": ["basics", "execution"]
     },
     {
       "id": "shell-003",
       "question": "What are special variables in Bash? Name five.",
       "answer": "Special variables in Bash:\n\n$0   - Name of the script\n$1   - First argument passed\n$2   - Second argument passed\n$#   - Number of arguments passed\n$?   - Exit code of last command (0=success)\n$$   - PID of current script\n$@   - All arguments as separate words\n$*   - All arguments as single string\n$!   - PID of last background process\n\nPro Tip: $? is essential for error handling in production scripts.",
       "difficulty": "medium",
-      "tags": [
-        "variables",
-        "bash"
-      ]
+      "tags": ["variables", "bash"]
     },
     {
       "id": "shell-004",
       "question": "How do you handle errors in a Bash script?",
       "answer": "Error handling in Bash:\n\n1. set -euo pipefail:\n   set -e  → Exit on command failure\n   set -u  → Error on undefined variables\n   set -o pipefail → Catch pipe failures\n\n2. Check exit codes:\n   if [ $? -ne 0 ]; then\n     echo 'Command failed'\n     exit 1\n   fi\n\n3. Use trap for cleanup:\n   trap 'echo \"Error at line $LINENO\"' ERR\n\n4. Quote variables:\n   Always use \"$variable\" not $variable",
       "difficulty": "medium",
-      "tags": [
-        "error-handling",
-        "production"
-      ]
+      "tags": ["error-handling", "production"]
     },
     {
       "id": "shell-005",
       "question": "Show a for loop and while loop. When to use each?",
       "answer": "FOR Loop - Use when you know the list:\n```bash\nfor server in web01 web02 web03; do\n  echo \"Checking $server...\"\n  ssh \"$server\" \"systemctl status nginx\"\ndone\n```\n\nWHILE Loop - Use when condition drives iteration:\n```bash\nRETRIES=0\nwhile ! ping -c1 8.8.8.8 &>/dev/null; do\n  echo \"Network down...\"\n  RETRIES=$((RETRIES + 1))\n  sleep 5\n  [ $RETRIES -ge 10 ] && exit 1\ndone\n```\n\nUse for loops for fixed lists (servers, files). Use while for polling/retry logic.",
       "difficulty": "medium",
-      "tags": [
-        "loops",
-        "control-flow"
-      ]
+      "tags": ["loops", "control-flow"]
     },
     {
       "id": "shell-006",
       "question": "Write a script to check disk usage and alert if above threshold.",
       "answer": "#!/bin/bash\nset -euo pipefail\nTHRESHOLD=80\n\ndf -h | awk 'NR>1 {\n  gsub(/%/,\"\",$5)\n  if($5+0 >= '$THRESHOLD')\n    print \"ALERT: \"$6\" is \"$5\"% full\"\n}'\n\nExplanation:\n- df -h gets disk usage\n- awk processes output\n- NR>1 skips header row\n- gsub removes % sign\n- Compares numeric value to threshold\n- Prints alert for partitions over threshold",
       "difficulty": "hard",
-      "tags": [
-        "disk",
-        "monitoring",
-        "awk"
-      ]
+      "tags": ["disk", "monitoring", "awk"]
     },
     {
       "id": "shell-007",
       "question": "How do you write a cron job and debug one that is not running?",
       "answer": "Edit crontab:\ncrontab -e\n\nFormat: min hour day month weekday command\nExamples:\n0 2 * * *  /opt/scripts/backup.sh >> /var/log/backup.log 2>&1\n30 8 * * 1 /opt/scripts/weekly-report.sh\n\nDebug steps:\n1. Check if cron ran:\n   grep CRON /var/log/syslog | tail -20\n\n2. Run script manually (as cron would):\n   env -i HOME=/root PATH=/usr/bin:/bin bash /script.sh\n\n3. Check log output:\n   tail -50 /var/log/script.log\n\nCommon issue: PATH differences between shell and cron.",
       "difficulty": "hard",
-      "tags": [
-        "cron",
-        "automation",
-        "debugging"
-      ]
+      "tags": ["cron", "automation", "debugging"]
     },
     {
       "id": "shell-008",
       "question": "What are functions in Bash and how do you use them?",
       "answer": "Functions in Bash group commands for reuse:\n\nDefinition:\n```bash\ngreet() {\n  local name=\"$1\"\n  echo \"Hello, $name\"\n}\n```\n\nCalling:\ngreet \"World\"  # Output: Hello, World\n\nKey points:\n- local keyword keeps variables scoped\n- $1, $2 access parameters\n- Return only exits with status (0-255)\n- Use echo to return strings\n\nBenefits:\n- Code reusability\n- Better organization\n- Easier testing",
       "difficulty": "medium",
-      "tags": [
-        "functions",
-        "organization"
-      ]
+      "tags": ["functions", "organization"]
     },
     {
       "id": "shell-009",
       "question": "What is the difference between source and ./ when executing a script?",
       "answer": "source (or .):\n- Runs script in CURRENT shell\n- Changes persist after script ends\n- Variables available in current session\n- Example: source script.sh\n\n./ (new process):\n- Runs script in NEW subshell\n- Changes DO NOT persist\n- Isolated from current session\n- Example: ./script.sh\n\nUse source when you need environment changes (like setting variables). Use ./ for regular scripts.",
       "difficulty": "medium",
-      "tags": [
-        "execution",
-        "shell"
-      ]
+      "tags": ["execution", "shell"]
     },
     {
       "id": "shell-010",
       "question": "How do you redirect output in Bash?",
       "answer": "Output redirection operators:\n\n>   - Redirect stdout, overwrite file\necho \"hello\" > file.txt\n\n>>  - Redirect stdout, append to file\necho \"hello\" >> file.txt\n\n2>  - Redirect stderr\necho \"error\" 2> error.log\n\n&>  - Redirect both stdout and stderr\necho \"message\" &> output.log\n\n>&2 - Redirect to stderr\necho \"error\" >&2\n\n2>&1 - Redirect stderr to stdout\necho \"test\" > output.log 2>&1\n\n/dev/null - Discard output\necho \"silent\" > /dev/null 2>&1",
       "difficulty": "medium",
-      "tags": [
-        "io",
-        "redirection"
-      ]
+      "tags": ["io", "redirection"]
+    },
+    {
+      "id": "shell-011",
+      "question": "What is the best way to run a script in the background?",
+      "answer": "Add \"&\" at the end of the command:\n\n```bash\nscript.sh &\ncommand &\n```\n\nTips for background processes:\n1. Use nohup to ignore SIGHUP:\n   nohup script.sh &\n\n2. Redirect output:\n   nohup script.sh > output.log 2>&1 &\n\n3. Use disown:\n   script.sh &\n   disown\n\n4. Check status:\n   jobs        # List background jobs\n   ps aux | grep script",
+      "difficulty": "easy",
+      "tags": ["background", "processes"]
+    },
+    {
+      "id": "shell-012",
+      "question": "What is the use of the \"$?\" command?",
+      "answer": "$? returns the exit status of the last command:\n- 0 = success\n- Non-zero = failure\n\nUsage:\n```bash\nls /path/to/file\nif [ $? -eq 0 ]; then\n  echo \"File exists\"\nfi\n```\n\nShorter syntax:\n```bash\nls /path && echo \"Success\" || echo \"Failed\"\n```",
+      "difficulty": "easy",
+      "tags": ["variables", "error-handling"]
+    },
+    {
+      "id": "shell-013",
+      "question": "How to check whether a link is a hard link or a soft link?",
+      "answer": "Using test command:\n```bash\n[ -h \"$file\" ] && echo \"Soft link\"\n[ -L \"$file\" ] && echo \"Symbolic link\"\n```\n\nUsing readlink:\n```bash\nreadlink FILE; echo $?\n# Returns 0 if symbolic link\n```\n\nUsing ls -l:\n```bash\nls -l file\n# l = soft link (arrow -> target)\n# - = regular file (hard link)",
+      "difficulty": "medium",
+      "tags": ["links", "filesystem"]
+    },
+    {
+      "id": "shell-014",
+      "question": "Why is a shell script needed?",
+      "answer": "Shell scripts are needed for:\n\n1. Automation - Run sequences of commands automatically\n2. System administration - Backups, monitoring, user management\n3. Software development - Build pipelines, deployment\n4. Creating custom tools - Build your own utilities\n5. Environment setup - Configure development environments\n\nBenefits: Time-saving, reduced errors, consistent results.",
+      "difficulty": "easy",
+      "tags": ["basics", "automation"]
+    },
+    {
+      "id": "shell-015",
+      "question": "Write some advantages of shell scripting.",
+      "answer": "Advantages:\n\n1. Easy to learn - Simple syntax\n2. Cross-platform - Works on Linux, BSD, macOS\n3. Powerful automation - Combine commands\n4. System access - Direct OS operations\n5. Resource efficient - Lightweight\n6. Integration - Works with pipes/filters",
+      "difficulty": "easy",
+      "tags": ["basics", "advantages"]
+    },
+    {
+      "id": "shell-016",
+      "question": "Write some limitations of shell scripting.",
+      "answer": "Limitations:\n\n1. Slower execution - Interpreted, not compiled\n2. Limited data structures - Basic arrays only\n3. Error-prone - Silent failures possible\n4. Portability issues - Bash vs sh differences\n5. Not for complex apps - Poor for GUIs\n6. Security concerns - Command injection risks",
+      "difficulty": "medium",
+      "tags": ["basics", "limitations"]
+    },
+    {
+      "id": "shell-017",
+      "question": "Name the file in which shell programs are stored.",
+      "answer": "Shell programs stored with extensions:\n- .sh - Standard extension\n- No extension - Common practice\n\nCommon locations:\n- /bin/ - System binaries\n- /usr/bin/ - User binaries\n- ~/bin/ - Personal scripts",
+      "difficulty": "easy",
+      "tags": ["basics", "files"]
+    },
+    {
+      "id": "shell-018",
+      "question": "Name different types of shells available.",
+      "answer": "Bourne Shells ($ prompt):\n1. sh - Original Unix shell\n2. bash - Most common, Linux default\n3. ksh - Korn Shell\n4. zsh - Z Shell (advanced)\n5. dash - Lightweight POSIX\n\nC Shells (% prompt):\n1. csh - C Shell\n2. tcsh - TENEX C Shell\n\nCheck: cat /etc/shells",
+      "difficulty": "easy",
+      "tags": ["basics", "shells"]
+    },
+    {
+      "id": "shell-019",
+      "question": "Write difference between Bourne Shell and C Shell.",
+      "answer": "Bourne Shell:\n- Compact and fast\n- No interactive features\n- No command history\n- Better for scripting\n\nC Shell:\n- Interactive features\n- Command history\n- Aliases support\n- Better for interactive use\n\nKey: $ prompt (Bourne) vs % prompt (C Shell)",
+      "difficulty": "medium",
+      "tags": ["shells", "comparison"]
+    },
+    {
+      "id": "shell-020",
+      "question": "What do you mean by Shell variable?",
+      "answer": "A shell variable stores data for use in scripts:\n\n```bash\nname=\"John\"\necho $name\n```\n\nTypes:\n- System variables: $HOME, $PATH, $USER\n- User variables: Created by user\n\nAlways quote variables with spaces.",
+      "difficulty": "easy",
+      "tags": ["variables", "basics"]
+    },
+    {
+      "id": "shell-021",
+      "question": "What are different types of variables used in shell scripting?",
+      "answer": "Two main types:\n\n1. System-defined (Environment):\n   $SHELL, $PATH, $HOME, $USER\n\n2. User-defined:\n   name=\"Alice\"\n   age=25\n\nBy scope:\n- Local: Current script/function\n- Environment: Exported to child processes\n- Special: Built-in variables",
+      "difficulty": "easy",
+      "tags": ["variables", "types"]
+    },
+    {
+      "id": "shell-022",
+      "question": "Explain the term positional parameters.",
+      "answer": "Positional parameters store command-line arguments:\n\n```bash\n$0    # Script name\n$1    # First argument\n$2    # Second argument\n${10} # Tenth argument (braces needed)\n```\n\nSpecial:\n- $# - Number of arguments\n- $@ - All arguments as separate strings\n- $* - All arguments as single string",
+      "difficulty": "medium",
+      "tags": ["variables", "arguments"]
+    },
+    {
+      "id": "shell-023",
+      "question": "What are control instructions?",
+      "answer": "Control instructions determine how statements execute:\n\nWithout: Commands run sequentially\nWith: Change execution flow, add logic\n\nPurpose:\n1. Execute code conditionally\n2. Repeat code blocks\n3. Choose between options",
+      "difficulty": "medium",
+      "tags": ["control-flow", "basics"]
+    },
+    {
+      "id": "shell-024",
+      "question": "How many types of control instructions are available in a shell?",
+      "answer": "Four types:\n\n1. Sequence - Commands in order\n2. Decision (if/then/else, case)\n3. Loop (for, while, until)\n4. Case Control (match patterns)",
+      "difficulty": "medium",
+      "tags": ["control-flow", "types"]
+    },
+    {
+      "id": "shell-025",
+      "question": "Explain ways to create shortcuts in Linux.",
+      "answer": "Two ways to create shortcuts:\n\n1. Hard Links:\n```bash\nln original.txt hardlink.txt\n```\n- Same inode\n- Cannot span file systems\n- Cannot link directories\n\n2. Soft Links (Symbolic):\n```bash\nln -s original.txt softlink.txt\n```\n- Different inode\n- Can span file systems\n- Can link directories",
+      "difficulty": "medium",
+      "tags": ["filesystem", "links"]
+    },
+    {
+      "id": "shell-026",
+      "question": "What is Shell?",
+      "answer": "Shell is a command-line interpreter between user and kernel.\n\nFunctions:\n1. Accepts user commands\n2. Interprets commands\n3. Executes programs\n4. Returns output\n\nFlow: User -> Shell -> Kernel -> Hardware",
+      "difficulty": "easy",
+      "tags": ["basics", "shell"]
+    },
+    {
+      "id": "shell-027",
+      "question": "Write difference between Hard link and Soft Link.",
+      "answer": "| Feature     | Hard Link      | Soft Link       |\n|-------------|----------------|----------------|\n| Inode       | Same           | Different       |\n| Survive del | Yes            | No (breaks)     |\n| Speed       | Faster         | Slower          |\n| Command     | ln             | ln -s           |\n| Cross FS    | No             | Yes             |\n| Directories | No             | Yes             |",
+      "difficulty": "medium",
+      "tags": ["links", "comparison"]
+    },
+    {
+      "id": "shell-028",
+      "question": "What do you mean by GUI Scripting?",
+      "answer": "GUI Scripting controls graphical interfaces programmatically.\n\nCommon tools:\n1. xdotool (Linux X11)\n2. sikulix (Cross-platform)\n3. AutoIt (Windows)\n4. AppleScript (macOS)\n\nExample:\n```bash\nxdotool mousemove 100 200 click 1\nxdotool type \"Hello\"\n```",
+      "difficulty": "medium",
+      "tags": ["gui", "automation"]
+    },
+    {
+      "id": "shell-029",
+      "question": "What is the shebang line in shell scripting?",
+      "answer": "Shebang (#!) tells OS which interpreter to use:\n\n```bash\n#!/bin/bash    # Bash\n#!/bin/sh      # POSIX sh\n#!/usr/bin/env python3  # Finds in PATH\n```\n\nBest practice: Place on first line, no spaces between # and !",
+      "difficulty": "easy",
+      "tags": ["basics", "script-structure"]
+    },
+    {
+      "id": "shell-030",
+      "question": "What is a file system? Write down the four core components.",
+      "answer": "File system manages data storage.\n\nFour components:\n\n1. Superblock - Metadata (block size, inode count)\n2. Boot Block - Bootstrap loader\n3. Data Blocks - File content storage\n4. Inodes - File metadata (permissions, owner, size)",
+      "difficulty": "hard",
+      "tags": ["filesystem", "structure"]
+    },
+    {
+      "id": "shell-031",
+      "question": "Name the alternative command for echo.",
+      "answer": "printf is the alternative to echo.\n\n```bash\necho \"Hello %s\" \"World\"\nprintf \"Hello %s\\n\" \"World\"\n```\n\nFormat specifiers:\n- %s - String\n- %d - Integer\n- %f - Float\n- %x - Hexadecimal",
+      "difficulty": "easy",
+      "tags": ["commands", "output"]
+    },
+    {
+      "id": "shell-032",
+      "question": "Explain the way you can connect to a database server.",
+      "answer": "MySQL/MariaDB:\n```bash\nmysql -h hostname -u username -p\nmysql -h localhost -u root -p mydb\n```\n\nPostgreSQL:\n```bash\npsql -h hostname -U username -d dbname\n```\n\nUsing isql (ODBC):\n```bash\nisql -S serverName -U username -P password\n```",
+      "difficulty": "hard",
+      "tags": ["database", "connectivity"]
+    },
+    {
+      "id": "shell-033",
+      "question": "What is the importance of $#?",
+      "answer": "$# stores the number of arguments passed.\n\n```bash\necho \"Arguments count: $#\"\n```\n\nCommon use - validation:\n```bash\nif [ $# -lt 2 ]; then\n  echo \"Usage: $0 <arg1> <arg2>\"\n  exit 1\nfi\n```",
+      "difficulty": "medium",
+      "tags": ["variables", "arguments"]
+    },
+    {
+      "id": "shell-034",
+      "question": "Write the command that is used to execute a shell file.",
+      "answer": "Methods to execute shell scripts:\n\n1. Make executable and run:\n```bash\nchmod +x script.sh\n./script.sh\n```\n\n2. Run with interpreter:\n```bash\nbash script.sh\nsh script.sh\n```\n\n3. Source (in current shell):\n```bash\nsource script.sh\n. script.sh\n```",
+      "difficulty": "easy",
+      "tags": ["execution", "basics"]
+    },
+    {
+      "id": "shell-035",
+      "question": "Name the command to find out the number of arguments passed.",
+      "answer": "Use $# to count arguments:\n```bash\necho $#\n```\n\nExample:\n```bash\n./script.sh one two three\n# Output: Arguments count: 3\n```",
+      "difficulty": "easy",
+      "tags": ["arguments", "variables"]
+    },
+    {
+      "id": "shell-036",
+      "question": "How long does a variable in a shell script last?",
+      "answer": "Variable lifespan depends on scope:\n\n1. Local variables - Exist during script execution\n2. Environment variables - Last until logout\n3. Shell variables - Current session only\n4. Readonly variables - Cannot be unset\n\nPersistence: Export variable or add to ~/.bashrc",
+      "difficulty": "easy",
+      "tags": ["variables", "scope"]
+    },
+    {
+      "id": "shell-037",
+      "question": "What does the . (dot) indicate at the beginning of the file name?",
+      "answer": "Files starting with . are hidden files.\n\nListing hidden files:\n```bash\nls -a           # All files including hidden\nls -a | grep ^\\.  # Only hidden files\n```\n\nExamples: .bashrc, .gitignore, .profile",
+      "difficulty": "easy",
+      "tags": ["files", "basics"]
+    },
+    {
+      "id": "shell-038",
+      "question": "What is the importance of sed command and awk command?",
+      "answer": "sed (Stream Editor):\n```bash\nsed 's/old/new/g' file.txt\nsed '/pattern/d' file.txt\n```\n\nawk (Pattern scanning):\n```bash\nawk '{print $1, $3}' file.txt\nawk '$3 > 100' file.txt\n```\n\nKey: sed for simple edits, awk for complex processing",
+      "difficulty": "hard",
+      "tags": ["text-processing", "commands"]
+    },
+    {
+      "id": "shell-039",
+      "question": "What do you mean by crontab?",
+      "answer": "crontab = cron table, schedules tasks automatically.\n\nFormat:\n```\n* * * * * command\n| | | | |\n| | | | └─── day (0-6)\n| | | └──── month (1-12)\n| | └────── day (1-31)\n| └───────── hour (0-23)\n└─────────── minute (0-59)\n```\n\nExamples:\n```bash\n0 2 * * *    # Daily at 2 AM\n*/5 * * * *  # Every 5 minutes\n```",
+      "difficulty": "medium",
+      "tags": ["cron", "automation"]
+    },
+    {
+      "id": "shell-040",
+      "question": "Name two files of crontab command.",
+      "answer": "Access control files:\n\n1. /etc/cron.allow - Users allowed to use crontab\n2. /etc/cron.deny - Users denied from using crontab\n\nLogic:\n- If cron.allow exists: Only listed users can crontab\n- Else if cron.deny exists: All EXCEPT listed can crontab\n- Else: All users can crontab",
+      "difficulty": "medium",
+      "tags": ["cron", "security"]
+    },
+    {
+      "id": "shell-041",
+      "question": "Name the command that is used to take the backup.",
+      "answer": "The tar command is used for backups:\n\n```bash\ntar -cvf backup.tar /path/to/dir\ntar -czvf backup.tar.gz /path/to/dir\n```\n\nOptions:\n- c = create\n- x = extract\n- v = verbose\n- f = file\n- z = gzip compression",
+      "difficulty": "medium",
+      "tags": ["backup", "commands"]
+    },
+    {
+      "id": "shell-042",
+      "question": "Write the difference between $* and $@",
+      "answer": "$* - All args as ONE string\n$@ - Each arg as SEPARATE quoted string\n\n```bash\nset -- one two three\necho \"$*\"     # one two three\necho \"$@\"     # one two three\n```\n\nLoop difference:\n```bash\nfor arg in \"$@\"; do\n  echo \"[$arg]\"\ndone\n# Preserves arguments with spaces\n```\n\nBest practice: Use \"$@\" to handle spaces.",
+      "difficulty": "medium",
+      "tags": ["variables", "arguments"]
+    },
+    {
+      "id": "shell-043",
+      "question": "Name the command to compare strings in a shell script.",
+      "answer": "The test command (or [ ]) compares strings:\n\n```bash\n[ \"$s1\" = \"$s2\" ]      # Equal\n[ \"$s1\" != \"$s2\" ]     # Not equal\n[ -z \"$s1\" ]           # Empty\n[ -n \"$s1\" ]           # Not empty\n```\n\nExample:\n```bash\nname=\"John\"\n[ \"$name\" = \"John\" ] && echo \"Match\"\n```",
+      "difficulty": "medium",
+      "tags": ["comparison", "strings"]
+    },
+    {
+      "id": "shell-044",
+      "question": "Write down the Syntax for all the loops in Shell Scripting.",
+      "answer": "Three loop types:\n\n1. for loop:\n```bash\nfor var in item1 item2 item3; do\n  echo \"$var\"\ndone\n```\n\n2. while loop:\n```bash\nwhile [ condition ]; do\n  commands\ndone\n```\n\n3. until loop:\n```bash\nuntil [ condition ]; do\n  commands\ndone\n```\n\nLoop controls: break, continue",
+      "difficulty": "medium",
+      "tags": ["loops", "syntax"]
+    },
+    {
+      "id": "shell-045",
+      "question": "What are interactive and non-interactive shells?",
+      "answer": "Interactive shell:\n- User types commands manually\n- Shows prompt, waits for input\n- Examples: terminal, SSH session\n\nNon-interactive shell:\n- Runs script automatically\n- No user interaction\n- Examples: cron, system scripts\n\nCheck mode:\n```bash\nif [[ $- == *i* ]]; then\n  echo \"Interactive\"\nfi\n```",
+      "difficulty": "medium",
+      "tags": ["shell", "modes"]
+    },
+    {
+      "id": "shell-046",
+      "question": "How will you pass and access arguments to a script in Linux?",
+      "answer": "Passing arguments:\n```bash\n./script.sh arg1 arg2 \"arg with spaces\"\n```\n\nAccessing arguments:\n```bash\n$0    # Script name\n$1    # First argument\n$2    # Second argument\n$@    # All arguments\n$#    # Count of arguments\n```",
+      "difficulty": "medium",
+      "tags": ["arguments", "functions"]
+    },
+    {
+      "id": "shell-047",
+      "question": "What do you mean by the \"s\" permission bit in a file?",
+      "answer": "\"s\" bit = SUID (Set User ID) special permission.\n\nWhat it does:\n- File executes with owner's permissions\n- Allows elevation without sudo\n\nExample:\n```bash\nls -l /usr/bin/passwd\n# -rwsr-xr-x = SUID set\n```\n\nSetting SUID:\n```bash\nchmod u+s file     # Set SUID\nchmod 4755 file   # SUID + rwxr-xr-x\n```",
+      "difficulty": "hard",
+      "tags": ["permissions", "security"]
+    },
+    {
+      "id": "shell-048",
+      "question": "How will you debug a shell script?",
+      "answer": "Debugging methods:\n\n1. Run with debug mode:\n```bash\nbash -x script.sh      # Print commands\nbash -v script.sh     # Print input lines\n```\n\n2. Add debug statements:\n```bash\nset -x  # Enable\nset +x  # Disable\n```\n\n3. Trap errors:\n```bash\ntrap 'echo \"Error on line $LINENO\"' ERR\n```\n\n4. ShellCheck:\n```bash\nshellcheck script.sh\n```",
+      "difficulty": "hard",
+      "tags": ["debugging", "troubleshooting"]
+    },
+    {
+      "id": "shell-049",
+      "question": "What is the best way to debug shell script problems?",
+      "answer": "Best debugging practices:\n\n1. Use set -euo pipefail\n2. Add debug statements\n3. Check syntax first:\n```bash\nbash -n script.sh\n```\n4. Use shellcheck\n5. Log everything\n6. Trap on error\n7. Test incrementally",
+      "difficulty": "hard",
+      "tags": ["debugging", "best-practices"]
+    },
+    {
+      "id": "shell-050",
+      "question": "Write the difference between \"=\" and \"==\".",
+      "answer": "= (Assignment):\n```bash\na=\"value\"\nb=$a\n```\n\n== (Equality comparison):\n```bash\nif [ \"$a\" == \"$b\" ]; then\n  echo \"Equal\"\nfi\n```\n\nBest practice:\n- Use = for assignment\n- Use == or = for comparison (both work)",
+      "difficulty": "medium",
+      "tags": ["operators", "comparison"]
+    },
+    {
+      "id": "shell-051",
+      "question": "Name the command to display the shell's environment variable.",
+      "answer": "Commands to view environment:\n\n```bash\nprintenv              # All variables\nprintenv HOME         # Specific variable\nenv                   # All environment\nset                   # All shell variables\n```\n\nDifference:\n- env/printenv: Environment variables only\n- set: All shell variables",
+      "difficulty": "easy",
+      "tags": ["environment", "variables"]
+    },
+    {
+      "id": "shell-052",
+      "question": "Name different commands to check the disk usage.",
+      "answer": "Disk usage commands:\n\n1. df (filesystem):\n```bash\ndf -h              # Human readable\ndf -i              # Inode usage\n```\n\n2. du (disk usage):\n```bash\ndu -sh /path       # Total size\ndu -h --max-depth=1 /path\n```\n\n3. ncdu:\n```bash\nncdu /path         # Interactive\n```",
+      "difficulty": "medium",
+      "tags": ["disk", "monitoring"]
+    },
+    {
+      "id": "shell-053",
+      "question": "What do you mean by metacharacters?",
+      "answer": "Metacharacters have special meaning to shell:\n\nFile globbing:\n```bash\n*    # Match any characters\n?    # Match single character\n[abc] # Match any in brackets\n```\n\nOther metacharacters:\n```bash\n|    # Pipe\n&    # Background\n;    # Command separator\n$    # Variable prefix\n< >  # Redirection\n```\n\nEscape with quotes:\necho \"*\"  # Prints *",
+      "difficulty": "medium",
+      "tags": ["metacharacters", "basics"]
+    },
+    {
+      "id": "shell-054",
+      "question": "How will you find total shells available in your system?",
+      "answer": "Find available shells:\n\n```bash\ncat /etc/shells\ngetent shells\n```\n\nDisplay current shell:\n```bash\necho $SHELL\nps -p $$ -o comm=\n```\n\nChange shell:\n```bash\nchsh -s /bin/zsh\nchsh -s /bin/bash\n```",
+      "difficulty": "easy",
+      "tags": ["shells", "system"]
+    },
+    {
+      "id": "shell-055",
+      "question": "Explain how you will open a read-only file in Unix/Shell.",
+      "answer": "View without changing:\n```bash\ncat file.txt\nless file.txt\nhead file.txt\n```\n\nForce edit (with permissions):\n```bash\nsudo nano file.txt\nsudo vim file.txt\n```\n\nRedirect to new file:\n```bash\ncat file.txt > newfile.txt\nsudo cp file.txt /tmp/backup.txt\n```",
+      "difficulty": "medium",
+      "tags": ["files", "permissions"]
+    },
+    {
+      "id": "shell-056",
+      "question": "Name the command to know how long the system has been running.",
+      "answer": "Commands to check uptime:\n\n```bash\nuptime\n# 14:32:01 up 5 days, 3:22, load average: 0.52\n\nuptime -s     # Since when running\nuptime -p     # Pretty format\n\nwho -b        # Last boot time\nlast reboot\n```",
+      "difficulty": "easy",
+      "tags": ["system", "monitoring"]
+    },
+    {
+      "id": "shell-057",
+      "question": "Write the difference between $$ and $!",
+      "answer": "$$ - Current script's PID:\n```bash\necho \"Script PID: $$\"\n```\n\n$! - PID of last background process:\n```bash\nsleep 100 &\necho \"Background PID: $!\"\n```\n\nUse $$ for unique log files, $! for tracking background jobs.",
+      "difficulty": "medium",
+      "tags": ["variables", "processes"]
+    },
+    {
+      "id": "shell-058",
+      "question": "Write difference between grep and find command.",
+      "answer": "grep - Search file contents:\n```bash\ngrep \"pattern\" file.txt\ngrep -r \"pattern\" directory/\n```\n\nfind - Search file names/locations:\n```bash\nfind /path -name \"*.txt\"\nfind /path -type f -mtime -7\n```\n\n| Aspect      | grep           | find            |\n|-------------|----------------|----------------|\n| Searches    | File contents  | File names      |\n| Location    | Within files   | Directory tree  |",
+      "difficulty": "medium",
+      "tags": ["commands", "comparison"]
+    },
+    {
+      "id": "shell-059",
+      "question": "How can we create a function in shell script?",
+      "answer": "Function syntax:\n\nStyle 1 (POSIX):\n```bash\nfunction_name() {\n  commands\n  return value\n}\n```\n\nStyle 2 (bash):\n```bash\nfunction function_name {\n  commands\n  return value\n}\n```\n\nCalling:\n```bash\ngreet() {\n  local name=\"$1\"\n  echo \"Hello, $name\"\n}\ngreet \"World\"\n```",
+      "difficulty": "medium",
+      "tags": ["functions", "basics"]
+    },
+    {
+      "id": "shell-060",
+      "question": "How to use pipe commands?",
+      "answer": "Pipe (|) connects command outputs:\n\n```bash\nls -l | grep \"^d\" | wc -l\ncat file.txt | sort | uniq\nps aux | grep nginx\n```\n\ntee - save and pass through:\n```bash\ncommand | tee output.txt | another_command\n```",
+      "difficulty": "easy",
+      "tags": ["pipes", "basics"]
+    },
+    {
+      "id": "shell-061",
+      "question": "What is set -Eeuo pipefail and why use it?",
+      "answer": "Strict error handling flags:\n\n```bash\nset -Eeuo pipefail\n```\n\nOptions:\n- -e: Exit on command failure\n- -u: Exit on undefined variable\n- -o pipefail: Pipeline fails if any command fails\n- -E: ERR trap inherited by functions\n\nAlways use in production scripts!",
+      "difficulty": "hard",
+      "tags": ["error-handling", "best-practices"]
+    },
+    {
+      "id": "shell-062",
+      "question": "Write a deployment script with rollback on failure.",
+      "answer": "Production deployment script:\n```bash\n#!/bin/bash\nset -Eeuo pipefail\n\nAPP_DIR=\"/opt/myapp\"\nBACKUP_DIR=\"/opt/myapp-backup-$(date +%Y%m%d-%H%M%S)\"\n\nrollback() {\n  echo \"[ROLLBACK] Deployment failed!\"\n  rm -rf \"$APP_DIR\"\n  cp -r \"$BACKUP_DIR\" \"$APP_DIR\"\n  systemctl restart myapp\n}\n\ntrap rollback ERR\n\ncp -r \"$APP_DIR\" \"$BACKUP_DIR\"\nrsync -av --delete ./dist/ \"$APP_DIR/\"\nsystemctl restart myapp\n```",
+      "difficulty": "hard",
+      "tags": ["deployment", "automation"]
+    },
+    {
+      "id": "shell-063",
+      "question": "How do you comment in a shell script?",
+      "answer": "Single-line comments:\n```bash\n# This is a comment\necho \"Hello\"  # Inline comment\n```\n\nMulti-line (workaround):\n```bash\n: '\nThis is a multi-line\ncomment block\n'\n```",
+      "difficulty": "easy",
+      "tags": ["comments", "basics"]
+    },
+    {
+      "id": "shell-064",
+      "question": "What is the difference between absolute and relative paths?",
+      "answer": "Absolute path:\n- Complete path from root (/)\n- Same anywhere\n- Starts with /\nExample: /home/user/docs/file.txt\n\nRelative path:\n- Path from current directory\n- Changes based on location\n- Does NOT start with /\nExamples: ./file.txt, ../file.txt",
+      "difficulty": "easy",
+      "tags": ["paths", "filesystem"]
+    },
+    {
+      "id": "shell-065",
+      "question": "Explain the difference between && and || operators.",
+      "answer": "&& (AND) - Execute if previous succeeds:\n```bash\ncd /tmp && ls\n```\n\n|| (OR) - Execute if previous FAILS:\n```bash\ncd /tmp || echo \"Failed\"\n```\n\nCombined:\n```bash\nmkdir -p /backup && tar -czvf backup.tar.gz /data || echo \"Backup failed\"\n```",
+      "difficulty": "easy",
+      "tags": ["operators", "control-flow"]
+    },
+    {
+      "id": "shell-066",
+      "question": "What is process substitution in shell scripting?",
+      "answer": "Process substitution treats command output as a file:\n\n```bash\n<(command)    # Read from command\n>(command)     # Write to command\n```\n\nExamples:\n```bash\ndiff <(ls dir1) <(ls dir2)\ncat <(echo hello)\nwhile read line; do echo \"$line\"; done < <(grep pattern file)\n```\n\nRequires bash 4+.",
+      "difficulty": "hard",
+      "tags": ["advanced", "processes"]
+    },
+    {
+      "id": "shell-067",
+      "question": "Explain the grep command in Linux.",
+      "answer": "grep - Global Regular Expression Print:\n\n```bash\ngrep \"pattern\" file.txt\ngrep -i \"pattern\"    # Case insensitive\ngrep -r \"pattern\"    # Recursive\ngrep -v \"pattern\"    # Invert match\ngrep -n \"pattern\"    # Line numbers\ngrep -c \"pattern\"    # Count\n```\n\nRegex:\n```bash\ngrep \"^start\" file     # Starts with\ngrep \"end$\" file       # Ends with\n```",
+      "difficulty": "medium",
+      "tags": ["commands", "search"]
+    },
+    {
+      "id": "shell-068",
+      "question": "What is the purpose of tar command in Linux?",
+      "answer": "tar = Tape Archive\n\nCreate:\n```bash\ntar -cvf archive.tar /path/to/dir\ntar -czvf archive.tar.gz /path\n```\n\nExtract:\n```bash\ntar -xvf archive.tar\ntar -xzvf archive.tar.gz\n```\n\nList:\n```bash\ntar -tvf archive.tar\n```",
+      "difficulty": "medium",
+      "tags": ["commands", "backup"]
+    },
+    {
+      "id": "shell-069",
+      "question": "What is SSH and how is it used in Linux?",
+      "answer": "SSH = Secure Shell\n\nBasic usage:\n```bash\nssh user@hostname\nssh -p 2222 user@hostname\nssh user@host \"ls -la\"\n```\n\nCopy files:\n```bash\nscp file.txt user@host:/path/\nscp -r folder/ user@host:/path/\n```\n\nKey-based auth:\n```bash\nssh-keygen -t ed25519\nssh-copy-id user@host\n```",
+      "difficulty": "medium",
+      "tags": ["network", "security"]
+    },
+    {
+      "id": "shell-070",
+      "question": "How do you check system resource usage in Linux?",
+      "answer": "CPU and processes:\n```bash\ntop\nhtop\nps aux\n```\n\nMemory:\n```bash\nfree -h\nvmstat 1\n```\n\nDisk:\n```bash\ndf -h\ndu -sh *\n```\n\nI/O:\n```bash\niostat -x 1\n```\n\nNetwork:\n```bash\nnetstat -tulpn\nss -tulpn\n```",
+      "difficulty": "medium",
+      "tags": ["monitoring", "system"]
+    },
+    {
+      "id": "shell-071",
+      "question": "Write a script to count occurrences of a character in a string.",
+      "answer": "Method 1 - grep and wc:\n```bash\nx=\"mississippi\"\ncount=$(grep -o \"s\" <<<\"$x\" | wc -l)\necho \"$count\"  # Output: 4\n```\n\nMethod 2 - tr and wc:\n```bash\ncount=$(echo \"$x\" | tr -cd 's' | wc -c)\n```\n\nMethod 3 - Parameter expansion:\n```bash\ncount=${x//[^s]/}\necho ${#count}\n```",
+      "difficulty": "medium",
+      "tags": ["strings", "functions"]
+    },
+    {
+      "id": "shell-072",
+      "question": "Explain loop and conditionals with examples.",
+      "answer": "if statement:\n```bash\nif [ \"$age\" -ge 18 ]; then\n  echo \"Adult\"\nelif [ \"$age\" -ge 13 ]; then\n  echo \"Teen\"\nelse\n  echo \"Child\"\nfi\n```\n\nfor loop:\n```bash\nfor i in 1 2 3 4 5; do\n  echo \"Number: $i\"\ndone\n```\n\nwhile loop:\n```bash\ncount=1\nwhile [ $count -le 5 ]; do\n  echo \"Count: $count\"\n  ((count++))\ndone\n```",
+      "difficulty": "medium",
+      "tags": ["loops", "conditionals"]
+    },
+    {
+      "id": "shell-073",
+      "question": "Write a script to print process IDs of all processes.",
+      "answer": "Using ps:\n```bash\nps -ef | awk '{print $2}'\n```\n\nUsing pgrep:\n```bash\npgrep nginx\npgrep -a apache2\n```\n\nComplete script:\n```bash\n#!/bin/bash\necho \"All Process PIDs:\"\nps -eo pid --no-headers | sort -n\necho \"\"\necho \"Apache PIDs:\"\npgrep apache2\n```",
+      "difficulty": "medium",
+      "tags": ["processes", "scripts"]
+    },
+    {
+      "id": "shell-074",
+      "question": "What are arrays in Bash and how to use them?",
+      "answer": "Bash arrays:\n\nDeclaration:\n```bash\narr=(one two three)\narr[0]=first\ndeclare -A arr2  # Associative array\n```\n\nAccessing:\n```bash\necho \"${arr[0]}\"       # First element\necho \"${arr[@]}\"      # All elements\necho \"${#arr[@]}\"     # Array length\n```\n\nIterating:\n```bash\nfor item in \"${arr[@]}\"; do\n  echo \"$item\"\ndone\n```",
+      "difficulty": "hard",
+      "tags": ["arrays", "advanced"]
+    },
+    {
+      "id": "shell-075",
+      "question": "What is the read command and how to use it?",
+      "answer": "read - Input from user:\n\n```bash\nread name\nread -p \"Enter name: \" name\nread -s -p \"Password: \" pass  # Silent\nread -t 5 var                    # Timeout\nread -n 3 var                     # Max 3 chars\nread -a arr                      # Read into array\n```\n\nExample:\n```bash\nread -p \"Enter your name: \" name\necho \"Hello $name\"\n```",
+      "difficulty": "medium",
+      "tags": ["input", "commands"]
+    },
+    {
+      "id": "shell-076",
+      "question": "How do you use brace expansion?",
+      "answer": "Brace expansion generates strings:\n\n```bash\necho {a,b,c}          # a b c\necho {1..5}           # 1 2 3 4 5\necho {01..10}         # 01 02 ... 10\necho {0..10..2}       # 0 2 4 6 8 10\n```\n\nCommon uses:\n```bash\ntouch file{1..5}.txt\nmkdir -p project/{src,lib,test}\ncp file.txt{,.bak}\n```",
+      "difficulty": "medium",
+      "tags": ["expansion", "advanced"]
+    },
+    {
+      "id": "shell-077",
+      "question": "What is xargs and when to use it?",
+      "answer": "xargs - Build and execute command lines from input:\n\n```bash\necho \"file1 file2 file3\" | xargs rm\nfind . -name \"*.tmp\" | xargs rm\n```\n\nOptions:\n```bash\nxargs -n 1        # One argument per command\nxargs -I {}       # Replace placeholder\nxargs -p          # Prompt before execution\nxargs -0          # Handle null-separated input\n```\n\nExample:\n```bash\nls *.txt | xargs -I {} cp {} /backup/\n```",
+      "difficulty": "hard",
+      "tags": ["commands", "pipes"]
+    },
+    {
+      "id": "shell-078",
+      "question": "How do you trap signals in Bash?",
+      "answer": "trap - Execute command on signal:\n\n```bash\ntrap 'echo \"Caught SIGINT\"' INT\ntrap 'cleanup' EXIT\ntrap 'echo \"Caught SIGTERM\"' TERM\ntrap 'echo \"Line $LINENO\"' ERR\n```\n\nPractical example:\n```bash\ncleanup() {\n  echo \"Cleaning up...\"\n  rm -f \"${TMP_FILES[@]}\"\n}\ntrap cleanup EXIT\n```",
+      "difficulty": "hard",
+      "tags": ["signals", "advanced"]
+    },
+    {
+      "id": "shell-079",
+      "question": "What are here-documents and here-strings?",
+      "answer": "Here-document (heredoc):\n```bash\ncat <<EOF\nLine 1\nLine 2\nVariable: $HOME\nEOF\n```\n\nDisable variable expansion:\n```bash\ncat <<'EOF'\n$HOME won't expand\nEOF\n```\n\nHere-string:\n```bash\ngrep pattern <<< \"some text here\"\nread a b c <<< \"one two three\"\n```",
+      "difficulty": "hard",
+      "tags": ["io", "advanced"]
+    },
+    {
+      "id": "shell-080",
+      "question": "How do you check if a file exists in Bash?",
+      "answer": "File test operators:\n```bash\n[ -f file ]       # Regular file exists\n[ -d dir ]        # Directory exists\n[ -e file ]       # File exists (any type)\n[ -L file ]       # Symbolic link\n[ -s file ]       # Exists and not empty\n[ -r file ]       # Readable\n[ -w file ]       # Writable\n[ -x file ]       # Executable\n```\n\nExamples:\n```bash\nif [ -f \"config.txt\" ]; then\n  echo \"Config exists\"\nfi\n```",
+      "difficulty": "medium",
+      "tags": ["files", "conditionals"]
+    },
+    {
+      "id": "shell-081",
+      "question": "Write a script to monitor a service and restart if down.",
+      "answer": "Service monitoring script:\n```bash\n#!/bin/bash\nSERVICE=\"nginx\"\n\nif systemctl is-active --quiet \"$SERVICE\"; then\n  echo \"$SERVICE is running\"\nelse\n  echo \"$SERVICE is DOWN! Restarting...\"\n  systemctl restart \"$SERVICE\"\n  sleep 3\n  if systemctl is-active --quiet \"$SERVICE\"; then\n    echo \"Restart successful\"\n  else\n    echo \"CRITICAL: Restart failed\"\n  fi\nfi\n```\n\nCron: */5 * * * * /opt/scripts/service-monitor.sh",
+      "difficulty": "hard",
+      "tags": ["monitoring", "automation"]
+    },
+    {
+      "id": "shell-082",
+      "question": "What is arithmetic expansion in Bash?",
+      "answer": "Arithmetic expansion - calculate math:\n\n```bash\necho $(( 2 + 3 ))      # 5\necho $(( 10 - 4 ))     # 6\necho $(( 3 * 4 ))      # 12\necho $(( 15 / 3 ))     # 5\necho $(( 17 % 5 ))     # 2\n```\n\nVariables:\n```bash\na=5; b=3\necho $(( a + b ))      # 8\necho $(( a ** b ))     # 125 (power)\n```\n\nNote: Only integers. Use bc for floats.",
+      "difficulty": "medium",
+      "tags": ["math", "advanced"]
+    },
+    {
+      "id": "shell-083",
+      "question": "How do you use select menu in Bash?",
+      "answer": "select - Create menu from list:\n```bash\n#!/bin/bash\necho \"Choose an option:\"\nselect option in \"Start\" \"Stop\" \"Restart\" \"Quit\"\ndo\n  case $option in\n    Start)   echo \"Starting...\" ;;\n    Stop)    echo \"Stopping...\" ;;\n    Restart) echo \"Restarting...\" ;;\n    Quit)    break ;;\n    *)       echo \"Invalid option\" ;;\n  esac\ndone\n```\n\nCustom prompt:\n```bash\nPS3=\"Enter choice (1-4): \"\n```",
+      "difficulty": "hard",
+      "tags": ["menu", "interactive"]
+    },
+    {
+      "id": "shell-084",
+      "question": "What is parameter expansion?",
+      "answer": "Parameter expansion - manipulate variables:\n\n```bash\n${#var}               # Length\n${var:offset}         # Substring\n${var:offset:len}     # Substring length\n${var#pattern}        # Remove shortest (front)\n${var##pattern}       # Remove longest (front)\n${var%pattern}        # Remove shortest (back)\n${var%%pattern}       # Remove longest (back)\n${var/pattern/string} # Replace first\n${var//pattern/string} # Replace all\n```\n\nExamples:\n```bash\npath=\"/home/user/file.txt\"\necho ${path##*/}       # file.txt\necho ${path%/*}        # /home/user\n```",
+      "difficulty": "hard",
+      "tags": ["expansion", "advanced"]
+    },
+    {
+      "id": "shell-085",
+      "question": "How do you work with dates in shell scripts?",
+      "answer": "date command basics:\n```bash\ndate\ndate +\"%Y-%m-%d\"       # 2024-01-15\ndate +\"%H:%M:%S\"       # 14:30:45\ndate +\"%d/%m/%Y\"       # 15/01/2024\ndate +\"%s\"            # Unix timestamp\n```\n\nCommon uses:\n```bash\ntar -czvf backup-$(date +%Y%m%d).tar.gz /data\nNOW=$(date -Iseconds)\n```\n\nRelative dates:\n```bash\ndate -d \"yesterday\"\ndate -d \"next month\"\n```",
+      "difficulty": "medium",
+      "tags": ["date", "commands"]
+    },
+    {
+      "id": "shell-086",
+      "question": "What is the difference between [ and [[ ?",
+      "answer": "[ is POSIX test, [[ is bash extension\n\n[[ advantages:\n```bash\n# No word splitting\n[[ $text == \"hello world\" ]]  # Works\n\n# Pattern matching\n[[ $filename == *.txt ]]\n[[ $name =~ ^a.* ]]\n\n# < and > are string comparisons\n[[ \"a\" < \"b\" ]]  # Works\n```\n\nAlways use [[ ]] in bash scripts for safety.",
+      "difficulty": "hard",
+      "tags": ["conditionals", "advanced"]
+    },
+    {
+      "id": "shell-087",
+      "question": "How do you read a file line by line?",
+      "answer": "Methods to read file line by line:\n\nwhile read:\n```bash\nwhile IFS= read -r line; do\n  echo \"$line\"\ndone < \"$filename\"\n```\n\nWith field splitting:\n```bash\nwhile IFS=: read -r user pass uid gid home shell; do\n  echo \"User: $user\"\ndone < /etc/passwd\n```\n\nUsing mapfile (bash 4+):\n```bash\nmapfile -t lines < \"$filename\"\n```",
+      "difficulty": "hard",
+      "tags": ["files", "io"]
+    },
+    {
+      "id": "shell-088",
+      "question": "What are exit codes and how to use them?",
+      "answer": "Exit codes - command success/failure:\n\n- 0 = Success\n- 1 = General error\n- 2 = Misuse\n- 127 = Command not found\n\nCheck exit code:\n```bash\ncommand\nif [ $? -eq 0 ]; then\n  echo \"Success\"\nfi\n\n# Shorter\ncommand && echo \"Success\" || echo \"Failed\"\n```",
+      "difficulty": "medium",
+      "tags": ["error-handling", "basics"]
+    },
+    {
+      "id": "shell-089",
+      "question": "How do you use subshells and command grouping?",
+      "answer": "Subshells - run commands in child process:\n\n```bash\n# Subshell - isolated environment\n(cd /tmp && ls)\n# Current directory unchanged\n\n# Brace group - same environment\n{ cd /tmp; ls; }\n# Current directory changed\n```\n\nVariables don't leak from subshells:\n```bash\n( var=123 )\necho $var  # Empty\n```",
+      "difficulty": "hard",
+      "tags": ["subshells", "advanced"]
+    },
+    {
+      "id": "shell-090",
+      "question": "What is tee command and when to use it?",
+      "answer": "tee - Read from stdin, write to file and stdout:\n\n```bash\necho \"Hello\" | tee output.txt\n```\n\nOptions:\n```bash\ntee -a file.txt           # Append\ntee file1.txt file2.txt   # Multiple files\ncommand | tee file.txt    # Capture output\n```\n\nWith sudo:\n```bash\ncommand | sudo tee /etc/file.txt > /dev/null\n```\n\nLogging:\n```bash\n./script.sh | tee log.txt\n```",
+      "difficulty": "medium",
+      "tags": ["io", "commands"]
+    },
+    {
+      "id": "shell-091",
+      "question": "How do you create and use temporary files safely?",
+      "answer": "mktemp - Create temporary file/directory:\n\n```bash\ntmp=$(mktemp)           # File\ntmpdir=$(mktemp -d)     # Directory\ntmp=$(mktemp --suffix=.txt)\ntmp=$(mktemp myapp-XXXXXX)\n```\n\nCleanup pattern:\n```bash\ntmp1=$(mktemp)\ntmp2=$(mktemp)\ntrap 'rm -f \"$tmp1\" \"$tmp2\"; rmdir \"$tmpdir\" 2>/dev/null' EXIT\n```",
+      "difficulty": "hard",
+      "tags": ["files", "security"]
+    },
+    {
+      "id": "shell-092",
+      "question": "What is eval and why is it dangerous?",
+      "answer": "eval - Execute string as command:\n\n```bash\neval \"echo hello\"\ncmd=\"ls -l\"\neval $cmd\n```\n\nDANGER - Command injection:\n```bash\n# UNSAFE\nread -p \"Enter command: \" input\neval $input\n# User can enter: ; rm -rf /\n```\n\nSafer alternatives:\n```bash\nexec $input\ncmd=(\"ls\" \"-l\" \"$dir\")\n\"${cmd[@]}\"\n```",
+      "difficulty": "hard",
+      "tags": ["security", "advanced"]
+    },
+    {
+      "id": "shell-093",
+      "question": "How do you handle user input validation?",
+      "answer": "Numeric validation:\n```bash\nread -p \"Enter age: \" age\nif ! [[ \"$age\" =~ ^[0-9]+$ ]]; then\n  echo \"Must be a number\"\nfi\n```\n\nYes/No prompts:\n```bash\nread -p \"Continue? (y/n): \" -n 1 -r\nif [[ ! $REPLY =~ ^[Yy]$ ]]; then\n  exit 1\nfi\n```\n\nEmail validation:\n```bash\nif ! [[ \"$email\" =~ ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$ ]]; then\n  echo \"Invalid email\"\nfi\n```",
+      "difficulty": "hard",
+      "tags": ["validation", "security"]
+    },
+    {
+      "id": "shell-094",
+      "question": "How do you append to a file in Bash?",
+      "answer": "Append methods:\n\n```bash\necho \"text\" >> file.txt\n```\n\nUsing tee:\n```bash\necho \"line\" | tee -a file.txt\n```\n\nWith sudo:\n```bash\ncommand | sudo tee -a /var/log/app.log > /dev/null\n```\n\nHeredoc append:\n```bash\ncat >> file.txt <<EOF\nNew line 1\nNew line 2\nEOF\n```",
+      "difficulty": "medium",
+      "tags": ["io", "files"]
+    },
+    {
+      "id": "shell-095",
+      "question": "How do you parse command-line arguments?",
+      "answer": "Using getopts (bash built-in):\n```bash\nwhile getopts \"hvf:o:\" opt; do\n  case $opt in\n    h)  echo \"Help\"; exit 0 ;;\n    v)  VERBOSE=1 ;;\n    f)  FILE=\"$OPTARG\" ;;\n    o)  OUTPUT=\"$OPTARG\" ;;\n    :)  echo \"Option -$OPTARG requires argument\" ;;\n    ?)  echo \"Invalid option\"; exit 1 ;;\n  esac\ndone\n\nshift $((OPTIND-1))\n```\n\nUsage:\n```bash\n./script.sh -v -f input.txt\n```",
+      "difficulty": "hard",
+      "tags": ["arguments", "functions"]
+    },
+    {
+      "id": "shell-096",
+      "question": "Write a script to find large files in a directory.",
+      "answer": "Find large files script:\n```bash\n#!/bin/bash\nDIR=\"${1:-.}\"\nSIZE=\"${2:-100M}\"\n\nfind \"$DIR\" -type f -size \"+$SIZE\" -exec du -h {} + 2>/dev/null |\nsort -rh | head -n 20\n```\n\nUsage:\n```bash\n./find_large.sh /home 50M\n./find_large.sh /var/log 1G\n```\n\nAlternative using du:\n```bash\ndu -ah \"$1\" | sort -rh | head -n 20\n```",
+      "difficulty": "hard",
+      "tags": ["files", "scripts"]
+    },
+    {
+      "id": "shell-097",
+      "question": "What is the difference between export and declare -x?",
+      "answer": "export - Mark variable for export to child processes:\n```bash\nexport VAR=value\nexport VAR\n```\n\ndeclare -x - Bash equivalent:\n```bash\ndeclare -x VAR=value\ndeclare +x VAR   # Remove export\n```\n\nKey difference:\n- export is POSIX standard\n- declare -x is bash-specific\n\nCheck exported:\n```bash\nexport -p\nenv | grep VAR\n```",
+      "difficulty": "hard",
+      "tags": ["environment", "variables"]
+    },
+    {
+      "id": "shell-098",
+      "question": "How do you create a log rotation script?",
+      "answer": "Log rotation script:\n```bash\n#!/bin/bash\nLOG_DIR=\"/var/log/myapp\"\nMAX_SIZE=\"10M\"\nKEEP_LOGS=7\n\nrotate_log() {\n  local logfile=\"$1\"\n  size=$(stat -c%s \"$logfile\" 2>/dev/null)\n  max=$(numfmt --from=iec \"$MAX_SIZE\" 2>/dev/null)\n  \n  if [ \"$size\" -gt \"$max\" ]; then\n    mv \"$logfile\" \"${logfile}.$(date +%Y%m%d-%H%M%S)\"\n    touch \"$logfile\"\n  fi\n}\n\nfind \"$LOG_DIR\" -name \"*.log\" -type f -exec bash -c 'rotate_log \"$1\"' _ {} \\;\nfind \"$LOG_DIR\" -name \"*.log.*\" -mtime \"+$KEEP_LOGS\" -delete\n```",
+      "difficulty": "hard",
+      "tags": ["logs", "automation"]
+    },
+    {
+      "id": "shell-099",
+      "question": "What is mapfile/readarray and when to use them?",
+      "answer": "mapfile/readarray - Read lines into array:\n\n```bash\nmapfile lines < file.txt\nreadarray lines < file.txt\n```\n\nOptions:\n```bash\nmapfile -t lines < file.txt   # Remove trailing newline\nmapfile -n 10 lines < file.txt  # First 10 lines\nmapfile -s 5 lines < file.txt  # Skip first 5\n```\n\nExamples:\n```bash\nmapfile -t logs < app.log\necho \"${#logs[@]} lines\"\n\nmapfile -t files < <(find . -name \"*.txt\")\n```\n\nRequires Bash 4+.",
+      "difficulty": "hard",
+      "tags": ["arrays", "io"]
+    },
+    {
+      "id": "shell-100",
+      "question": "How do you use coprocesses in Bash?",
+      "answer": "Coprocess - Background process with two-way communication:\n\n```bash\ncoproc GREP { grep pattern; }\necho \"line1\" >& \"${GREP[1]}\"\necho \"pattern found\" >& \"${GREP[1]}\"\ncat <& \"${GREP[0]}\"\nkill \"${GREP_PID}\"\n```\n\nDatabase connection example:\n```bash\ncoproc DB { mysql -u root -p mydb; }\necho \"SELECT VERSION();\" >& \"${DB[1]}\"\ncat <& \"${DB[0]}\"\necho \"QUIT;\" >& \"${DB[1]}\"\n```\n\nUseful for: Interactive programs, long-running servers, two-way pipes.",
+      "difficulty": "hard",
+      "tags": ["processes", "advanced"]
     }
   ]
 }
