@@ -62,18 +62,19 @@ export function Quiz() {
   > | null>(null);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
 
+  const localSubject = selectedSubject || subjectParam || 'kubernetes';
+
   // Initialize from URL param
   useEffect(() => {
-    if (subjectParam) {
+    if (subjectParam && !selectedSubject) {
       setConfiguration({ subject: subjectParam });
       setShowConfig(true);
     }
-  }, [subjectParam]);
+  }, [subjectParam, selectedSubject]);
 
   // Start quiz
   const handleStartQuiz = () => {
-    const subject = selectedSubject || 'kubernetes';
-    // Ensure selectedSubject is set in store before starting
+    const subject = localSubject;
     setConfiguration({ subject });
     const allQuestions = getQuestionsForSubject(subject);
     const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
@@ -227,7 +228,7 @@ export function Quiz() {
                   Subject
                 </label>
                 <select
-                  value={selectedSubject || 'kubernetes'}
+                  value={localSubject}
                   onChange={e => setConfiguration({ subject: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500"
                 >
