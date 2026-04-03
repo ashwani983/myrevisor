@@ -68,7 +68,7 @@ export function Quiz() {
       setConfiguration({ subject: subjectParam });
       setShowConfig(true);
     }
-  }, [subjectParam, setConfiguration]);
+  }, [subjectParam]);
 
   // Start quiz
   const handleStartQuiz = () => {
