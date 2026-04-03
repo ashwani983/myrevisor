@@ -61,20 +61,22 @@ export function Quiz() {
     typeof endQuiz
   > | null>(null);
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
-
-  const localSubject = selectedSubject || subjectParam || 'kubernetes';
+  const [dropdownSubject, setDropdownSubject] = useState<string>(
+    subjectParam || 'kubernetes'
+  );
 
   // Initialize from URL param
   useEffect(() => {
-    if (subjectParam && !selectedSubject) {
+    if (subjectParam) {
+      setDropdownSubject(subjectParam);
       setConfiguration({ subject: subjectParam });
       setShowConfig(true);
     }
-  }, [subjectParam, selectedSubject]);
+  }, [subjectParam]);
 
   // Start quiz
   const handleStartQuiz = () => {
-    const subject = localSubject;
+    const subject = dropdownSubject;
     setConfiguration({ subject });
     const allQuestions = getQuestionsForSubject(subject);
     const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
@@ -228,8 +230,8 @@ export function Quiz() {
                   Subject
                 </label>
                 <select
-                  value={localSubject}
-                  onChange={e => setConfiguration({ subject: e.target.value })}
+                  value={dropdownSubject}
+                  onChange={e => setDropdownSubject(e.target.value)}
                   className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500"
                 >
                   {getAllSubjects().map(subject => (
