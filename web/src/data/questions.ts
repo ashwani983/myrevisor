@@ -25,6 +25,7 @@ const subjectOverrides: Record<
   kubernetes: { name: 'Kubernetes' },
   linux: { name: 'Linux' },
   shell: { name: 'Shell Scripting' },
+  ansible: { name: 'Ansible' },
 };
 
 const globModules = import.meta.glob<{ default: QuestionData }>(
