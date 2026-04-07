@@ -26,6 +26,7 @@ const subjectOverrides: Record<
   linux: { name: 'Linux' },
   shell: { name: 'Shell Scripting' },
   ansible: { name: 'Ansible' },
+  terraform: { name: 'Terraform' },
 };
 
 const globModules = import.meta.glob<{ default: QuestionData }>(
