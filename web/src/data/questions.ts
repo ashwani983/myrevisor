@@ -28,6 +28,7 @@ const subjectOverrides: Record<
   ansible: { name: 'Ansible' },
   terraform: { name: 'Terraform' },
   cicd: { name: 'CI/CD (GitHub/GitLab)' },
+  azure: { name: 'Microsoft Azure' },
 };
 
 const globModules = import.meta.glob<{ default: QuestionData }>(

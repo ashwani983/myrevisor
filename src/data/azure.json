@@ -1,0 +1,708 @@
+{
+  "subject": "Microsoft Azure",
+  "description": "Microsoft Azure is a cloud computing platform offering a wide range of services including computing, analytics, storage, and networking. It provides infrastructure as a service (IaaS), platform as a service (PaaS), and software as a service (SaaS) capabilities for building, deploying, and managing applications through Microsoft's global network of data centers.",
+  "totalQuestions": 100,
+  "lastUpdated": "2026-04-07",
+  "questions": [
+    {
+      "id": "azure-001",
+      "question": "What is Microsoft Azure?",
+      "answer": "Microsoft Azure is a cloud computing platform that provides infrastructure, platform, and software services through a global network of Microsoft-managed data centers. It enables organizations to build, deploy, and manage applications without investing in physical hardware. Azure supports various programming languages, frameworks, and tools, making it versatile for different workload requirements.",
+      "difficulty": "easy",
+      "tags": ["basics", "overview"]
+    },
+    {
+      "id": "azure-002",
+      "question": "What is cloud computing?",
+      "answer": "Cloud computing is the delivery of computing services including servers, storage, databases, networking, software, and analytics over the internet (the cloud). It eliminates the need for upfront investment in physical infrastructure and allows organizations to pay only for resources they use. Cloud computing provides scalability, flexibility, and cost-efficiency compared to traditional on-premises infrastructure.",
+      "difficulty": "easy",
+      "tags": ["basics", "cloud-computing"]
+    },
+    {
+      "id": "azure-003",
+      "question": "What are the three main service models in cloud computing?",
+      "answer": "The three service models are: IaaS (Infrastructure as a Service) provides virtualized computing resources over the internet, PaaS (Platform as a Service) offers a platform for developing, running, and managing applications without infrastructure complexity, and SaaS (Software as a Service) delivers fully managed software applications over the internet on a subscription basis.",
+      "difficulty": "easy",
+      "tags": ["basics", "service-models"]
+    },
+    {
+      "id": "azure-004",
+      "question": "What are the three types of cloud deployment models?",
+      "answer": "Public Cloud uses shared infrastructure operated by a third-party provider. Private Cloud is dedicated to a single organization with exclusive resources. Hybrid Cloud combines public and private clouds, allowing data and applications to be shared between them. Each model offers different benefits in terms of cost, security, and flexibility.",
+      "difficulty": "easy",
+      "tags": ["basics", "deployment-models"]
+    },
+    {
+      "id": "azure-005",
+      "question": "What is Azure Resource Manager (ARM)?",
+      "answer": "Azure Resource Manager is the deployment and management service for Azure. It provides a management layer that enables you to create, update, and delete resources in your Azure subscription. ARM supports role-based access control, tagging, and template-based deployments, making infrastructure management consistent and repeatable.",
+      "difficulty": "medium",
+      "tags": ["arm", "management"]
+    },
+    {
+      "id": "azure-006",
+      "question": "What are the benefits of Azure Resource Manager?",
+      "answer": "ARM benefits include: declarative template-based deployments, dependency management for correct resource ordering, access control through RBAC, tagging for resource organization, billing tracking, and consistent management across all Azure services. Templates can be version controlled and reused for consistent deployments.",
+      "difficulty": "medium",
+      "tags": ["arm", "benefits"]
+    },
+    {
+      "id": "azure-007",
+      "question": "What is an Azure Resource Group?",
+      "answer": "A Resource Group is a container that holds related resources for an Azure solution. It acts as a logical container for organizing, deploying, managing, and monitoring resources together. All resources in a group should share the same lifecycle, making it easier to deploy, update, and delete resources as a single unit.",
+      "difficulty": "easy",
+      "tags": ["resource-group", "basics"]
+    },
+    {
+      "id": "azure-008",
+      "question": "What is Azure Virtual Network (VNet)?",
+      "answer": "Azure Virtual Network enables Azure resources to securely communicate with each other, the internet, and on-premises networks. It provides isolation, segmentation, and connectivity capabilities including subnets, network security groups, and VPN gateways. VNet is fundamental for building secure cloud architectures.",
+      "difficulty": "medium",
+      "tags": ["networking", "vnet"]
+    },
+    {
+      "id": "azure-009",
+      "question": "What is a subnet in Azure?",
+      "answer": "A subnet is a range of IP addresses within a VNet that logically divides the network. Subnets allow you to segment the network and apply security policies. Best practice is to create separate subnets for different tiers (web, application, data) and use Network Security Groups to control traffic between them.",
+      "difficulty": "easy",
+      "tags": ["networking", "subnet"]
+    },
+    {
+      "id": "azure-010",
+      "question": "What is Azure Virtual Machine (VM)?",
+      "answer": "Azure Virtual Machine is an IaaS resource that provides on-demand, scalable computing capacity. VMs support various operating systems including Windows and Linux. They can be customized with different sizes, storage options, and configurations. Azure VMs are suitable for lift-and-shift migrations, development environments, and custom workloads.",
+      "difficulty": "easy",
+      "tags": ["compute", "vm"]
+    },
+    {
+      "id": "azure-011",
+      "question": "What are the different Azure VM sizes?",
+      "answer": "Azure offers VM sizes in series: Basic (A series) for dev/test, Standard (D series) for general workloads, Memory optimized (E series, M series) for database workloads, Compute optimized (F series), and GPU-enabled (N series) for AI and graphics. Each series offers different vCPU, memory, and storage configurations.",
+      "difficulty": "medium",
+      "tags": ["vm", "sizes"]
+    },
+    {
+      "id": "azure-012",
+      "question": "What is Azure Availability Set?",
+      "answer": "Availability Set is a logical grouping of VMs that ensures applications remain available during planned and unplanned maintenance. It distributes VMs across fault domains (separate power, network) and update domains (reboot groups). This ensures at least one VM remains operational during maintenance events.",
+      "difficulty": "medium",
+      "tags": ["availability", "vm"]
+    },
+    {
+      "id": "azure-013",
+      "question": "What is Azure Availability Zone?",
+      "answer": "Availability Zones are physically separate locations within an Azure region, each with independent power, cooling, and networking. They protect against datacenter failures and provide higher availability than availability sets alone. Zones are connected with low-latency links for replication and redundancy.",
+      "difficulty": "medium",
+      "tags": ["availability", "zones"]
+    },
+    {
+      "id": "azure-014",
+      "question": "What is Azure Scale Set?",
+      "answer": "Virtual Machine Scale Set automatically increases or decreases VM capacity based on demand. It allows you to deploy and manage identical VMs, automatically adjusting capacity based on metrics like CPU usage. Scale Sets support load balancing, health probes, and automatic upgrades for zero-downtime updates.",
+      "difficulty": "medium",
+      "tags": ["compute", "scaling"]
+    },
+    {
+      "id": "azure-015",
+      "question": "What is Azure Load Balancer?",
+      "answer": "Azure Load Balancer distributes incoming network traffic across multiple VMs to ensure no single server becomes overwhelmed. It operates at Layer 4 (TCP/UDP) and supports health probes for detecting unavailable instances. Basic SKU is for simple scenarios, Standard SKU offers advanced features and SLA.",
+      "difficulty": "medium",
+      "tags": ["networking", "load-balancer"]
+    },
+    {
+      "id": "azure-016",
+      "question": "What is Azure Application Gateway?",
+      "answer": "Application Gateway is a Layer 7 load balancer with web application firewall (WAF) capabilities. It routes traffic based on URL path, supports SSL termination, and provides features like cookie-based session affinity, URL routing, and multi-site hosting. Ideal for web applications requiring advanced routing and security.",
+      "difficulty": "medium",
+      "tags": ["networking", "app-gateway"]
+    },
+    {
+      "id": "azure-017",
+      "question": "What is Azure Blob Storage?",
+      "answer": "Azure Blob Storage is an object storage solution for unstructured data. It supports three blob types: Block blobs for text/binary files, Page blobs for frequent read/write (like VHD), and Append blobs optimized for log data. Blob storage is highly scalable, durable, and accessible via REST API or SDKs.",
+      "difficulty": "easy",
+      "tags": ["storage", "blob"]
+    },
+    {
+      "id": "azure-018",
+      "question": "What are Azure Storage Account types?",
+      "answer": "Storage account types: Standard (HDD-based for blobs, tables, queues, files), Premium (SSD-based for page blobs with high IOPS requirements). Within Standard, performance tiers include General Purpose v2 (recommended) and Blob Storage (legacy). Each has different pricing and capability profiles.",
+      "difficulty": "medium",
+      "tags": ["storage", "accounts"]
+    },
+    {
+      "id": "azure-019",
+      "question": "What is Azure File Storage?",
+      "answer": "Azure Files provides fully managed file shares in the cloud accessible via SMB protocol. Shares can be mounted concurrently on cloud or on-premises Windows, Linux, and macOS systems. Ideal for lift-and-shift of file shares, storing configuration files, and sharing data between applications.",
+      "difficulty": "easy",
+      "tags": ["storage", "files"]
+    },
+    {
+      "id": "azure-020",
+      "question": "What is Azure Queue Storage?",
+      "answer": "Azure Queue Storage provides reliable messaging between application components. It stores many small messages (up to 64KB each) that can be accessed via authenticated HTTP/HTTPS calls. Queues enable asynchronous task processing and decouple components for scalability and reliability.",
+      "difficulty": "easy",
+      "tags": ["storage", "queue"]
+    },
+    {
+      "id": "azure-021",
+      "question": "What is Azure Table Storage?",
+      "answer": "Azure Table Storage is a NoSQL key-value store for semi-structured data. It provides fast, cost-effective storage with automatic scaling. Tables store entities with properties, accessed via OData protocol or REST. Suitable for flexible schemas, logs, and non-relational data storage.",
+      "difficulty": "medium",
+      "tags": ["storage", "table"]
+    },
+    {
+      "id": "azure-022",
+      "question": "What are Azure Storage redundancy options?",
+      "answer": "Redundancy options: LRS (Locally Redundant) - 3 copies in single datacenter, ZRS (Zone Redundant) - 3 copies across availability zones, GRS (Geo-Redundant) - 3 copies locally + 3 in paired region, GZRS (Geo-Zone Redundant) - ZRS locally + GRS in secondary. Choose based on durability requirements and cost.",
+      "difficulty": "medium",
+      "tags": ["storage", "redundancy"]
+    },
+    {
+      "id": "azure-023",
+      "question": "What is Azure SQL Database?",
+      "answer": "Azure SQL Database is a fully managed PaaS database engine based on SQL Server. It handles database management functions like patching, backups, and monitoring without user intervention. Supports elastic pools for multi-tenant scenarios, built-in intelligence for performance optimization, and familiar SQL Server tooling.",
+      "difficulty": "medium",
+      "tags": ["database", "sql"]
+    },
+    {
+      "id": "azure-024",
+      "question": "What are Azure SQL Database deployment options?",
+      "answer": "Deployment options: Single Database for individual databases with dedicated resources, Elastic Pool for multiple databases sharing resources and cost efficiency, Managed Instance for near-complete SQL Server compatibility with PaaS benefits. Choose based on migration needs and existing application requirements.",
+      "difficulty": "medium",
+      "tags": ["database", "sql"]
+    },
+    {
+      "id": "azure-025",
+      "question": "What is Azure Cosmos DB?",
+      "answer": "Azure Cosmos DB is a globally distributed, multi-model NoSQL database service. It supports multiple data models (document, key-value, graph, column-family) with turnkey global distribution. Offers guaranteed low latency, high availability, and consistency options from strong to eventual. Ideal for web, mobile, gaming, and IoT applications.",
+      "difficulty": "medium",
+      "tags": ["database", "cosmosdb"]
+    },
+    {
+      "id": "azure-026",
+      "question": "What is Azure Active Directory (Azure AD)?",
+      "answer": "Azure Active Directory is Microsoft's cloud-based identity and access management service. It provides SSO (Single Sign-On) to thousands of SaaS applications, protects user credentials, enables conditional access policies, and supports multi-factor authentication. Azure AD is the foundation for Azure's security and access management.",
+      "difficulty": "easy",
+      "tags": ["identity", "security"]
+    },
+    {
+      "id": "azure-027",
+      "question": "What is Role-Based Access Control (RBAC) in Azure?",
+      "answer": "RBAC is an authorization system that provides fine-grained access management to Azure resources. It assigns permissions to security principals (users, groups, service principals) based on roles. Built-in roles like Owner, Contributor, Reader provide predefined permission sets, or create custom roles for specific needs.",
+      "difficulty": "medium",
+      "tags": ["security", "rbac"]
+    },
+    {
+      "id": "azure-028",
+      "question": "What is Azure Network Security Group (NSG)?",
+      "answer": "NSG filters network traffic to and from Azure resources in a VNet. It contains security rules allowing or denying inbound/outbound traffic based on source/destination IP, port, and protocol. NSGs can be associated with subnets or network interfaces to control traffic flow at Layer 3/4.",
+      "difficulty": "medium",
+      "tags": ["networking", "nsg"]
+    },
+    {
+      "id": "azure-029",
+      "question": "What is Azure VPN Gateway?",
+      "answer": "VPN Gateway connects Azure VNets to on-premises networks via Site-to-Site VPN, or connects individual devices via Point-to-Site VPN. It uses IPsec/IKE protocols for encrypted communication. VPN Gateway supports BGP routing for dynamic routing and can be deployed in active-active mode for redundancy.",
+      "difficulty": "medium",
+      "tags": ["networking", "vpn"]
+    },
+    {
+      "id": "azure-030",
+      "question": "What is Azure ExpressRoute?",
+      "answer": "ExpressRoute provides dedicated private connectivity from on-premises to Microsoft cloud services without traversing the public internet. It offers higher reliability, lower latency, and stronger security than VPN connections. ExpressRoute Global Reach connects Microsoft clouds across regions.",
+      "difficulty": "medium",
+      "tags": ["networking", "expressroute"]
+    },
+    {
+      "id": "azure-031",
+      "question": "What is Azure Content Delivery Network (CDN)?",
+      "answer": "Azure CDN caches static web content at strategically placed servers worldwide, delivering content to users from the nearest edge location. It reduces latency, decreases server load, and improves user experience. CDN integrates with Azure Blob Storage, Web Apps, and media services.",
+      "difficulty": "medium",
+      "tags": ["networking", "cdn"]
+    },
+    {
+      "id": "azure-032",
+      "question": "What is Azure DNS?",
+      "answer": "Azure DNS is a hosting service for DNS domains, providing name resolution using Azure infrastructure. It offers high availability, automatic SLA, and easy management alongside other Azure services. Supports alias records for Azure resources and DNSSEC for additional security.",
+      "difficulty": "easy",
+      "tags": ["networking", "dns"]
+    },
+    {
+      "id": "azure-033",
+      "question": "What is Azure Traffic Manager?",
+      "answer": "Traffic Manager is a DNS-based load balancer that distributes traffic across global Azure regions. It routes users to the best endpoint based on routing method (performance, priority, weighted, geographic). Traffic Manager improves application availability and performance without deploying additional infrastructure.",
+      "difficulty": "medium",
+      "tags": ["networking", "traffic-manager"]
+    },
+    {
+      "id": "azure-034",
+      "question": "What is Azure App Service?",
+      "answer": "Azure App Service is a fully managed PaaS for web, mobile, and API applications. It supports .NET, Java, Node.js, Python, and PHP. Features include auto-scaling, deployment slots, SSL certificates, and integration with CI/CD pipelines. App Service handles infrastructure management automatically.",
+      "difficulty": "medium",
+      "tags": ["app-service", "paas"]
+    },
+    {
+      "id": "azure-035",
+      "question": "What are Azure App Service deployment slots?",
+      "answer": "Deployment slots allow staging environments for web apps. You can swap slots to deploy to production with no downtime. Slots have their own configurations and allow testing before production deployment. This enables zero-downtime deployments and staging validation workflows.",
+      "difficulty": "medium",
+      "tags": ["app-service", "deployment"]
+    },
+    {
+      "id": "azure-036",
+      "question": "What is Azure Functions?",
+      "answer": "Azure Functions is a serverless compute service that executes code in response to events without managing infrastructure. Supports multiple trigger types (HTTP, timer, blob, queue) and allows pay-per-execution pricing. Functions auto-scale based on load and integrate with various Azure services.",
+      "difficulty": "medium",
+      "tags": ["compute", "serverless"]
+    },
+    {
+      "id": "azure-037",
+      "question": "What is Azure Logic Apps?",
+      "answer": "Logic Apps is a serverless workflow automation service that connects apps and orchestrates business processes. It provides a visual designer for building workflows using connectors to Azure services, Microsoft products, and third-party APIs. Ideal for enterprise integration and B2B scenarios.",
+      "difficulty": "medium",
+      "tags": ["integration", "workflow"]
+    },
+    {
+      "id": "azure-038",
+      "question": "What is Azure Service Bus?",
+      "answer": "Azure Service Bus is an enterprise message broker supporting publish-subscribe and queue-based messaging. It provides reliable async communication between applications and services, even across organizations. Supports transactions, dead-letter queues, and sessions for complex messaging patterns.",
+      "difficulty": "medium",
+      "tags": ["messaging", "service-bus"]
+    },
+    {
+      "id": "azure-039",
+      "question": "What is Azure Event Hub?",
+      "answer": "Event Hub is a big data streaming platform capable of ingesting millions of events per second. It provides low-latency, real-time data ingestion from applications, devices, and sensors. Often used for telemetry, log aggregation, and real-time analytics pipelines.",
+      "difficulty": "medium",
+      "tags": ["messaging", "streaming"]
+    },
+    {
+      "id": "azure-040",
+      "question": "What is Azure Event Grid?",
+      "answer": "Event Grid is an event routing service that enables reactive programming. It distributes events from sources to handlers using pub-sub pattern. Supports filtering, routing, and retry policies for reliable event delivery. Integrates with Azure Functions and Logic Apps for event-driven processing.",
+      "difficulty": "medium",
+      "tags": ["messaging", "events"]
+    },
+    {
+      "id": "azure-041",
+      "question": "What is Azure Kubernetes Service (AKS)?",
+      "answer": "AKS is a managed Kubernetes service that simplifies container orchestration. It handles scaling, upgrades, and health monitoring automatically. AKS reduces operational overhead while providing access to advanced features like Azure AD integration, monitoring, and networking integrations.",
+      "difficulty": "medium",
+      "tags": ["containers", "kubernetes"]
+    },
+    {
+      "id": "azure-042",
+      "question": "What is Azure Container Instances (ACI)?",
+      "answer": "ACI provides serverless container hosting without infrastructure management. Deploy containers in seconds with a single command or API call. Ideal for burst workloads, CI/CD agents, or tasks that don't require a full Kubernetes cluster. Supports Windows and Linux containers.",
+      "difficulty": "medium",
+      "tags": ["containers", "aci"]
+    },
+    {
+      "id": "azure-043",
+      "question": "What is Azure Container Registry?",
+      "answer": "Container Registry is a managed private Docker registry service for storing and managing container images. It integrates with AKS and ACI for automated builds and deployments. Supports geo-replication, vulnerability scanning, and Helm chart storage.",
+      "difficulty": "easy",
+      "tags": ["containers", "registry"]
+    },
+    {
+      "id": "azure-044",
+      "question": "What is Azure Monitor?",
+      "answer": "Azure Monitor is a comprehensive monitoring solution for collecting, analyzing, and acting on telemetry from cloud and on-premises environments. It provides insights through metrics, logs, and application diagnostics. Integrates with Log Analytics, Application Insights, and various alerting solutions.",
+      "difficulty": "medium",
+      "tags": ["monitoring", "operations"]
+    },
+    {
+      "id": "azure-045",
+      "question": "What is Azure Application Insights?",
+      "answer": "Application Insights is an Application Performance Monitoring (APM) service for web applications. It automatically detects performance anomalies, provides powerful analytics tools, and helps identify issues. Supports .NET, Java, Node.js, Python, and JavaScript applications.",
+      "difficulty": "medium",
+      "tags": ["monitoring", "appinsights"]
+    },
+    {
+      "id": "azure-046",
+      "question": "What is Azure Log Analytics?",
+      "answer": "Log Analytics is a tool in Azure Monitor for writing log queries and analyzing collected data. It uses Kusto Query Language (KQL) for powerful data exploration. Log Analytics aggregates logs from multiple sources including Azure resources, on-premises systems, and third-party services.",
+      "difficulty": "medium",
+      "tags": ["monitoring", "logging"]
+    },
+    {
+      "id": "azure-047",
+      "question": "What is Azure Advisor?",
+      "answer": "Azure Advisor analyzes resource configurations and usage patterns to provide personalized recommendations. It covers cost optimization, security, reliability, operational excellence, and performance. Recommendations are generated automatically based on Azure best practices and are accessible from the Azure portal.",
+      "difficulty": "easy",
+      "tags": ["management", "advisor"]
+    },
+    {
+      "id": "azure-048",
+      "question": "What is Azure Service Health?",
+      "answer": "Service Health provides personalized alerts and guidance when Azure service issues affect you. It includes Service issues, planned maintenance, and health advisories. Service Health tracks your resources and notifies you of impacts affecting your specific Azure services and regions.",
+      "difficulty": "easy",
+      "tags": ["management", "health"]
+    },
+    {
+      "id": "azure-049",
+      "question": "What is Azure Resource Lock?",
+      "answer": "Resource Lock prevents accidental deletion or modification of resources. Two types: ReadOnly locks restrict all changes, Delete locks prevent deletion only. Locks are inherited from resource groups and can be applied at any level. Use locks on critical resources as a safety measure.",
+      "difficulty": "easy",
+      "tags": ["management", "security"]
+    },
+    {
+      "id": "azure-050",
+      "question": "What is Azure Policy?",
+      "answer": "Azure Policy enforces organizational standards and assesses compliance at scale. Policies can audit, enforce, or modify resource properties during deployment. Built-in policies cover common requirements, or create custom policies using JSON definitions. Policies evaluate resources and report compliance status.",
+      "difficulty": "medium",
+      "tags": ["management", "compliance"]
+    },
+    {
+      "id": "azure-051",
+      "question": "What is Azure Managed Identity?",
+      "answer": "Managed Identity eliminates the need to manage credentials by providing automatic identities for Azure resources. System-assigned identity is tied to resource lifecycle, while user-assigned identity is a standalone resource. Applications use identity to authenticate to Azure services without storing credentials.",
+      "difficulty": "medium",
+      "tags": ["security", "identity"]
+    },
+    {
+      "id": "azure-052",
+      "question": "What is Azure Key Vault?",
+      "answer": "Azure Key Vault securely stores and manages sensitive information including secrets, keys, and certificates. It provides centralized key management with hardware security module (HSM) protection. Key Vault integrates with Azure services and supports access policies, firewall rules, and soft delete for data protection.",
+      "difficulty": "medium",
+      "tags": ["security", "keyvault"]
+    },
+    {
+      "id": "azure-053",
+      "question": "What is Azure Bastion?",
+      "answer": "Azure Bastion provides secure RDP and SSH access to VMs without exposing public IPs. It deploys within your VNet and uses HTML5-based web client for access. Bastion eliminates the need for public IPs, NSG rules for management ports, and provides JIT access capabilities.",
+      "difficulty": "medium",
+      "tags": ["security", "networking"]
+    },
+    {
+      "id": "azure-054",
+      "question": "What is Azure Firewall?",
+      "answer": "Azure Firewall is a managed network security service that protects Azure VNet resources. It provides FQDN filtering, network traffic filtering rules, and threat intelligence-based filtering. Firewall supports high availability, availability zones, and integrates with Azure Monitor for logging.",
+      "difficulty": "medium",
+      "tags": ["security", "firewall"]
+    },
+    {
+      "id": "azure-055",
+      "question": "What is Azure DDoS Protection?",
+      "answer": "DDoS Protection provides defense against distributed denial of service attacks. Basic tier is automatically enabled for all Azure services. Standard tier adds tuned protection policies, attack metrics, and alerting for additional cost. DDoS Protection mitigates volumetric, protocol, and application layer attacks.",
+      "difficulty": "medium",
+      "tags": ["security", "ddos"]
+    },
+    {
+      "id": "azure-056",
+      "question": "What is Azure Web Application Firewall (WAF)?",
+      "answer": "WAF provides centralized protection for web applications against common exploits and vulnerabilities. It implements OWASP Core Rule Sets for protection against SQL injection, XSS, and other attacks. WAF can be deployed with Application Gateway or Front Door for global protection.",
+      "difficulty": "medium",
+      "tags": ["security", "waf"]
+    },
+    {
+      "id": "azure-057",
+      "question": "What is Azure Identity Protection?",
+      "answer": "Identity Protection provides risk detection and remediation for compromised identities. It uses machine learning to detect anomalies and risky sign-in behaviors. Policies can enforce MFA, block access, or require password changes based on risk level to protect accounts.",
+      "difficulty": "medium",
+      "tags": ["security", "identity"]
+    },
+    {
+      "id": "azure-058",
+      "question": "What is Azure Conditional Access?",
+      "answer": "Conditional Access allows organizations to control access based on signals like user, location, device state, and risk. Policies can grant access, require MFA, or block access based on conditions. It's the tool for implementing zero-trust security by validating access requests.",
+      "difficulty": "medium",
+      "tags": ["security", "access"]
+    },
+    {
+      "id": "azure-059",
+      "question": "What is Azure Backup?",
+      "answer": "Azure Backup provides simple, secure, and cost-effective solutions for backing up data to Microsoft Cloud. It supports VMs, files, folders, databases (SQL, SAP), and Azure Files. Backup data is stored in Recovery Services vault with encryption and retention policies.",
+      "difficulty": "medium",
+      "tags": ["storage", "backup"]
+    },
+    {
+      "id": "azure-060",
+      "question": "What is Azure Site Recovery?",
+      "answer": "Site Recovery provides business continuity by orchestrating replication and failover of workloads. It supports Azure VMs, on-premises VMs, and physical servers for disaster recovery. Site Recovery handles test failovers, planned failovers, and unplanned failovers with minimal data loss.",
+      "difficulty": "medium",
+      "tags": ["dr", "recovery"]
+    },
+    {
+      "id": "azure-061",
+      "question": "What is Azure Recovery Services vault?",
+      "answer": "Recovery Services vault is a storage entity that houses backup data and recovery points over time. It stores backup data for Azure VMs, SQL in Azure VMs, file shares, and on-premises servers. Vaults support cross-region redundancy and role-based access control.",
+      "difficulty": "medium",
+      "tags": ["storage", "backup"]
+    },
+    {
+      "id": "azure-062",
+      "question": "What is Azure Automation?",
+      "answer": "Azure Automation provides capabilities for automating cloud management tasks. It includes Desired State Configuration (DSC), runbooks for process automation, and update management. Automation reduces manual errors and enables consistent operations at scale.",
+      "difficulty": "medium",
+      "tags": ["automation", "management"]
+    },
+    {
+      "id": "azure-063",
+      "question": "What is Azure Update Management?",
+      "answer": "Update Management assesses operating system updates and manages update deployment for Windows and Linux. It identifies missing updates, schedules deployment during maintenance windows, and provides compliance reporting. Supports hybrid environments with Azure Arc-enabled servers.",
+      "difficulty": "medium",
+      "tags": ["automation", "updates"]
+    },
+    {
+      "id": "azure-064",
+      "question": "What is Azure Arc?",
+      "answer": "Azure Arc extends Azure management and services to any infrastructure including on-premises, edge, and multi-cloud. It provides unified management experience for servers, Kubernetes clusters, and data services. Arc enables Azure policies, monitoring, and security across environments.",
+      "difficulty": "medium",
+      "tags": ["management", "hybrid"]
+    },
+    {
+      "id": "azure-065",
+      "question": "What is Azure DevOps?",
+      "answer": "Azure DevOps provides developer services for CI/CD, version control, agile planning, and package management. Services include Azure Repos for Git hosting, Azure Pipelines for CI/CD, Azure Boards for work tracking, and Azure Artifacts for package hosting.",
+      "difficulty": "medium",
+      "tags": ["devops", "ci-cd"]
+    },
+    {
+      "id": "azure-066",
+      "question": "What is Azure Pipelines?",
+      "answer": "Azure Pipelines provides CI/CD for any language, platform, and cloud. It supports Git repositories, container registries, and deployment to multiple environments. Pipelines can be defined as YAML or built using visual designer, with built-in tasks for common deployment scenarios.",
+      "difficulty": "medium",
+      "tags": ["devops", "pipelines"]
+    },
+    {
+      "id": "azure-067",
+      "question": "What is Azure Cognitive Services?",
+      "answer": "Cognitive Services provides AI capabilities through pre-built APIs. Categories include Vision (image analysis), Speech (transcription, translation), Language (text analytics, translation), Decision (anomaly detector, content moderator), and Open AI (GPT models). No ML expertise required.",
+      "difficulty": "medium",
+      "tags": ["ai", "cognitive"]
+    },
+    {
+      "id": "azure-068",
+      "question": "What is Azure Machine Learning?",
+      "answer": "Azure Machine Learning is a PaaS service for building, training, and deploying ML models. It provides automated ML, visual designers, Python SDK, and MLOps capabilities. Supports frameworks like PyTorch, TensorFlow, and scikit-learn with enterprise security.",
+      "difficulty": "medium",
+      "tags": ["ai", "ml"]
+    },
+    {
+      "id": "azure-069",
+      "question": "What is Azure Bot Service?",
+      "answer": "Azure Bot Service provides tools for building, testing, and deploying intelligent bots. It supports integration with channels like Teams, Slack, and web chat. Bot Framework Composer offers visual authoring, while QnA Maker enables knowledge base-based responses.",
+      "difficulty": "medium",
+      "tags": ["ai", "bots"]
+    },
+    {
+      "id": "azure-070",
+      "question": "What is Azure IoT Hub?",
+      "answer": "IoT Hub provides managed service for bi-directional communication between IoT devices and Azure. It handles device identity, message routing, device twin, and monitoring. IoT Hub scales to millions of devices and integrates with Event Grid, Functions, and Stream Analytics.",
+      "difficulty": "medium",
+      "tags": ["iot", "devices"]
+    },
+    {
+      "id": "azure-071",
+      "question": "What is Azure IoT Central?",
+      "answer": "IoT Central is a SaaS solution for IoT device management without deep technical expertise. It provides pre-built dashboards, device templates, and rules. Connect devices using industry protocols, and integrate with business applications through built-in export capabilities.",
+      "difficulty": "medium",
+      "tags": ["iot", "saas"]
+    },
+    {
+      "id": "azure-072",
+      "question": "What is Azure Stream Analytics?",
+      "answer": "Stream Analytics is a real-time stream processing engine. It ingests data from IoT Hub, Event Hub, or Blob Storage, processes it using SQL-like queries, and outputs to sinks like SQL Database, Data Lake, or Power BI. Supports windowing functions for time-based aggregations.",
+      "difficulty": "medium",
+      "tags": ["analytics", "streaming"]
+    },
+    {
+      "id": "azure-073",
+      "question": "What is Azure Data Factory?",
+      "answer": "Data Factory is a hybrid data integration service for orchestrating data movement and transformation. It provides 90+ connectors to cloud and on-premises sources. Activities include copy, data flow, and HDInsight transformations. Pipelines can be triggered on schedule or events.",
+      "difficulty": "medium",
+      "tags": ["data", "etl"]
+    },
+    {
+      "id": "azure-074",
+      "question": "What is Azure Synapse Analytics?",
+      "answer": "Azure Synapse is an enterprise analytics service that combines data integration, data warehousing, and big data analytics. It provides SQL-based analytics with unlimited scale, Spark for big data processing, and integration with Power BI. Supports data exploration and real-time analytics.",
+      "difficulty": "medium",
+      "tags": ["data", "analytics"]
+    },
+    {
+      "id": "azure-075",
+      "question": "What is Azure Databricks?",
+      "answer": "Azure Databricks provides a fast, easy, collaborative Apache Spark-based analytics platform. It integrates with Azure data services for simplified data ingestion. Databricks offers auto-scaling clusters, notebook collaboration, and optimized Delta Lake for data engineering and ML workloads.",
+      "difficulty": "medium",
+      "tags": ["data", "spark"]
+    },
+    {
+      "id": "azure-076",
+      "question": "What is Azure Cost Management?",
+      "answer": "Azure Cost Management provides tools for monitoring, allocating, and optimizing cloud costs. It offers budget alerts, cost analysis, recommendations, and exports. Enable Cost Management alerts to notify stakeholders when spending exceeds thresholds.",
+      "difficulty": "easy",
+      "tags": ["management", "cost"]
+    },
+    {
+      "id": "azure-077",
+      "question": "How do you secure Azure SQL Database?",
+      "answer": "Secure SQL Database using: firewall rules for IP access, Azure AD authentication for identity management, TLS for encrypted connections, Transparent Data Encryption (TDE) for data encryption, Dynamic Data Masking for sensitive data protection, and Always Encrypted for column-level encryption.",
+      "difficulty": "hard",
+      "tags": ["database", "security"]
+    },
+    {
+      "id": "azure-078",
+      "question": "What is Azure Private Link?",
+      "answer": "Private Link provides private connectivity from VNet to Azure services without traversing the internet. It creates a private endpoint that maps to the service, ensuring traffic stays on Azure backbone. Private Link eliminates data exposure to public internet and enables hybrid consistency.",
+      "difficulty": "hard",
+      "tags": ["networking", "security"]
+    },
+    {
+      "id": "azure-079",
+      "question": "What is Azure Service Endpoint?",
+      "answer": "Service Endpoints enable private IP address connectivity from VNet to Azure services over Azure backbone. They secure service resources to VNet and provide optimal routing. Unlike Private Link, traffic still traverses Azure network but not public internet.",
+      "difficulty": "hard",
+      "tags": ["networking", "security"]
+    },
+    {
+      "id": "azure-080",
+      "question": "What is Azure VNet Peering?",
+      "answer": "VNet Peering connects two VNets enabling resources to communicate using private IP addresses. Types include local peering (same region) and global peering (cross-region). Peered VNets appear as one network for connectivity, with no gateway transit by default.",
+      "difficulty": "medium",
+      "tags": ["networking", "peering"]
+    },
+    {
+      "id": "azure-081",
+      "question": "What is Azure Virtual WAN?",
+      "answer": "Virtual WAN is a networking service that simplifies branch connectivity to Azure. It provides SD-WAN capabilities, VPN connectivity, ExpressRoute integration, and transit connectivity between sites. Virtual WAN hub manages connectivity at scale with built-in security policies.",
+      "difficulty": "hard",
+      "tags": ["networking", "wan"]
+    },
+    {
+      "id": "azure-082",
+      "question": "What is Azure Gateway Transit?",
+      "answer": "Gateway Transit allows a VNet with VPN/ExpressRoute gateway to share its connection with peered VNets. The peer VNet can use the gateway for cross-premises connectivity without deploying its own gateway. One gateway can serve multiple peer VNets efficiently.",
+      "difficulty": "hard",
+      "tags": ["networking", "vpn"]
+    },
+    {
+      "id": "azure-083",
+      "question": "How do you troubleshoot VM connectivity issues in Azure?",
+      "answer": "Troubleshoot with: verify NIC configuration and IP assignment, check NSG rules for blocking traffic, review UDR if custom routing exists, test with Network Watcher IP flow check, verify VM firewall settings, ensure service listening on correct port, and check for SNAT port exhaustion.",
+      "difficulty": "hard",
+      "tags": ["troubleshooting", "networking"]
+    },
+    {
+      "id": "azure-084",
+      "question": "How do you troubleshoot RDP connections to Azure VMs?",
+      "answer": "Fix RDP issues by: resetting remote desktop configuration, checking NSG rules and endpoints, reviewing console logs, resetting the NIC, checking Resource Health, resetting password, restarting VM, or redeploying VM. Use Serial Console for deeper debugging.",
+      "difficulty": "hard",
+      "tags": ["troubleshooting", "vm"]
+    },
+    {
+      "id": "azure-085",
+      "question": "What are the high-level requirements for Site-to-Site VPN?",
+      "answer": "Requirements: create VPN Gateway with S2S VPN type, create Local Network Gateway representing on-premises router, configure connection with public IP and pre-shared key, ensure compatible VPN device on-premises, configure BGP if dynamic routing needed.",
+      "difficulty": "hard",
+      "tags": ["networking", "vpn"]
+    },
+    {
+      "id": "azure-086",
+      "question": "What is Azure SLA for Virtual Machines?",
+      "answer": "SLA depends on deployment: single VM provides 99.9% availability with premium managed disks. VMs in Availability Set with two+ instances per zone get 99.95% availability. Availability Zones with two+ zones get 99.99% availability guarantee.",
+      "difficulty": "medium",
+      "tags": ["availability", "sla"]
+    },
+    {
+      "id": "azure-087",
+      "question": "What is the difference between Standard SSD and Premium SSD?",
+      "answer": "Premium SSD offers better performance with very low latency, high IOPS/throughput, and consistent performance. Standard SSD provides cost-effective option for light workloads. Premium SSD is recommended for production workloads requiring consistent low latency.",
+      "difficulty": "medium",
+      "tags": ["storage", "vm"]
+    },
+    {
+      "id": "azure-088",
+      "question": "What is Azure Spot VM?",
+      "answer": "Spot VM uses spare Azure capacity at significant cost savings (up to 90%). Azure can evict Spot VMs when capacity is needed. Suitable for batch processing, dev/test environments, and fault-tolerant workloads. Not recommended for production without proper handling.",
+      "difficulty": "medium",
+      "tags": ["vm", "cost"]
+    },
+    {
+      "id": "azure-089",
+      "question": "What is Azure Reserved Instance?",
+      "answer": "Reserved Instances (RIs) commit to 1 or 3 year terms for significant discounts (up to 72%) compared to pay-as-you-go pricing. RIs apply to VMs, SQL Database, Cosmos DB, and other resources. Benefits apply automatically to matching usage.",
+      "difficulty": "medium",
+      "tags": ["cost", "reserved"]
+    },
+    {
+      "id": "azure-090",
+      "question": "What is Azure Hybrid Benefit?",
+      "answer": "Hybrid Benefit allows using existing Windows Server and SQL Server licenses with Software Assurance for discounted pricing. One license can be reused on-premises and in Azure. Significantly reduces costs for organizations with existing Microsoft licenses.",
+      "difficulty": "medium",
+      "tags": ["cost", "licensing"]
+    },
+    {
+      "id": "azure-091",
+      "question": "What is Azure AD Connect?",
+      "answer": "Azure AD Connect synchronizes on-premises Active Directory with Azure AD. It supports password hash sync, pass-through authentication, and federation. Azure AD Connect Health monitors sync health and provides alerts for identity integration issues.",
+      "difficulty": "medium",
+      "tags": ["identity", "hybrid"]
+    },
+    {
+      "id": "azure-092",
+      "question": "What is Azure AD B2B?",
+      "answer": "Azure AD B2B (Business-to-Business) enables collaboration with external partners. Guest users from other organizations can access your resources using their own credentials. B2B provides secure external sharing with conditional access and compliance policies.",
+      "difficulty": "medium",
+      "tags": ["identity", "collaboration"]
+    },
+    {
+      "id": "azure-093",
+      "question": "What is Azure AD B2C?",
+      "answer": "Azure AD B2C is an identity management service for consumer-facing applications. It provides sign-up, sign-in, and profile management for applications. B2C supports social identity providers, custom branding, and scales to millions of identities.",
+      "difficulty": "medium",
+      "tags": ["identity", "consumers"]
+    },
+    {
+      "id": "azure-094",
+      "question": "What is Azure Media Services?",
+      "answer": "Media Services provides broadcast-quality video streaming and real-time broadcasting. It encodes, stores, and delivers video content at scale. Integrates with Content Delivery Network for global distribution. Supports live events and video-on-demand streaming.",
+      "difficulty": "medium",
+      "tags": ["media", "streaming"]
+    },
+    {
+      "id": "azure-095",
+      "question": "What is Azure API Management?",
+      "answer": "API Management publishes, secures, and monitors APIs. It provides API gateway for request handling, developer portal for API documentation, and analytics for usage insights. APIM supports authentication (OAuth, JWT), rate limiting, and caching policies.",
+      "difficulty": "medium",
+      "tags": ["api", "management"]
+    },
+    {
+      "id": "azure-096",
+      "question": "What is Azure Functions consumption plan?",
+      "answer": "Consumption plan provides serverless billing where you pay only for execution time. It automatically scales based on load and includes free monthly grants. Limitations include maximum execution time (5-10 minutes) and cold start latency.",
+      "difficulty": "medium",
+      "tags": ["serverless", "cost"]
+    },
+    {
+      "id": "azure-097",
+      "question": "What is Azure Durable Functions?",
+      "answer": "Durable Functions extends Azure Functions for stateful workflows. It enables long-running orchestrations, human interaction patterns, and complex branching. Orchestrator functions define workflow, activity functions perform tasks, and entity functions manage state.",
+      "difficulty": "hard",
+      "tags": ["serverless", "workflow"]
+    },
+    {
+      "id": "azure-098",
+      "question": "What is Azure Blueprints?",
+      "answer": "Azure Blueprints enables repeatable, compliant infrastructure deployment. It composes ARM templates, RBAC assignments, and policy assignments into a single package. Blueprints can version and update existing deployments while maintaining compliance with organizational standards.",
+      "difficulty": "hard",
+      "tags": ["management", "governance"]
+    },
+    {
+      "id": "azure-099",
+      "question": "What is Azure Resource Graph?",
+      "answer": "Resource Graph enables fast, complex queries across all subscriptions and resource groups. It uses an optimized query engine to explore resource properties and relationships. Resource Graph powers Azure Portal's search and enables large-scale resource inventory management.",
+      "difficulty": "hard",
+      "tags": ["management", "query"]
+    },
+    {
+      "id": "azure-100",
+      "question": "What are Azure best practices for security?",
+      "answer": "Security best practices include: use RBAC for least privilege access, enable Azure AD Conditional Access, implement network segmentation with VNets and NSGs, use Private Link for sensitive services, enable Azure Defender, encrypt data at rest and in transit, use Key Vault for secrets, enable monitoring with Azure Monitor, implement Azure Security Center recommendations, and regularly audit with Azure Policy.",
+      "difficulty": "hard",
+      "tags": ["security", "best-practices"]
+    }
+  ]
+}
