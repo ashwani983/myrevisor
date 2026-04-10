@@ -27,6 +27,7 @@ const subjectOverrides: Record<
   shell: { name: 'Shell Scripting' },
   ansible: { name: 'Ansible' },
   terraform: { name: 'Terraform' },
+  cicd: { name: 'CI/CD (GitHub/GitLab)' },
 };
 
 const globModules = import.meta.glob<{ default: QuestionData }>(

@@ -1,0 +1,708 @@
+{
+  "subject": "CI/CD (GitHub Actions & GitLab CI)",
+  "description": "CI/CD (Continuous Integration/Continuous Deployment) automates the process of integrating code changes, running tests, and deploying applications. GitHub Actions and GitLab CI are popular platforms for implementing CI/CD pipelines, enabling teams to deliver software faster and with higher quality through automated workflows.",
+  "totalQuestions": 100,
+  "lastUpdated": "2026-04-07",
+  "questions": [
+    {
+      "id": "cicd-001",
+      "question": "What is CI/CD and why is it important?",
+      "answer": "CI/CD stands for Continuous Integration and Continuous Deployment/Delivery. CI automatically integrates code changes from multiple contributors, running tests to detect issues early. CD automates the release process, deploying tested code to environments. It reduces manual effort, catches bugs early, ensures consistent deployments, and enables faster feedback loops for development teams.",
+      "difficulty": "easy",
+      "tags": ["basics", "ci-cd"]
+    },
+    {
+      "id": "cicd-002",
+      "question": "What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment?",
+      "answer": "Continuous Integration (CI) merges developer code frequently with automated testing. Continuous Delivery (CD) extends CI by ensuring code is always in a deployable state, requiring manual approval for production. Continuous Deployment goes further by automatically deploying every change that passes tests to production without manual intervention.",
+      "difficulty": "easy",
+      "tags": ["concepts", "ci-cd"]
+    },
+    {
+      "id": "cicd-003",
+      "question": "What is GitHub Actions?",
+      "answer": "GitHub Actions is GitHub's CI/CD platform that automates building, testing, and deploying code directly from GitHub repositories. It uses workflow files defined in YAML to create automated pipelines called workflows. Developers can trigger workflows on events like push, pull request, or on a schedule.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "basics"]
+    },
+    {
+      "id": "cicd-004",
+      "question": "What is GitLab CI?",
+      "answer": "GitLab CI is the integrated CI/CD feature of GitLab. It uses a .gitlab-ci.yml file in the repository to define pipelines with stages and jobs. GitLab CI is deeply integrated with GitLab's ecosystem, offering source code management, issue tracking, and container registry all in one platform.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "basics"]
+    },
+    {
+      "id": "cicd-005",
+      "question": "What is a workflow in GitHub Actions?",
+      "answer": "A workflow is an automated process defined in a YAML file stored in .github/workflows directory. Each workflow can contain multiple jobs and triggers based on repository events (push, pull request) or schedules. Workflows can run in parallel or sequentially and can be enabled/disabled independently.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "workflows"]
+    },
+    {
+      "id": "cicd-006",
+      "question": "What is a pipeline in GitLab CI?",
+      "answer": "A pipeline is the top-level component of GitLab CI/CD, containing stages, jobs, and runners. Pipelines are triggered by events like push, merge requests, or schedules. Each pipeline can run multiple stages in parallel, with jobs within stages running concurrently on available runners.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "pipelines"]
+    },
+    {
+      "id": "cicd-007",
+      "question": "What is a job in CI/CD?",
+      "answer": "A job is the basic unit of work in CI/CD pipelines. It defines a set of commands to execute, such as building code, running tests, or deploying applications. In GitHub Actions, jobs run in steps. In GitLab CI, jobs are defined in .gitlab-ci.yml and execute on runners.",
+      "difficulty": "easy",
+      "tags": ["basics", "jobs"]
+    },
+    {
+      "id": "cicd-008",
+      "question": "What is a step in GitHub Actions?",
+      "answer": "A step is an individual task within a job. Steps can run commands (like shell scripts) or use actions (reusable units of code). Steps execute sequentially within a job, and each step's output is available to subsequent steps in the same job.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "steps"]
+    },
+    {
+      "id": "cicd-009",
+      "question": "What is an action in GitHub Actions?",
+      "answer": "An action is a reusable unit of code that can be used in workflow steps. Actions can be from the GitHub Marketplace or custom-created. They abstract complex commands into simple steps, like checking out code, setting up Node.js, or deploying to cloud providers.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "actions"]
+    },
+    {
+      "id": "cicd-010",
+      "question": "What is a runner in GitLab CI?",
+      "answer": "A runner is an agent that executes CI/CD jobs. Runners can be shared across projects (shared runners) or dedicated to specific projects (specific runners). They can run on various platforms (Linux, Windows, macOS) and can be configured to handle specific job requirements.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "runners"]
+    },
+    {
+      "id": "cicd-011",
+      "question": "What is a workflow trigger in GitHub Actions?",
+      "answer": "A trigger defines when a workflow should run. Common triggers include: push (code push), pull_request (PR activity), schedule (cron jobs), workflow_dispatch (manual trigger), and repository_dispatch (custom webhooks). Triggers can be filtered by branch, tag, or path.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "triggers"]
+    },
+    {
+      "id": "cicd-012",
+      "question": "What are stages in GitLab CI?",
+      "answer": "Stages define the order in which jobs run. Jobs in the same stage run in parallel, while stages run sequentially. Common stages are: build, test, deploy. If any job in a stage fails, subsequent stages typically don't execute unless configured otherwise.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "stages"]
+    },
+    {
+      "id": "cicd-013",
+      "question": "How do you define a basic GitHub Actions workflow?",
+      "answer": "A basic workflow is defined in .github/workflows/main.yml with: name (workflow name), on (trigger events), jobs (list of jobs), and each job has runs-on (runner) and steps (actions/commands). Example: name: CI, on: push, jobs: build: runs-on: ubuntu-latest, steps: - uses: actions/checkout@v4, - run: npm install",
+      "difficulty": "easy",
+      "tags": ["github-actions", "basics"]
+    },
+    {
+      "id": "cicd-014",
+      "question": "How do you define a basic GitLab CI pipeline?",
+      "answer": "A basic pipeline in .gitlab-ci.yml has: stages (defined stages), and jobs with: script (commands to run), stage (which stage), and optionally: image, before_script, after_script, dependencies, etc. Example: stages: [build, test, deploy], build: stage: build, script: make build",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "basics"]
+    },
+    {
+      "id": "cicd-015",
+      "question": "What is the purpose of the checkout action in GitHub Actions?",
+      "answer": "The checkout action (actions/checkout@v4) clones your repository into the runner's working directory. It fetches the code at the commit that triggered the workflow, enabling subsequent steps to access and work with your source code. Supports various options like sparse checkout and fetch depth.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "actions"]
+    },
+    {
+      "id": "cicd-016",
+      "question": "What environment variables are available in CI/CD runners?",
+      "answer": "Common built-in variables include: CI (always true), GITHUB_TOKEN (authentication token), GITHUB_REF (branch/tag), GITHUB_SHA (commit SHA), GITHUB_WORKFLOW (workflow name), GITHUB_JOB (job name), and in GitLab: CI_COMMIT_SHA, CI_COMMIT_BRANCH, CI_PIPELINE_ID. Custom environment variables can also be defined in workflow/pipeline configuration.",
+      "difficulty": "easy",
+      "tags": ["environment", "variables"]
+    },
+    {
+      "id": "cicd-017",
+      "question": "What is a matrix strategy in GitHub Actions?",
+      "answer": "Matrix strategy allows running a job multiple times with different configurations. Define a matrix of values (like Node versions, operating systems) and the job will run for each combination. Example: matrix: node-version: [12, 14, 16] os: [ubuntu-latest, windows-latest]. This creates 6 job runs from one job definition.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "matrix"]
+    },
+    {
+      "id": "cicd-018",
+      "question": "What is the purpose of needs in GitLab CI?",
+      "answer": "The needs keyword defines job dependencies in GitLab CI, creating directed acyclic graphs (DAG) instead of linear stage-based execution. A job with needs will wait only for specified jobs to complete, not entire stages. This enables faster pipelines by running jobs as soon as their dependencies finish.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "dependencies"]
+    },
+    {
+      "id": "cicd-019",
+      "question": "How do you cache dependencies in GitHub Actions?",
+      "answer": "Use actions/cache action to cache directories like node_modules or .m2. Specify path and key for the cache. Example: - uses: actions/cache@v4 with: path: node_modules key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}. Cache is restored if matching key exists, speeding up subsequent runs.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "cache"]
+    },
+    {
+      "id": "cicd-020",
+      "question": "What is artifacts in CI/CD?",
+      "answer": "Artifacts are files and directories produced by jobs that can be passed to subsequent jobs or downloaded. In GitHub Actions, use actions/upload-artifact to save build outputs. In GitLab CI, artifacts are defined with paths and optional expire_in. Artifacts enable sharing build results between jobs like compiled code or test reports.",
+      "difficulty": "easy",
+      "tags": ["artifacts", "basics"]
+    },
+    {
+      "id": "cicd-021",
+      "question": "How do you run jobs in parallel in GitLab CI?",
+      "answer": "Jobs in the same stage automatically run in parallel on available runners. To run jobs in parallel across stages, use the needs keyword to create DAG-based dependencies. GitLab will execute jobs as soon as all their dependencies complete, maximizing parallel execution without waiting for stage boundaries.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "parallel"]
+    },
+    {
+      "id": "cicd-022",
+      "question": "What is the difference between workflow_dispatch and repository_dispatch in GitHub Actions?",
+      "answer": "workflow_dispatch enables manual workflow triggers from GitHub UI with optional input parameters. repository_dispatch triggers workflows via API/webhook from external services, allowing integration with third-party tools. Both enable manual triggering but workflow_dispatch is built-in UI-based while repository_dispatch requires API calls.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "triggers"]
+    },
+    {
+      "id": "cicd-023",
+      "question": "How do you handle secrets in CI/CD pipelines?",
+      "answer": "GitHub Actions uses encrypted secrets stored in repository/organization settings, accessed via ${{ secrets.SECRET_NAME }}. GitLab CI uses CI/CD variables with masked option, accessed via $SECRET_NAME. Secrets should never be hardcoded or logged. Use environment variables and secret scanning features.",
+      "difficulty": "medium",
+      "tags": ["security", "secrets"]
+    },
+    {
+      "id": "cicd-024",
+      "question": "What is a self-hosted runner?",
+      "answer": "Self-hosted runners are user-managed machines that run CI/CD jobs instead of GitHub/GitLab's hosted runners. They offer more control over environment, allow access to private networks, reduce costs for large workloads, and enable custom hardware/software requirements. They must be manually registered and updated.",
+      "difficulty": "medium",
+      "tags": ["runners", "self-hosted"]
+    },
+    {
+      "id": "cicd-025",
+      "question": "What is the purpose of workflow templates in GitHub Actions?",
+      "answer": "Workflow templates allow organizations to create standardized CI/CD templates in .github/workflows directory at organization level. Repository admins can select these templates when creating new workflows, ensuring consistent pipeline configurations across repositories. Templates support customization through inputs.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "templates"]
+    },
+    {
+      "id": "cicd-026",
+      "question": "What is GitLab CI/CD variable and how do you use it?",
+      "answer": "CI/CD variables store configuration values like credentials, tokens, and settings. Define variables in Settings > CI/CD > Variables with options for protected and masked. Access in .gitlab-ci.yml using $VARIABLE_NAME syntax. Variables can be file-type for certificate/key files or environment-scoped.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "variables"]
+    },
+    {
+      "id": "cicd-027",
+      "question": "How do you set up GitLab CI caching?",
+      "answer": "Use cache keyword in job to define paths to cache. Example: cache: key: $CI_COMMIT_REF_SLUG paths: - node_modules/. Use variables in key for per-branch caching. Cache is stored between pipeline runs but can be cleared. Be careful not to cache sensitive files.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "cache"]
+    },
+    {
+      "id": "cicd-028",
+      "question": "What are the different types of GitLab runners?",
+      "answer": "GitLab runners can be: shared (available to all projects), group (shared within group), specific (assigned to specific projects), and locked (cannot be assigned to other projects). They also differ by executor type: shell, Docker, Kubernetes, SSH, VirtualBox, etc.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "runners"]
+    },
+    {
+      "id": "cicd-029",
+      "question": "How do you conditionally execute jobs in GitHub Actions?",
+      "answer": "Use if condition to control job/step execution. Conditions can check: branch name, event type, file changes, or custom expressions. Example: if: github.ref == 'refs/heads/main' or if: steps.test.outputs.result == 'success'. Supports negation (!) and logical operators (and, or).",
+      "difficulty": "medium",
+      "tags": ["github-actions", "conditionals"]
+    },
+    {
+      "id": "cicd-030",
+      "question": "What is the rules keyword in GitLab CI?",
+      "answer": "rules controls job execution based on conditions. More flexible than only/except. Supports: if (CI/CD variable conditions), changes (file patterns), exists (file presence), allow_failure, and variables. Jobs run when all rules evaluate to true. Replaces only/except syntax.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "conditionals"]
+    },
+    {
+      "id": "cicd-031",
+      "question": "How do you trigger a workflow from another workflow in GitHub?",
+      "answer": "Use workflow_run trigger to start workflow when another completes. Use repository_dispatch event triggered via GitHub API. Or use GitHub Actions API to trigger workflows programmatically. Use PAT token for cross-repository triggers with appropriate permissions.",
+      "difficulty": "hard",
+      "tags": ["github-actions", "triggers"]
+    },
+    {
+      "id": "cicd-032",
+      "question": "What is GitLab child pipeline?",
+      "answer": "Child pipelines trigger a separate pipeline within the same project. Use trigger:include to include pipeline YAML or trigger:project for cross-project. Enables modular pipeline design, running different configurations for monorepos, or splitting large pipelines into manageable chunks.",
+      "difficulty": "hard",
+      "tags": ["gitlab-ci", "pipelines"]
+    },
+    {
+      "id": "cicd-033",
+      "question": "How do you handle job failures in CI/CD?",
+      "answer": "GitHub Actions: use if: failure() to run cleanup jobs, or continue-on-error for non-critical failures. GitLab CI: use when: on_failure or always for cleanup. Configure retry on failure with retry: max: 2 when: runner_failure. Implement notification on failure via Slack/email integrations.",
+      "difficulty": "medium",
+      "tags": ["error-handling", "failures"]
+    },
+    {
+      "id": "cicd-034",
+      "question": "What is the difference between needs and dependencies in GitLab CI?",
+      "answer": "needs defines explicit DAG-based dependencies, allowing parallel execution without stage boundaries. dependencies (deprecated) is stage-based and only downloads artifacts from earlier stages. needs is more flexible and recommended for modern pipelines as it optimizes execution order.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "dependencies"]
+    },
+    {
+      "id": "cicd-035",
+      "question": "How do you pass data between jobs in GitHub Actions?",
+      "answer": "Upload artifacts from one job and download in dependent jobs. Use actions/upload-artifact and actions/download-artifact actions. Example: needs: [build] to ensure download happens after build completes. Set persistent: true for artifacts to survive workflow run.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "artifacts"]
+    },
+    {
+      "id": "cicd-036",
+      "question": "What is GitLab CI artifacts and how do you configure them?",
+      "answer": "Artifacts store files between jobs/stages. Configure with paths, when (always/on_failure), expire_in, and reports. Example: artifacts: paths: [build/] reports: junit: report.xml. Jobs can download artifacts from earlier stages using dependencies keyword.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "artifacts"]
+    },
+    {
+      "id": "cicd-037",
+      "question": "How do you create a reusable workflow in GitHub Actions?",
+      "answer": "Store workflow in .github/workflows/ at repository level or in public repository. Call with uses: owner/repo/.github/workflows/workflow.yml@ref. Pass inputs and secrets using with and secrets keywords. Enable repository templates for easier reuse.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "reusable"]
+    },
+    {
+      "id": "cicd-038",
+      "question": "What is GitLab CI include and how is it used?",
+      "answer": "include embeds external YAML into pipeline. Types: local (same repo), project (different repo), remote (URL), and template (GitLab CI/CD templates). Enables sharing configurations, using templates, and splitting large pipelines into modules.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "reusable"]
+    },
+    {
+      "id": "cicd-039",
+      "question": "How do you set up GitHub Actions for Docker build and push?",
+      "answer": "Use docker/build-push-action with registry credentials. Steps: checkout, login to registry (docker/login-action), build and push (build-push-action). Example: uses: docker/build-push-action@v5 with: push: true tags: image:latest. Cache with cache-from and cache-to options.",
+      "difficulty": "medium",
+      "tags": ["docker", "github-actions"]
+    },
+    {
+      "id": "cicd-040",
+      "question": "How do you deploy to Kubernetes from GitLab CI?",
+      "answer": "Use kubectl with service account token or HELM chart deployment. Steps: setup kubectl config, deploy using kubectl apply or helm upgrade. Alternatively use GitLab's built-in Kubernetes integration with Auto DevOps for automatic deployments.",
+      "difficulty": "hard",
+      "tags": ["kubernetes", "gitlab-ci"]
+    },
+    {
+      "id": "cicd-041",
+      "question": "What is GitHub Actions concurrency and how do you use it?",
+      "answer": "Concurrency limits concurrent workflow runs. Use concurrency group to cancel in-progress runs when new one starts. Example: concurrency: group: ${{ github.workflow }}-${{ github.ref }} cancel-in-progress: true. Useful for reducing resource usage on feature branches.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "concurrency"]
+    },
+    {
+      "id": "cicd-042",
+      "question": "How do you use GitLab CI trigger with API?",
+      "answer": "Use GitLab API to trigger pipelines: POST /api/v4/projects/:id/trigger/pipeline with trigger token. Or use GitLab UI: Pipelines > Run Pipeline. Webhooks can trigger on push, merge request, or schedule events.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "triggers"]
+    },
+    {
+      "id": "cicd-043",
+      "question": "What is GitHub Actions OIDC and why use it?",
+      "answer": "OpenID Connect allows workflows to authenticate with cloud providers without storing long-lived secrets. Configure OIDC in cloud provider, add permissions: id-token: write to workflow. Cloud role assumes identity, providing temporary credentials. More secure than storing access keys.",
+      "difficulty": "hard",
+      "tags": ["security", "oidc"]
+    },
+    {
+      "id": "cicd-044",
+      "question": "How do you set up GitLab CI for monorepos?",
+      "answer": "Use changes filter in rules to detect affected paths: rules: - if: '$CI_PIPELINE_SOURCE == \"merge_request_event\"' changes: - app/**. Use only: changes similarly. This runs only relevant jobs when specific directories change, avoiding full rebuilds.",
+      "difficulty": "hard",
+      "tags": ["gitlab-ci", "monorepo"]
+    },
+    {
+      "id": "cicd-045",
+      "question": "What is GitHub Actions job summary?",
+      "answer": "Job summary displays rich content (Markdown, images) at workflow level. Use workflow commands like echo \"text\" >> $GITHUB_STEP_SUMMARY or add-step-summary from actions/github-script. Summary persists after workflow completion and shows in UI.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "reporting"]
+    },
+    {
+      "id": "cicd-046",
+      "question": "How do you create GitLab CI reports?",
+      "answer": "Upload reports using artifacts:reports with report type (junit, cobertura, codequality). GitLab parses and displays reports in merge request widget. Example: artifacts: reports: junit: rspec.xml cobertura: coverage/cobertura.xml. Access in MR discussion tab.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "reporting"]
+    },
+    {
+      "id": "cicd-047",
+      "question": "What is GitHub Actions service containers?",
+      "answer": "Service containers run supporting services (databases, caches) alongside jobs. Define with services: keyword using Docker images. They share network with job container, accessible via localhost. Example: services: - image: postgres:14 ports: - 5432:5432",
+      "difficulty": "medium",
+      "tags": ["github-actions", "services"]
+    },
+    {
+      "id": "cicd-048",
+      "question": "How do you handle timeout in CI/CD jobs?",
+      "answer": "GitHub Actions: set timeout-minutes at job level. GitLab CI: set timeout in job or project settings. Example: timeout: 30m in .gitlab-ci.yml. Prevent hung jobs from blocking pipelines. Set reasonable timeouts based on actual job duration plus buffer.",
+      "difficulty": "medium",
+      "tags": ["configuration", "timeout"]
+    },
+    {
+      "id": "cicd-049",
+      "question": "What is GitLab CI DAG scheduling?",
+      "answer": "DAG (Directed Acyclic Graph) scheduling uses needs keyword to create explicit dependencies. Unlike stage-based scheduling, DAG runs jobs as soon as dependencies complete, not waiting for entire stages. Faster pipelines and better resource utilization.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "dag"]
+    },
+    {
+      "id": "cicd-050",
+      "question": "How do you use GitHub Actions environments?",
+      "answer": "Environments provide deployment targets with protection rules and secrets. Configure in repository Settings > Environments. Add environment: production in job for deployment targeting. Set required reviewers, wait timers, and branch rules for production environments.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "environments"]
+    },
+    {
+      "id": "cicd-051",
+      "question": "What are GitLab CI environments and how do you deploy to them?",
+      "answer": "GitLab CI environments track deployment locations (dev, staging, production). Define in .gitlab-ci.yml with environment:name and environment:url. GitLab creates environment page showing deployment history. Use stop environment action to clean up resources.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "environments"]
+    },
+    {
+      "id": "cicd-052",
+      "question": "How do you set up GitHub Actions for AWS deployment?",
+      "answer": "Configure AWS credentials as OIDC or secrets. Use aws-actions/configure-aws-credentials action. Use AWS CLI or CDK actions for deployment. Example: configure-aws-credentials with role-to-assume for secure cross-account deployments.",
+      "difficulty": "hard",
+      "tags": ["aws", "github-actions"]
+    },
+    {
+      "id": "cicd-053",
+      "question": "What is GitLab Auto DevOps?",
+      "answer": "Auto DevOps automatically builds, tests, and deploys applications using predefined CI/CD templates. Enables CI, CD, security scanning, and monitoring with minimal configuration. Set AUTO_DEVOPS_ADVANCED_FEATURES or enable in project settings.",
+      "difficulty": "hard",
+      "tags": ["gitlab-ci", "auto-devops"]
+    },
+    {
+      "id": "cicd-054",
+      "question": "How do you use GitHub Actions to deploy to Azure?",
+      "answer": "Use Azure/login action with service principal credentials. Use Azure/webapps-deploy or Azure/container-actions. Configure Azure credentials as secrets or use OIDC for passwordless authentication. Set up Azure subscription ID and resource group.",
+      "difficulty": "hard",
+      "tags": ["azure", "github-actions"]
+    },
+    {
+      "id": "cicd-055",
+      "question": "What is the difference between GitHub Actions and GitLab CI?",
+      "answer": "GitHub Actions integrates with GitHub repositories, uses workflows in .github/workflows, has Marketplace for actions. GitLab CI is part of GitLab platform, uses .gitlab-ci.yml, has built-in container registry and integrated features. Both support similar functionality with different syntax.",
+      "difficulty": "easy",
+      "tags": ["comparison"]
+    },
+    {
+      "id": "cicd-056",
+      "question": "How do you handle secrets rotation in CI/CD?",
+      "answer": "Use OIDC for cloud providers to eliminate long-lived secrets. For other secrets, implement rotation process: update secret in CI/CD settings, test pipeline, remove old secret. Use temporary credentials when possible. Document rotation procedures.",
+      "difficulty": "hard",
+      "tags": ["security", "secrets"]
+    },
+    {
+      "id": "cicd-057",
+      "question": "What is GitLab CI/CD pipeline efficiency?",
+      "answer": "Pipeline efficiency minimizes execution time and resource usage. Strategies: DAG scheduling with needs, parallel test splitting, smart caching, smaller Docker images, skip unnecessary jobs with rules, use before_script wisely, optimize dependencies.",
+      "difficulty": "hard",
+      "tags": ["gitlab-ci", "optimization"]
+    },
+    {
+      "id": "cicd-058",
+      "question": "How do you optimize GitHub Actions workflow speed?",
+      "answer": "Optimize with: caching dependencies, using faster runners, parallelizing jobs, running jobs concurrently, using matrix strategy, reducing Docker image size, conditionally skipping jobs, using artifacts wisely, implementing stale workflow cancellation.",
+      "difficulty": "hard",
+      "tags": ["github-actions", "optimization"]
+    },
+    {
+      "id": "cicd-059",
+      "question": "What is GitHub Actions job access tokens?",
+      "answer": "GITHUB_TOKEN is automatically created for each workflow run with limited permissions. Define permissions in workflow or repository settings. Use to authenticate API calls, create PRs, post comments, deploy to environments. Refreshes for each run.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "authentication"]
+    },
+    {
+      "id": "cicd-060",
+      "question": "What is GitLab CI job token?",
+      "answer": "CI_JOB_TOKEN is available in every job for API access and inter-job communication. Can pull/push to registry, download artifacts from dependent pipelines, trigger downstream pipelines. Permissions based on project access level.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "authentication"]
+    },
+    {
+      "id": "cicd-061",
+      "question": "How do you set up GitHub Actions for monorepos?",
+      "answer": "Use paths filter in triggers: on: push: paths: - 'services/api/**'. Run only affected services. Use matrix strategy for building multiple packages. Or use reusable workflows triggered by specific path changes.",
+      "difficulty": "hard",
+      "tags": ["github-actions", "monorepo"]
+    },
+    {
+      "id": "cicd-062",
+      "question": "What is GitLab CI pipeline editor?",
+      "answer": "Pipeline editor provides visual interface for editing .gitlab-ci.yml. Accessible from CI/CD > Pipeline Editor. Shows pipeline visualization, validates YAML syntax, suggests available keywords. Useful for beginners learning GitLab CI syntax.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "editor"]
+    },
+    {
+      "id": "cicd-063",
+      "question": "How do you use GitHub Actions for testing?",
+      "answer": "Define test jobs with steps: checkout, setup language runtime, install dependencies, run test command. Upload test results with actions/upload-artifact. Use test reports feature for better visualization. Example for Node: run: npm test.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "testing"]
+    },
+    {
+      "id": "cicd-064",
+      "question": "How do you run tests in GitLab CI?",
+      "answer": "Add test stage and job with script commands. Example: test: stage: test script: - npm install - npm test artifacts: reports: junit: junit.xml. GitLab displays test results in merge request widget and pipeline view.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "testing"]
+    },
+    {
+      "id": "cicd-065",
+      "question": "What is GitHub Actions test summary?",
+      "answer": "Test summary displays test results in workflow run UI. Upload JUnit XML with actions/upload-artifact. GitHub parses and shows pass/fail counts, test duration, and failures. Enables quick identification of test issues.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "testing"]
+    },
+    {
+      "id": "cicd-066",
+      "question": "How do you use GitLab CI code quality analysis?",
+      "answer": "GitLab Ultimate includes code quality scanning with embedded reports. Use default_ci_template or include: template: Jobs/Code-Quality. Define artifacts:reports:codequality. Results appear in MR diff and pipeline.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "code-quality"]
+    },
+    {
+      "id": "cicd-067",
+      "question": "What is GitHub Actions CodeQL?",
+      "answer": "CodeQL is GitHub's code analysis engine for security vulnerabilities. Use github/codeql-action/init to analyze code. Supports multiple languages, detects security bugs, integrates with security tab. Free for public repos.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "security"]
+    },
+    {
+      "id": "cicd-068",
+      "question": "How do you secure GitLab CI pipelines?",
+      "answer": "Secure with: masked CI/CD variables for secrets, protected branches for production, CI_JOB_TOKEN scope restrictions, vault integration for secrets, container scanning, dependency scanning, SAST/DAST templates in Ultimate tier.",
+      "difficulty": "hard",
+      "tags": ["gitlab-ci", "security"]
+    },
+    {
+      "id": "cicd-069",
+      "question": "What is GitLab CI Security Dashboard?",
+      "answer": "Security Dashboard aggregates vulnerability findings from security scans (SAST, DAST, dependency scanning). Shows severity, detection date, project. Enables tracking and remediation of security issues. Available in GitLab Ultimate.",
+      "difficulty": "hard",
+      "tags": ["gitlab-ci", "security"]
+    },
+    {
+      "id": "cicd-070",
+      "question": "How do you implement blue-green deployment in CI/CD?",
+      "answer": "Blue-green deploys to parallel environment, switching traffic when ready. Steps: deploy to green environment, run smoke tests, update load balancer/ DNS, monitor, rollback if issues. In GitLab: use environment: { name: green, url: }. Implement traffic switch with canary percentage.",
+      "difficulty": "hard",
+      "tags": ["deployment", "blue-green"]
+    },
+    {
+      "id": "cicd-071",
+      "question": "What is canary deployment and how do you implement it?",
+      "answer": "Canary deploys new version to subset of users before full rollout. Gradually increases traffic percentage. Monitor metrics, rollback if issues. In GitLab CI: deploy to canary environment with limited traffic, use progressive rollout strategy.",
+      "difficulty": "hard",
+      "tags": ["deployment", "canary"]
+    },
+    {
+      "id": "cicd-072",
+      "question": "How do you rollback a deployment in CI/CD?",
+      "answer": "GitHub Actions: redeploy previous workflow or use environment protection. GitLab CI: use gitlab-backup for database, redeploy previous image/tag. Implement using deploy history, version tags, or rollback job in pipeline.",
+      "difficulty": "hard",
+      "tags": ["deployment", "rollback"]
+    },
+    {
+      "id": "cicd-073",
+      "question": "What is GitHub Actions runner groups?",
+      "answer": "Runner groups organize and restrict runner access. Create groups in organization settings, assign runners to groups. Grant repository access to specific runner groups. Useful for team segmentation and resource allocation.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "runners"]
+    },
+    {
+      "id": "cicd-074",
+      "question": "How do you use GitLab CI runner tags?",
+      "answer": "Runner tags categorize runners by capability (docker, windows, specific tools). Assign tags in runner settings. Jobs request specific tags: tags: [docker]. Only runners with matching tags execute those jobs. Enables job-to-runner matching.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "runners"]
+    },
+    {
+      "id": "cicd-075",
+      "question": "What is GitHub Actions workflow syntax validation?",
+      "answer": "Use workflow validation before committing. GitHub runs YAML linter on PR. Use act for local testing, VS Code extension for syntax highlighting. Check action references and version pins. Validate secrets names match.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "validation"]
+    },
+    {
+      "id": "cicd-076",
+      "question": "How do you debug CI/CD pipeline failures?",
+      "answer": "GitHub: enable debug logging with secrets.ACTIONS_STEP_DEBUG, use SSH to runner for interactive debugging. GitLab: enable debug tracing, use gitlab-runner exec for local testing. Check job logs, artifacts, network, permissions, and variable values.",
+      "difficulty": "hard",
+      "tags": ["debugging", "troubleshooting"]
+    },
+    {
+      "id": "cicd-077",
+      "question": "What is GitLab CI job artifacts expiration?",
+      "answer": "Set artifacts: expire_in to auto-delete artifacts after time. Example: expire_in: 1 week. Without expiration, artifacts persist. Expiration saves storage. Set appropriate duration based on retention needs.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "artifacts"]
+    },
+    {
+      "id": "cicd-078",
+      "question": "How do you use GitHub Actions path filters on PRs?",
+      "answer": "Use paths and paths-ignore in push and pull_request triggers. Example: on: pull_request: paths: - 'src/**' - '*.js'. Only triggers when files matching patterns change. Useful for running tests only for affected code.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "filters"]
+    },
+    {
+      "id": "cicd-079",
+      "question": "What is GitLab CI only/except syntax?",
+      "answer": "only and except control job execution based on conditions. only: - main triggers only on main branch. except: - tags excludes tag pipelines. Newer rules keyword replaces these. Example: only: [main, develop] except: [tags].",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "conditionals"]
+    },
+    {
+      "id": "cicd-080",
+      "question": "How do you handle cross-platform builds in GitHub Actions?",
+      "answer": "Use matrix strategy with os values: [ubuntu-latest, windows-latest, macos-latest]. Steps vary by OS: use run: commands differently for Windows (PowerShell) vs Linux/macOS. Use ${{ runner.os }} to conditionally execute OS-specific commands.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "cross-platform"]
+    },
+    {
+      "id": "cicd-081",
+      "question": "How do you build Docker images in GitLab CI?",
+      "answer": "Use Docker-in-Docker (dind) service or Kaniko for building. Example: image: docker:24.0.5 services: - docker:24.0.5-dind. Login to registry, build with docker build, push image with tag. Kaniko doesn't need privileged mode.",
+      "difficulty": "medium",
+      "tags": ["docker", "gitlab-ci"]
+    },
+    {
+      "id": "cicd-082",
+      "question": "What is GitHub Actions container action?",
+      "answer": "Container action runs entire job in Docker container. Faster, consistent environment. Define in action.yml with runs: using: 'docker' and image: 'Dockerfile'. Better for complex dependencies but less flexible than JavaScript actions.",
+      "difficulty": "hard",
+      "tags": ["github-actions", "actions"]
+    },
+    {
+      "id": "cicd-083",
+      "question": "How do you create custom GitHub Actions in JavaScript?",
+      "answer": "Create action.yml with runs: using: 'node16' and main: 'index.js'. Use @actions/core and @actions/github packages for input/output. Package with npm, commit action.yml and index.js. Supports TypeScript and ESM modules.",
+      "difficulty": "hard",
+      "tags": ["github-actions", "actions"]
+    },
+    {
+      "id": "cicd-084",
+      "question": "What is GitLab CI before_script and after_script?",
+      "answer": "before_script runs before main script in every job. Use for setup like installing dependencies or changing directories. after_script runs after main script regardless of job success/failure. Use for cleanup tasks. Define globally or per-job.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "scripts"]
+    },
+    {
+      "id": "cicd-085",
+      "question": "How do you use GitHub Actions workflow commands?",
+      "answer": "Workflow commands format output for GitHub. Use with run: echo commands. Examples: ::set-output name=var::value, ::add-mask::secret, ::notice::{message}. Or use GITHUB_OUTPUT environment file for modern approach.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "workflow-commands"]
+    },
+    {
+      "id": "cicd-086",
+      "question": "What is GitLab CI release CLI?",
+      "answer": "GitLab Release CLI creates release entries from CI/CD pipeline. Use release: cli command in job script. Define assets, changelog, tag. Creates entry in project Releases page with specified metadata.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "releases"]
+    },
+    {
+      "id": "cicd-087",
+      "question": "How do you trigger GitLab pipeline on schedule?",
+      "answer": "Define in .gitlab-ci.yml with only: - schedule or rules: - if: '$CI_PIPELINE_SOURCE == \"schedule\"'. Configure cron syntax in Project > CI/CD > Schedules. Timezone setting available. Useful for nightly builds or regular tasks.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "schedules"]
+    },
+    {
+      "id": "cicd-088",
+      "question": "What is GitHub Actions scheduled workflows?",
+      "answer": "Use on: schedule: with cron syntax. Example: cron: '0 0 * * *' runs daily at midnight. GitHub uses UTC timezone. Useful for periodic tasks, nightly builds, regular maintenance jobs. Combine with conditions for more control.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "schedules"]
+    },
+    {
+      "id": "cicd-089",
+      "question": "How do you handle GitLab CI merge Request pipelines?",
+      "answer": "MR pipelines run for merge requests showing diff from target branch. Configure with only: - merge_requests or rules with $CI_PIPELINE_SOURCE == 'merge_request_event'. Shows results in MR widget. Useful for validating code before merging.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "merge-requests"]
+    },
+    {
+      "id": "cicd-090",
+      "question": "How do you set up GitHub Actions for PR builds?",
+      "answer": "Trigger on pull_request event with types: [opened, synchronize, reopened]. Run tests and checks on feature branch. Post status checks to PR. Optionally require successful checks before merge using branch protection.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "pull-requests"]
+    },
+    {
+      "id": "cicd-091",
+      "question": "What is GitLab CI merge train?",
+      "answer": "Merge train queues merge requests, testing them sequentially with combined diff. Ensures each MR tested with latest target branch changes. Improves merge confidence. Configure in project CI/CD settings.",
+      "difficulty": "hard",
+      "tags": ["gitlab-ci", "merge-trains"]
+    },
+    {
+      "id": "cicd-092",
+      "question": "How do you use GitHub Actions to post PR comments?",
+      "answer": "Use GitHub API via @actions/github or curl. Example: uses: actions/github-script@v6 with: script: github.rest.issues.createComment. Token with repo scope required. Useful for posting test results or deployment status.",
+      "difficulty": "hard",
+      "tags": ["github-actions", "pull-requests"]
+    },
+    {
+      "id": "cicd-093",
+      "question": "What is GitLab CI pipeline badges?",
+      "answer": "Pipeline badges show pipeline status. Format: https://gitlab.com/project/badges/main/pipeline.svg. Embed in README.md. Shows passing/failing status. Can include coverage badge from job artifacts.",
+      "difficulty": "easy",
+      "tags": ["gitlab-ci", "badges"]
+    },
+    {
+      "id": "cicd-094",
+      "question": "How do you get GitHub Actions workflow badges?",
+      "answer": "Use URL pattern: https://github.com/{owner}/{repo}/actions/workflows/{workflow}/badge.svg?branch={branch}. Embed in README.md. Shows workflow status. Add query parameters for branch, event type, or tag filtering.",
+      "difficulty": "easy",
+      "tags": ["github-actions", "badges"]
+    },
+    {
+      "id": "cicd-095",
+      "question": "What is GitLab CI extends keyword?",
+      "answer": "extends enables job template inheritance. Define base job with .template name (dot prefix), extend in other jobs. Child jobs inherit script, before_script, and other keywords. Supports multiple inheritance and overriding specific values.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "templates"]
+    },
+    {
+      "id": "cicd-096",
+      "question": "How do you use GitHub Actions reusable workflows with inputs?",
+      "answer": "Define inputs in workflow with types: string, boolean, choice, environment. Caller passes with with: keyword. Inputs become environment variables in called workflow. Use secrets for sensitive data passed with secrets:.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "reusable"]
+    },
+    {
+      "id": "cicd-097",
+      "question": "What is GitLab CI anchor and YAML anchors?",
+      "answer": "YAML anchors (&) define reusable content, aliases (*) reference them. Example: .defaults: &defaults script: npm test. jobs: test: <<: *defaults. Reduces duplication in complex YAML files.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "yaml"]
+    },
+    {
+      "id": "cicd-098",
+      "question": "How do you handle GitLab CI project-level runners?",
+      "answer": "Project-level runners are registered to specific projects. Get registration token from Settings > CI/CD > Runners. Install gitlab-runner, register with token and tags. Configure in runner.toml for advanced options.",
+      "difficulty": "medium",
+      "tags": ["gitlab-ci", "runners"]
+    },
+    {
+      "id": "cicd-099",
+      "question": "What is GitHub Actions ephemeral runners?",
+      "answer": "Ephemeral runners are provisioned per job and deleted after completion. Default for GitHub-hosted runners. Each job gets fresh environment. Benefits: isolation, security, no state persistence. Configure for self-hosted runners.",
+      "difficulty": "medium",
+      "tags": ["github-actions", "runners"]
+    },
+    {
+      "id": "cicd-100",
+      "question": "How do you implement GitLab CI/CD best practices?",
+      "answer": "Best practices include: use DAG scheduling with needs, implement proper caching strategies, set appropriate timeouts, use artifacts efficiently, implement security scanning, enable test coverage tracking, use environment protection, implement rollback procedures, document pipelines, monitor pipeline performance.",
+      "difficulty": "hard",
+      "tags": ["best-practices"]
+    }
+  ]
+}
