@@ -31,6 +31,7 @@ const subjectOverrides: Record<
   azure: { name: 'Microsoft Azure' },
   prometheus: { name: 'Prometheus & Grafana' },
   python: { name: 'Python for DevOps' },
+  networking: { name: 'Networking Fundamentals' },
 };
 
 const globModules = import.meta.glob<{ default: QuestionData }>(
