@@ -30,6 +30,7 @@ const subjectOverrides: Record<
   cicd: { name: 'CI/CD (GitHub/GitLab)' },
   azure: { name: 'Microsoft Azure' },
   prometheus: { name: 'Prometheus & Grafana' },
+  python: { name: 'Python for DevOps' },
 };
 
 const globModules = import.meta.glob<{ default: QuestionData }>(

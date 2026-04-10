@@ -1,0 +1,708 @@
+{
+  "subject": "Python for DevOps",
+  "description": "Python is widely used in DevOps for automation, scripting, and building tools. This section covers Python concepts, libraries, and patterns commonly used by DevOps engineers for infrastructure automation, CI/CD pipelines, cloud management, and operational tasks.",
+  "totalQuestions": 100,
+  "lastUpdated": "2026-04-07",
+  "questions": [
+    {
+      "id": "python-001",
+      "question": "Why is Python popular in DevOps?",
+      "answer": "Python is popular in DevOps due to its simple syntax making it easy to learn, extensive library ecosystem for cloud and infrastructure (boto3, ansible, terraform), cross-platform compatibility, strong community support, and excellent integration capabilities with CI/CD tools, APIs, and automation frameworks.",
+      "difficulty": "easy",
+      "tags": ["basics", "overview"]
+    },
+    {
+      "id": "python-002",
+      "question": "What is the difference between Python 2 and Python 3 for DevOps?",
+      "answer": "Python 2 reached end-of-life in 2020. Python 3 offers better Unicode support, improved integer division, f-strings, type hints, and async/await syntax. All modern DevOps scripts should use Python 3.8+ for better performance and security features.",
+      "difficulty": "easy",
+      "tags": ["basics", "python3"]
+    },
+    {
+      "id": "python-003",
+      "question": "What are Python virtual environments and why use them?",
+      "answer": "Virtual environments create isolated Python environments with separate package installations. Use venv or virtualenv to manage dependencies per project. Activate with source venv/bin/activate. This prevents version conflicts between projects and ensures reproducible builds.",
+      "difficulty": "easy",
+      "tags": ["environment", "venv"]
+    },
+    {
+      "id": "python-004",
+      "question": "What is pip and how do you use it in DevOps?",
+      "answer": "pip is Python's package installer. Common commands: pip install package, pip install -r requirements.txt, pip freeze > requirements.txt for reproducible environments. Use pip check to verify dependencies, pip list to see installed packages.",
+      "difficulty": "easy",
+      "tags": ["packages", "pip"]
+    },
+    {
+      "id": "python-005",
+      "question": "What is a requirements.txt file?",
+      "answer": "requirements.txt lists Python dependencies for a project. Format: package==version for exact, >= for minimum. Use pip freeze > requirements.txt to generate from current environment. Essential for reproducible deployments in CI/CD.",
+      "difficulty": "easy",
+      "tags": ["packages", "dependencies"]
+    },
+    {
+      "id": "python-006",
+      "question": "What is Poetry and how does it differ from pip?",
+      "answer": "Poetry is a modern Python dependency manager using pyproject.toml. It handles package installation, virtual environments, and dependency resolution better than pip. Commands: poetry install, poetry add package, poetry lock for reproducible builds.",
+      "difficulty": "medium",
+      "tags": ["packages", "poetry"]
+    },
+    {
+      "id": "python-007",
+      "question": "What is Docker and how do you use it with Python?",
+      "answer": "Docker containers package Python applications with dependencies. Use multi-stage builds to keep images small: FROM python:3.11-slim for runtime. Copy requirements.txt first, install dependencies, then copy code. This utilizes Docker layer caching.",
+      "difficulty": "medium",
+      "tags": ["docker", "containers"]
+    },
+    {
+      "id": "python-008",
+      "question": "How do you handle JSON in Python for DevOps scripts?",
+      "answer": "Use the json module: json.load() for files, json.loads() for strings, json.dump() for files, json.dumps() for strings. For AWS/nested JSON, consider using jq CLI or python-jmespath for path-based extraction.",
+      "difficulty": "easy",
+      "tags": ["json", "data"]
+    },
+    {
+      "id": "python-009",
+      "question": "How do you work with YAML in Python?",
+      "answer": "Use PyYAML library: yaml.safe_load() for reading, yaml.dump() for writing. safe_load prevents arbitrary code execution. For complex configurations, use ruamel.yaml for round-trip editing preserving comments.",
+      "difficulty": "medium",
+      "tags": ["yaml", "data"]
+    },
+    {
+      "id": "python-010",
+      "question": "What is argparse and how do you use it for CLI tools?",
+      "answer": "argparse creates command-line interfaces. Example: parser = argparse.ArgumentParser(), parser.add_argument('--name', required=True), args = parser.parse_args(). Supports positional args, types, choices, default values, and help text.",
+      "difficulty": "medium",
+      "tags": ["cli", "argparse"]
+    },
+    {
+      "id": "python-011",
+      "question": "What is Click and why use it for CLI tools?",
+      "answer": "Click is a decorator-based CLI framework simpler than argparse. Use @click.command(), @click.option('--name'), @click.argument(). Built-in help, prompts, progress bars. Better for complex CLIs with subcommands.",
+      "difficulty": "medium",
+      "tags": ["cli", "click"]
+    },
+    {
+      "id": "python-012",
+      "question": "How do you handle errors and exceptions in Python?",
+      "answer": "Use try/except blocks: try: risky_code() except Exception as e: handle_error(). Catch specific exceptions (ValueError, TypeError) over bare except. Use finally for cleanup. Raise exceptions with raise ValueError('message').",
+      "difficulty": "easy",
+      "tags": ["exceptions", "error-handling"]
+    },
+    {
+      "id": "python-013",
+      "question": "What is logging in Python and how configure it?",
+      "answer": "logging module provides configurable logging. Configure with basicConfig(level=logging.INFO). Use logger = logging.getLogger(__name__). Levels: DEBUG, INFO, WARNING, ERROR, CRITICAL. Add handlers for files, syslog, or cloud logging.",
+      "difficulty": "medium",
+      "tags": ["logging", "debugging"]
+    },
+    {
+      "id": "python-014",
+      "question": "How do you read and write files in Python?",
+      "answer": "Use with open('file.txt', 'r') as f: content = f.read(). For lines: f.readlines() or iterate directly. Write: open('file.txt', 'w'). Use 'a' for append. Always use context manager (with) for automatic cleanup.",
+      "difficulty": "easy",
+      "tags": ["files", "io"]
+    },
+    {
+      "id": "python-015",
+      "question": "What are Python list comprehensions and why use them?",
+      "answer": "List comprehensions create lists from iterables: [x*2 for x in range(10)]. Can include conditions: [x for x in items if x.active]. More concise and faster than traditional loops. Also available: dict comprehensions, set comprehensions.",
+      "difficulty": "easy",
+      "tags": ["python", "comprehensions"]
+    },
+    {
+      "id": "python-016",
+      "question": "What are lambda functions in Python?",
+      "answer": "Lambda functions are anonymous single-expression functions: lambda x: x * 2. Used with map(), filter(), sorted(). For complex logic, use named functions instead. Lambdas can't contain statements, only expressions.",
+      "difficulty": "easy",
+      "tags": ["python", "lambda"]
+    },
+    {
+      "id": "python-017",
+      "question": "What is the difference between a list and a tuple?",
+      "answer": "Lists are mutable: can modify, append, remove. Tuples are immutable: cannot change after creation. Use tuples for fixed data (coordinates), lists for collections that change. Tuples are slightly faster and can be dictionary keys.",
+      "difficulty": "easy",
+      "tags": ["python", "data-types"]
+    },
+    {
+      "id": "python-018",
+      "question": "What is a dictionary in Python and when use it?",
+      "answer": "Dictionaries store key-value pairs: {'name': 'server1', 'status': 'running'}. Access with dict['key'] or dict.get('key', default). Iterate with dict.items(). Efficient for lookups by key. Use for configuration, mappings, caching.",
+      "difficulty": "easy",
+      "tags": ["python", "data-types"]
+    },
+    {
+      "id": "python-019",
+      "question": "What are sets in Python and when are they useful?",
+      "answer": "Sets store unique unordered elements: {1, 2, 3}. Operations: union, intersection, difference. Useful for tracking unique items, removing duplicates, membership testing (O(1) lookup). Frozensets are immutable versions.",
+      "difficulty": "easy",
+      "tags": ["python", "data-types"]
+    },
+    {
+      "id": "python-020",
+      "question": "How do you work with environment variables in Python?",
+      "answer": "Use os.environ or os.getenv(). Example: os.getenv('DB_HOST', 'localhost'). For type conversion, use json.loads(os.environ['CONFIG']) for complex values. Load .env files with python-dotenv library in development.",
+      "difficulty": "easy",
+      "tags": ["environment", "configuration"]
+    },
+    {
+      "id": "python-021",
+      "question": "What is sys.argv and when use it?",
+      "answer": "sys.argv is a list of command-line arguments. argv[0] is script name, argv[1:] are arguments. Simple but limited. Use argparse or Click for complex CLIs with validation, help text, and type conversion.",
+      "difficulty": "easy",
+      "tags": ["cli", "arguments"]
+    },
+    {
+      "id": "python-022",
+      "question": "How do you work with dates and times in Python?",
+      "answer": "Use datetime module: datetime.datetime.now(), datetime.datetime.strptime(date_str, format). For timezones, use pytz or datetime.timezone. The arrow library simplifies timezone handling and formatting.",
+      "difficulty": "medium",
+      "tags": ["datetime", "time"]
+    },
+    {
+      "id": "python-023",
+      "question": "What is requests library and why is it used in DevOps?",
+      "answer": "requests is HTTP library for API calls: requests.get(url), requests.post(url, json=data). Essential for interacting with REST APIs, webhooks, cloud provider APIs. Supports authentication, headers, timeouts, retries.",
+      "difficulty": "medium",
+      "tags": ["http", "api"]
+    },
+    {
+      "id": "python-024",
+      "question": "How do you make HTTP requests with authentication?",
+      "answer": "Use requests with auth: requests.get(url, auth=HTTPBasicAuth('user', 'pass')). For tokens: headers={'Authorization': f'Bearer {token}'}. For API keys: params={'api_key': key}. Always use HTTPS in production.",
+      "difficulty": "medium",
+      "tags": ["http", "api"]
+    },
+    {
+      "id": "python-025",
+      "question": "What is boto3 and how do you use it for AWS?",
+      "answer": "boto3 is AWS SDK for Python. Create client: boto3.client('ec2'), resource: boto3.resource('s3'). Call methods: ec2.describe_instances(). Use session for credentials. Essential for AWS automation and infrastructure management.",
+      "difficulty": "medium",
+      "tags": ["aws", "boto3"]
+    },
+    {
+      "id": "python-026",
+      "question": "How do you handle AWS credentials securely in Python?",
+      "answer": "Use AWS IAM roles (recommended), environment variables (AWS_ACCESS_KEY_ID), ~/.aws/credentials file, or AWS Secrets Manager with boto3. Never hardcode credentials. Use AWS SSO for team environments. Enable MFA for production.",
+      "difficulty": "medium",
+      "tags": ["aws", "security"]
+    },
+    {
+      "id": "python-027",
+      "question": "How do you create an S3 bucket with boto3?",
+      "answer": "Use s3.create_bucket(Bucket='my-bucket', CreateBucketConfiguration={'LocationConstraint': 'us-west-2'}). Set versioning, encryption, tags. Check bucket exists first with s3.head_bucket(). Handle BucketAlreadyOwnedByYou exception.",
+      "difficulty": "medium",
+      "tags": ["aws", "s3"]
+    },
+    {
+      "id": "python-028",
+      "question": "How do you upload a file to S3 with boto3?",
+      "answer": "Use s3.upload_file('local.txt', 'bucket', 'key.txt'). For small files: s3.put_object(Bucket='bucket', Key='key', Body=data). Set ContentType, ACL, encryption. Use multipart upload for large files (>100MB).",
+      "difficulty": "medium",
+      "tags": ["aws", "s3"]
+    },
+    {
+      "id": "python-029",
+      "question": "How do you manage EC2 instances with boto3?",
+      "answer": "Create instances: ec2.create_instances(ImageId='ami-xxx', MinCount=1, MaxCount=1, InstanceType='t2.micro'). Start/stop: ec2.instances.filter(InstanceIds=[...]).start(). Terminate: instance.terminate(). Waiters block until state reached.",
+      "difficulty": "medium",
+      "tags": ["aws", "ec2"]
+    },
+    {
+      "id": "python-030",
+      "question": "How do you work with AWS Lambda functions in Python?",
+      "answer": "Lambda handler receives event/context: def handler(event, context). Return dict for API Gateway. Use boto3 for other AWS services. Layers add dependencies. Package with dependencies in /opt or Lambda runtime.",
+      "difficulty": "medium",
+      "tags": ["aws", "lambda"]
+    },
+    {
+      "id": "python-031",
+      "question": "What is the concurrent.futures module for?",
+      "answer": "concurrent.futures provides ThreadPoolExecutor and ProcessPoolExecutor for parallelism. Use executor.submit(task, args) to submit jobs, executor.map(task, items) for mapping. Simplifies parallel execution without complex threading code.",
+      "difficulty": "medium",
+      "tags": ["concurrency", "multiprocessing"]
+    },
+    {
+      "id": "python-032",
+      "question": "How do you run multiple tasks in parallel in Python?",
+      "answer": "Use ThreadPoolExecutor for I/O-bound tasks (API calls, file operations): with ThreadPoolExecutor(max_workers=10) as executor. For CPU-bound tasks, use ProcessPoolExecutor. Use asyncio for async I/O patterns.",
+      "difficulty": "medium",
+      "tags": ["concurrency", "parallel"]
+    },
+    {
+      "id": "python-033",
+      "question": "What is asyncio and when use it?",
+      "answer": "asyncio provides async/await for concurrent I/O. Define async def functions, use await for non-blocking calls. Use asyncio.gather() to run multiple coroutines. Excellent for many API calls or network operations.",
+      "difficulty": "medium",
+      "tags": ["async", "concurrency"]
+    },
+    {
+      "id": "python-034",
+      "question": "How do you use paramiko for SSH in Python?",
+      "answer": "paramiko handles SSH connections. Connect: ssh = paramiko.SSHClient(), ssh.connect(host, username=user, password=pass). Execute: stdin, stdout, stderr = ssh.exec_command('ls'). Read stdout.read(). Use SSH keys for authentication.",
+      "difficulty": "medium",
+      "tags": ["ssh", "remote"]
+    },
+    {
+      "id": "python-035",
+      "question": "How do you execute shell commands from Python?",
+      "answer": "Use subprocess module: subprocess.run(['ls', '-la'], capture_output=True). For shell strings: subprocess.run('ls -la', shell=True, capture_output=True). Checkreturn for exit codes. Use Popen for complex scenarios.",
+      "difficulty": "medium",
+      "tags": ["subprocess", "shell"]
+    },
+    {
+      "id": "python-036",
+      "question": "What is fabric and how does it simplify remote operations?",
+      "answer": "Fabric (fabric, fab) is SSH automation library. Define tasks: @task. Run remote: run('ls -la'), sudo('service nginx restart'). Connection pooling, parallel execution. Use invoke for local-only tasks.",
+      "difficulty": "medium",
+      "tags": ["ssh", "automation"]
+    },
+    {
+      "id": "python-037",
+      "question": "How do you parse command-line arguments with sys.argv?",
+      "answer": "sys.argv[0] is script, argv[1:] are arguments. Simple parsing: args = sys.argv[1:] . For validation, check len(args), convert types. Use argparse for complex options with help, defaults, type validation.",
+      "difficulty": "easy",
+      "tags": ["cli", "arguments"]
+    },
+    {
+      "id": "python-038",
+      "question": "How do you work with YAML configuration files?",
+      "answer": "import yaml; config = yaml.safe_load(open('config.yaml')). Access nested values: config['database']['host']. Use yaml.dump() to write. For Ansible/Vault integration, consider ansible-vault for encrypted configs.",
+      "difficulty": "medium",
+      "tags": ["yaml", "config"]
+    },
+    {
+      "id": "python-039",
+      "question": "What is jinja2 and when is it useful in DevOps?",
+      "answer": "Jinja2 is a template engine for generating configs from templates. Use in Ansible, CI/CD templates, config generators. Features: variables {{ name }}, filters {{ name|upper }}, conditionals {% if %}, loops {% for %}, includes/extends.",
+      "difficulty": "medium",
+      "tags": ["templates", "jinja2"]
+    },
+    {
+      "id": "python-040",
+      "question": "How do you generate configuration files from templates?",
+      "answer": "from jinja2 import Environment, FileSystemLoader. env = Environment(loader=FileSystemLoader('templates')). template = env.get_template('config.j2'). output = template.render(var1='value', var2=123). Write output to file.",
+      "difficulty": "medium",
+      "tags": ["templates", "jinja2"]
+    },
+    {
+      "id": "python-041",
+      "question": "How do you work with configparser for INI files?",
+      "answer": "configparser reads/writes INI files. Read: config.read('settings.ini'). Access: config.get('section', 'key'), config.getint(), config.getboolean(). Write: config.set(), config.write(open('out.ini', 'w')).",
+      "difficulty": "medium",
+      "tags": ["config", "ini"]
+    },
+    {
+      "id": "python-042",
+      "question": "What is Pydantic and why use it for config management?",
+      "answer": "Pydantic provides data validation using Python type hints. Define models: class Config(BaseModel): name: str, port: int = 8080. Validates on parsing, converts types, provides error messages. Great for env vars and API schemas.",
+      "difficulty": "medium",
+      "tags": ["validation", "pydantic"]
+    },
+    {
+      "id": "python-043",
+      "question": "How do you read environment variables with Pydantic?",
+      "answer": "Use pydantic-settings: class Settings(BaseSettings): db_host: str, db_port: int = 5432. Set Config: env_file = '.env'. Loads from env vars automatically. Supports validation, defaults, nested models.",
+      "difficulty": "medium",
+      "tags": ["config", "pydantic"]
+    },
+    {
+      "id": "python-044",
+      "question": "What is pytest and why use it for testing?",
+      "answer": "pytest is Python testing framework. Write tests: def test_example(): assert add(2, 3) == 5. Run: pytest -v, pytest -k 'test_name'. Features: fixtures, parametrize, markers, plugins for coverage, mocking.",
+      "difficulty": "medium",
+      "tags": ["testing", "pytest"]
+    },
+    {
+      "id": "python-045",
+      "question": "How do you write pytest fixtures?",
+      "answer": "Fixtures provide test data/setup: @pytest.fixture def db(): setup; yield db; cleanup. Request fixtures in test: def test_query(db). Use autouse=True for automatic execution. Fixtures can be scoped (function, module, session).",
+      "difficulty": "medium",
+      "tags": ["testing", "fixtures"]
+    },
+    {
+      "id": "python-046",
+      "question": "What is mocking and when use it in tests?",
+      "answer": "Mocking replaces real objects with test doubles. Use unittest.mock: mock = Mock(), mock.method.return_value = 'value'. Patch: @patch('module.Class'). Test side effects, avoid external calls, control time/date.",
+      "difficulty": "medium",
+      "tags": ["testing", "mocking"]
+    },
+    {
+      "id": "python-047",
+      "question": "How do you mock AWS calls in Python tests?",
+      "answer": "Use moto library: @mock_aws decorator or MockAWS class. It mocks all AWS services locally. For boto3: from moto import mock_aws. Test without real AWS calls, avoiding costs and side effects.",
+      "difficulty": "hard",
+      "tags": ["testing", "aws"]
+    },
+    {
+      "id": "python-048",
+      "question": "What is coverage testing and how measure it?",
+      "answer": "Coverage shows which code lines are executed. Run: pytest --cov=src --cov-report=html. View HTML report for untested lines. Aim for 80%+ coverage on critical paths. Use --cov-fail-under to enforce minimum coverage.",
+      "difficulty": "medium",
+      "tags": ["testing", "coverage"]
+    },
+    {
+      "id": "python-049",
+      "question": "How do you create a Python package?",
+      "answer": "Structure: pkg/__init__.py, pkg/module.py. pyproject.toml for modern packages. Include setup.cfg or setup.py for older style. Package with: pip install -e . for development. Upload to PyPI with twine.",
+      "difficulty": "medium",
+      "tags": ["packaging", "modules"]
+    },
+    {
+      "id": "python-050",
+      "question": "What is __init__.py and __main__.py?",
+      "answer": "__init__.py marks directory as package, can set __all__ and import helpers. __main__.py makes package executable: python -m package runs it. Use for CLI tools and testing modules as scripts.",
+      "difficulty": "medium",
+      "tags": ["modules", "packaging"]
+    },
+    {
+      "id": "python-051",
+      "question": "How do you parse JSON in Python?",
+      "answer": "import json. Parse string: data = json.loads('{\"key\": \"value\"}'). Parse file: with open('file.json') as f: data = json.load(f). Dump to string: json.dumps(data). Dump to file: json.dump(data, open('out.json', 'w')).",
+      "difficulty": "easy",
+      "tags": ["json", "parsing"]
+    },
+    {
+      "id": "python-052",
+      "question": "How do you handle API rate limiting in Python?",
+      "answer": "Use tenacity library: @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10)). Or implement custom backoff with time.sleep(). Check rate limit headers, respect Retry-After.",
+      "difficulty": "hard",
+      "tags": ["api", "rate-limiting"]
+    },
+    {
+      "id": "python-053",
+      "question": "What is tenacity and when use it?",
+      "answer": "tenacity provides retry decorators: @retry(wait=wait_fixed(2), stop=stop_after_attempt(3)). Options: wait_exponential, wait_random, retry_if_exception_type. Log retries, add callbacks. Essential for resilient API calls.",
+      "difficulty": "medium",
+      "tags": ["retry", "resilience"]
+    },
+    {
+      "id": "python-054",
+      "question": "How do you work with REST APIs using requests?",
+      "answer": "GET: r = requests.get(url, params={'key': 'value'}). POST: r = requests.post(url, json=data). Check r.status_code, r.json(), r.text. Use session for connection pooling. Set timeout always.",
+      "difficulty": "medium",
+      "tags": ["api", "rest"]
+    },
+    {
+      "id": "python-055",
+      "question": "How do you handle timeouts in requests?",
+      "answer": "Pass timeout parameter: requests.get(url, timeout=5) for seconds tuple (connect, read). Without timeout, requests wait forever. TimeoutErrors raised on timeout. Essential for production API calls.",
+      "difficulty": "medium",
+      "tags": ["api", "timeout"]
+    },
+    {
+      "id": "python-056",
+      "question": "What is a context manager and why use it?",
+      "answer": "Context managers handle resource cleanup: with open('file') as f: data = f.read(). Ensures cleanup even on exceptions. Create with __enter__/__exit__ or @contextmanager decorator. Essential for file, database, lock handling.",
+      "difficulty": "medium",
+      "tags": ["python", "context"]
+    },
+    {
+      "id": "python-057",
+      "question": "How do you create a custom context manager?",
+      "answer": "Option 1: class Manager: def __enter__(self): return resource; def __exit__(self, *args): cleanup(). Option 2: from contextlib import contextmanager; @contextmanager def manager(): yield resource; cleanup()",
+      "difficulty": "medium",
+      "tags": ["python", "context"]
+    },
+    {
+      "id": "python-058",
+      "question": "What are Python decorators and how write one?",
+      "answer": "Decorators modify function behavior: @decorator def func(): pass. decorator(func) wraps func. Common: @property, @classmethod, @staticmethod. Use functools.wraps to preserve function metadata.",
+      "difficulty": "medium",
+      "tags": ["python", "decorators"]
+    },
+    {
+      "id": "python-059",
+      "question": "How do you create a retry decorator?",
+      "answer": "from functools import wraps; def retry(max_attempts=3): def decorator(func): @wraps(func); def wrapper(*args, **kwargs): for _ in range(max_attempts): try: return func(*args, **kwargs); except: pass. return wrapper; return decorator",
+      "difficulty": "hard",
+      "tags": ["decorators", "retry"]
+    },
+    {
+      "id": "python-060",
+      "question": "What is the difference between *args and **kwargs?",
+      "answer": "*args passes variable positional arguments as tuple. **kwargs passes variable keyword arguments as dict. Combined: def func(*args, **kwargs). Use for flexible function signatures, forwarding arguments to other functions.",
+      "difficulty": "easy",
+      "tags": ["python", "functions"]
+    },
+    {
+      "id": "python-061",
+      "question": "How do you work with dictionaries efficiently?",
+      "answer": "dict.get(key, default) avoids KeyError. dict.update() merges dicts. dict.keys(), values(), items() for iteration. Use defaultdict for missing keys. dict comprehension: {k: v for k, v in items if condition}.",
+      "difficulty": "medium",
+      "tags": ["python", "dicts"]
+    },
+    {
+      "id": "python-062",
+      "question": "What is the collections module useful for?",
+      "answer": "collections provides specialized containers: Counter for counting, OrderedDict for insertion order, defaultdict for default values, deque for fast append/pop, namedtuple for structured data, ChainMap for multiple dicts.",
+      "difficulty": "medium",
+      "tags": ["python", "collections"]
+    },
+    {
+      "id": "python-063",
+      "question": "How do you use defaultdict?",
+      "answer": "from collections import defaultdict. dd = defaultdict(list) creates dict returning list for missing keys. dd['key'].append(1) works without initialization. Useful for grouping, adjacency lists, cache implementations.",
+      "difficulty": "medium",
+      "tags": ["python", "collections"]
+    },
+    {
+      "id": "python-064",
+      "question": "What is Counter and when use it?",
+      "answer": "Counter counts hashable items: c = Counter(['a', 'b', 'a']). c['a'] returns 2. Methods: c.most_common(3) returns top 3. Use for word counting, log analysis, frequency distributions.",
+      "difficulty": "medium",
+      "tags": ["python", "collections"]
+    },
+    {
+      "id": "python-065",
+      "question": "How do you merge dictionaries in Python?",
+      "answer": "Python 3.9+: d1 | d2 or d1 |= d2. Earlier: {**d1, **d2} or d1.update(d2). For nested merge, use copy and update recursively. Handle conflicts with preference logic.",
+      "difficulty": "medium",
+      "tags": ["python", "dicts"]
+    },
+    {
+      "id": "python-066",
+      "question": "What are type hints and why use them?",
+      "answer": "Type hints annotate variables: name: str = 'value'. Functions: def greet(name: str) -> str. Enable static analysis with mypy, better IDE support, self-documentation. Not enforced at runtime but improve code quality.",
+      "difficulty": "medium",
+      "tags": ["python", "types"]
+    },
+    {
+      "id": "python-067",
+      "question": "How do you validate types at runtime?",
+      "answer": "Use Pydantic: class User(BaseModel): name: str, age: int. Validates on initialization. Or use isinstance() checks: if not isinstance(value, int): raise TypeError. Try/except for value conversion.",
+      "difficulty": "medium",
+      "tags": ["python", "validation"]
+    },
+    {
+      "id": "python-068",
+      "question": "What is dataclasses and when use it?",
+      "answer": "dataclasses auto-generate __init__, __repr__, __eq__: @dataclass. class Point: x: int; y: int. Add field(default=...) for defaults. Replace simple classes for data containers. Faster than __init__ manually.",
+      "difficulty": "medium",
+      "tags": ["python", "dataclasses"]
+    },
+    {
+      "id": "python-069",
+      "question": "How do you handle date and time operations?",
+      "answer": "datetime.datetime.now() gets current time. datetime.strptime(str, fmt) parses strings. strftime(fmt) formats. timedelta for arithmetic. Use timezone-aware datetime for distributed systems. arrow library simplifies timezone handling.",
+      "difficulty": "medium",
+      "tags": ["datetime", "time"]
+    },
+    {
+      "id": "python-070",
+      "question": "How do you work with timezones in Python?",
+      "answer": "Use pytz or zoneinfo (Python 3.9+). zoneinfo.ZoneInfo('America/New_York'). For AWS, use boto3's assumed user timezone. Always store UTC, convert on display. Use pendulum for complex timezone operations.",
+      "difficulty": "medium",
+      "tags": ["datetime", "timezone"]
+    },
+    {
+      "id": "python-071",
+      "question": "What is the difference between deepcopy and shallow copy?",
+      "answer": "Shallow copy (copy.copy() or list[:]) copies object but not nested objects. Deep copy (copy.deepcopy()) recursively copies all nested objects. Use shallow for immutable nested objects, deep for mutable nested structures.",
+      "difficulty": "medium",
+      "tags": ["python", "copy"]
+    },
+    {
+      "id": "python-072",
+      "question": "How do you handle CSV files in Python?",
+      "answer": "import csv. Read: with open('file.csv') as f: reader = csv.DictReader(f); rows = list(reader). Write: csv.DictWriter(f, fieldnames). Use for ETL pipelines, log processing, data export/import.",
+      "difficulty": "medium",
+      "tags": ["csv", "files"]
+    },
+    {
+      "id": "python-073",
+      "question": "What is pandas and when is it useful in DevOps?",
+      "answer": "pandas provides DataFrame for tabular data analysis. Use for log analysis, metrics processing, CSV manipulation. Operations: groupby, merge, pivot. Heavy dependency, use polars for lighter alternatives.",
+      "difficulty": "medium",
+      "tags": ["pandas", "data"]
+    },
+    {
+      "id": "python-074",
+      "question": "How do you handle YAML safely?",
+      "answer": "Use yaml.safe_load() to prevent arbitrary code execution. Never yaml.load() with default Loader. For untrusted input, use yaml.unsafe_load() cautiously. Validate schema after parsing with Pydantic or custom checks.",
+      "difficulty": "medium",
+      "tags": ["yaml", "security"]
+    },
+    {
+      "id": "python-075",
+      "question": "What are generators and when use them?",
+      "answer": "Generators produce items lazily: def gen(): yield 1; yield 2. Use for large datasets, infinite sequences, memory efficiency. Iterate with next() or for loop. Use generator expressions: (x for x in items).",
+      "difficulty": "medium",
+      "tags": ["python", "generators"]
+    },
+    {
+      "id": "python-076",
+      "question": "How do you read large files efficiently in Python?",
+      "answer": "Process line by line: for line in open('large.txt'): process(line). Use with open() for automatic closing. For very large, consider mmap or pandas chunking. Avoid loading entire file into memory.",
+      "difficulty": "medium",
+      "tags": ["files", "performance"]
+    },
+    {
+      "id": "python-077",
+      "question": "What is iterators vs iterables?",
+      "answer": "Iterables have __iter__ returning iterator (list, dict, file). Iterators have __next__ and __iter__ (returned by iter()). Iterate once, exhausted. Use itertools for infinite iterators, cycle, chain.",
+      "difficulty": "medium",
+      "tags": ["python", "iterators"]
+    },
+    {
+      "id": "python-078",
+      "question": "How do you handle XML in Python?",
+      "answer": "Use xml.etree.ElementTree: tree = ET.parse('file.xml'), root = tree.getroot(). Navigate: root.find('child'), root.findall('.//tag'). Build: ET.SubElement(root, 'child'). Convert to string: ET.tostring(root).",
+      "difficulty": "medium",
+      "tags": ["xml", "parsing"]
+    },
+    {
+      "id": "python-079",
+      "question": "What is regex and how use it in Python?",
+      "answer": "import re. Match: re.match(pattern, string). Find all: re.findall(pattern, string). Substitute: re.sub(pattern, replacement, string). Compile patterns for reuse: re.compile(pattern). Use for log parsing, validation.",
+      "difficulty": "medium",
+      "tags": ["regex", "parsing"]
+    },
+    {
+      "id": "python-080",
+      "question": "How do you use regex for log parsing?",
+      "answer": "Pattern for syslog: r'(?P<month>\\w+) (?P<day>\\d+) (?P<time>[\\d:]+) (?P<host>\\S+) (?P<msg>.*)'. Use named groups for extraction. Test patterns with regex101.com before implementing.",
+      "difficulty": "hard",
+      "tags": ["regex", "logs"]
+    },
+    {
+      "id": "python-081",
+      "question": "What is hashlib used for?",
+      "answer": "hashlib provides cryptographic hashes: hashlib.sha256(data).hexdigest(). Use for checksums: hashlib.md5(file.read()). For passwords, use bcrypt or argon2, not plain hashlib. Verify file integrity, generate unique IDs.",
+      "difficulty": "medium",
+      "tags": ["security", "hashing"]
+    },
+    {
+      "id": "python-082",
+      "question": "How do you encrypt/decrypt data in Python?",
+      "answer": "Use cryptography library (Fernet): from cryptography.fernet import Fernet. Generate key: Fernet.generate_key(). Encrypt: fernet.encrypt(data). Decrypt: fernet.decrypt(token). Store keys securely in env vars or secrets manager.",
+      "difficulty": "hard",
+      "tags": ["security", "encryption"]
+    },
+    {
+      "id": "python-083",
+      "question": "What is base64 encoding and when use it?",
+      "answer": "import base64. Encode: base64.b64encode(data). Decode: base64.b64decode(encoded). Use for API authentication (Bearer tokens), encoding binary data for JSON, small payload encryption. Not security feature.",
+      "difficulty": "medium",
+      "tags": ["encoding", "base64"]
+    },
+    {
+      "id": "python-084",
+      "question": "How do you handle password hashing in Python?",
+      "answer": "Use bcrypt library: bcrypt.hashpw(password.encode(), bcrypt.gensalt()). Verify: bcrypt.checkpw(password.encode(), hashed). Always use salt. Never store plain passwords. Argon2 also recommended via argon2-cffi.",
+      "difficulty": "hard",
+      "tags": ["security", "passwords"]
+    },
+    {
+      "id": "python-085",
+      "question": "What is struct module for?",
+      "answer": "struct pack/unpack binary data: struct.pack('!I', 1234) for network byte order integer. Use for parsing binary protocols, file formats. Format strings: ! (network), I (unsigned int), H (unsigned short), etc.",
+      "difficulty": "hard",
+      "tags": ["binary", "struct"]
+    },
+    {
+      "id": "python-086",
+      "question": "How do you create CLI tools with Click?",
+      "answer": "import click. @click.command(), @click.option('--name', '-n'), @click.argument('path'). Chain decorators: @group.command(). Use @click.pass_context for shared state. Add --help automatically. Color output with click.secho.",
+      "difficulty": "medium",
+      "tags": ["cli", "click"]
+    },
+    {
+      "id": "python-087",
+      "question": "How do you create subcommands with Click?",
+      "answer": "@click.group() for main command. @group.command() for subcommands. Define separate functions per subcommand. Use @click.argument for required args. group() returns main command that registers subcommands.",
+      "difficulty": "hard",
+      "tags": ["cli", "click"]
+    },
+    {
+      "id": "python-088",
+      "question": "What is Typer and how does it compare to Click?",
+      "answer": "Typer builds on Click with type hints. def main(name: str, port: int = 8080). Auto-generates CLI from function signatures. Easier than Click but less flexible. Good for simple CLIs with complex typing.",
+      "difficulty": "medium",
+      "tags": ["cli", "typer"]
+    },
+    {
+      "id": "python-089",
+      "question": "How do you create a CLI with argparse subparsers?",
+      "answer": "parser = argparse.ArgumentParser(). subparsers = parser.add_subparsers(). sub = subparsers.add_parser('deploy'). sub.add_argument('--env'). Parse: args = parser.parse_args(). Check args.command or subparser name for routing.",
+      "difficulty": "hard",
+      "tags": ["cli", "argparse"]
+    },
+    {
+      "id": "python-090",
+      "question": "How do you create a Python script that can be piped?",
+      "answer": "Read from stdin: import sys; for line in sys.stdin: process(line). Make executable: #!/usr/bin/env python3, chmod +x script.py. Test: echo 'data' | script.py. Use shlex for safe shell parsing.",
+      "difficulty": "medium",
+      "tags": ["cli", "pipe"]
+    },
+    {
+      "id": "python-091",
+      "question": "What is python-dotenv for?",
+      "answer": "from dotenv import load_dotenv. load_dotenv() reads .env file and sets env vars. Use for local development secrets. Variables: DB_PASSWORD=secret. Never commit .env to git. Add .env to .gitignore.",
+      "difficulty": "easy",
+      "tags": ["environment", "dotenv"]
+    },
+    {
+      "id": "python-092",
+      "question": "How do you manage secrets in Python applications?",
+      "answer": "Use environment variables for configuration. AWS Secrets Manager with boto3: get_secret_value(). HashiCorp Vault with hvac. Docker/K8s secrets mounted as files or env vars. Never log secrets or commit to git.",
+      "difficulty": "hard",
+      "tags": ["security", "secrets"]
+    },
+    {
+      "id": "python-093",
+      "question": "What is schedule library for?",
+      "answer": "schedule runs jobs on schedule: schedule.every(10).seconds.do(job). schedule.every().monday.at('09:00').run_pending() checks and runs due jobs. Use in long-running processes. For cron-like, consider APScheduler.",
+      "difficulty": "medium",
+      "tags": ["scheduling", "automation"]
+    },
+    {
+      "id": "python-094",
+      "question": "How do you create scheduled tasks with APScheduler?",
+      "answer": "from apscheduler.schedulers.blocking import BlockingScheduler. scheduler = BlockingScheduler(). scheduler.add_job(func, 'cron', hour=9, minute=0). scheduler.start(). Supports intervals, dates, cron expressions. Use BackgroundScheduler for async.",
+      "difficulty": "hard",
+      "tags": ["scheduling", "automation"]
+    },
+    {
+      "id": "python-095",
+      "question": "What is invoke library for?",
+      "answer": "invoke runs shell tasks locally (like Fabric without SSH). from invoke import task. @task def deploy(c): c.run('docker build .'). Use for local automation, build scripts. Combine with Fabric for remote tasks.",
+      "difficulty": "medium",
+      "tags": ["automation", "invoke"]
+    },
+    {
+      "id": "python-096",
+      "question": "How do you implement logging to multiple destinations?",
+      "answer": "Use handlers: logger.addHandler(FileHandler('app.log')), logger.addHandler(StreamHandler()). Set levels per handler. Use JSONFormatter for structured logging (python-json-logger). Integrate with cloud logging (Stackdriver, CloudWatch).",
+      "difficulty": "hard",
+      "tags": ["logging", "production"]
+    },
+    {
+      "id": "python-097",
+      "question": "What is structlog and when use it?",
+      "answer": "structlog produces structured logs (JSON). log = structlog.get_logger(). log.info('event', user='alice', action='login'). Integrates with standard logging. Good for ELK, Grafana Loki, CloudWatch. Better than plain text logs.",
+      "difficulty": "hard",
+      "tags": ["logging", "structlog"]
+    },
+    {
+      "id": "python-098",
+      "question": "How do you profile Python code for performance?",
+      "answer": "Use cProfile: python -m cProfile -s cumtime script.py. For line-by-line: line_profiler with @profile decorator. Memory: memory_profiler. Identify bottlenecks, optimize hot paths. Use timeit for micro-benchmarks.",
+      "difficulty": "hard",
+      "tags": ["performance", "profiling"]
+    },
+    {
+      "id": "python-099",
+      "question": "How do you optimize Python code?",
+      "answer": "Profile first to identify bottlenecks. Use list comprehensions over loops. Use sets for membership testing. Use local variables for repeated access. Consider numpy for numerical computation. Cache with functools.lru_cache.",
+      "difficulty": "hard",
+      "tags": ["performance", "optimization"]
+    },
+    {
+      "id": "python-100",
+      "question": "What are Python best practices for DevOps?",
+      "answer": "Best practices: use virtual environments, pin dependencies (pip-tools, Poetry), type hints, comprehensive testing (pytest, coverage), logging over print, error handling, secure secrets management, CI/CD testing, modular code structure, documentation.",
+      "difficulty": "medium",
+      "tags": ["best-practices", "devops"]
+    }
+  ]
+}
