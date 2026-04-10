@@ -1,0 +1,708 @@
+{
+  "subject": "Prometheus & Grafana",
+  "description": "Prometheus is an open-source monitoring system for collecting and processing metrics, while Grafana is a visualization platform that creates dashboards from various data sources. Together they form a powerful observability stack for monitoring infrastructure, applications, and services in cloud-native environments.",
+  "totalQuestions": 100,
+  "lastUpdated": "2026-04-07",
+  "questions": [
+    {
+      "id": "monitoring-001",
+      "question": "What is Prometheus and what is its primary use case?",
+      "answer": "Prometheus is an open-source monitoring and alerting toolkit originally developed at SoundCloud. It collects and stores metrics as time series data with key-value labels. Primary use cases include monitoring infrastructure, applications, and services; alerting on defined conditions; and providing real-time insights into system performance and health.",
+      "difficulty": "easy",
+      "tags": ["basics", "prometheus"]
+    },
+    {
+      "id": "monitoring-002",
+      "question": "What is Grafana and how does it complement Prometheus?",
+      "answer": "Grafana is an open-source visualization and analytics platform that creates dashboards from various data sources including Prometheus. While Prometheus handles metric collection and storage, Grafana provides powerful visualization, alerting, and exploration capabilities. Together they form a complete observability solution for cloud-native environments.",
+      "difficulty": "easy",
+      "tags": ["basics", "grafana"]
+    },
+    {
+      "id": "monitoring-003",
+      "question": "What is the difference between metrics, logs, and traces?",
+      "answer": "Metrics are numerical measurements over time (CPU usage, request count). Logs are timestamped text records of events (error messages, access logs). Traces track a request's journey through distributed systems showing causality between components. Together they form the three pillars of observability, each providing different insights.",
+      "difficulty": "easy",
+      "tags": ["basics", "observability"]
+    },
+    {
+      "id": "monitoring-004",
+      "question": "What is a time series database?",
+      "answer": "A time series database (TSDB) stores data points indexed by time. Prometheus uses TSDB to store metrics efficiently, enabling fast queries over time ranges. TSDB optimizes for append-heavy workloads and time-range queries, making it ideal for monitoring and analytics.",
+      "difficulty": "easy",
+      "tags": ["basics", "tsdb"]
+    },
+    {
+      "id": "monitoring-005",
+      "question": "What are the four main metric types in Prometheus?",
+      "answer": "The four metric types are: Counter - monotonically increasing value, Gauge - can go up or down, Histogram - samples observations in buckets, Summary - quantiles over sliding time window. Each type serves different monitoring needs and affects how data is aggregated.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "metric-types"]
+    },
+    {
+      "id": "monitoring-006",
+      "question": "What is a Counter metric type and when should you use it?",
+      "answer": "Counter is a monotonically increasing numeric value that never decreases (except on reset). Use counters for tracking total requests, errors, or occurrences. Examples: total HTTP requests, number of exceptions, bytes sent. Counters reset to zero on service restart.",
+      "difficulty": "easy",
+      "tags": ["prometheus", "metrics"]
+    },
+    {
+      "id": "monitoring-007",
+      "question": "What is a Gauge metric type and when should you use it?",
+      "answer": "Gauge represents a single numeric value that can go up or down arbitrarily. Use gauges for current states like memory usage, temperature, queue length, or number of active connections. Unlike counters, gauges reflect instantaneous values.",
+      "difficulty": "easy",
+      "tags": ["prometheus", "metrics"]
+    },
+    {
+      "id": "monitoring-008",
+      "question": "What is a Histogram metric type and when should you use it?",
+      "answer": "Histogram samples observations and counts them in configurable buckets. It calculates sum and total count, plus provides _bucket suffixes for percentile analysis. Use histograms for request durations, response sizes, or any distribution you need to analyze percentiles like p99.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "metrics"]
+    },
+    {
+      "id": "monitoring-009",
+      "question": "What is a Summary metric type and when should you use it?",
+      "answer": "Summary calculates quantiles over a sliding time window. It provides _sum, _count, and _quantile suffixes. Unlike histograms, summaries calculate percentiles client-side. Use summaries when you need accurate quantiles but cannot pre-aggregate across dimensions.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "metrics"]
+    },
+    {
+      "id": "monitoring-010",
+      "question": "What is the difference between Histogram and Summary?",
+      "answer": "Histograms bucket observations server-side and let you calculate percentiles across scraped instances. Summaries calculate percentiles client-side. Histograms allow aggregation, summaries provide accuracy. Use histograms for server-side aggregation, summaries when you need exact quantiles.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "metrics"]
+    },
+    {
+      "id": "monitoring-011",
+      "question": "What is a metric name and label in Prometheus?",
+      "answer": "Metric name identifies the measured feature (e.g., http_requests_total). Labels are key-value pairs providing dimensions (e.g., method=get, status=200). Labels enable filtering and aggregation. Avoid high-cardinality labels like user IDs as they impact performance.",
+      "difficulty": "easy",
+      "tags": ["prometheus", "basics"]
+    },
+    {
+      "id": "monitoring-012",
+      "question": "What is the Prometheus data model?",
+      "answer": "Prometheus stores data as time series with: metric name, labels (set of key-value pairs), and timestamp-value pairs. Each unique combination of metric name and labels is a time series. Data is encoded in Protocol Buffers and compressed for efficient storage.",
+      "difficulty": "easy",
+      "tags": ["prometheus", "data-model"]
+    },
+    {
+      "id": "monitoring-013",
+      "question": "What is Prometheus architecture?",
+      "answer": "Prometheus architecture consists of: Prometheus server (scrapes and stores metrics), exporters (agents exposing metrics), Alertmanager (handles alerts), Pushgateway (for short-lived jobs), and Service discovery (for finding targets). The server pulls metrics via HTTP, stores locally, and runs queries.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "architecture"]
+    },
+    {
+      "id": "monitoring-014",
+      "question": "How does Prometheus scrape metrics?",
+      "answer": "Prometheus uses pull-based model - it actively scrapes targets at configured intervals via HTTP. Targets expose /metrics endpoint returning metrics in Prometheus text format. Scraping happens in parallel with configurable intervals (default 15s), and targets are discovered via static config or service discovery.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "scraping"]
+    },
+    {
+      "id": "monitoring-015",
+      "question": "What is Pushgateway in Prometheus?",
+      "answer": "Pushgateway is an intermediary for metrics from short-lived jobs that cannot be scraped. Jobs push metrics to Pushgateway, which then exposes them for Prometheus to scrape. Use sparingly as it breaks the pull model and can create single points of aggregation.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "pushgateway"]
+    },
+    {
+      "id": "monitoring-016",
+      "question": "What are Prometheus exporters?",
+      "answer": "Exporters are agents that expose existing metrics from third-party systems in Prometheus format. Examples: node_exporter (hardware/OS), blackbox_exporter (probes), postgres_exporter (PostgreSQL), redis_exporter (Redis). Exporters run alongside services and provide /metrics endpoint.",
+      "difficulty": "easy",
+      "tags": ["prometheus", "exporters"]
+    },
+    {
+      "id": "monitoring-017",
+      "question": "What is node_exporter and what metrics does it provide?",
+      "answer": "node_exporter exposes hardware and OS metrics for Linux/Unix systems. Metrics include CPU usage, memory, disk, network, and system stats. It's one of the most common exporters for infrastructure monitoring, providing over 1000 metrics covering all major system resources.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "exporter"]
+    },
+    {
+      "id": "monitoring-018",
+      "question": "What is the Prometheus configuration file structure?",
+      "answer": "Main sections: global (scrape intervals, evaluation intervals), alerting (Alertmanager config), rule_files (recording rules and alerts), scrape_configs (targets to scrape). The scrape_configs section defines jobs with static targets or service discovery mechanisms.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "configuration"]
+    },
+    {
+      "id": "monitoring-019",
+      "question": "What is PromQL?",
+      "answer": "PromQL (Prometheus Query Language) is the functional query language for Prometheus. It supports time series selection, aggregation, functions, and operators. PromQL enables filtering by labels, calculating rates, predicting trends, and creating alerting rules.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-020",
+      "question": "How do you write basic PromQL queries?",
+      "answer": "Basic queries use metric name: http_requests_total. Add labels with curly braces: http_requests_total{status=\"200\"}. Use operators: + - * / for arithmetic, == != > < for comparison. Combine with and or or for logical operations.",
+      "difficulty": "easy",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-021",
+      "question": "What is the rate() function in PromQL?",
+      "answer": "rate() calculates per-second rate of change for counters over a time range. Syntax: rate(metric[time_range]). Use for calculating request rates, error rates, or any per-second metric from counters. Essential for working with monotonically increasing values.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-022",
+      "question": "What is the difference between rate() and increase()?",
+      "answer": "rate() returns per-second rate, while increase() returns total increase over the time range. increase() = rate() * time_range. Use rate() for rates (requests/sec), increase() when you need total counts over periods.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-023",
+      "question": "What is irate() and when should you use it?",
+      "answer": "irate() (instant rate) calculates rate using only the last two data points. It's more responsive to sudden changes but noisier. Use irate() for fast-moving counters where you need to detect spikes, rate() for smoother averages.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-024",
+      "question": "What aggregation operators does Prometheus support?",
+      "answer": "Prometheus supports: sum, min, max, avg (aggregation), count (series count), stddev, stdvar (statistical), bottomk, topk (k smallest/largest values). Group modifiers: without (exclude labels) and on (include only specified labels).",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-025",
+      "question": "What is histogram_quantile() used for?",
+      "answer": "histogram_quantile() calculates percentiles from histogram metrics. Syntax: histogram_quantile(0.99, rate(http_request_duration_seconds_bucket[5m])). The second argument must be a histogram bucket rate. Use for calculating p50, p95, p99 latencies.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-026",
+      "question": "What are recording rules in Prometheus?",
+      "answer": "Recording rules pre-compute frequently needed or expensive PromQL expressions and save their results as new time series. They improve query performance and reduce load. Defined in rule_files section of prometheus.yml with groups containing multiple rules.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "rules"]
+    },
+    {
+      "id": "monitoring-027",
+      "question": "What are alerting rules in Prometheus?",
+      "answer": "Alerting rules define conditions that should trigger alerts. They use PromQL expressions that evaluate to true when alert fires. Rules are evaluated at evaluation_interval and can use for clause to persist alerts for duration. Alerts route to Alertmanager for notification.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "alerts"]
+    },
+    {
+      "id": "monitoring-028",
+      "question": "What is the difference between for and without in Prometheus queries?",
+      "answer": "for clause in alerting rules specifies duration condition must be true before firing. without() aggregation modifier excludes specified labels from grouping. on() modifier only groups by specified labels. Both affect how results are aggregated differently.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-029",
+      "question": "What is the Prometheus Alertmanager?",
+      "answer": "Alertmanager handles alerts from Prometheus, deduplicates, groups, and routes notifications to various receivers (email, Slack, PagerDuty). It supports silencing and inhibition rules. Prometheus sends alerts to Alertmanager via configured webhook.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "alertmanager"]
+    },
+    {
+      "id": "monitoring-030",
+      "question": "How does Alertmanager handle alert grouping?",
+      "answer": "Alertmanager groups alerts by labels (job, severity, environment) to prevent notification spam. Group wait determines time to wait before sending initial notification. Group interval sets minimum time between notifications. Group repeat interval controls notification frequency.",
+      "difficulty": "medium",
+      "tags": ["alertmanager", "grouping"]
+    },
+    {
+      "id": "monitoring-031",
+      "question": "What are Alertmanager routing trees?",
+      "answer": "Routes define alert routing based on label matching. Alerts traverse tree until matching route found. Each route has receiver and optional child routes. Configure routes to route critical alerts to PagerDuty, warnings to Slack, based on severity labels.",
+      "difficulty": "hard",
+      "tags": ["alertmanager", "routing"]
+    },
+    {
+      "id": "monitoring-032",
+      "question": "What is the difference between inhibition and silencing?",
+      "answer": "Silencing temporarily prevents alerts from firing using matchers (time-based). Inhibition suppresses alerts when other alerts are firing (label-based). Use silences for planned maintenance, inhibitions for related alerts where root cause alert is sufficient.",
+      "difficulty": "hard",
+      "tags": ["alertmanager", "silencing"]
+    },
+    {
+      "id": "monitoring-033",
+      "question": "What service discovery mechanisms does Prometheus support?",
+      "answer": "Prometheus supports: static_configs (fixed targets), DNS discovery, Kubernetes, EC2, Azure, GCP, OpenStack, Consul, file-based (for custom discovery). Service discovery dynamically finds targets without manual configuration.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "discovery"]
+    },
+    {
+      "id": "monitoring-034",
+      "question": "How does Prometheus Kubernetes service discovery work?",
+      "answer": "Prometheus Kubernetes SD uses Kubernetes API to discover pods, services, and endpoints. It watches for changes and creates target groups based on role (pod, service, endpoints, node). Metadata like pod name, namespace become labels automatically.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "kubernetes"]
+    },
+    {
+      "id": "monitoring-035",
+      "question": "What is Prometheus relabeling?",
+      "answer": "Relabeling modifies label values during target discovery and scraping. Configure in relabel_configs section. Common uses: select targets by __meta_ labels, add/remove/modify labels, set __address__ to override target endpoint. Relabeling happens before and after scraping.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "relabeling"]
+    },
+    {
+      "id": "monitoring-036",
+      "question": "What is the difference between metric_relabel_configs and relabel_configs?",
+      "answer": "relabel_configs applies during target discovery, before scraping, affecting target labels and __address__. metric_relabel_configs applies after scraping, before storage, affecting actual metric labels. Use metric_relabel_configs for filtering metrics.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "relabeling"]
+    },
+    {
+      "id": "monitoring-037",
+      "question": "How do you filter metrics using relabeling?",
+      "answer": "Use metric_relabel_configs with action: drop and source_labels matching metric name. Example: drop if metric name matches 'unwanted_metric': { action: \"drop\", source_labels: [__name__], regex: \"unwanted_metric\" }",
+      "difficulty": "hard",
+      "tags": ["prometheus", "relabeling"]
+    },
+    {
+      "id": "monitoring-038",
+      "question": "What is Grafana and what data sources does it support?",
+      "answer": "Grafana is an open-source visualization and analytics platform. It supports multiple data sources: Prometheus, Graphite, Elasticsearch, InfluxDB, Loki, Jaeger, MySQL, PostgreSQL, CloudWatch, Azure Monitor, and many more. Dashboards can combine data from multiple sources.",
+      "difficulty": "easy",
+      "tags": ["grafana", "basics"]
+    },
+    {
+      "id": "monitoring-039",
+      "question": "How do you add a Prometheus data source in Grafana?",
+      "answer": "Go to Configuration > Data Sources > Add, select Prometheus. Set URL (http://prometheus:9090), optionally configure Access (Server or Browser). Set appropriate time interval. Test connection and save. Grafana will validate connectivity.",
+      "difficulty": "easy",
+      "tags": ["grafana", "prometheus"]
+    },
+    {
+      "id": "monitoring-040",
+      "question": "What is a Grafana dashboard?",
+      "answer": "A Grafana dashboard displays visualizations of metrics from one or more data sources. Dashboards contain rows that hold panels. Each panel can display graphs, stats, tables, or other visualizations. Dashboards support variables for templating and time range selection.",
+      "difficulty": "easy",
+      "tags": ["grafana", "dashboard"]
+    },
+    {
+      "id": "monitoring-041",
+      "question": "What panel types are available in Grafana?",
+      "answer": "Grafana panels include: Graph (time series visualization), Stat (single big value), Gauge (gauge visualization), Table, Bar chart, Pie chart, Heatmap, Log panel, News panel, Text panel. Each serves different visualization needs.",
+      "difficulty": "easy",
+      "tags": ["grafana", "panels"]
+    },
+    {
+      "id": "monitoring-042",
+      "question": "How do you create a graph panel in Grafana?",
+      "answer": "Add new panel, select Prometheus data source, write PromQL query in query editor. Configure legend, axes, thresholds. Grafana automatically renders time series. Add multiple queries for comparison. Save panel and add to dashboard.",
+      "difficulty": "easy",
+      "tags": ["grafana", "graph"]
+    },
+    {
+      "id": "monitoring-043",
+      "question": "What are Grafana dashboard variables?",
+      "answer": "Variables create interactive dashboard templates. Types include: Custom (manual values), Query (from data source), Interval (time intervals), Datasource (data source picker), Constant, Ad hoc filters. Variables appear as dropdowns and can be used in queries.",
+      "difficulty": "medium",
+      "tags": ["grafana", "variables"]
+    },
+    {
+      "id": "monitoring-044",
+      "question": "How do you use variables in Grafana queries?",
+      "answer": "Reference variables with $variablename syntax in queries. Example: rate(http_requests_total{job=\"$job\", instance=~\"$instance\"}[5m]). Grafana replaces variable placeholders with selected values before executing queries.",
+      "difficulty": "medium",
+      "tags": ["grafana", "variables"]
+    },
+    {
+      "id": "monitoring-045",
+      "question": "What is Grafana alerting?",
+      "answer": "Grafana alerting creates alerts based on dashboard panel queries. Alerts evaluate rules at intervals, fire when conditions are met. Notifications route to configured channels (Slack, email, PagerDuty). Grafana 8+ uses unified alerting for unified alerting across data sources.",
+      "difficulty": "medium",
+      "tags": ["grafana", "alerts"]
+    },
+    {
+      "id": "monitoring-046",
+      "question": "What is the difference between Grafana and Prometheus alerting?",
+      "answer": "Prometheus/Alertmanager alerting is more powerful and scalable for large environments. It evaluates rules server-side and supports sophisticated routing. Grafana alerting is easier to set up and integrates with dashboards. Grafana 8+ unified alerting can use either approach.",
+      "difficulty": "medium",
+      "tags": ["grafana", "alerts"]
+    },
+    {
+      "id": "monitoring-047",
+      "question": "What are Grafana organizations and teams?",
+      "answer": "Organizations enable multi-tenant Grafana instances with separate data and users. Teams are groups within organizations for easier permission management. Users can belong to multiple teams. Permissions cascade from organization to team to user levels.",
+      "difficulty": "medium",
+      "tags": ["grafana", "users"]
+    },
+    {
+      "id": "monitoring-048",
+      "question": "What are Grafana annotations?",
+      "answer": "Annotations mark events on dashboards for correlation. They show when alerts fired, deployments occurred, or custom events. Annotations can be from alerts, Grafana API, or integrated systems like GitHub. Query annotations to correlate events with metric changes.",
+      "difficulty": "medium",
+      "tags": ["grafana", "annotations"]
+    },
+    {
+      "id": "monitoring-049",
+      "question": "What is Grafana provisioning?",
+      "answer": "Provisioning automates dashboard and data source configuration via YAML/JSON files. Instead of manual UI setup, define datasources, dashboards, and alert rules as code. Useful for maintaining consistency across environments and GitOps workflows.",
+      "difficulty": "medium",
+      "tags": ["grafana", "provisioning"]
+    },
+    {
+      "id": "monitoring-050",
+      "question": "How do you provision dashboards in Grafana?",
+      "answer": "Create dashboard JSON files in /etc/grafana/provisioning/dashboards/. Configure dashboard provider YAML specifying path and folder. Dashboards can be automatically imported, or use sidecar container for configmaps in Kubernetes environments.",
+      "difficulty": "hard",
+      "tags": ["grafana", "provisioning"]
+    },
+    {
+      "id": "monitoring-051",
+      "question": "What is Thanos and how does it extend Prometheus?",
+      "answer": "Thanos extends Prometheus with global query view, long-term storage, and high availability. Components: Sidecar (uploads to object storage), Store (queries object storage), Querier (global query), Compactor (downsampling and retention). Enables querying across multiple Prometheus instances.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "thanos"]
+    },
+    {
+      "id": "monitoring-052",
+      "question": "What is Cortex and how does it compare to Thanos?",
+      "answer": "Cortex is multi-tenant Prometheus-as-a-Service using object storage. Both provide long-term storage and global queries. Cortex focuses on multi-tenancy with per-tenant storage isolation. Thanos offers simpler architecture but less native multi-tenancy. Both are CNCF projects.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "cortex"]
+    },
+    {
+      "id": "monitoring-053",
+      "question": "What is Prometheus federation?",
+      "answer": "Federation allows hierarchical Prometheus servers where central server scrapes aggregated metrics from regional servers. Use relabeling to choose which metrics to aggregate. Federation provides global view but has limitations compared to Thanos or Cortex for scale.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "federation"]
+    },
+    {
+      "id": "monitoring-054",
+      "question": "What is the Prometheus remote_write feature?",
+      "answer": "remote_write sends metrics to external systems in real-time as Prometheus scrapes. Configure remote_write in prometheus.yml with endpoint URL and queue settings. Enables integrating Prometheus with systems like Thanos, Cortex, or custom backends.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "remote"]
+    },
+    {
+      "id": "monitoring-055",
+      "question": "What is Prometheus remote_read?",
+      "answer": "remote_read allows querying external systems that store Prometheus metrics. The Prometheus query engine includes these metrics in queries. Useful for querying historical data from long-term storage backends like Thanos or Cortex.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "remote"]
+    },
+    {
+      "id": "monitoring-056",
+      "question": "What is Mimir from Grafana Labs?",
+      "answer": "Mimir is Grafana's open-source, long-term storage for Prometheus metrics. It provides horizontal scalability, multi-tenancy, and high availability. Mimir is the engine behind Grafana Cloud Metrics and can replace Prometheus for production at scale.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "mimir"]
+    },
+    {
+      "id": "monitoring-057",
+      "question": "How do you monitor Kubernetes with Prometheus?",
+      "answer": "Deploy kube-state-metrics for Kubernetes object states, node-exporter for node metrics, cAdvisor for container metrics. Use kube-prometheus-stack (now prometheus-operator) for comprehensive monitoring with pre-built dashboards, alerts, and service discovery.",
+      "difficulty": "medium",
+      "tags": ["kubernetes", "monitoring"]
+    },
+    {
+      "id": "monitoring-058",
+      "question": "What is kube-state-metrics?",
+      "answer": "kube-state-metrics generates metrics about Kubernetes objects state (Deployments, Pods, Services). It provides metrics like deployment replicas, pod status, service endpoints. Unlike cAdvisor, it focuses on object state rather than resource usage.",
+      "difficulty": "medium",
+      "tags": ["kubernetes", "metrics"]
+    },
+    {
+      "id": "monitoring-059",
+      "question": "What is cAdvisor and what metrics does it provide?",
+      "answer": "cAdvisor (Container Advisor) provides container resource usage and performance characteristics. It collects CPU, memory, network, and filesystem metrics for containers. cAdvisor is automatically deployed with kubelet and integrated with kubeprom stack.",
+      "difficulty": "medium",
+      "tags": ["kubernetes", "container"]
+    },
+    {
+      "id": "monitoring-060",
+      "question": "What is the Prometheus Operator?",
+      "answer": "Prometheus Operator manages Prometheus instances on Kubernetes using CRDs. It creates ServiceMonitor resources that automatically configure scrape targets. Operator simplifies Prometheus deployment, enables GitOps workflows, and manages configuration declaratively.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "operator"]
+    },
+    {
+      "id": "monitoring-061",
+      "question": "What are ServiceMonitor and PodMonitor CRDs?",
+      "answer": "ServiceMonitor defines how to scrape services by matching label selectors. PodMonitor targets pods directly without service. Both are monitored by Prometheus Operator which automatically generates scrape configurations based on these resources.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "operator"]
+    },
+    {
+      "id": "monitoring-062",
+      "question": "What is Grafana Loki?",
+      "answer": "Loki is a horizontally-scalable, multi-tenant log aggregation system inspired by Prometheus. Unlike Elasticsearch, it doesn't index log content but stores labels. This makes Loki more cost-effective for high-volume log storage with Prometheus integration.",
+      "difficulty": "medium",
+      "tags": ["grafana", "loki"]
+    },
+    {
+      "id": "monitoring-063",
+      "question": "What is Grafana Tempo?",
+      "answer": "Tempo is an open-source distributed tracing system. It receives traces in various formats (Jaeger, Zipkin, OpenTelemetry), stores them efficiently, and enables visualization in Grafana. Tempo integrates with Loki for logs and Prometheus for metrics.",
+      "difficulty": "medium",
+      "tags": ["grafana", "tempo"]
+    },
+    {
+      "id": "monitoring-064",
+      "question": "What is the three pillars of observability?",
+      "answer": "The three pillars are Metrics (numerical measurements over time), Logs (timestamped event records), and Traces (request paths through distributed systems). Together they provide complete visibility into system behavior for debugging and optimization.",
+      "difficulty": "easy",
+      "tags": ["observability", "basics"]
+    },
+    {
+      "id": "monitoring-065",
+      "question": "What is the RED method for API monitoring?",
+      "answer": "RED (Rate, Errors, Duration) method defines three key metrics: Rate (requests per second), Errors (error rate), Duration (latency distribution). These metrics apply to services and complement the USE method for resources.",
+      "difficulty": "medium",
+      "tags": ["monitoring", "methods"]
+    },
+    {
+      "id": "monitoring-066",
+      "question": "What is the USE method for resource monitoring?",
+      "answer": "USE (Utilization, Saturation, Errors) method defines three key metrics: Utilization (% time resource busy), Saturation (queue length), Errors (error counts). Apply to CPU, memory, disk, network. USE helps identify resource bottlenecks.",
+      "difficulty": "medium",
+      "tags": ["monitoring", "methods"]
+    },
+    {
+      "id": "monitoring-067",
+      "question": "How do you calculate error rate in Prometheus?",
+      "answer": "Calculate error rate using: sum(rate(http_requests_total{status=~\"5..\"}[5m])) / sum(rate(http_requests_total[5m])) * 100. Filter 5xx status codes for server errors, 4xx for client errors. Express as percentage.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-068",
+      "question": "How do you calculate latency percentiles (p95, p99)?",
+      "answer": "Use histogram_quantile with histogram metrics: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) for p95. Ensure histogram buckets cover expected range. For multiple instances, aggregate first then calculate quantile.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "promql"]
+    },
+    {
+      "id": "monitoring-069",
+      "question": "What is Grafana Explore?",
+      "answer": "Explore is Grafana's dedicated debugging interface for running queries across data sources. It provides split view, query inspector, and raw response viewer. Explore helps troubleshoot dashboards and write queries before adding to panels.",
+      "difficulty": "easy",
+      "tags": ["grafana", "explore"]
+    },
+    {
+      "id": "monitoring-070",
+      "question": "What is Grafana Cloud?",
+      "answer": "Grafana Cloud is a fully managed observability platform. It provides hosted Prometheus, Grafana, Loki, Tempo, and Pyroscope. Cloud offers metrics, logs, traces in one platform with SLA-backed uptime, no infrastructure management required.",
+      "difficulty": "easy",
+      "tags": ["grafana", "cloud"]
+    },
+    {
+      "id": "monitoring-071",
+      "question": "How do you secure Prometheus and Grafana?",
+      "answer": "Secure with: TLS for network encryption, authentication (OAuth2, LDAP), authorization (RBAC in Grafana), network policies to restrict access. For Prometheus, use reverse proxy for authentication. Enable HTTPS always in production.",
+      "difficulty": "hard",
+      "tags": ["security"]
+    },
+    {
+      "id": "monitoring-072",
+      "question": "What is the Prometheus retention period?",
+      "answer": "Default retention is 15 days for local storage. Configure with --storage.tsdb.retention.time flag. For longer retention, use remote write to object storage (Thanos, Cortex). Data is automatically deleted after retention period.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "storage"]
+    },
+    {
+      "id": "monitoring-073",
+      "question": "How do you back up Prometheus data?",
+      "answer": "Prometheus data lives in TSDB in /data directory. Stop Prometheus, copy data directory for consistent backup. With Thanos/Cortex, data persists in object storage with built-in redundancy. Consider snapshots to S3.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "backup"]
+    },
+    {
+      "id": "monitoring-074",
+      "question": "What are common causes of Prometheus high memory usage?",
+      "answer": "High memory causes: too many time series (high cardinality), large number of samples, long retention, large queries. Monitor with prometheus_tsdb_head_samples and prometheus_tsdb_head_series. Optimize by reducing labels, using recording rules.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "performance"]
+    },
+    {
+      "id": "monitoring-075",
+      "question": "How do you troubleshoot slow Grafana dashboards?",
+      "answer": "Identify slow queries using Grafana query inspector (Shift+Enter in query editor). Optimize PromQL: use recording rules, reduce time range, avoid expensive functions. Check data source load. Consider query caching with Grafana Enterprise or frontend caching.",
+      "difficulty": "hard",
+      "tags": ["grafana", "troubleshooting"]
+    },
+    {
+      "id": "monitoring-076",
+      "question": "What is Grafana Pyroscope?",
+      "answer": "Pyroscope (formerly Phlare) is a continuous profiling system. It captures CPU, memory, and goroutine profiles from applications. Profiles show which code paths consume resources. Integrate with Grafana for flame graph visualizations.",
+      "difficulty": "medium",
+      "tags": ["grafana", "profiling"]
+    },
+    {
+      "id": "monitoring-077",
+      "question": "What is a flame graph and how is it used?",
+      "answer": "A flame graph visualizes stack traces showing code execution patterns. Width represents time or resource consumption. Different colors distinguish functions. Use for CPU profiling to identify hot code paths, memory profiling for allocation analysis.",
+      "difficulty": "medium",
+      "tags": ["profiling", "visualization"]
+    },
+    {
+      "id": "monitoring-078",
+      "question": "What is OpenTelemetry and how does it relate to Prometheus/Grafana?",
+      "answer": "OpenTelemetry (OTel) is a vendor-neutral instrumentation standard for metrics, logs, and traces. OTel SDK can export to Prometheus via OTLP receiver or Prometheus exporter. Grafana supports OTel data through Tempo for traces and Prometheus for metrics.",
+      "difficulty": "medium",
+      "tags": ["opentelemetry", "integration"]
+    },
+    {
+      "id": "monitoring-079",
+      "question": "What are Grafana transformations?",
+      "answer": "Transformations manipulate query results before visualization. Available transforms: Outer Join, Merge, Concatenate fields, Partition by values, Reduce, Group by, Rename by regex, Organize fields. Enable data manipulation without changing queries.",
+      "difficulty": "medium",
+      "tags": ["grafana", "transform"]
+    },
+    {
+      "id": "monitoring-080",
+      "question": "What is Grafana mixed data source?",
+      "answer": "Mixed data source allows combining queries from different sources in one panel. Useful for correlating metrics from Prometheus with logs from Loki. Each query can use different data source. Mixed is a special data source type.",
+      "difficulty": "medium",
+      "tags": ["grafana", "datasource"]
+    },
+    {
+      "id": "monitoring-081",
+      "question": "How do you create drill-down links in Grafana?",
+      "answer": "Use data links in panel options. Add link with variables like $__field or $__value. Configure URL to other dashboard with parameters. Users click data points to navigate. Supports both internal dashboards and external URLs.",
+      "difficulty": "medium",
+      "tags": ["grafana", "links"]
+    },
+    {
+      "id": "monitoring-082",
+      "question": "What is Grafana alerting notification policies?",
+      "answer": "Notification policies route alerts to receivers using label matching. Policies are hierarchical - first matching policy handles the alert. Configure matching labels, contact points, group settings, and timing. Default policy catches unmatched alerts.",
+      "difficulty": "hard",
+      "tags": ["grafana", "alerts"]
+    },
+    {
+      "id": "monitoring-083",
+      "question": "What are Grafana contact points?",
+      "answer": "Contact points define where alert notifications are sent. Supported types: email, Slack, PagerDuty, OpsGenie, webhook, and many others. Configure multiple contact points for different alert severities. Contact points can include message templates.",
+      "difficulty": "medium",
+      "tags": ["grafana", "alerts"]
+    },
+    {
+      "id": "monitoring-084",
+      "question": "How do you set up Slack integration in Grafana alerts?",
+      "answer": "Create Slack webhook, add as contact point in Grafana. Configure channel and optional username/icon. In notification policy, route alerts to Slack contact point based on severity labels. Customize message template for rich formatting.",
+      "difficulty": "medium",
+      "tags": ["grafana", "slack"]
+    },
+    {
+      "id": "monitoring-085",
+      "question": "What is Grafana OnCall?",
+      "answer": "Grafana OnCall is an on-call management and alerting platform. It integrates with Grafana alerts for incident management, escalation policies, and on-call schedules. OnCall routes critical alerts to right people based on rotation schedules.",
+      "difficulty": "medium",
+      "tags": ["grafana", "oncall"]
+    },
+    {
+      "id": "monitoring-086",
+      "question": "What are Grafana Enterprise features?",
+      "answer": "Grafana Enterprise adds: role-based access control (RBAC), data source permissions, reporting, advanced LDAP/SSO, enterprise plugins. Also includes enhanced security, scalability, and support. Licensing is per-user or per-instance.",
+      "difficulty": "medium",
+      "tags": ["grafana", "enterprise"]
+    },
+    {
+      "id": "monitoring-087",
+      "question": "What is Grafana reporting?",
+      "answer": "Reports generate PDF/CSV of dashboards on schedule or one-time. Useful for weekly summaries or compliance. Configure in Enterprise Reporting. Reports can include multiple dashboards, time ranges, and recipients. Supports scheduling with cron expressions.",
+      "difficulty": "medium",
+      "tags": ["grafana", "reporting"]
+    },
+    {
+      "id": "monitoring-088",
+      "question": "How do you monitor Prometheus itself?",
+      "answer": "Prometheus exposes its own metrics at /metrics endpoint. Key metrics: prometheus_tsdb_head_samples (samples in memory), prometheus_target_scrapes_exceeded_rate (scrape limit hits), prometheus_build_info (version). Create alerts for self-monitoring.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "self-monitoring"]
+    },
+    {
+      "id": "monitoring-089",
+      "question": "What is Prometheus TSDB and how does it work?",
+      "answer": "TSDB (Time Series Database) stores metrics in chunks on disk. Each chunk holds samples within a time window (default 2 hours). TSDB creates indexes for fast label lookups. Old chunks are compacted for efficient storage. Uses memory-mapped files for performance.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "tsdb"]
+    },
+    {
+      "id": "monitoring-090",
+      "question": "What is cardinality and why is high cardinality a problem?",
+      "answer": "Cardinality is the number of unique label combinations. High cardinality (many unique values like user IDs, request IDs) creates millions of time series. This impacts Prometheus memory, query performance, and storage. Avoid high-cardinality labels.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "cardinality"]
+    },
+    {
+      "id": "monitoring-091",
+      "question": "How do you calculate Prometheus storage requirements?",
+      "answer": "Estimate: samples_per_minute * scrape_interval * retention. Average sample is ~1KB. With 100 targets, 15s interval, 15-day retention: ~60M samples. Use prometheus_tsdb_storage_bytes_bytes for actual usage monitoring.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "storage"]
+    },
+    {
+      "id": "monitoring-092",
+      "question": "What is the Kubernetes Horizontal Pod Autoscaler (HPA) with Prometheus?",
+      "answer": "HPA can scale pods based on Prometheus metrics using custom metrics API. Configure HPA with type: Pods, metric type: PodsMetricSource. Reference Prometheus queries via the Prometheus Adapter. Enables scaling based on application metrics.",
+      "difficulty": "hard",
+      "tags": ["kubernetes", "hpa"]
+    },
+    {
+      "id": "monitoring-093",
+      "question": "What is the Prometheus Adapter and what does it do?",
+      "answer": "Prometheus Adapter (k8s-prometheus-adapter) exposes Prometheus metrics to Kubernetes custom metrics API. Enables HPA scaling based on application metrics. Also supports external metrics for autoscaling on cloud metrics like SQS queue depth.",
+      "difficulty": "hard",
+      "tags": ["prometheus", "adapter"]
+    },
+    {
+      "id": "monitoring-094",
+      "question": "What are common Prometheus exporters for applications?",
+      "answer": "Application exporters include: node_exporter (system), postgres_exporter (PostgreSQL), redis_exporter (Redis), mysqld_exporter (MySQL), nginx-prometheus-exporter (Nginx), apache-exporter (Apache). Most databases and services have official or community exporters.",
+      "difficulty": "easy",
+      "tags": ["prometheus", "exporters"]
+    },
+    {
+      "id": "monitoring-095",
+      "question": "How do you instrument application code for Prometheus?",
+      "answer": "Use Prometheus client libraries. For Python: prometheus_client library. For Go: prometheus/client_golang. For Java: micrometer-prometheus. Expose /metrics endpoint, define Counters, Gauges, Histograms, Summary with labels. Use middleware for HTTP metrics.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "instrumentation"]
+    },
+    {
+      "id": "monitoring-096",
+      "question": "What is Blackbox Exporter?",
+      "answer": "Blackbox Exporter probes endpoints over HTTP, HTTPS, DNS, TCP, ICMP. It exposes metrics like probe_success, probe_duration_seconds. Configure modules for different probe types. Useful for monitoring endpoint availability and latency from Prometheus perspective.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "exporter"]
+    },
+    {
+      "id": "monitoring-097",
+      "question": "How do you monitor SSL certificate expiration?",
+      "answer": "Use blackbox_exporter with HTTP module to probe certificate. Query: probe_ssl_earliest_cert_expiry_timestamp - time() gives days until expiry. Create alert when < 30 days. Or use cert_exporter for Kubernetes certificate monitoring.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "ssl"]
+    },
+    {
+      "id": "monitoring-098",
+      "question": "What is the difference between Grafana Agent and Prometheus?",
+      "answer": "Grafana Agent is a Prometheus-compatible agent that's lighter weight and more flexible. It supports: remote_write for metrics, grafana-agent-operator for Kubernetes, Loki for logs, Tempo for traces. Better for edge and multi-cloud deployments.",
+      "difficulty": "medium",
+      "tags": ["grafana", "agent"]
+    },
+    {
+      "id": "monitoring-099",
+      "question": "What are best practices for monitoring dashboards?",
+      "answer": "Best practices: follow USE/RED methods, show SLI/SLO metrics prominently, include time range selector, use consistent color coding, avoid clutter (use templating), add documentation links, include relevant annotations, keep panels focused on single purpose.",
+      "difficulty": "medium",
+      "tags": ["grafana", "best-practices"]
+    },
+    {
+      "id": "monitoring-100",
+      "question": "What are best practices for Prometheus alert definitions?",
+      "answer": "Best practices: use descriptive alert names with severity, include runbook links, prefer 'for' clause to avoid flapping, write alerts on recording rules for performance, keep conditions simple, document alert rationale, review and tune regularly to reduce noise.",
+      "difficulty": "medium",
+      "tags": ["prometheus", "alerts", "best-practices"]
+    }
+  ]
+}

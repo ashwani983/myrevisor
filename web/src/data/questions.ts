@@ -29,6 +29,7 @@ const subjectOverrides: Record<
   terraform: { name: 'Terraform' },
   cicd: { name: 'CI/CD (GitHub/GitLab)' },
   azure: { name: 'Microsoft Azure' },
+  prometheus: { name: 'Prometheus & Grafana' },
 };
 
 const globModules = import.meta.glob<{ default: QuestionData }>(
