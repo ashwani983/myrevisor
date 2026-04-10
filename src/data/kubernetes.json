@@ -7,175 +7,300 @@
     {
       "id": "k8s-001",
       "question": "What is Kubernetes?",
-      "answer": "Kubernetes (K8s) is an open-source container orchestration platform that automates deployment, scaling, and management of containerized applications. Originally developed by Google and later donated to CNCF.\n\nKey features:\n- Automated container orchestration\n- Self-healing capabilities\n- Load balancing and service discovery\n- Declarative configuration via YAML\n- Horizontal and vertical scaling\n- Multi-cloud and hybrid-cloud support",
+      "answer": "Kubernetes (K8s) is an open-source container orchestration platform that automates deployment, scaling, and management of containerized applications. Originally developed by Google and later donated to CNCF.",
+      "wrongAnswers": [
+        "A Docker container runtime for managing local applications",
+        "A version control system for infrastructure code",
+        "A cloud provider managed database service"
+      ],
       "difficulty": "easy",
       "tags": ["basics", "overview"]
     },
     {
       "id": "k8s-002",
       "question": "Explain Kubernetes Architecture.",
-      "answer": "Kubernetes follows a master-worker architecture:\n\nControl Plane (Cluster Management):\n- API Server: Entry point for all REST commands; validates and updates cluster state in etcd\n- etcd: Distributed key-value store; single source of truth for cluster data\n- Scheduler: Assigns Pods to nodes based on resource needs and policies\n- Controller Manager: Runs controllers that reconcile desired vs actual state\n\nData Plane (Workload Execution):\n- Kubelet: Ensures containers are running as specified; reports node status\n- Kube-proxy: Manages network rules for Pod communication\n- Container Runtime: Executes containers (e.g., containerd, CRI-O)",
+      "answer": "Kubernetes follows a master-worker architecture with Control Plane (API Server, etcd, Scheduler, Controller Manager) and Data Plane (Kubelet, Kube-proxy, Container Runtime).",
+      "wrongAnswers": [
+        "A single-tier architecture where all components run on one node",
+        "A client-server architecture without any control plane",
+        "A serverless architecture using functions as pods"
+      ],
       "difficulty": "medium",
       "tags": ["architecture", "core-concepts"]
     },
     {
       "id": "k8s-003",
       "question": "What is Container Orchestration?",
-      "answer": "Container orchestration is the automated process of managing the lifecycle of software containers. It involves:\n- Provisioning and deployment\n- Scaling up/down based on demand\n- Networking between containers\n- Load balancing\n- Health monitoring\n- Self-healing (restarting failed containers)\n\nKubernetes is the industry-standard orchestration tool for managing containers at scale.",
+      "answer": "Container orchestration is the automated process of managing the lifecycle of software containers including provisioning, scaling, networking, load balancing, health monitoring, and self-healing.",
+      "wrongAnswers": [
+        "The process of building Docker container images",
+        "A method for securing containers with TLS certificates",
+        "A technique for compressing container images"
+      ],
       "difficulty": "easy",
       "tags": ["orchestration", "basics"]
     },
     {
       "id": "k8s-004",
       "question": "What is a Pod in Kubernetes?",
-      "answer": "A Pod is the smallest deployable unit in Kubernetes. It represents one or more containers running in a shared environment.\n\nKey characteristics:\n- Containers inside a Pod share networking and storage resources\n- Each Pod gets a unique IP address\n- Containers can communicate via localhost\n- Pods are ephemeral (temporary)\n- Can contain one or more tightly coupled containers\n\nExample YAML:\napiVersion: v1\nkind: Pod\nmetadata:\n  name: my-pod\nspec:\n  containers:\n  - name: nginx-container\n    image: nginx:1.21",
+      "answer": "A Pod is the smallest deployable unit in Kubernetes that represents one or more containers running in a shared environment, sharing networking and storage resources.",
+      "wrongAnswers": [
+        "A single container without any shared resources",
+        "A Kubernetes cluster with multiple nodes",
+        "A virtual machine running inside Kubernetes"
+      ],
       "difficulty": "easy",
       "tags": ["pods", "core-concepts"]
     },
     {
       "id": "k8s-005",
       "question": "What is the difference between a Pod and a container?",
-      "answer": "Container:\n- A single, isolated process with its own filesystem\n\nPod:\n- A logical wrapper containing one or more tightly coupled containers\n- Containers within same Pod share:\n  - Network namespace (communicate via localhost)\n  - Storage volumes\n  - Same lifecycle (scheduled together)\n\nThe Pod is the atomic unit Kubernetes manages, not the individual container.",
+      "answer": "A container is a single isolated process with its own filesystem, while a Pod is a logical wrapper containing one or more tightly coupled containers that share network namespace, storage, and lifecycle.",
+      "wrongAnswers": [
+        "There is no difference, they are the same thing",
+        "Pods run on VMs while containers run on bare metal",
+        "Containers are immutable while Pods are mutable"
+      ],
       "difficulty": "easy",
       "tags": ["pods", "containers", "core-concepts"]
     },
     {
       "id": "k8s-006",
       "question": "What is the purpose of kubectl?",
-      "answer": "Kubectl is the primary CLI tool for managing Kubernetes resources and interacting with the cluster.\n\nCommon commands:\n- kubectl get pods: List all Pods\n- kubectl get services: List all Services\n- kubectl logs <pod-name>: View logs of a Pod\n- kubectl exec -it <pod-name> -- /bin/sh: Open shell inside a Pod\n- kubectl describe pod <name>: Get detailed Pod information\n- kubectl apply -f manifest.yaml: Apply configuration\n- kubectl delete pod <name>: Delete a Pod",
+      "answer": "Kubectl is the primary CLI tool for managing Kubernetes resources and interacting with the cluster, used for commands like kubectl get, kubectl apply, kubectl describe, and kubectl exec.",
+      "wrongAnswers": [
+        "A GUI tool for visualizing Kubernetes architecture",
+        "A configuration file format for Kubernetes manifests",
+        "A container runtime for executing pods"
+      ],
       "difficulty": "easy",
       "tags": ["kubectl", "cli", "basics"]
     },
     {
       "id": "k8s-007",
       "question": "What is a Deployment in Kubernetes?",
-      "answer": "A Deployment manages the lifecycle of Pods and ensures the desired number of replicas are running.\n\nKey features:\n- Declarative updates for Pods\n- Rolling updates and rollbacks\n- Self-healing (replaces failed Pods)\n- Scaling capabilities\n\nExample YAML:\napiVersion: apps/v1\nkind: Deployment\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: nginx\n  template:\n    metadata:\n      labels:\n        app: nginx\n    spec:\n      containers:\n      - name: nginx\n        image: nginx:1.21",
+      "answer": "A Deployment manages the lifecycle of Pods ensuring the desired number of replicas are running, supporting declarative updates, rolling updates, rollbacks, and self-healing.",
+      "wrongAnswers": [
+        "A method for deploying databases in Kubernetes",
+        "A configuration file that describes only network settings",
+        "A tool for monitoring pod resource usage"
+      ],
       "difficulty": "easy",
       "tags": ["deployment", "workloads"]
     },
     {
       "id": "k8s-008",
       "question": "What is a Kubernetes Service and why is it needed?",
-      "answer": "A Service exposes a group of Pods and provides a stable network endpoint.\n\nWhy needed:\n- Pods are ephemeral (IPs change)\n- Services provide stable IP addresses\n- Enable load balancing across Pods\n- Service discovery via DNS\n\nExample YAML:\napiVersion: v1\nkind: Service\nmetadata:\n  name: my-service\nspec:\n  selector:\n    app: my-app\n  ports:\n  - protocol: TCP\n    port: 80\n    targetPort: 80\n  type: ClusterIP",
+      "answer": "A Service exposes a group of Pods and provides a stable network endpoint because Pods are ephemeral and their IPs change, requiring services for stable networking and load balancing.",
+      "wrongAnswers": [
+        "A load balancer for external cloud resources only",
+        "A database connection pool for stateful applications",
+        "A firewall rule for securing cluster traffic"
+      ],
       "difficulty": "easy",
       "tags": ["services", "networking"]
     },
     {
       "id": "k8s-009",
       "question": "What service types are available in Kubernetes?",
-      "answer": "Kubernetes provides four main types of Services:\n\n1. ClusterIP (default):\n   - Internal cluster IP only\n   - Accessible only within cluster\n\n2. NodePort:\n   - Exposes on static port (30000-32767) on all nodes\n   - External access via <NodeIP>:<NodePort>\n\n3. LoadBalancer:\n   - Provisions external load balancer (cloud provider)\n   - Best for external traffic\n\n4. ExternalName:\n   - Maps Service to external DNS name\n   - Returns CNAME record",
+      "answer": "Kubernetes provides four service types: ClusterIP (internal only), NodePort (exposes on static port), LoadBalancer (provisions external LB), and ExternalName (maps to external DNS).",
+      "wrongAnswers": [
+        "Only ClusterIP and NodePort",
+        "PublicIP and PrivateIP",
+        "Internal, External, and Hybrid"
+      ],
       "difficulty": "medium",
       "tags": ["services", "networking", "exposure"]
     },
     {
       "id": "k8s-010",
       "question": "What are the key differences between ClusterIP, NodePort, and LoadBalancer?",
-      "answer": "ClusterIP:\n- Default service type\n- Internal cluster IP only\n- Accessible only within cluster\n- Use for: internal microservice communication\n\nNodePort:\n- Exposes on static port (30000-32767) on ALL nodes\n- External access via <NodeIP>:<NodePort>\n- Use for: development, simple external access\n\nLoadBalancer:\n- Provisions cloud provider load balancer\n- External IP assigned by cloud\n- Best for production external traffic\n- Higher cost per service",
+      "answer": "ClusterIP provides internal-only access, NodePort exposes on static ports (30000-32767) on all nodes, and LoadBalancer provisions cloud provider load balancers for external traffic.",
+      "wrongAnswers": [
+        "They are all the same with different names",
+        "ClusterIP is for external traffic, LoadBalancer is internal",
+        "NodePort is the most secure, LoadBalancer is deprecated"
+      ],
       "difficulty": "easy",
       "tags": ["services", "networking", "exposure"]
     },
     {
       "id": "k8s-011",
       "question": "What is the role of ConfigMaps and Secrets?",
-      "answer": "ConfigMap:\n- Stores non-sensitive configuration data as key-value pairs\n- Used for environment variables, command-line args, config files\n- Can be mounted as files or env vars\n\nSecret:\n- Stores sensitive data (passwords, tokens, SSH keys)\n- Data is base64-encoded by default (NOT encrypted by default!)\n- Supports fine-grained access control via RBAC\n- Should enable encryption at rest\n\nExample ConfigMap:\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: my-config\ndata:\n  database_url: \"postgres://db.example.com\"",
+      "answer": "ConfigMaps store non-sensitive configuration data as key-value pairs, while Secrets store sensitive data like passwords and tokens with base64 encoding (though not encrypted by default).",
+      "wrongAnswers": [
+        "Both store data in encrypted format by default",
+        "ConfigMaps are for secrets, Secrets are for configuration",
+        "They are identical except for the name"
+      ],
       "difficulty": "easy",
       "tags": ["configmap", "secrets", "configuration"]
     },
     {
       "id": "k8s-012",
       "question": "What are Namespaces in Kubernetes?",
-      "answer": "A Namespace is a virtual cluster within a Kubernetes cluster that helps organize workloads.\n\nBenefits:\n- Isolation: Each team gets its own namespace\n- Avoids naming conflicts: Same resource names can exist in different namespaces\n- Access control: RBAC can restrict namespace access\n- Resource quotas: Set limits on CPU, memory per namespace\n\nDefault namespaces:\n- default: For user-created resources\n- kube-system: For system resources\n- kube-public: For public resources\n\nCommands:\nkubectl create namespace dev\nkubectl get pods -n dev",
+      "answer": "Namespaces are virtual clusters within a Kubernetes cluster that provide isolation, help avoid naming conflicts, enable access control via RBAC, and support resource quotas.",
+      "wrongAnswers": [
+        "Physical clusters on separate hardware",
+        "A way to run multiple Kubernetes clusters on one machine",
+        "A security feature that encrypts all cluster data"
+      ],
       "difficulty": "easy",
       "tags": ["namespaces", "organization"]
     },
     {
       "id": "k8s-013",
       "question": "What are Labels and Selectors in Kubernetes?",
-      "answer": "Labels are key/value pairs attached to objects (Pods, Services, etc.) for identification and organization.\n\nExample pod with labels:\napiVersion: v1\nkind: Pod\nmetadata:\n  labels:\n    environment: production\n    app: nginx\nspec:\n  containers:\n  - name: nginx\n    image: nginx\n\nSelectors filter resources based on Labels:\n- Equality-based: environment=production\n- Set-based: environment in (production, staging)\n\nCommands:\nkubectl get pods -l environment=production\nkubectl get services --selector app=nginx",
+      "answer": "Labels are key/value pairs attached to objects for identification and organization, while Selectors filter resources based on Labels using equality-based or set-based operations.",
+      "wrongAnswers": [
+        "Labels encrypt data, Selectors decrypt it",
+        "Labels are for pods only, Selectors work only with services",
+        "They are the same thing with different names"
+      ],
       "difficulty": "easy",
       "tags": ["labels", "selectors", "organization"]
     },
     {
       "id": "k8s-014",
       "question": "What are Persistent Volumes (PVs) and PersistentVolumeClaims (PVCs)?",
-      "answer": "PV (PersistentVolume):\n- Cluster-wide storage resource\n- Provisioned by admin or dynamically via StorageClass\n- Life cycle independent of Pods\n- Types: local, NFS, cloud storage (EBS, GCE PD, Azure Disk)\n\nPVC (PersistentVolumeClaim):\n- Request for storage by user\n- Claims specific size and access mode\n- Binds to matching PV\n\nAccess Modes:\n- ReadWriteOnce (single node)\n- ReadWriteMany (multiple nodes)\n- ReadOnlyMany (multiple nodes, read only)\n\nLifecycle: Provisioning → Binding → Using → Reclaiming",
+      "answer": "PV is a cluster-wide storage resource provisioned by admin or dynamically via StorageClass. PVC is a user's request for storage that claims specific size and access mode, binding to matching PV.",
+      "wrongAnswers": [
+        "PVs are temporary storage, PVCs are permanent",
+        "PVs are for pods only, PVCs are for containers",
+        "They are the same thing with different names"
+      ],
       "difficulty": "medium",
       "tags": ["storage", "pv", "pvc"]
     },
     {
       "id": "k8s-015",
       "question": "What is the role of etcd in Kubernetes?",
-      "answer": "etcd is a distributed, consistent, key-value store that serves as the central database for Kubernetes.\n\nWhat etcd stores:\n- Desired state: Definitions of Deployments, Services, ConfigMaps\n- Current state: Real-time status of Pods, Nodes\n- Metadata: Cluster configuration, RBAC policies\n\nRequirements:\n- High availability (use odd number: 1, 3, 5 nodes)\n- Consistent and partition-tolerant (CP)\n- Regular backups essential\n\nCritical: Losing etcd means losing your entire cluster!",
+      "answer": "etcd is a distributed, consistent, key-value store that serves as the central database for Kubernetes, storing desired state, current state, and cluster configuration.",
+      "wrongAnswers": [
+        "A container runtime for executing pods",
+        "A load balancer for external traffic",
+        "A monitoring tool for cluster metrics"
+      ],
       "difficulty": "medium",
       "tags": ["etcd", "control-plane", "storage"]
     },
     {
       "id": "k8s-016",
       "question": "What is the Kubernetes API Server?",
-      "answer": "The API Server (kube-apiserver) is the front-end for Kubernetes control plane.\n\nKey responsibilities:\n- Entry point for all REST operations\n- Validates and authenticates API requests\n- Updates cluster state in etcd\n- All components communicate through it\n\nFeatures:\n- Horizontal scaling supported\n- Authentication (certificates, tokens, OIDC)\n- Authorization (RBAC)\n- Admission control\n\nAll operations go through the API Server - it's the hub of the cluster.",
+      "answer": "The API Server is the front-end for Kubernetes control plane, serving as entry point for all REST operations, validating requests, and updating cluster state in etcd.",
+      "wrongAnswers": [
+        "A database for storing container images",
+        "A scheduler for pod placement",
+        "A network proxy for pod communication"
+      ],
       "difficulty": "medium",
       "tags": ["api-server", "control-plane", "architecture"]
     },
     {
       "id": "k8s-017",
       "question": "What is the role of kube-scheduler?",
-      "answer": "The scheduler assigns newly created Pods to nodes.\n\nScheduling process:\n1. Filtering Phase (Predicates):\n   - Filter out nodes that cannot host the Pod\n   - Checks: insufficient CPU/memory, taints, node selectors\n\n2. Scoring Phase (Priorities):\n   - Score remaining eligible nodes\n   - Factors: resource utilization, affinity rules\n\n3. Binding:\n   - Pod bound to highest-scoring node\n   - API Server updates cluster state\n\nNote: Scheduler only decides WHERE, not WHEN containers run.",
+      "answer": "The scheduler assigns newly created Pods to nodes based on filtering (predicates) and scoring (priorities) phases, then binds the Pod to the highest-scoring node.",
+      "wrongAnswers": [
+        "It monitors pod health and restarts failed pods",
+        "It manages network communication between pods",
+        "It handles storage allocation for persistent volumes"
+      ],
       "difficulty": "medium",
       "tags": ["scheduler", "control-plane"]
     },
     {
       "id": "k8s-018",
       "question": "How does Kubernetes handle container scaling?",
-      "answer": "Horizontal Pod Autoscaling (HPA) automatically scales Pod replicas based on metrics.\n\nProcess:\n1. Controller monitors resource metrics (CPU, memory) or custom metrics\n2. Compares current utilization to target\n3. Calculates required replica count\n4. Updates Deployment/ReplicaSet\n5. Scales down during low load\n\nExample HPA:\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: my-app\n  minReplicas: 3\n  maxReplicas: 10\n  metrics:\n  - type: Resource\n    resource:\n      name: cpu\n      target:\n        type: Utilization\n        averageUtilization: 65",
+      "answer": "Horizontal Pod Autoscaling (HPA) automatically scales Pod replicas based on CPU, memory, or custom metrics by calculating and updating the replica count.",
+      "wrongAnswers": [
+        "Through manual kubectl scale commands only",
+        "By adding more nodes to the cluster automatically",
+        "Through vertical scaling of pod resource limits"
+      ],
       "difficulty": "medium",
       "tags": ["scaling", "hpa", "autoscaling"]
     },
     {
       "id": "k8s-019",
       "question": "How does Kubernetes autoscaling work?",
-      "answer": "Kubernetes provides three types of autoscaling:\n\n1. Horizontal Pod Autoscaler (HPA):\n   - Adjusts Pod count based on CPU/memory/custom metrics\n   - Most commonly used\n\n2. Vertical Pod Autoscaler (VPA):\n   - Adjusts CPU and memory requests for Pods\n   - Good for optimizing resource usage\n\n3. Cluster Autoscaler:\n   - Adjusts number of worker nodes\n   - Works with cloud provider to provision/remove nodes\n\nExample:\nkubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=10",
+      "answer": "Kubernetes provides three types of autoscaling: HPA adjusts pod count, VPA adjusts pod resource requests, and Cluster Autoscaler adjusts node count.",
+      "wrongAnswers": [
+        "Only through manual kubectl commands",
+        "Through adding more replicas to deployments",
+        "Through vertical scaling of containers only"
+      ],
       "difficulty": "medium",
       "tags": ["scaling", "autoscaling", "hpa", "vpa"]
     },
     {
       "id": "k8s-020",
       "question": "What is the difference between HPA and VPA?",
-      "answer": "Horizontal Pod Autoscaler (HPA):\n- Adjusts number of Pod replicas\n- Scales OUT (more Pods) or IN (fewer Pods)\n- Based on CPU%, memory%, or custom metrics\n- Most commonly used\n\nVertical Pod Autoscaler (VPA):\n- Adjusts CPU and memory requests for existing Pods\n- Pods get more or less resources\n- Can trigger Pod restarts with new limits\n- Good for optimizing resource allocation\n\nBoth can work together for comprehensive autoscaling.",
+      "answer": "HPA adjusts the number of Pod replicas (horizontal scaling), while VPA adjusts CPU and memory requests for existing Pods (vertical scaling).",
+      "wrongAnswers": [
+        "HPA is for horizontal scaling only, VPA is deprecated",
+        "They are the same thing with different names",
+        "HPA scales nodes, VPA scales pods"
+      ],
       "difficulty": "medium",
       "tags": ["hpa", "vpa", "autoscaling"]
     },
     {
       "id": "k8s-021",
       "question": "What are Liveness, Readiness, and Startup Probes?",
-      "answer": "Liveness Probe:\n- Checks if container is alive/running\n- If it fails, container is killed and restarted\n- Use for: detecting deadlocks, hung processes\n\nReadiness Probe:\n- Checks if container can serve traffic\n- If it fails, Pod is removed from Service endpoints\n- Use for: handling startup delays, dependency readiness\n\nStartup Probe:\n- Checks if application has successfully started\n- Disables liveness and readiness until it passes\n- Use for: slow-starting apps (databases, JVMs)\n\nProbe types: httpGet, tcpSocket, exec",
+      "answer": "Liveness checks if container should be restarted, Readiness checks if container can serve traffic, Startup checks if application has started successfully.",
+      "wrongAnswers": [
+        "All three are the same thing",
+        "Liveness checks CPU, Readiness checks memory",
+        "Startup replaces liveness and readiness probes"
+      ],
       "difficulty": "medium",
       "tags": ["probes", "health-checks"]
     },
     {
       "id": "k8s-022",
       "question": "What is a Sidecar Container?",
-      "answer": "A sidecar is a helper container running alongside the main application in the same Pod.\n\nCommon use cases:\n- Log forwarding (Fluentd, Logstash)\n- Metrics collection (Prometheus agent)\n- Service mesh proxies (Envoy, Istio)\n- TLS certificate handling\n- Configuration reloading\n- Data synchronization\n\nBenefits:\n- Separation of concerns\n- Reusability across services\n- Independent scaling and upgrades\n\nNative Sidecars (K8s 1.28+):\n- Defined in initContainers with restartPolicy: Always\n- Guaranteed to start before main app",
+      "answer": "A sidecar is a helper container running alongside the main application in the same Pod, used for logging, metrics, proxies, and configuration handling.",
+      "wrongAnswers": [
+        "A container that replaces the main application",
+        "A container that runs in a separate pod",
+        "A container that scales independently from the main app"
+      ],
       "difficulty": "medium",
       "tags": ["sidecar", "containers", "patterns"]
     },
     {
       "id": "k8s-023",
       "question": "What is the difference between Deployment, StatefulSet, and DaemonSet?",
-      "answer": "Deployment:\n- Stateless applications\n- Pods are interchangeable\n- Rolling updates, rollback support\n- Use for: web servers, APIs\n\nStatefulSet:\n- Stateful apps requiring stable network identity\n- Persistent storage (PVCs)\n- Ordered deployment/scaling/deletion\n- Named pods: pod-0, pod-1, etc.\n- Use for: databases, message queues\n\nDaemonSet:\n- One Pod per node (or subset)\n- Runs on every node automatically\n- Use for: log collectors, monitoring agents, storage daemons",
+      "answer": "Deployment is for stateless apps, StatefulSet is for stateful apps with stable identity, and DaemonSet runs one pod on each node.",
+      "wrongAnswers": [
+        "They are all the same with different names",
+        "Deployment is deprecated, use StatefulSet only",
+        "DaemonSet is for stateful apps only"
+      ],
       "difficulty": "medium",
       "tags": ["workloads", "deployment", "statefulset", "daemonset"]
     },
     {
       "id": "k8s-024",
       "question": "What are init containers and when would you use them?",
-      "answer": "Init containers run and complete BEFORE app containers start.\n\nUse cases:\n- Wait for external service (database, API) to be ready\n- Setup configuration files or secrets\n- Clone repository or fetch data\n- Register with service discovery\n- Run database migrations\n\nKey differences from regular containers:\n- Always run to completion\n- Must complete before app containers start\n- Cannot have probes or readiness\n- Run sequentially (in order defined)\n\nExample:\nspec:\n  initContainers:\n  - name: wait-for-db\n    image: busybox\n    command: ['sh', '-c', 'until nc -z db:5432; do sleep 2; done']",
+      "answer": "Init containers run and complete BEFORE app containers start, used for waiting on dependencies, setup tasks, or migrations.",
+      "wrongAnswers": [
+        "Containers that initialize the cluster",
+        "Containers that restart when apps fail",
+        "Containers that run in parallel with the main app"
+      ],
       "difficulty": "medium",
       "tags": ["init-containers", "pods"]
     },
     {
       "id": "k8s-025",
       "question": "What is a Kubernetes Ingress and how does it work?",
-      "answer": "Ingress manages external HTTP/HTTPS access to Services.\n\nFeatures:\n- URL-based routing\n- SSL/TLS termination\n- Virtual hosting\n- Load balancing\n- Custom routing rules\n\nComponents:\n- Ingress Resource: Defines routing rules\n- Ingress Controller: Implements the rules (nginx, traefik, ALB)\n\nExample:\napiVersion: networking.k8s.io/v1\nkind: Ingress\nspec:\n  rules:\n  - host: app.example.com\n    http:\n      paths:\n      - path: /api\n        pathType: Prefix\n        backend:\n          service:\n            name: api-service\n            port:\n              number: 80",
+      "answer": "Ingress manages external HTTP/HTTPS access to Services with URL-based routing, SSL termination, and load balancing features.",
+      "wrongAnswers": [
+        "A load balancer for TCP/UDP traffic only",
+        "A network firewall for Kubernetes",
+        "A service mesh configuration tool"
+      ],
       "difficulty": "medium",
       "tags": ["ingress", "networking"]
     },
