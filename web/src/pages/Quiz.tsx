@@ -327,11 +327,19 @@ export function Quiz() {
   const progress =
     ((currentQuiz.currentIndex + 1) / currentQuiz.questions.length) * 100;
 
-  // For True/False quiz - both answers are valid statements to evaluate
-  const options = [
-    { value: 'True', label: 'True' },
-    { value: 'False', label: 'False' },
-  ];
+  // Generate options for MCQ - get wrong answers from other questions in the quiz
+  const otherAnswers = currentQuiz.questions
+    .filter(q => q.id !== currentQuestion.id)
+    .map(q => q.answer)
+    .slice(0, 3);
+
+  while (otherAnswers.length < 3) {
+    otherAnswers.push(`Option ${otherAnswers.length + 2}`);
+  }
+
+  const options = [currentQuestion.answer, ...otherAnswers].sort(
+    () => Math.random() - 0.5
+  );
 
   const hasAnswered = currentQuiz.answers.length > currentQuiz.currentIndex;
 
@@ -391,8 +399,8 @@ export function Quiz() {
           {/* Options */}
           <div className="space-y-3 mb-6">
             {options.map((option, index) => {
-              const isSelected = selectedOption === option.value;
-              const isCorrect = option.value === currentQuestion.answer;
+              const isSelected = selectedOption === option;
+              const isCorrect = option === currentQuestion.answer;
               const showCorrect = hasAnswered && isCorrect;
               const showWrong = hasAnswered && isSelected && !isCorrect;
 
@@ -401,9 +409,7 @@ export function Quiz() {
                   key={index}
                   whileHover={{ scale: hasAnswered ? 1 : 1.01 }}
                   whileTap={{ scale: hasAnswered ? 1 : 0.99 }}
-                  onClick={() =>
-                    !hasAnswered && setSelectedOption(option.value)
-                  }
+                  onClick={() => !hasAnswered && setSelectedOption(option)}
                   disabled={hasAnswered}
                   className={cn(
                     'w-full p-4 rounded-xl border-2 text-left transition-all',
@@ -442,8 +448,8 @@ export function Quiz() {
                       String.fromCharCode(65 + index)
                     )}
                   </div>
-                  <span className="flex-1 text-gray-900 dark:text-white font-medium">
-                    {option.label}
+                  <span className="flex-1 text-gray-900 dark:text-white">
+                    {option}
                   </span>
                 </motion.button>
               );
