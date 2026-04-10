@@ -8,6 +8,11 @@
       "id": "network-001",
       "question": "What is the OSI model and what are its seven layers?",
       "answer": "OSI (Open Systems Interconnection) model has 7 layers: 1) Physical (cables, signals), 2) Data Link (MAC addresses, switches), 3) Network (IP addresses, routers), 4) Transport (TCP/UDP, ports), 5) Session (connections, SSL), 6) Presentation (encryption, compression), 7) Application (HTTP, FTP, DNS). Each layer communicates with adjacent layers.",
+      "wrongAnswers": [
+        "The OSI model has 4 layers: Application, Transport, Internet, and Network Interface",
+        "The OSI model has 5 layers with the top layer being the User Interface layer",
+        "The OSI model layers are: Hardware, Software, Network, Security, Database, API, and UI"
+      ],
       "difficulty": "easy",
       "tags": ["osi-model", "basics"]
     },
@@ -15,6 +20,11 @@
       "id": "network-002",
       "question": "What is the TCP/IP model?",
       "answer": "TCP/IP model has 4 layers: 1) Network Access/Link (physical, data link), 2) Internet (IP, ICMP), 3) Transport (TCP, UDP), 4) Application (HTTP, SSH, DNS). It's the practical implementation used on the internet, simpler than OSI but functionally equivalent.",
+      "wrongAnswers": [
+        "TCP/IP has 7 layers like the OSI model but with different names",
+        "TCP/IP has only 2 layers: Network and Application",
+        "TCP/IP model has 3 layers: Physical, Data Link, and Application"
+      ],
       "difficulty": "easy",
       "tags": ["tcp-ip", "basics"]
     },
@@ -22,6 +32,11 @@
       "id": "network-003",
       "question": "What is the difference between TCP and UDP?",
       "answer": "TCP (Transmission Control Protocol) is connection-oriented, reliable, guarantees delivery, order, and error checking. UDP (User Datagram Protocol) is connectionless, unreliable, no guarantees. TCP used for web, email. UDP used for streaming, DNS, VoIP where speed matters more than reliability.",
+      "wrongAnswers": [
+        "TCP is faster than UDP because it has less overhead",
+        "UDP is connection-oriented and TCP is connectionless",
+        "TCP and UDP are identical protocols with different port numbers"
+      ],
       "difficulty": "easy",
       "tags": ["tcp", "udp"]
     },
@@ -29,6 +44,11 @@
       "id": "network-004",
       "question": "What is an IP address and what are its types?",
       "answer": "IP address uniquely identifies a device on a network. IPv4 is 32-bit (e.g., 192.168.1.1). IPv6 is 128-bit (e.g., 2001:0db8::1). Types: Public (internet-routable), Private (non-routable: 10.x, 172.16-31.x, 192.168.x), Loopback (127.0.0.1).",
+      "wrongAnswers": [
+        "IP addresses are 48-bit addresses used for hardware identification",
+        "IPv6 is 64-bit and replaces IPv4 completely with no overlap",
+        "IP addresses are only used in wireless networks, not wired"
+      ],
       "difficulty": "easy",
       "tags": ["ip-address", "basics"]
     },
@@ -36,6 +56,11 @@
       "id": "network-005",
       "question": "What is the difference between public and private IP addresses?",
       "answer": "Public IPs are globally unique, routable on the internet, assigned by ISP or cloud provider. Private IPs are non-routable on internet, used within LANs, assigned by local router or DHCP server. NAT translates private to public for internet access.",
+      "wrongAnswers": [
+        "Public IPs are slower than private IPs for internal network traffic",
+        "Private IPs can be routed on the internet but are encrypted",
+        "Public IPs are assigned by local routers and private IPs by ISPs"
+      ],
       "difficulty": "easy",
       "tags": ["ip-address", "private"]
     },
@@ -43,6 +68,11 @@
       "id": "network-006",
       "question": "What is a subnet mask and how does it work?",
       "answer": "Subnet mask defines network and host portions of an IP address. 255.255.255.0 (/24) means first 24 bits are network, last 8 bits are hosts. AND operation between IP and mask identifies network address. Common masks: /8 (255.0.0.0), /16 (255.255.0.0), /24 (255.255.255.0).",
+      "wrongAnswers": [
+        "Subnet mask is used to encrypt network traffic",
+        "A subnet mask of 255.255.255.255 means all bits are for hosts",
+        "Subnet mask is only needed for IPv6 addresses"
+      ],
       "difficulty": "medium",
       "tags": ["subnet", "ip-address"]
     },
@@ -50,6 +80,11 @@
       "id": "network-007",
       "question": "What is CIDR notation?",
       "answer": "CIDR (Classless Inter-Domain Routing) notation specifies IP with prefix length: 192.168.1.0/24. The /24 means first 24 bits are network. CIDR allows flexible subnet sizing beyond class A/B/C boundaries. Used for routing and IP allocation.",
+      "wrongAnswers": [
+        "CIDR notation indicates the total number of available IP addresses in a network",
+        "CIDR is only used for IPv6 addresses",
+        "CIDR notation replaces the decimal subnet mask completely"
+      ],
       "difficulty": "medium",
       "tags": ["cidr", "subnet"]
     },
@@ -57,6 +92,11 @@
       "id": "network-008",
       "question": "What is subnetting and why is it used?",
       "answer": "Subnetting divides a network into smaller subnetworks. Benefits: efficient IP usage, reduced broadcast domain size, improved security through network segmentation, better performance, and simplified management. Essential for enterprise networks and cloud VPCs.",
+      "wrongAnswers": [
+        "Subnetting combines multiple networks into one larger network",
+        "Subnetting is only used in wireless networks",
+        "Subnetting increases the number of available IP addresses globally"
+      ],
       "difficulty": "medium",
       "tags": ["subnet", "network"]
     },
@@ -64,6 +104,11 @@
       "id": "network-009",
       "question": "How do you calculate the number of hosts in a subnet?",
       "answer": "Hosts = 2^(32-prefix) - 2. For /24: 2^8 - 2 = 254 usable hosts (subtract network and broadcast addresses). For /25: 2^7 - 2 = 126. For /26: 2^6 - 2 = 62. Always reserve network and broadcast addresses.",
+      "wrongAnswers": [
+        "Hosts = 2^(32-prefix) without subtracting any addresses",
+        "Hosts = 32-prefix for all subnet sizes",
+        "The number of hosts is always equal to the subnet mask value"
+      ],
       "difficulty": "medium",
       "tags": ["subnet", "calculation"]
     },
@@ -71,6 +116,11 @@
       "id": "network-010",
       "question": "What are reserved/private IP ranges?",
       "answer": "Private IP ranges: 10.0.0.0/8 (10.x.x.x), 172.16.0.0/12 (172.16-31.x.x), 192.168.0.0/16 (192.168.x.x). Link-local: 169.254.0.0/16 (APIPA). Loopback: 127.0.0.0/8. These cannot route on public internet.",
+      "wrongAnswers": [
+        "Private IP ranges include 8.8.8.0/24 and 1.1.1.0/24",
+        "All IP addresses starting with 192.x are public",
+        "Private IP ranges can be routed directly on the internet"
+      ],
       "difficulty": "easy",
       "tags": ["ip-address", "private"]
     },
@@ -78,6 +128,11 @@
       "id": "network-011",
       "question": "What is DHCP and how does it work?",
       "answer": "DHCP (Dynamic Host Configuration Protocol) automatically assigns IP addresses to devices. Process: 1) Client broadcasts DISCOVER, 2) Server sends OFFER, 3) Client sends REQUEST, 4) Server sends ACK. Leases typically expire after 24 hours. Prevents IP conflicts.",
+      "wrongAnswers": [
+        "DHCP is a protocol for transferring files between computers",
+        "DHCP requires manual configuration of each device on the network",
+        "DHCP only works on IPv6 networks"
+      ],
       "difficulty": "medium",
       "tags": ["dhcp", "protocol"]
     },
@@ -85,6 +140,11 @@
       "id": "network-012",
       "question": "What is DNS and how does it work?",
       "answer": "DNS (Domain Name System) translates domain names to IP addresses. Hierarchy: Root servers → TLD servers (.com, .org) → Authoritative nameservers. Types: A (IPv4), AAAA (IPv6), CNAME (alias), MX (mail), TXT, NS (nameserver). Queries are recursive or iterative.",
+      "wrongAnswers": [
+        "DNS converts IP addresses to physical hardware MAC addresses",
+        "DNS is only used for email servers",
+        "DNS queries always start at the local computer without contacting servers"
+      ],
       "difficulty": "medium",
       "tags": ["dns", "protocol"]
     },
@@ -92,6 +152,11 @@
       "id": "network-013",
       "question": "What is the difference between A record and CNAME record?",
       "answer": "A record maps domain to IPv4 address directly (e.g., example.com → 93.184.216.34). CNAME creates alias pointing to another domain (e.g., www.example.com → example.com). CNAME cannot coexist with other records at same name. A records are faster as no extra lookup needed.",
+      "wrongAnswers": [
+        "A record and CNAME record are identical and can be used interchangeably",
+        "CNAME records are faster than A records because they cache better",
+        "A records can only point to domains, not IP addresses"
+      ],
       "difficulty": "medium",
       "tags": ["dns", "records"]
     },
@@ -99,6 +164,11 @@
       "id": "network-014",
       "question": "What are the well-known ports and common services?",
       "answer": "Well-known ports (0-1023): 22 (SSH), 80 (HTTP), 443 (HTTPS), 21 (FTP), 25 (SMTP), 53 (DNS), 3306 (MySQL), 5432 (PostgreSQL), 6379 (Redis), 9200 (Elasticsearch). Registered ports: 1024-49151. Dynamic/private: 49152-65535.",
+      "wrongAnswers": [
+        "Well-known ports range from 1024-49151",
+        "Port 80 is used for SSH connections",
+        "Dynamic ports are used for server-side listening services"
+      ],
       "difficulty": "easy",
       "tags": ["ports", "basics"]
     },
@@ -106,6 +176,11 @@
       "id": "network-015",
       "question": "What is the difference between a router and a switch?",
       "answer": "Router operates at Layer 3 (Network), connects different networks (e.g., LAN to internet), uses IP addresses, makes routing decisions. Switch operates at Layer 2 (Data Link), connects devices within same network, uses MAC addresses, forwards frames within LAN.",
+      "wrongAnswers": [
+        "Routers use MAC addresses and switches use IP addresses",
+        "Switches connect different networks while routers connect devices within the same network",
+        "Routers and switches are the same device with different firmware"
+      ],
       "difficulty": "easy",
       "tags": ["devices", "router"]
     },
@@ -113,6 +188,11 @@
       "id": "network-016",
       "question": "What is the difference between a hub and a switch?",
       "answer": "Hub is Layer 1 device, broadcasts to all ports, causes collisions, no intelligence. Switch is Layer 2 device, learns MAC addresses, forwards frames only to destination port, creates dedicated connections, reduces collisions. Switches are essential for modern networks.",
+      "wrongAnswers": [
+        "Hubs are faster than switches because they don't examine frames",
+        "Both hubs and switches learn MAC addresses to make forwarding decisions",
+        "Switches operate at Layer 1 while hubs operate at Layer 2"
+      ],
       "difficulty": "easy",
       "tags": ["devices", "switch"]
     },
@@ -120,6 +200,11 @@
       "id": "network-017",
       "question": "What is a VLAN and why use it?",
       "answer": "VLAN (Virtual LAN) logically separates devices on same physical switch. Benefits: broadcast domain reduction, improved security, better traffic management, cost savings (no separate switches). Configured with 802.1Q tagging. Inter-VLAN routing requires router or Layer 3 switch.",
+      "wrongAnswers": [
+        "VLAN requires separate physical switches for each virtual network",
+        "VLANs can only be configured on wireless access points",
+        "VLANs increase the size of broadcast domains"
+      ],
       "difficulty": "medium",
       "tags": ["vlan", "network"]
     },
@@ -127,6 +212,11 @@
       "id": "network-018",
       "question": "What is ARP and how does it work?",
       "answer": "ARP (Address Resolution Protocol) maps IP addresses to MAC addresses. When device needs to communicate, it broadcasts ARP request asking 'Who has IP X?'. Target responds with its MAC. Device caches result in ARP table for future use. Essential for LAN communication.",
+      "wrongAnswers": [
+        "ARP maps MAC addresses to domain names",
+        "ARP is used for routing packets between different networks",
+        "ARP requests are only sent to the default gateway"
+      ],
       "difficulty": "medium",
       "tags": ["arp", "protocol"]
     },
@@ -134,6 +224,11 @@
       "id": "network-019",
       "question": "What is the difference between TCP three-way handshake and UDP?",
       "answer": "TCP uses three-way handshake: SYN → SYN-ACK → ACK to establish connection before data transfer. This ensures both parties ready. UDP has no handshake, sends data immediately without verifying receiver readiness. UDP is faster but unreliable.",
+      "wrongAnswers": [
+        "UDP uses a four-way handshake while TCP uses a three-way handshake",
+        "Both TCP and UDP use the same handshake process",
+        "TCP three-way handshake is faster than UDP transmission"
+      ],
       "difficulty": "medium",
       "tags": ["tcp", "handshake"]
     },
@@ -141,6 +236,11 @@
       "id": "network-020",
       "question": "What is a firewall and what are its types?",
       "answer": "Firewall monitors and filters network traffic based on rules. Types: Packet filter (stateless), Stateful inspection (tracks connections), Proxy (application-level gateway), Next-generation (deep packet inspection, IPS). Can be hardware or software-based. Essential for network security.",
+      "wrongAnswers": [
+        "Firewalls only operate at Layer 1 (physical layer)",
+        "A firewall is only a hardware device, not software",
+        "Firewalls only filter incoming traffic, not outgoing"
+      ],
       "difficulty": "easy",
       "tags": ["firewall", "security"]
     },
@@ -148,6 +248,11 @@
       "id": "network-021",
       "question": "What is NAT and why is it used?",
       "answer": "NAT (Network Address Translation) maps private IPs to public IP for internet access. Types: Static NAT (1:1 mapping), Dynamic NAT (pools of public IPs), PAT/ NAT Overload (many:1 with port mapping). Conserves public IPs, adds security by hiding internal IPs.",
+      "wrongAnswers": [
+        "NAT is used to speed up internet connections by caching",
+        "NAT only works with IPv6 addresses",
+        "NAT translates domain names to IP addresses"
+      ],
       "difficulty": "medium",
       "tags": ["nat", "network"]
     },
@@ -155,6 +260,11 @@
       "id": "network-022",
       "question": "What is a gateway and default gateway?",
       "answer": "Gateway connects two different networks, translating between protocols. Default gateway is the router device that local network uses to reach external networks. When device needs to communicate outside its subnet, it sends traffic to default gateway for routing.",
+      "wrongAnswers": [
+        "Gateway is a physical cable connecting two networks",
+        "Default gateway is only used for wireless connections",
+        "Gateway and router are different devices with different functions"
+      ],
       "difficulty": "easy",
       "tags": ["gateway", "basics"]
     },
@@ -162,6 +272,11 @@
       "id": "network-023",
       "question": "What is the difference between layer 2 and layer 3 switches?",
       "answer": "Layer 2 switch works at Data Link layer, forwards frames using MAC addresses within same VLAN. Layer 3 switch (multilayer) also routes between VLANs using IP addresses, provides faster inter-VLAN routing than router, supports ACLs and routing protocols.",
+      "wrongAnswers": [
+        "Layer 2 switches route between networks while Layer 3 switches only forward frames",
+        "Layer 3 switches are slower than Layer 2 switches for all operations",
+        "Layer 3 switches cannot perform Layer 2 functions"
+      ],
       "difficulty": "medium",
       "tags": ["switch", "layer3"]
     },
@@ -169,6 +284,11 @@
       "id": "network-024",
       "question": "What is bandwidth vs throughput vs latency?",
       "answer": "Bandwidth is maximum data transfer capacity (e.g., 1 Gbps). Throughput is actual data transferred (often less than bandwidth). Latency is delay between sender and receiver (measured in ms). Network performance depends on all three - high bandwidth with high latency can still be slow.",
+      "wrongAnswers": [
+        "Bandwidth, throughput, and latency are all the same measurement",
+        "Latency is measured in bytes per second",
+        "High bandwidth always means low latency"
+      ],
       "difficulty": "easy",
       "tags": ["performance", "basics"]
     },
@@ -176,6 +296,11 @@
       "id": "network-025",
       "question": "What is a broadcast domain vs collision domain?",
       "answer": "Broadcast domain is set of devices receiving broadcast frames from any device in the group. Routers/brouters separate broadcast domains. Collision domain is network segment where collisions can occur if two devices transmit simultaneously. Switches separate collision domains, hubs don't.",
+      "wrongAnswers": [
+        "Routers separate collision domains but not broadcast domains",
+        "Switches do not separate either domain type",
+        "Hubs separate both collision and broadcast domains"
+      ],
       "difficulty": "medium",
       "tags": ["broadcast", "collision"]
     },
@@ -183,6 +308,11 @@
       "id": "network-026",
       "question": "What is SSL/TLS and how does it work?",
       "answer": "SSL/TLS provides encrypted communication over network. TLS succeeded SSL (SSL deprecated). Process: Client hello (supported ciphers) → Server hello (certificate, key) → Certificate verification → Key exchange → Encrypted data. Uses asymmetric encryption for handshake, symmetric for data transfer.",
+      "wrongAnswers": [
+        "SSL/TLS only encrypts data at Layer 1 (physical layer)",
+        "TLS is the older version and SSL is the newer version",
+        "SSL/TLS requires both parties to have the same encryption key"
+      ],
       "difficulty": "medium",
       "tags": ["ssl", "tls", "security"]
     },
@@ -190,6 +320,11 @@
       "id": "network-027",
       "question": "What is a certificate and how does HTTPS work?",
       "answer": "SSL/TLS certificate binds public key to identity (domain name). Contains: issuer, validity dates, domain, public key. HTTPS uses certificates for server authentication. Browser verifies certificate chain against trusted CAs. Connection encrypts using negotiated cipher.",
+      "wrongAnswers": [
+        "HTTPS certificates are stored in the user's browser only",
+        "Certificates are only needed for the first connection, then cached",
+        "Self-signed certificates are trusted by all browsers by default"
+      ],
       "difficulty": "medium",
       "tags": ["https", "certificate"]
     },
@@ -197,6 +332,11 @@
       "id": "network-028",
       "question": "What is the difference between symmetric and asymmetric encryption?",
       "answer": "Symmetric uses same key for encryption/decryption (e.g., AES). Fast, used for bulk data. Asymmetric uses key pair - public encrypts, private decrypts (e.g., RSA). Slower but enables key exchange. TLS uses both: asymmetric for handshake, symmetric for data.",
+      "wrongAnswers": [
+        "Symmetric encryption is slower than asymmetric encryption",
+        "Asymmetric encryption uses the same key for encryption and decryption",
+        "TLS only uses asymmetric encryption for all data transfer"
+      ],
       "difficulty": "medium",
       "tags": ["encryption", "security"]
     },
@@ -204,6 +344,11 @@
       "id": "network-029",
       "question": "What is a VPN and what are its types?",
       "answer": "VPN (Virtual Private Network) creates encrypted tunnel over public network. Types: Remote-access (individual users), Site-to-site (connect networks), SSL VPN (browser-based), IPsec VPN (native), MPLS (carrier-based). Used for secure remote access and network interconnection.",
+      "wrongAnswers": [
+        "VPN only encrypts outbound traffic, not inbound",
+        "VPNs are only used for accessing geo-restricted content",
+        "Site-to-site VPNs require client software on each device"
+      ],
       "difficulty": "medium",
       "tags": ["vpn", "security"]
     },
@@ -211,6 +356,11 @@
       "id": "network-030",
       "question": "What is IPsec and how does it work?",
       "answer": "IPsec secures IP communication at network layer. Components: AH (Authentication Header) for integrity, ESP (Encapsulating Security Payload) for confidentiality, IKE (Internet Key Exchange) for key management. Modes: Transport (end-to-end) and Tunnel (gateway-to-gateway).",
+      "wrongAnswers": [
+        "IPsec operates at Layer 7 (Application layer)",
+        "IPsec only provides authentication, not encryption",
+        "IPsec requires TCP to function"
+      ],
       "difficulty": "hard",
       "tags": ["ipsec", "vpn"]
     },
@@ -218,6 +368,11 @@
       "id": "network-031",
       "question": "What is DNS caching and how long do records last?",
       "answer": "DNS caching stores query results for faster subsequent lookups. Cached at: browser, OS (TTL in registry), resolver (ISP/cloud). TTL (Time To Live) in seconds determines cache duration. Lower TTL = more frequent updates but more queries. Typical: 300-3600 seconds.",
+      "wrongAnswers": [
+        "DNS records are cached indefinitely once queried",
+        "TTL determines how long DNS queries take to complete",
+        "DNS caching only happens at the root DNS servers"
+      ],
       "difficulty": "medium",
       "tags": ["dns", "cache"]
     },
@@ -225,6 +380,11 @@
       "id": "network-032",
       "question": "What is DNS propagation delay?",
       "answer": "DNS propagation is time for DNS changes to update globally. Due to caching at multiple levels (recursive resolvers, ISPs), changes take 24-72 hours to fully propagate. Lowering TTL before changes helps. Not true propagation - just cache expiration at various levels.",
+      "wrongAnswers": [
+        "DNS propagation only affects A records, not other record types",
+        "DNS changes take effect immediately across all servers",
+        "DNS propagation is the transfer of DNS zones between servers"
+      ],
       "difficulty": "medium",
       "tags": ["dns", "propagation"]
     },
@@ -232,6 +392,11 @@
       "id": "network-033",
       "question": "What are the types of DNS records?",
       "answer": "A (IPv4 address), AAAA (IPv6 address), CNAME (canonical name/alias), MX (mail exchange), NS (nameserver), TXT (text data, SPF), SOA (start of authority), PTR (reverse DNS), SRV (service location), CAA (certification authority authorization).",
+      "wrongAnswers": [
+        "DNS records include HTTP and HTTPS records for web servers",
+        "The main DNS record types are only A, AAAA, and MX",
+        "DNS records are stored as XML files on name servers"
+      ],
       "difficulty": "easy",
       "tags": ["dns", "records"]
     },
@@ -239,6 +404,11 @@
       "id": "network-034",
       "question": "What is a reverse proxy and how does it differ from forward proxy?",
       "answer": "Forward proxy represents clients to internet (like VPN, caching for browsers). Reverse proxy represents servers to clients (like load balancer, SSL terminator). Reverse proxy: single entry point, SSL termination, caching, protection, load distribution. Nginx, HAProxy, Apache are common.",
+      "wrongAnswers": [
+        "Forward proxies are deployed on servers, reverse proxies on clients",
+        "Both forward and reverse proxies only provide caching",
+        "Reverse proxies cannot perform SSL termination"
+      ],
       "difficulty": "medium",
       "tags": ["proxy", "reverse-proxy"]
     },
@@ -246,6 +416,11 @@
       "id": "network-035",
       "question": "What is load balancing and what algorithms are used?",
       "answer": "Load balancing distributes traffic across multiple servers. Algorithms: Round Robin (sequential), Weighted RR (by capacity), Least Connections (fewest active), IP Hash (session affinity), Random. Types: Layer 4 (TCP/UDP), Layer 7 (HTTP/HTTPS). Examples: HAProxy, Nginx, AWS ALB.",
+      "wrongAnswers": [
+        "Load balancers only work with Layer 3 (Network layer)",
+        "Round Robin is the only load balancing algorithm available",
+        "Load balancers increase the total capacity of a single server"
+      ],
       "difficulty": "medium",
       "tags": ["load-balancer", "algorithm"]
     },
@@ -253,6 +428,11 @@
       "id": "network-036",
       "question": "What is sticky session or session affinity?",
       "answer": "Sticky sessions route requests from same client to same backend server. Methods: Cookies (insert JSESSIONID), URL parameters, Client IP hashing. Enables stateful applications without shared storage. Trade-offs: uneven load distribution, server restart issues.",
+      "wrongAnswers": [
+        "Sticky sessions are required for all load balanced applications",
+        "Sticky sessions prevent any load balancing from occurring",
+        "Sticky sessions work by encrypting session data on the client"
+      ],
       "difficulty": "medium",
       "tags": ["load-balancer", "session"]
     },
@@ -260,6 +440,11 @@
       "id": "network-037",
       "question": "What is health checking in load balancing?",
       "answer": "Health checks test if backend server is operational. Types: TCP connect (port open), HTTP/HTTPS (specific endpoint returns 200), Custom script. Interval determines frequency. Unhealthy threshold triggers removal. Recovery threshold for adding back. Essential for automatic failover.",
+      "wrongAnswers": [
+        "Health checks only verify the load balancer itself, not backend servers",
+        "All backend servers are automatically considered healthy",
+        "Health checks are performed by the client browser"
+      ],
       "difficulty": "medium",
       "tags": ["load-balancer", "health"]
     },
@@ -267,6 +452,11 @@
       "id": "network-038",
       "question": "What is the difference between L4 and L7 load balancing?",
       "answer": "Layer 4 (Transport) balances based on IP and port, doesn't inspect content. Faster, more scalable, simpler. Layer 7 (Application) inspects HTTP headers, URLs, cookies for smart routing. Supports path-based routing, per-request policies, content caching. More CPU intensive.",
+      "wrongAnswers": [
+        "Layer 7 is faster than Layer 4 load balancing in all cases",
+        "Layer 4 load balancing inspects HTTP content for routing decisions",
+        "Layer 7 cannot perform SSL termination"
+      ],
       "difficulty": "medium",
       "tags": ["load-balancer", "layers"]
     },
@@ -274,6 +464,11 @@
       "id": "network-039",
       "question": "What is anycast addressing?",
       "answer": "Anycast routes to nearest server among multiple with same IP. Used by CDNs, DNS root servers. Client's routing protocol chooses shortest path to nearest anycast node. Provides low latency, DDoS protection, high availability. Multiple servers share single IP.",
+      "wrongAnswers": [
+        "Anycast assigns a unique IP to each server in a group",
+        "Anycast only works with IPv4 addresses",
+        "Anycast increases latency by routing through multiple servers"
+      ],
       "difficulty": "hard",
       "tags": ["ip-address", "anycast"]
     },
@@ -281,6 +476,11 @@
       "id": "network-040",
       "question": "What is multicast addressing?",
       "answer": "Multicast sends data to multiple destinations simultaneously. IPv4: 224.0.0.0 - 239.255.255.255 (Class D). IPv6: ff00::/8. Used for streaming, video conferencing, routing updates. Requires multicast-enabled network infrastructure. IGMP manages group membership.",
+      "wrongAnswers": [
+        "Multicast requires the sender to know all recipient IP addresses",
+        "Multicast is the same as broadcast but with larger address range",
+        "Multicast only works on IPv4 networks"
+      ],
       "difficulty": "hard",
       "tags": ["ip-address", "multicast"]
     },
@@ -288,6 +488,11 @@
       "id": "network-041",
       "question": "What is the difference between static and dynamic routing?",
       "answer": "Static routing uses manually configured routes, best for small/simple networks, predictable, low overhead. Dynamic routing uses protocols (OSPF, BGP, EIGRP) to automatically discover and update routes, adapts to network changes, scales better but more complex and resource intensive.",
+      "wrongAnswers": [
+        "Dynamic routing requires less CPU resources than static routing",
+        "Static routing automatically updates when network topology changes",
+        "Both static and dynamic routing require manual configuration"
+      ],
       "difficulty": "medium",
       "tags": ["routing", "static"]
     },
@@ -295,6 +500,11 @@
       "id": "network-042",
       "question": "What are common dynamic routing protocols?",
       "answer": "IGP (Interior Gateway Protocols): OSPF (link-state, enterprise), RIP (distance-vector, legacy), EIGRP (Cisco hybrid). EGP (Exterior Gateway Protocol): BGP (internet backbone, between AS). Choice depends on network size, vendor, and requirements.",
+      "wrongAnswers": [
+        "HTTP and HTTPS are dynamic routing protocols for web traffic",
+        "All dynamic routing protocols work the same way with different names",
+        "DHCP is the primary dynamic routing protocol used in enterprise networks"
+      ],
       "difficulty": "medium",
       "tags": ["routing", "protocols"]
     },
@@ -302,6 +512,11 @@
       "id": "network-043",
       "question": "What is BGP and why is it important?",
       "answer": "BGP (Border Gateway Protocol) routes traffic between Autonomous Systems (AS) on the internet. Path-vector protocol using AS path for routing decisions. TCP port 179. Essential for internet connectivity. BGP peering: iBGP (within AS), eBGP (between AS).",
+      "wrongAnswers": [
+        "BGP operates at Layer 4 (Transport layer) using UDP",
+        "BGP is only used within a single Autonomous System",
+        "BGP has largely been replaced by OSPF for internet routing"
+      ],
       "difficulty": "hard",
       "tags": ["bgp", "routing"]
     },
@@ -309,6 +524,11 @@
       "id": "network-044",
       "question": "What is OSPF and how does it work?",
       "answer": "OSPF (Open Shortest Path First) is link-state IGP. Routers exchange LSAs (Link State Advertisements) to build topology database. SPF (Dijkstra) algorithm calculates shortest path. Areas reduce SPF calculation scope. Fast convergence, triggered updates. Enterprise LAN/WAN commonly uses OSPF.",
+      "wrongAnswers": [
+        "OSPF uses distance-vector algorithm like RIP",
+        "OSPF requires a central controller to calculate routes",
+        "OSPF only works in networks with fewer than 10 routers"
+      ],
       "difficulty": "hard",
       "tags": ["ospf", "routing"]
     },
@@ -316,6 +536,11 @@
       "id": "network-045",
       "question": "What is the difference between routing and forwarding?",
       "answer": "Routing is the control plane function of determining best path (uses routing protocols, routing table). Forwarding is data plane function of moving packets from input to output (uses forwarding table, hardware). Routing creates the information used by forwarding.",
+      "wrongAnswers": [
+        "Routing and forwarding are the same function in networking",
+        "Forwarding determines the path while routing moves packets",
+        "Routing only happens at Layer 1 while forwarding happens at Layer 3"
+      ],
       "difficulty": "medium",
       "tags": ["routing", "forwarding"]
     },
@@ -323,6 +548,11 @@
       "id": "network-046",
       "question": "What is a routing table?",
       "answer": "Routing table contains: destination network, next hop, metric, interface. Router consults table to forward packets. Entries: directly connected (C), static (S), dynamic (O, B, R). Longest prefix match determines best route. Default route (0.0.0.0/0) matches unknown destinations.",
+      "wrongAnswers": [
+        "Routing tables are only found on switches, not routers",
+        "The routing table contains MAC addresses, not IP addresses",
+        "Longest prefix match selects the route with the most specific destination"
+      ],
       "difficulty": "medium",
       "tags": ["routing", "table"]
     },
@@ -330,6 +560,11 @@
       "id": "network-047",
       "question": "What is a default route?",
       "answer": "Default route (gateway of last resort, 0.0.0.0/0) matches all destinations not explicitly in routing table. Used when no specific route known. For internet access, default route points to ISP router. Essential for small networks, edge devices.",
+      "wrongAnswers": [
+        "Default route is the most specific route in the routing table",
+        "Default route is only used for traffic within the local subnet",
+        "Default route requires a specific IP address, not 0.0.0.0/0"
+      ],
       "difficulty": "easy",
       "tags": ["routing", "default"]
     },
@@ -337,6 +572,11 @@
       "id": "network-048",
       "question": "What is MTU and why does it matter?",
       "answer": "MTU (Maximum Transmission Unit) is largest packet size interface can transmit. Ethernet default: 1500 bytes. If packet exceeds MTU, it gets fragmented (IPv4) or dropped (IPv6). Path MTU Discovery finds minimum MTU along path. Issues cause fragmentation attacks, performance problems.",
+      "wrongAnswers": [
+        "MTU is measured in bits, not bytes",
+        "Larger MTU always improves network performance",
+        "IPv6 does not have MTU limitations"
+      ],
       "difficulty": "medium",
       "tags": ["mtu", "packet"]
     },
@@ -344,6 +584,11 @@
       "id": "network-049",
       "question": "What is fragmentation and when does it occur?",
       "answer": "Fragmentation splits packets exceeding MTU into smaller chunks. IPv4 allows fragmentation by routers and hosts. IPv6 only fragments at source. Causes: performance overhead, security issues (fragmentation attacks), must be reassembled. Avoid with proper MTU sizing.",
+      "wrongAnswers": [
+        "Fragmentation only occurs on wireless networks",
+        "IPv4 does not support packet fragmentation",
+        "Fragmentation improves network performance by reducing packet size"
+      ],
       "difficulty": "medium",
       "tags": ["fragmentation", "packet"]
     },
@@ -351,6 +596,11 @@
       "id": "network-050",
       "question": "What is the TCP window size and flow control?",
       "answer": "TCP window size determines how much unacknowledged data can be sent. Flow control prevents sender overwhelming receiver. Receiver advertises available buffer (window). Sender must stay within window. Sliding window: advances as ACKs received. Large windows improve throughput on high-latency links.",
+      "wrongAnswers": [
+        "TCP window size is fixed at 64KB for all connections",
+        "Flow control is only used in UDP, not TCP",
+        "A larger window size always means faster data transfer"
+      ],
       "difficulty": "hard",
       "tags": ["tcp", "flow-control"]
     },
@@ -358,6 +608,11 @@
       "id": "network-051",
       "question": "What is TCP congestion control?",
       "answer": "Congestion control prevents network overload. Mechanisms: Slow Start (exponential increase), Congestion Avoidance (linear increase), Fast Retransmit (retransmit on triple duplicate ACK), Fast Recovery (skip slow start). Uses congestion window (cwnd). TCP flavors: Reno, CUBIC, BBR.",
+      "wrongAnswers": [
+        "Congestion control is only implemented in hardware, not software",
+        "TCP ignores network congestion and always sends at maximum speed",
+        "Fast Retransmit sends packets twice as fast to recover from loss"
+      ],
       "difficulty": "hard",
       "tags": ["tcp", "congestion"]
     },
@@ -365,6 +620,11 @@
       "id": "network-052",
       "question": "What is Quality of Service (QoS)?",
       "answer": "QoS prioritizes network traffic based on rules. Techniques: Traffic shaping, Policing, Queuing (priority, weighted fair), Congestion management. Mark packets using DSCP or CoS. Critical for VoIP, video, real-time applications. Network devices use queuing algorithms (WFQ, CB-WFQ).",
+      "wrongAnswers": [
+        "QoS increases the overall bandwidth of a network",
+        "QoS only applies to wireless networks",
+        "QoS marking is done by end-user applications only"
+      ],
       "difficulty": "hard",
       "tags": ["qos", "quality"]
     },
@@ -372,6 +632,11 @@
       "id": "network-053",
       "question": "What is bandwidth shaping and traffic policing?",
       "answer": "Traffic shaping buffers excess traffic to meet rate limit (smooths bursts). Traffic policing drops or remarks excess traffic immediately. Shaping better for applications sensitive to jitter. Policing more efficient, used at network edges. Both enforce QoS policies.",
+      "wrongAnswers": [
+        "Traffic shaping drops packets while policing buffers them",
+        "Both shaping and policing are the same mechanism with different names",
+        "Policing is better for real-time applications than shaping"
+      ],
       "difficulty": "hard",
       "tags": ["qos", "policing"]
     },
@@ -379,6 +644,11 @@
       "id": "network-054",
       "question": "What is network latency and how do you measure it?",
       "answer": "Latency is time for packet to travel source to destination. Components: propagation, serialization, processing, queuing. Measured with ping (ICMP), traceroute (path), speedtest (bandwidth + latency). Latency affects user experience. CDN, caching, optimization reduce latency.",
+      "wrongAnswers": [
+        "Network latency is measured in bytes per second",
+        "CDN increases latency by adding more network hops",
+        "Latency only affects batch data transfer, not real-time applications"
+      ],
       "difficulty": "easy",
       "tags": ["latency", "measurement"]
     },
@@ -386,6 +656,11 @@
       "id": "network-055",
       "question": "What is jitter and why is it important?",
       "answer": "Jitter is variation in packet arrival times. High jitter causes buffering, audio/video quality issues. Real-time apps (VoIP, video) suffer most. Solutions: jitter buffers, QoS priority queuing. Measured in ms variance from average. Important metric for real-time communications.",
+      "wrongAnswers": [
+        "Jitter is the total time for a packet to travel from source to destination",
+        "Low jitter means high latency variation",
+        "Jitter only affects email and web browsing, not real-time applications"
+      ],
       "difficulty": "medium",
       "tags": ["jitter", "quality"]
     },
@@ -393,6 +668,11 @@
       "id": "network-056",
       "question": "What is packet loss and what causes it?",
       "answer": "Packet loss occurs when packets don't reach destination. Causes: network congestion, hardware errors, software bugs, firewall drops, routing issues. Impact: retransmissions (TCP), quality degradation (VoIP), latency (streaming). Acceptable: <1% for most apps, <0.1% for real-time.",
+      "wrongAnswers": [
+        "Packet loss is normal and expected in all networks",
+        "Firewall rules cannot cause packet loss",
+        "Packet loss only occurs on wireless networks, not wired"
+      ],
       "difficulty": "medium",
       "tags": ["packet-loss", "troubleshooting"]
     },
@@ -400,6 +680,11 @@
       "id": "network-057",
       "question": "What is the difference between unicast, broadcast, and multicast?",
       "answer": "Unicast: one-to-one communication (e.g., HTTP request). Broadcast: one-to-all in subnet (e.g., ARP, DHCP). Limited to local network. Multicast: one-to-many (e.g., streaming, routing updates). Requires multicast support. Efficient for group communication.",
+      "wrongAnswers": [
+        "Broadcast can be routed across different networks",
+        "Unicast is faster than multicast for group communication",
+        "Multicast uses the same address range as unicast"
+      ],
       "difficulty": "medium",
       "tags": ["unicast", "broadcast"]
     },
@@ -407,6 +692,11 @@
       "id": "network-058",
       "question": "What is ICMP and what are common message types?",
       "answer": "ICMP (Internet Control Message Protocol) reports network errors, diagnostics. Types: Echo (ping), Destination Unreachable, Time Exceeded (traceroute), Redirect. Port unreachable + ICMP used for path MTU discovery. Can be security risk (ping floods, ICMP tunnels).",
+      "wrongAnswers": [
+        "ICMP is used to establish TCP connections",
+        "ICMP only operates on wireless networks",
+        "All ICMP message types should be allowed through firewalls"
+      ],
       "difficulty": "medium",
       "tags": ["icmp", "protocol"]
     },
@@ -414,6 +704,11 @@
       "id": "network-059",
       "question": "What is traceroute and how does it work?",
       "answer": "Traceroute maps path to destination using ICMP Time Exceeded. Sends packets with incrementing TTL (1, 2, 3...). Each router decrements TTL; when TTL=0, router sends ICMP Time Exceeded. Records router IP. Final destination responds with ICMP Port Unreachable. Works on UDP or ICMP depending on OS.",
+      "wrongAnswers": [
+        "Traceroute sends packets with incrementing port numbers instead of TTL",
+        "Traceroute can only map paths to devices on the local network",
+        "Traceroute requires the destination to support ICMP"
+      ],
       "difficulty": "medium",
       "tags": ["traceroute", "diagnostics"]
     },
@@ -421,6 +716,11 @@
       "id": "network-060",
       "question": "What is the difference between ping and ping sweep?",
       "answer": "Ping tests connectivity to single host. Ping sweep (ping scan) tests connectivity to multiple hosts in range. Uses ICMP Echo to discover live hosts. Tools: nmap -sn, fping, Angry IP Scanner. Useful for network discovery and monitoring.",
+      "wrongAnswers": [
+        "Ping sweep uses TCP SYN packets instead of ICMP",
+        "Ping and ping sweep are identical operations",
+        "Ping sweep cannot be blocked by firewalls"
+      ],
       "difficulty": "easy",
       "tags": ["ping", "discovery"]
     },
@@ -428,6 +728,11 @@
       "id": "network-061",
       "question": "What is SNMP and what is it used for?",
       "answer": "SNMP (Simple Network Management Protocol) monitors network devices. Components: Manager (NMS), Agent (device), MIB (Management Information Base). Operations: GET, SET, TRAP. Versions: v1 (cleartext), v2c (cleartext), v3 (encrypted). Used for monitoring routers, switches, servers.",
+      "wrongAnswers": [
+        "SNMP is a protocol for transferring files between network devices",
+        "SNMP only works with wireless network devices",
+        "SNMP v3 is less secure than v1"
+      ],
       "difficulty": "medium",
       "tags": ["snmp", "monitoring"]
     },
@@ -435,6 +740,11 @@
       "id": "network-062",
       "question": "What is Syslog and how is it used in networking?",
       "answer": "Syslog is standard for log message transmission. Used by routers, switches, servers, applications. Components: Facility (source), Severity (level), Message. UDP port 514 traditional, TCP 514 + TLS for secure. Centralized syslog servers (rsyslog, syslog-ng, Splunk) aggregate logs.",
+      "wrongAnswers": [
+        "Syslog is only used for Windows-based network devices",
+        "Syslog messages are encrypted by default on all devices",
+        "Syslog operates on HTTP port 80"
+      ],
       "difficulty": "medium",
       "tags": ["syslog", "logging"]
     },
@@ -442,6 +752,11 @@
       "id": "network-063",
       "question": "What is netflow and how does it work?",
       "answer": "NetFlow collects IP traffic statistics. Flow defined by: src/dst IP, src/dst port, protocol, interface. Exporter samples packets, collector aggregates. Used for: traffic analysis, billing, security. Variants: NetFlow v5/v9, IPFIX (standardized). Helps understand network usage patterns.",
+      "wrongAnswers": [
+        "NetFlow captures the full content of all network packets",
+        "NetFlow only works with UDP traffic",
+        "NetFlow is a protocol for routing packets between networks"
+      ],
       "difficulty": "hard",
       "tags": ["netflow", "monitoring"]
     },
@@ -449,6 +764,11 @@
       "id": "network-064",
       "question": "What is SD-WAN and how does it differ from traditional WAN?",
       "answer": "SD-WAN (Software-Defined WAN) decouples control plane from hardware. Centralized management, policy-based routing, WAN optimization. Benefits: lower cost than MPLS, better performance, easier management. Uses any transport (broadband, LTE). Traditional WAN relies on dedicated MPLS circuits.",
+      "wrongAnswers": [
+        "SD-WAN requires dedicated physical circuits like traditional WAN",
+        "SD-WAN is more expensive than traditional MPLS-based WAN",
+        "SD-WAN does not support policy-based routing"
+      ],
       "difficulty": "hard",
       "tags": ["sd-wan", "wan"]
     },
@@ -456,6 +776,11 @@
       "id": "network-065",
       "question": "What is the difference between SD-WAN and MPLS?",
       "answer": "MPLS (Multiprotocol Label Switching) uses dedicated circuits with QoS guarantees. High cost, predictable performance, carrier-managed. SD-WAN uses multiple transport types (broadband, LTE) with software-defined control. Lower cost, more flexible, requires more management. Often hybrid deployment.",
+      "wrongAnswers": [
+        "MPLS is a software-defined technology while SD-WAN uses hardware",
+        "SD-WAN and MPLS provide identical performance characteristics",
+        "MPLS cannot provide QoS guarantees"
+      ],
       "difficulty": "hard",
       "tags": ["mpls", "sd-wan"]
     },
@@ -463,6 +788,11 @@
       "id": "network-066",
       "question": "What is VXLAN and why was it developed?",
       "answer": "VXLAN (Virtual Extensible LAN) creates L2 networks over L3 infrastructure. Solves VLAN limitations (4096 limit) for large-scale virtualization. Uses UDP encapsulation (port 4789). 24-bit VNID supports 16 million segments. Essential for multi-tenant cloud environments.",
+      "wrongAnswers": [
+        "VXLAN operates at Layer 3 and replaces IP routing",
+        "VXLAN has the same 12-bit ID as traditional VLANs",
+        "VXLAN was developed to replace Ethernet cables"
+      ],
       "difficulty": "hard",
       "tags": ["vxlan", "tunneling"]
     },
@@ -470,6 +800,11 @@
       "id": "network-067",
       "question": "What is the difference between VLAN and VXLAN?",
       "answer": "VLAN operates at Layer 2 with 12-bit ID (4096 networks), limited broadcast domain isolation. VXLAN operates over L3 using UDP encapsulation with 24-bit VNID (16M networks), extends L2 across datacenters. VXLAN used in cloud/virtualization, VLAN in traditional networks.",
+      "wrongAnswers": [
+        "VXLAN is a hardware-based technology while VLAN is software-based",
+        "VLAN and VXLAN use the same encapsulation method",
+        "VXLAN has fewer available segments than VLAN"
+      ],
       "difficulty": "hard",
       "tags": ["vlan", "vxlan"]
     },
@@ -477,6 +812,11 @@
       "id": "network-068",
       "question": "What is network segmentation and why is it important?",
       "answer": "Network segmentation divides network into isolated segments. Benefits: improved security (breach containment), reduced congestion, compliance (PCI-DSS, HIPAA), performance optimization, easier management. Methods: VLANs, firewalls, micro-segmentation, zero-trust perimeters.",
+      "wrongAnswers": [
+        "Network segmentation increases network complexity without improving security",
+        "Segmentation is only used in wireless networks",
+        "Segmentation combines all networks into one for better performance"
+      ],
       "difficulty": "medium",
       "tags": ["segmentation", "security"]
     },
@@ -484,6 +824,11 @@
       "id": "network-069",
       "question": "What is a DMZ and how is it used?",
       "answer": "DMZ (Demilitarized Zone) is network segment between internal and external networks. Hosts public services (web, email) while isolating internal network. Typically has firewall rules: external → DMZ (limited), DMZ → internal (minimal), internal → DMZ (allowed). Adds security layer.",
+      "wrongAnswers": [
+        "DMZ is the most trusted network segment",
+        "All internal services should be placed in the DMZ",
+        "DMZ is only needed for wireless networks"
+      ],
       "difficulty": "medium",
       "tags": ["dmz", "security"]
     },
@@ -491,6 +836,11 @@
       "id": "network-070",
       "question": "What is the difference between a bastion host and a jump server?",
       "answer": "Bastion host is hardened public-facing server (SSH gateway). Jump server (jump host/bastion) is server used to access internal network. Both provide controlled access to internal resources. Jump servers often in DMZ. Enable admin access without direct internal network exposure.",
+      "wrongAnswers": [
+        "Bastion hosts are used internally while jump servers face the internet",
+        "Jump servers and bastion hosts are the same technology with different names",
+        "Bastion hosts do not provide any security benefit"
+      ],
       "difficulty": "medium",
       "tags": ["security", "bastion"]
     },
@@ -498,6 +848,11 @@
       "id": "network-071",
       "question": "What is Zero Trust security model?",
       "answer": "Zero Trust operates on 'never trust, always verify'. Every access request authenticated and authorized regardless of network location. Principles: least privilege, micro-segmentation, continuous verification. Uses: identity, device health, context for access decisions. Perimeter-based security is insufficient.",
+      "wrongAnswers": [
+        "Zero Trust assumes all traffic inside the network is trusted",
+        "Zero Trust eliminates the need for firewalls",
+        "Zero Trust only applies to cloud-based services"
+      ],
       "difficulty": "hard",
       "tags": ["zero-trust", "security"]
     },
@@ -505,6 +860,11 @@
       "id": "network-072",
       "question": "What is network monitoring and what tools are used?",
       "answer": "Network monitoring tracks device availability and performance. Tools: Nagios, Zabbix, PRTG, SolarWinds, Datadog, Prometheus + exporters. Metrics: uptime, bandwidth, latency, packet loss, CPU/memory. Active (ping, synthetic transactions) and passive (flow analysis) monitoring.",
+      "wrongAnswers": [
+        "Network monitoring tools only track bandwidth usage",
+        "Active monitoring is more accurate than passive monitoring",
+        "Network monitoring is only needed for wireless networks"
+      ],
       "difficulty": "medium",
       "tags": ["monitoring", "tools"]
     },
@@ -512,6 +872,11 @@
       "id": "network-073",
       "question": "What is the difference between active and passive monitoring?",
       "answer": "Active monitoring sends test traffic (ping, synthetic transactions) to measure availability and performance. Passive monitoring analyzes actual traffic flows (NetFlow, sFlow, SPAN). Active is proactive but adds traffic. Passive provides accurate real traffic picture without probe overhead.",
+      "wrongAnswers": [
+        "Passive monitoring sends more traffic than active monitoring",
+        "Active monitoring provides more accurate real traffic analysis",
+        "Passive monitoring cannot analyze encrypted traffic"
+      ],
       "difficulty": "medium",
       "tags": ["monitoring", "active"]
     },
@@ -519,6 +884,11 @@
       "id": "network-074",
       "question": "What is a network diagram and what types exist?",
       "answer": "Network diagram visually represents network topology. Types: Physical (cables, devices, locations), Logical (IP subnets, VLANs, protocols), Hybrid (combined). Uses: documentation, troubleshooting, planning. Tools: Visio, Lucidchart, draw.io, Cloudcraft. Essential for operations and handoff.",
+      "wrongAnswers": [
+        "Network diagrams are only used for wireless networks",
+        "Physical diagrams show IP addresses while logical diagrams show cables",
+        "Network diagrams are optional and not considered best practice"
+      ],
       "difficulty": "easy",
       "tags": ["documentation", "diagram"]
     },
@@ -526,6 +896,11 @@
       "id": "network-075",
       "question": "What is network capacity planning?",
       "answer": "Capacity planning predicts future network requirements. Process: measure current utilization, analyze trends, forecast growth, plan upgrades. Metrics: bandwidth utilization, latency, packet loss, device CPU/memory. Tools: SNMP monitoring, flow analysis. Avoids bottlenecks, ensures quality.",
+      "wrongAnswers": [
+        "Capacity planning is only done when network problems occur",
+        "Capacity planning focuses only on server hardware, not network",
+        "Bandwidth utilization is the only metric needed for capacity planning"
+      ],
       "difficulty": "medium",
       "tags": ["capacity", "planning"]
     },
@@ -533,6 +908,11 @@
       "id": "network-076",
       "question": "What is the difference between symmetric and asymmetric bandwidth?",
       "answer": "Symmetric bandwidth has equal upload/download speeds (fiber, leased lines). Asymmetric has different speeds (ADSL: fast down, slow up; cable: varies). Most internet connections are asymmetric. SD-WAN, bonded connections can provide symmetric capacity.",
+      "wrongAnswers": [
+        "Symmetric connections are more common than asymmetric in consumer internet",
+        "Asymmetric bandwidth always provides better performance",
+        "Symmetric bandwidth means the same latency in both directions"
+      ],
       "difficulty": "easy",
       "tags": ["bandwidth", "symmetric"]
     },
@@ -540,6 +920,11 @@
       "id": "network-077",
       "question": "What is link aggregation and why use it?",
       "answer": "Link Aggregation (LAG, EtherChannel) combines multiple physical links into one logical link. Benefits: increased bandwidth, redundancy, load balancing. Protocols: LACP (IEEE 802.3ad), PAgP (Cisco). Requires switch support. Used for trunk ports, server uplinks.",
+      "wrongAnswers": [
+        "Link aggregation requires all ports to have the same speed",
+        "Link aggregation reduces the number of available VLANs",
+        "Link aggregation is only used for wireless connections"
+      ],
       "difficulty": "medium",
       "tags": ["aggregation", "lacp"]
     },
@@ -547,6 +932,11 @@
       "id": "network-078",
       "question": "What is Spanning Tree Protocol (STP)?",
       "answer": "STP prevents loops in redundant switch networks. Elects root bridge, blocks redundant ports. States: Blocking, Listening, Learning, Forwarding. RSTP (802.1w) faster convergence. Portfast for access ports, BPDU guard for security. Loops cause broadcast storms.",
+      "wrongAnswers": [
+        "STP is only needed in networks with a single switch",
+        "STP speeds up network convergence by forwarding all ports immediately",
+        "STP prevents loops by dropping duplicate frames at Layer 3"
+      ],
       "difficulty": "hard",
       "tags": ["stp", "switch"]
     },
@@ -554,6 +944,11 @@
       "id": "network-079",
       "question": "What is RSTP and how is it better than STP?",
       "answer": "RSTP (Rapid Spanning Tree Protocol, 802.1w) provides faster convergence than STP. New states: Discarding replaces Blocking/Learning/Listening. Uses proposal-agreement mechanism for rapid port transitions. Backward compatible with STP. Essential for modern networks.",
+      "wrongAnswers": [
+        "RSTP uses the same port states as STP",
+        "RSTP is slower than STP in all network scenarios",
+        "RSTP cannot coexist with STP in the same network"
+      ],
       "difficulty": "hard",
       "tags": ["rstp", "stp"]
     },
@@ -561,6 +956,11 @@
       "id": "network-080",
       "question": "What is MSTP?",
       "answer": "MSTP (Multiple Spanning Tree Protocol, 802.1s) runs multiple RSTP instances. Groups VLANs into instances, reduces STP calculation overhead. Each instance has independent topology. Efficient for large networks with many VLANs. Configured on switches for scalability.",
+      "wrongAnswers": [
+        "MSTP runs a single spanning tree for all VLANs",
+        "MSTP increases the complexity of STP calculation",
+        "MSTP is only used in small networks with fewer than 10 VLANs"
+      ],
       "difficulty": "hard",
       "tags": ["mstp", "stp"]
     },
@@ -568,6 +968,11 @@
       "id": "network-081",
       "question": "What is a trunk port and when is it used?",
       "answer": "Trunk ports carry traffic for multiple VLANs between switches. Uses 802.1Q tagging to identify VLAN per frame. Native VLAN untagged traffic (typically VLAN 1). Trunks connect: switch-to-switch, switch-to-router (router-on-stick), switch-to-server (virtualization).",
+      "wrongAnswers": [
+        "Trunk ports only carry traffic for a single VLAN",
+        "Access ports are used for inter-switch connections",
+        "Trunk ports do not support 802.1Q tagging"
+      ],
       "difficulty": "medium",
       "tags": ["trunk", "vlan"]
     },
@@ -575,6 +980,11 @@
       "id": "network-082",
       "question": "What is 802.1Q tagging?",
       "answer": "802.1Q is VLAN tagging standard. Inserts 4-byte tag in Ethernet frame after source MAC. Tag contains: TPID (0x8100), Priority (3 bits), DEI (1 bit), VLAN ID (12 bits = 4096 VLANs). Untagged frames assigned to native VLAN. Essential for VLAN trunking.",
+      "wrongAnswers": [
+        "802.1Q adds a 2-byte tag to the Ethernet frame",
+        "802.1Q supports unlimited VLANs",
+        "802.1Q tagging is only used for wireless networks"
+      ],
       "difficulty": "medium",
       "tags": ["802.1q", "vlan"]
     },
@@ -582,6 +992,11 @@
       "id": "network-083",
       "question": "What is a port channel and EtherChannel?",
       "answer": "Port Channel (EtherChannel) bundles multiple physical ports into one logical link. Load balances across member links. Provides redundancy - if one link fails, traffic uses remaining links. Configured as LACP (active) or static (on). Switch and server must support.",
+      "wrongAnswers": [
+        "Port channel members must all be the same speed and duplex",
+        "Port channel cannot provide redundancy",
+        "Port channel only works with fiber optic connections"
+      ],
       "difficulty": "medium",
       "tags": ["etherchannel", "lag"]
     },
@@ -589,6 +1004,11 @@
       "id": "network-084",
       "question": "What is the difference between half-duplex and full-duplex?",
       "answer": "Half-duplex: one direction at a time (like walkie-talkie, hub networks). Full-duplex: both directions simultaneously (like telephone). Modern Ethernet uses full-duplex exclusively. Full-duplex doubles effective bandwidth, eliminates collisions. Requires switch, not hub.",
+      "wrongAnswers": [
+        "Half-duplex allows simultaneous bidirectional communication",
+        "Full-duplex requires special crossover cables",
+        "Half-duplex is faster than full-duplex for file transfers"
+      ],
       "difficulty": "easy",
       "tags": ["duplex", "ethernet"]
     },
@@ -596,6 +1016,11 @@
       "id": "network-085",
       "question": "What is Auto-MDIX?",
       "answer": "Auto-MDIX automatically detects and configures cable type (straight-through or crossover). Allows use of any cable between devices. Modern switches have Auto-MDIX enabled by default. Simplifies cabling but can cause issues if disabled incorrectly.",
+      "wrongAnswers": [
+        "Auto-MDIX is a protocol for automatically assigning IP addresses",
+        "Auto-MDIX requires manual configuration of cable types",
+        "Auto-MDIX only works with fiber optic cables"
+      ],
       "difficulty": "medium",
       "tags": ["mdix", "cable"]
     },
@@ -603,6 +1028,11 @@
       "id": "network-086",
       "question": "What is the difference between Cat5, Cat5e, Cat6, Cat6a, Cat7 cables?",
       "answer": "Cat5 (100MHz, 100Mbps), Cat5e (100MHz, 1Gbps, reduced crosstalk), Cat6 (250MHz, 10Gbps up to 55m), Cat6a (500MHz, 10Gbps up to 100m), Cat7 (600MHz, 10Gbps with shielding). Higher categories support faster speeds and less interference.",
+      "wrongAnswers": [
+        "Cat5 and Cat5e are identical and can be used interchangeably",
+        "Higher category cables have lower maximum speed than lower categories",
+        "Cat7 cables are not shielded"
+      ],
       "difficulty": "medium",
       "tags": ["cables", "ethernet"]
     },
@@ -610,6 +1040,11 @@
       "id": "network-087",
       "question": "What is fiber optic cable and when use it?",
       "answer": "Fiber optic transmits data using light pulses through glass/plastic strands. Types: Single-mode (SMF, long distance, 9μm core), Multi-mode (MMF, short distance, 50/62.5μm). Benefits: higher bandwidth, longer distance, immunity to interference. Used for: backbone, data centers, long runs.",
+      "wrongAnswers": [
+        "Fiber optic cables use electrical signals like copper cables",
+        "Multi-mode fiber has a longer maximum distance than single-mode",
+        "Fiber optic cables are immune to all types of interference"
+      ],
       "difficulty": "medium",
       "tags": ["fiber", "cable"]
     },
@@ -617,6 +1052,11 @@
       "id": "network-088",
       "question": "What is SFP, SFP+, QSFP?",
       "answer": "SFP (Small Form-factor Pluggable) supports 1Gbps. SFP+ is enhanced version for 10Gbps. QSFP (Quad SFP) supports 40Gbps or 100Gbps. Hot-swappable optical/electrical modules. Use appropriate fiber type (SM/MM) and wavelength.",
+      "wrongAnswers": [
+        "SFP and SFP+ modules are interchangeable and support the same speeds",
+        "QSFP modules only support 1Gbps connections",
+        "SFP modules are not hot-swappable"
+      ],
       "difficulty": "medium",
       "tags": ["transceiver", "modules"]
     },
@@ -624,6 +1064,11 @@
       "id": "network-089",
       "question": "What is BGP path attribute and how does routing work?",
       "answer": "BGP path attributes determine route selection: AS_PATH (route through ASes), NEXT_HOP (next router), LOCAL_PREF (preference within AS), MED (multi-exit discriminator), ORIGIN (route source). Shortest AS_PATH usually preferred. Can influence with attributes.",
+      "wrongAnswers": [
+        "BGP only uses the NEXT_HOP attribute for routing decisions",
+        "AS_PATH length is not considered in BGP route selection",
+        "BGP routing is based solely on the shortest latency path"
+      ],
       "difficulty": "hard",
       "tags": ["bgp", "attributes"]
     },
@@ -631,6 +1076,11 @@
       "id": "network-090",
       "question": "What is route summarization and why use it?",
       "answer": "Route summarization (aggregation, supernetting) combines multiple routes into single announcement. Reduces routing table size, advertisement overhead, memory usage. Example: announce 10.0.0.0/22 instead of four /24s. Requires contiguous address space. Trade-off: less specific routing.",
+      "wrongAnswers": [
+        "Route summarization increases the size of routing tables",
+        "Summarization provides more specific routing information",
+        "Route summarization cannot be used with classful routing protocols"
+      ],
       "difficulty": "medium",
       "tags": ["routing", "summary"]
     },
@@ -638,6 +1088,11 @@
       "id": "network-091",
       "question": "What is the difference between routed and routing protocol?",
       "answer": "Routed protocol (IP, IPX, AppleTalk) carries user data. Routing protocol (BGP, OSPF, RIP) exchanges routing information between routers. Routers use routing protocols to build routing tables for routed protocols. No routing protocol = no dynamic routing updates.",
+      "wrongAnswers": [
+        "Routed protocols build routing tables while routing protocols carry data",
+        "RIP is a routed protocol while IP is a routing protocol",
+        "All protocols can act as both routed and routing protocols"
+      ],
       "difficulty": "medium",
       "tags": ["routing", "protocol"]
     },
@@ -645,6 +1100,11 @@
       "id": "network-092",
       "question": "What is SLAAC and how does IPv6 address assignment work?",
       "answer": "SLAAC (Stateless Address Autoconfiguration) assigns IPv6 addresses without DHCP. Process: router advertisement (RA) → client generates EUI-64 or privacy extension address → Duplicate Address Detection → address active. DHCPv6 provides stateful assignment with more control.",
+      "wrongAnswers": [
+        "SLAAC requires a DHCP server to assign IPv6 addresses",
+        "IPv6 addresses must be manually configured, not autoconfigured",
+        "SLAAC and DHCPv6 are the same technology with different names"
+      ],
       "difficulty": "hard",
       "tags": ["ipv6", "slaac"]
     },
@@ -652,6 +1112,11 @@
       "id": "network-093",
       "question": "What is IPv6 link-local address?",
       "answer": "Link-local address (fe80::/10) is auto-configured for local subnet communication. Not routable beyond single link. Used for: router discovery, neighbor discovery, SLAAC. Every IPv6 interface has at least one link-local. Ping using link-local requires interface specification.",
+      "wrongAnswers": [
+        "Link-local addresses are globally routable on the internet",
+        "Link-local addresses must be manually configured",
+        "Link-local addresses can be used for routing between different subnets"
+      ],
       "difficulty": "medium",
       "tags": ["ipv6", "link-local"]
     },
@@ -659,6 +1124,11 @@
       "id": "network-094",
       "question": "What is the difference between IPv4 and IPv6 header?",
       "answer": "IPv4 header: 20+ bytes, variable length, has options, checksum, fragmentation fields. IPv6 header: fixed 40 bytes, simplified, no checksum (upper layer handles), no fragmentation at routers, extension headers for options. IPv6 more efficient, extensible.",
+      "wrongAnswers": [
+        "IPv6 header is larger than IPv4 header",
+        "IPv4 and IPv6 headers have identical fields",
+        "IPv6 header includes a built-in checksum for error detection"
+      ],
       "difficulty": "hard",
       "tags": ["ipv4", "ipv6"]
     },
@@ -666,6 +1136,11 @@
       "id": "network-095",
       "question": "What is network virtualization?",
       "answer": "Network virtualization abstracts physical network into virtual networks. Types: VLANs, VXLAN, VRF (Virtual Routing and Forwarding), VPN. Enables: multi-tenancy, network isolation, dynamic provisioning. Virtual switches (OVS, NSX) connect VMs. Essential for cloud and data centers.",
+      "wrongAnswers": [
+        "Network virtualization requires dedicated hardware for each virtual network",
+        "Virtual networks are slower than physical networks",
+        "Network virtualization is only used in wireless networks"
+      ],
       "difficulty": "medium",
       "tags": ["virtualization", "network"]
     },
@@ -673,6 +1148,11 @@
       "id": "network-096",
       "question": "What is NFV (Network Functions Virtualization)?",
       "answer": "NFV replaces dedicated hardware appliances (firewall, load balancer, router) with software running on commodity hardware. Benefits: cost reduction, flexibility, faster deployment. Examples: vRouter, vFirewall, vLoad Balancer. ETSI NFV framework defines architecture.",
+      "wrongAnswers": [
+        "NFV requires specialized hardware appliances for each function",
+        "NFV is more expensive than traditional hardware-based networking",
+        "NFV only applies to data center storage systems"
+      ],
       "difficulty": "medium",
       "tags": ["nfv", "virtualization"]
     },
@@ -680,6 +1160,11 @@
       "id": "network-097",
       "question": "What is the difference between IDS and IPS?",
       "answer": "IDS (Intrusion Detection System) monitors and alerts on suspicious traffic (passive). IPS (Intrusion Prevention System) actively blocks malicious traffic (inline). IDS: better visibility, less risk of blocking legitimate traffic. IPS: immediate protection, risk of false positives affecting traffic.",
+      "wrongAnswers": [
+        "IDS actively blocks traffic while IPS only monitors",
+        "IPS and IDS are the same technology with different marketing names",
+        "IDS operates inline while IPS operates passively"
+      ],
       "difficulty": "medium",
       "tags": ["ids", "ips", "security"]
     },
@@ -687,6 +1172,11 @@
       "id": "network-098",
       "question": "What is deep packet inspection (DPI)?",
       "answer": "DPI examines packet payload beyond headers for content analysis. Used by NGFW, IDS/IPS, QoS for application identification. Can detect: protocols, malware, data exfiltration. More resource intensive than header-only inspection. Privacy concerns with encrypted traffic.",
+      "wrongAnswers": [
+        "DPI only examines packet headers, not payload",
+        "DPI cannot inspect encrypted traffic at all",
+        "DPI is faster than header-only inspection"
+      ],
       "difficulty": "hard",
       "tags": ["dpi", "security"]
     },
@@ -694,6 +1184,11 @@
       "id": "network-099",
       "question": "What is a WAF and how does it differ from firewall?",
       "answer": "WAF (Web Application Firewall) protects web applications by filtering HTTP traffic. Operates at Layer 7, inspects requests for SQL injection, XSS, OWASP Top 10. Traditional firewall operates at Layer 3/4, inspects IP/port. WAF specialized for web app protection.",
+      "wrongAnswers": [
+        "WAF operates at Layer 3 while traditional firewall operates at Layer 7",
+        "WAF replaces traditional firewalls completely",
+        "Traditional firewalls can inspect HTTP content for attacks"
+      ],
       "difficulty": "medium",
       "tags": ["waf", "firewall"]
     },
@@ -701,6 +1196,11 @@
       "id": "network-100",
       "question": "What are networking best practices for security?",
       "answer": "Best practices: network segmentation, least privilege access, defense in depth, regular patching, strong authentication (802.1X), encryption (TLS, VPN), monitoring/logging, firewall rules review, disable unused services, secure SNMP, use VLANs for isolation, implement zero-trust.",
+      "wrongAnswers": [
+        "All network traffic should be allowed by default for performance",
+        "Firewalls are the only security measure needed for networks",
+        "Network security only needs to be addressed during initial deployment"
+      ],
       "difficulty": "medium",
       "tags": ["security", "best-practices"]
     }

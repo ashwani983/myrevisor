@@ -9,6 +9,7 @@ export interface QuestionData {
     id: string;
     question: string;
     answer: string;
+    wrongAnswers: string[];
     difficulty: 'easy' | 'medium' | 'hard';
     tags: string[];
   }>;
@@ -67,6 +68,7 @@ export function getQuestionsForSubject(subject: string): Question[] {
     subject,
     question: q.question,
     answer: q.answer,
+    wrongAnswers: q.wrongAnswers || [],
     difficulty: q.difficulty,
     tags: q.tags,
   }));

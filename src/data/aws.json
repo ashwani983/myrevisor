@@ -8,6 +8,11 @@
       "id": "aws-001",
       "question": "What is the difference between an AWS Region and an Availability Zone (AZ), and how do they work together?",
       "answer": "AWS Region: A separate geographical area (like N. Virginia or Ireland), isolated from others for reliability.\n\nAvailability Zone (AZ): A distinct data center within a Region, with independent power and networking.\n\nAZs are connected via low-latency, high-throughput networks. Deploying resources across multiple AZs ensures high availability and fault tolerance in case one AZ fails.",
+      "wrongAnswers": [
+        "Regions are inside Availability Zones",
+        "AZs span multiple geographic areas",
+        "They are the same thing with different names"
+      ],
       "difficulty": "easy",
       "tags": ["regions", "availability", "infrastructure"]
     },
@@ -15,6 +20,11 @@
       "id": "aws-002",
       "question": "Explain the AWS Shared Responsibility Model.",
       "answer": "AWS secures the infrastructure—hardware, software, and data centers.\n\nCustomers manage data, access, and application security.\n\nBy service type:\n- IaaS: Customers manage OS and data\n- PaaS: AWS manages the platform; customers handle data\n- SaaS/Serverless: Customers focus on code and permissions",
+      "wrongAnswers": [
+        "AWS manages all security including customer data",
+        "Customers manage the physical infrastructure",
+        "The model is the same for all AWS services"
+      ],
       "difficulty": "medium",
       "tags": ["security", "shared-responsibility"]
     },
@@ -22,6 +32,11 @@
       "id": "aws-003",
       "question": "What is an EC2 instance, and what are the factors you consider when choosing an instance type?",
       "answer": "EC2 provides scalable computing power with complete control over the OS.\n\nChoose based on workload needs:\n- Burstable (T-family): Low/variable traffic; earns CPU credits\n- Fixed-performance: Steady, high-demand workloads\n\nPricing:\n- On-Demand: Maximum flexibility, pay-as-you-go\n- Reserved Instances/Savings Plans: Significant discounts\n- Spot Instances: Cheapest for interruptible jobs",
+      "wrongAnswers": [
+        "Instance type only affects the price, not performance",
+        "All instance types have the same CPU and memory",
+        "EC2 instances cannot be scaled after creation"
+      ],
       "difficulty": "medium",
       "tags": ["ec2", "compute", "instances"]
     },
@@ -29,6 +44,11 @@
       "id": "aws-004",
       "question": "What is Amazon S3, and what guarantees does it provide for durability and availability?",
       "answer": "Amazon S3 is scalable object storage for backups, archives, data lakes, and static hosting.\n\nGuarantees:\n- 11 nines (99.999999999%) durability by replicating across multiple AZs\n- ~99.99% availability (S3 Standard)\n\nDurability protects against data loss; availability ensures access when needed.",
+      "wrongAnswers": [
+        "S3 provides block storage like EBS",
+        "S3 data is stored in a single data center only",
+        "Durability and availability mean the same thing"
+      ],
       "difficulty": "easy",
       "tags": ["s3", "storage"]
     },
@@ -36,6 +56,11 @@
       "id": "aws-005",
       "question": "Explain the purpose of a Virtual Private Cloud (VPC). What are its core components?",
       "answer": "VPC creates a secure, isolated network within AWS.\n\nCore Components:\n- Subnets: Public & private networks\n- Route tables: Define traffic paths\n- IGW/NAT: Internet for public (IGW) and outbound-only for private (NAT)\n- Security Groups: Stateful, instance-level firewall\n- NACLs: Stateless, subnet-level firewall",
+      "wrongAnswers": [
+        "VPC is a physical data center owned by AWS",
+        "VPC only provides compute resources",
+        "Security Groups and NACLs are the same thing"
+      ],
       "difficulty": "medium",
       "tags": ["vpc", "networking"]
     },
@@ -43,6 +68,11 @@
       "id": "aws-006",
       "question": "What is IAM, and why is it critical for security? Differentiate between an IAM User, Group, and Role.",
       "answer": "IAM manages access to AWS resources securely, enforcing least privilege.\n\n- IAM Users: Individuals/apps with long-term credentials\n- IAM Groups: Collections of users to apply shared policies\n- IAM Roles: Temporary, auto-rotated credentials assumed by trusted entities (EC2, Lambda)",
+      "wrongAnswers": [
+        "IAM Users and IAM Roles are identical",
+        "Groups can directly launch EC2 instances",
+        "IAM is only needed for S3 access"
+      ],
       "difficulty": "easy",
       "tags": ["iam", "security", "access-control"]
     },
@@ -50,6 +80,11 @@
       "id": "aws-007",
       "question": "What is the difference between stopping and terminating an EC2 instance?",
       "answer": "Stopping:\n- Shuts down but preserves state and data\n- Root EBS volume remains attached\n- Can be restarted later\n- No compute charges, but EBS storage costs continue\n\nTerminating:\n- Permanently deletes the instance\n- Root EBS volume deleted by default\n- Instance cannot be restarted\n- All charges stop",
+      "wrongAnswers": [
+        "Stopping permanently deletes the instance",
+        "Terminating only pauses the instance temporarily",
+        "Both result in permanent data loss"
+      ],
       "difficulty": "easy",
       "tags": ["ec2", "instance-lifecycle"]
     },
@@ -57,6 +92,11 @@
       "id": "aws-008",
       "question": "What is an Amazon Machine Image (AMI)?",
       "answer": "AMI is a pre-configured template for launching EC2 instances.\n\nComponents:\n- Root volume template: OS, app server, software\n- Launch permissions: Private, shared, or public\n- Block device mapping: Attached storage definitions",
+      "wrongAnswers": [
+        "AMI is a type of EC2 instance",
+        "AMIs can only be created by AWS",
+        "AMI is used for S3 bucket configuration"
+      ],
       "difficulty": "easy",
       "tags": ["ec2", "ami", "compute"]
     },
@@ -64,6 +104,11 @@
       "id": "aws-009",
       "question": "What is the purpose of Amazon CloudWatch?",
       "answer": "CloudWatch is a monitoring and observability service.\n\nKey capabilities:\n- Metrics: Auto-collected (EC2, S3, RDS) + custom metrics\n- Logs: Centralized ingest/storage/search\n- Alarms: Threshold-based alerts on metrics\n- Events/Rules: Near real-time resource change events",
+      "wrongAnswers": [
+        "CloudWatch is a database service",
+        "CloudWatch can only monitor S3 buckets",
+        "CloudWatch is used for sending emails only"
+      ],
       "difficulty": "medium",
       "tags": ["cloudwatch", "monitoring", "observability"]
     },
@@ -71,6 +116,11 @@
       "id": "aws-010",
       "question": "Differentiate between horizontal and vertical scaling.",
       "answer": "Vertical (scale up):\n- Move to a bigger instance (CPU/RAM/I/O)\n- Simple but has hard limits\n- May need downtime\n- Single point of failure\n\nHorizontal (scale out):\n- Add more instances behind a load balancer\n- Cloud-native, near-limitless scale\n- Higher availability/fault tolerance",
+      "wrongAnswers": [
+        "Horizontal scaling adds more hardware resources to the same machine",
+        "Vertical scaling is always better than horizontal scaling",
+        "Both types require the same implementation effort"
+      ],
       "difficulty": "easy",
       "tags": ["scaling", "architecture"]
     },
@@ -78,6 +128,11 @@
       "id": "aws-011",
       "question": "Compare and contrast Security Groups and Network ACLs (NACLs).",
       "answer": "Security Groups (stateful):\n- Allow inbound → matching return traffic auto-allowed\n- Fewer rules to manage\n\nNACLs (stateless):\n- Return traffic must be explicitly allowed\n- Permit outbound ephemeral ports 1024-65535 for responses",
+      "wrongAnswers": [
+        "Security Groups are stateless while NACLs are stateful",
+        "Both are stateful firewalls at different levels",
+        "NACLs are evaluated before Security Groups"
+      ],
       "difficulty": "medium",
       "tags": ["security", "vpc", "networking"]
     },
@@ -85,6 +140,11 @@
       "id": "aws-012",
       "question": "How would you provide an EC2 instance in a private subnet with internet access for software patches?",
       "answer": "Use a NAT Gateway:\n1. Deploy NAT Gateway in a public subnet with Elastic IP\n2. Route internet-bound traffic from private subnet to NAT Gateway\n3. Update Route Table: Add route (0.0.0.0/0) pointing to NAT Gateway\n\nAlternative: NAT Instance (less scalable, requires manual management)",
+      "wrongAnswers": [
+        "Attach an Elastic IP directly to the private instance",
+        "Use a Security Group to allow outbound traffic",
+        "Deploy the instance in a public subnet instead"
+      ],
       "difficulty": "medium",
       "tags": ["vpc", "networking", "nat"]
     },
@@ -92,6 +152,11 @@
       "id": "aws-013",
       "question": "Explain the differences between S3, EBS, and EFS storage services.",
       "answer": "S3: Object storage accessed via HTTP/S\n- Ideal for backups, static assets, data lakes\n- Not mountable as a file system\n\nEBS: Block storage attached to ONE EC2 instance\n- Low-latency, high IOPS\n- Best for boot volumes and databases\n\nEFS: File storage mountable across MULTIPLE EC2s via NFS\n- Great for shared environments, CMS, code repos\n- Scales automatically",
+      "wrongAnswers": [
+        "S3, EBS, and EFS are all block storage services",
+        "EBS can be attached to multiple EC2 instances",
+        "EFS is cheaper than EBS for all use cases"
+      ],
       "difficulty": "medium",
       "tags": ["s3", "ebs", "efs", "storage"]
     },
@@ -99,6 +164,11 @@
       "id": "aws-014",
       "question": "When would you choose RDS versus DynamoDB?",
       "answer": "Choose RDS when:\n- Structured, relational data with well-defined schemas\n- Complex queries, multi-table joins, ACID compliance\n- Financial systems, e-commerce, CRMs\n\nChoose DynamoDB when:\n- High scalability and low-latency at massive scale\n- Semi-structured or schema-flexible data\n- User profiles, IoT telemetry, session data\n- Key-value or simple document operations",
+      "wrongAnswers": [
+        "RDS is always cheaper than DynamoDB",
+        "DynamoDB does not support any queries",
+        "Use RDS for unstructured data storage"
+      ],
       "difficulty": "medium",
       "tags": ["rds", "dynamodb", "database"]
     },
@@ -106,6 +176,11 @@
       "id": "aws-015",
       "question": "What is an Elastic Load Balancer (ELB)? Describe the different types.",
       "answer": "ELB distributes incoming traffic across multiple targets, improving availability and fault tolerance.\n\nTypes:\n- Application LB (ALB): Layer 7, HTTP/HTTPS, content-based routing, microservices\n- Network LB (NLB): Layer 4, millions of req/sec, ultra-low latency, static IPs\n- Gateway LB (GLB): Layer 3, third-party appliances, deep packet inspection\n- Classic LB (CLB): Legacy, both Layer 4/7, deprecated",
+      "wrongAnswers": [
+        "ELB only works with EC2 instances",
+        "All ELB types operate at Layer 7 only",
+        "ELB cannot distribute traffic across multiple AZs"
+      ],
       "difficulty": "medium",
       "tags": ["elb", "load-balancing", "networking"]
     },
@@ -113,6 +188,11 @@
       "id": "aws-016",
       "question": "Explain Auto Scaling Group (ASG). What components are needed to configure one?",
       "answer": "ASG ensures right number of EC2 instances to handle demand.\n\nKey components:\n- Launch Template/Config: EC2 blueprint (AMI, type, SGs, user data)\n- ASG: min/max/desired capacity + VPC/subnets\n- Target tracking: Keeps metric (e.g., CPU %) near target\n- Step/Simple scaling: Scales on CloudWatch alarm thresholds\n- Scheduled scaling: Scales at set times",
+      "wrongAnswers": [
+        "ASG only scales up, never scales down",
+        "ASG requires manual intervention to add instances",
+        "ASG cannot span multiple Availability Zones"
+      ],
       "difficulty": "medium",
       "tags": ["autoscaling", "ec2", "cloudwatch"]
     },
@@ -120,6 +200,11 @@
       "id": "aws-017",
       "question": "What is Infrastructure as Code (IaC), and what is the role of AWS CloudFormation?",
       "answer": "IaC manages infrastructure through code instead of manual processes.\n\nCloudFormation models AWS/third-party resources:\n- Automation & consistency: Provision full environments from templates\n- Version control: Store in Git for diffs, reviews, rollbacks\n- Repeatability: Recreate identical stacks in other regions",
+      "wrongAnswers": [
+        "CloudFormation is a container orchestration service",
+        "IaC cannot be version controlled",
+        "CloudFormation only manages EC2 instances"
+      ],
       "difficulty": "medium",
       "tags": ["cloudformation", "iac", "devops"]
     },
@@ -127,6 +212,11 @@
       "id": "aws-018",
       "question": "Explain different S3 Storage Classes and S3 Lifecycle Policies.",
       "answer": "Storage Classes:\n- S3 Standard: Frequently accessed, high performance\n- S3 Intelligent-Tiering: Auto-shifts based on usage\n- S3 Standard-IA & One Zone-IA: Infrequently accessed\n- S3 Glacier: Archival with Instant/Flexible/Deep Archive retrieval\n\nLifecycle Policies automate:\n- Transitioning objects to cheaper storage\n- Expiring objects after set period",
+      "wrongAnswers": [
+        "All S3 storage classes have the same price",
+        "S3 Glacier requires manual data retrieval only",
+        "Lifecycle policies cannot delete objects automatically"
+      ],
       "difficulty": "medium",
       "tags": ["s3", "storage-classes", "lifecycle"]
     },
@@ -134,6 +224,11 @@
       "id": "aws-019",
       "question": "What is the difference between Elastic IP and Public IP address?",
       "answer": "Public IP:\n- Auto-assigned in public subnets\n- Changes on stop/start\n- Released on termination\n- Not suitable for stable endpoints\n\nElastic IP (EIP):\n- Static IPv4 owned by the account\n- Attach/detach to instances/ENIs\n- Supports quick failover and stable DNS endpoints",
+      "wrongAnswers": [
+        "Elastic IP and Public IP are the same thing",
+        "Public IPs persist when instances are stopped",
+        "Elastic IPs are free to use"
+      ],
       "difficulty": "easy",
       "tags": ["ec2", "networking", "ip"]
     },
@@ -141,6 +236,11 @@
       "id": "aws-020",
       "question": "What is the purpose of AWS Lambda? Compare it to EC2.",
       "answer": "Lambda: Serverless, event-driven compute\n- No servers to manage\n- Auto handles scaling, patching, capacity\n- Triggers: API Gateway, S3, SQS, etc.\n\nvs EC2:\n- Management: Lambda is fully managed; EC2 gives OS control\n- State: Lambda is stateless & short-lived (max 15 min); EC2 persists\n- Scaling: Lambda auto-scales; EC2 needs ASG\n- Pricing: Lambda = requests + execution time; EC2 = uptime",
+      "wrongAnswers": [
+        "Lambda requires managing servers like EC2",
+        "Lambda functions can run indefinitely like EC2",
+        "Lambda is always more expensive than EC2"
+      ],
       "difficulty": "medium",
       "tags": ["lambda", "serverless", "ec2"]
     },
@@ -148,6 +248,11 @@
       "id": "aws-021",
       "question": "Design a serverless API backend. Which AWS services would you use?",
       "answer": "Serverless API Architecture:\n- API Gateway: Entry point for REST endpoints, routing, throttling, auth\n- Auth: Cognito for user auth/JWTs; Lambda Authorizers for custom tokens\n- Lambda: Stateless business logic with auto-scaling\n- DynamoDB: Low-latency NoSQL for persistent data\n- CloudWatch: Logs/metrics; SAM or CloudFormation for IaC",
+      "wrongAnswers": [
+        "EC2 instances are required for serverless APIs",
+        "S3 can replace API Gateway for API hosting",
+        "Serverless APIs require manual server management"
+      ],
       "difficulty": "hard",
       "tags": ["serverless", "api-gateway", "lambda", "architecture"]
     },
@@ -155,6 +260,11 @@
       "id": "aws-022",
       "question": "Compare ECS and EKS. When would you choose one over the other?",
       "answer": "ECS (Elastic Container Service):\n- AWS-native, tight IAM/VPC/ELB integration\n- Best for apps not needing multi-cloud portability\n- Use when speed and minimal overhead are priorities\n\nEKS (Elastic Kubernetes Service):\n- Managed Kubernetes, full K8s ecosystem (Helm, Prometheus)\n- Requires deeper K8s expertise\n- Use when team is committed to Kubernetes",
+      "wrongAnswers": [
+        "ECS and EKS are the same service",
+        "EKS does not support Kubernetes workloads",
+        "ECS requires less expertise than EKS"
+      ],
       "difficulty": "medium",
       "tags": ["ecs", "eks", "containers", "kubernetes"]
     },
@@ -162,6 +272,11 @@
       "id": "aws-023",
       "question": "How would you design a highly available architecture for a critical web application?",
       "answer": "Multi-AZ Architecture:\n- ALB: Multi-AZ, health checks, reroutes from unhealthy targets\n- Web/App Tier: EC2 ASG across ≥2 AZs, auto-replace, scale with demand\n- Database: RDS Multi-AZ for synchronous standby and automatic failover\n\nResult: Eliminates single points of failure, maintains availability under all conditions.",
+      "wrongAnswers": [
+        "Single AZ deployment is highly available",
+        "HA requires only a load balancer",
+        "Database does not need to be highly available"
+      ],
       "difficulty": "hard",
       "tags": ["high-availability", "architecture", "multi-az"]
     },
@@ -169,6 +284,11 @@
       "id": "aws-024",
       "question": "Explain the difference between VPC Peering and AWS Transit Gateway.",
       "answer": "VPC Peering:\n- One-to-one connection between two VPCs\n- Non-transitive routing\n- Doesn't scale well: n VPCs need n(n-1)/2 links\n- Best for small-scale deployments\n\nTransit Gateway:\n- Hub-and-spoke model with central gateway\n- Transitive routing (VPCs communicate without direct peering)\n- Each VPC needs only one attachment\n- Ideal for large multi-VPC or hybrid cloud setups",
+      "wrongAnswers": [
+        "VPC Peering supports transitive routing",
+        "Transit Gateway requires a direct connection for each VPC pair",
+        "They are functionally identical"
+      ],
       "difficulty": "medium",
       "tags": ["vpc", "transit-gateway", "networking"]
     },
@@ -176,6 +296,11 @@
       "id": "aws-025",
       "question": "How does AWS KMS work, and what is envelope encryption?",
       "answer": "KMS: Managed service for cryptographic keys with FIPS 140-2 validated HSMs.\n\nEnvelope Encryption:\n1. Generate Data Key: App calls KMS → gets plaintext DEK + ciphertext DEK\n2. Encrypt data: Use plaintext DEK in memory to encrypt\n3. Store securely: Discard plaintext DEK; store ciphertext data + ciphertext DEK together",
+      "wrongAnswers": [
+        "KMS encrypts data directly without using data keys",
+        "Envelope encryption only works with S3",
+        "KMS stores the actual data to encrypt"
+      ],
       "difficulty": "hard",
       "tags": ["kms", "encryption", "security"]
     },
@@ -183,6 +308,11 @@
       "id": "aws-026",
       "question": "What is a cold start in AWS Lambda, and how do you mitigate it?",
       "answer": "Cold start: Delay when no pre-initialized execution environment is available.\n\nAWS must:\n- Allocate new container\n- Download function code and dependencies\n- Initialize runtime\n- Execute initialization code\n\nMitigation strategies:\n- Provisioned Concurrency\n- Optimize deployment package size\n- Choose efficient runtimes\n- Optimize initialization code\n- VPC Configuration improvements",
+      "wrongAnswers": [
+        "Cold starts only happen on first Lambda invocation",
+        "Cold starts can be completely eliminated with default settings",
+        "Provisioned Concurrency increases cold start frequency"
+      ],
       "difficulty": "medium",
       "tags": ["lambda", "cold-start", "performance"]
     },
@@ -190,6 +320,11 @@
       "id": "aws-027",
       "question": "What is the purpose of S3 Object Lock and MFA Delete?",
       "answer": "S3 Object Lock:\n- Write-Once-Read-Many (WORM) protection\n- Prevents deletion or modification of objects\n- For compliance and data immutability\n\nMFA Delete:\n- Extra layer of protection against accidental/malicious deletions\n- Requires MFA authentication to delete",
+      "wrongAnswers": [
+        "S3 Object Lock prevents reading objects",
+        "MFA Delete protects against unauthorized uploads",
+        "They are the same feature with different names"
+      ],
       "difficulty": "medium",
       "tags": ["s3", "security", "compliance"]
     },
@@ -197,6 +332,11 @@
       "id": "aws-028",
       "question": "How would you design a CI/CD pipeline for a containerized application on AWS?",
       "answer": "CI/CD Pipeline Components:\n1. Source Control: CodeCommit/GitHub → triggers pipeline\n2. Orchestration: CodePipeline (Source → Build → Deploy)\n3. Build/Test: CodeBuild with buildspec.yml, runs tests, security scans\n4. Container Registry: ECR stores and versions Docker images\n5. Deployment: CodeDeploy for ECS or kubectl/Helm for EKS",
+      "wrongAnswers": [
+        "CI/CD is only for serverless applications",
+        "EC2 is required for running CI/CD pipelines",
+        "Containers cannot be deployed through CI/CD"
+      ],
       "difficulty": "hard",
       "tags": ["cicd", "codePipeline", "containers", "devops"]
     },
@@ -204,6 +344,11 @@
       "id": "aws-029",
       "question": "What are EC2 Placement Groups, and when would you use them?",
       "answer": "Cluster: Tight packing for low latency/bandwidth (HPC, big data)\n\nPartition: Isolated partitions across racks/AZs (Hadoop, Cassandra, Kafka)\n\nSpread: Each instance on distinct physical rack (critical workloads like primary/standby DBs)\n\nUse for:\n- Performance-sensitive apps needing fast inter-instance comms\n- Fault-tolerant architectures isolating failure domains\n- Compliance requiring physical separation",
+      "wrongAnswers": [
+        "Placement Groups are required for all EC2 instances",
+        "Spread placement guarantees instances are in the same rack",
+        "Cluster placement provides maximum fault tolerance"
+      ],
       "difficulty": "medium",
       "tags": ["ec2", "placement-groups", "performance"]
     },
@@ -211,6 +356,11 @@
       "id": "aws-030",
       "question": "Explain the AWS Well-Architected Framework and its pillars.",
       "answer": "AWS Well-Architected Framework pillars:\n\n1. Operational Excellence: Run/monitor systems, improve processes\n2. Security: Protect data, systems, assets through risk management\n3. Reliability: Recover from failures, maintain availability\n4. Performance Efficiency: Optimize resources, adapt to changes\n5. Cost Optimization: Minimize expenses, maximize value",
+      "wrongAnswers": [
+        "The framework only covers security pillars",
+        "Well-Architected is optional and has no best practices",
+        "Cost Optimization is the only important pillar"
+      ],
       "difficulty": "medium",
       "tags": ["well-architected", "architecture", "best-practices"]
     },
@@ -218,6 +368,11 @@
       "id": "aws-031",
       "question": "A web app behind ALB is experiencing intermittent 502 errors. How would you diagnose and resolve this?",
       "answer": "Diagnosis approach:\n1. ALB telemetry: Check CloudWatch (HTTPCode_Target_5XX_Count, HealthyHostCount), parse ALB access logs\n2. EC2/app health: Review CPU/network/disk; inspect app logs for timeouts, OOM, DB connection limits\n3. Network/security: Verify SGs/NACLs permit ALB ↔ EC2 traffic including ephemeral ports\n\nResolution based on root cause findings.",
+      "wrongAnswers": [
+        "502 errors indicate the ALB is overloaded, restart it",
+        "Increase ALB size to fix 502 errors",
+        "502 errors are always caused by client-side issues"
+      ],
       "difficulty": "hard",
       "tags": ["troubleshooting", "alb", "502-errors"]
     },
@@ -225,6 +380,11 @@
       "id": "aws-032",
       "question": "Your AWS bill unexpectedly doubled. How would you identify the root cause and recommend cost-saving measures?",
       "answer": "Step-by-step process:\n1. Billing Dashboard: Compare current vs previous months\n2. Cost Explorer: Analyze by service, region, usage type, tags\n3. Service-specific tools:\n   - EC2: Trusted Advisor/Compute Optimizer for idle instances\n   - S3: Storage Lens for access patterns, lifecycle issues\n   - Data Transfer: Check outbound/inter-AZ traffic\n4. CloudTrail: Audit API activity for suspicious calls\n\nCost-saving: Terminate unused resources, right-size instances, use Savings Plans, Spot for fault-tolerant workloads",
+      "wrongAnswers": [
+        "AWS billing errors cannot be investigated",
+        "Delete all resources to reduce costs",
+        "Cost savings only apply to S3 storage"
+      ],
       "difficulty": "hard",
       "tags": ["cost-optimization", "billing", "troubleshooting"]
     },
@@ -232,6 +392,11 @@
       "id": "aws-033",
       "question": "Design a scalable architecture for a global photo-sharing application.",
       "answer": "Global Photo App Architecture:\n- Ingestion: S3 (Transfer Acceleration) stores uploads; Lambda processes/thumbnails\n- Delivery: CloudFront caches globally; origin = S3\n- API/Auth: API Gateway + Lambda for REST; Cognito for auth\n- Data: DynamoDB (Global Tables) for metadata; OpenSearch for feeds\n- DNS: Route 53 latency-based routing to nearest region\n- Monitoring: CloudWatch; IAM least-privilege; S3 Lifecycle",
+      "wrongAnswers": [
+        "Use a single EC2 instance for the entire application",
+        "Global applications require manual region management",
+        "S3 alone can serve photos globally without CDN"
+      ],
       "difficulty": "hard",
       "tags": ["architecture", "global", "scalable"]
     },
@@ -239,6 +404,11 @@
       "id": "aws-034",
       "question": "IAM access keys were committed to a public GitHub repository. What are your immediate and long-term steps?",
       "answer": "Immediate:\n- Revoke exposed keys and active role sessions\n- Contain the blast radius\n\nInvestigate:\n- CloudTrail traces API activity, privilege changes, unauthorized resource creation\n\nRemediate:\n- Rotate related creds (DB/API/SSH)\n- Enable Secrets Manager rotation\n- Kill unauthorized resources\n- Scan for backdoors\n\nPrevent:\n- Add secret scanning to CI/CD\n- Train developers\n- Run post-mortem, update incident response plan",
+      "wrongAnswers": [
+        "Delete the GitHub commit history to remove the keys",
+        "Rotate keys only after 90 days",
+        "Keys in public repos are automatically encrypted by AWS"
+      ],
       "difficulty": "hard",
       "tags": ["security", "iam", "incident-response"]
     },
@@ -246,6 +416,11 @@
       "id": "aws-035",
       "question": "Migrate a 10TB on-premises Oracle database to AWS with minimal downtime.",
       "answer": "Migration Strategy (using DMS):\n1. Assess & Prepare: Analyze source; use AWS SCT for schema conversion; provision target RDS (Multi-AZ)\n2. Full Load: Create DMS replication instance/endpoints; run full load with source online\n3. CDC: Enable near-real-time change capture to keep target in sync\n4. Validate & Cutover: During short window, stop app → final changes → verify data → switch to RDS endpoint\n\nResult: Minimizes downtime to only final cutover window.",
+      "wrongAnswers": [
+        "Take the database offline for the entire migration",
+        "DMS requires rewriting all SQL queries",
+        "Migration must be done manually file by file"
+      ],
       "difficulty": "hard",
       "tags": ["migration", "dms", "rds", "database"]
     },
@@ -253,6 +428,11 @@
       "id": "aws-036",
       "question": "Design a scalable network for a large enterprise with dozens of VPCs across multiple AWS accounts.",
       "answer": "Hub-and-Spoke with Transit Gateway:\n\n1. Transit Gateway (Network account): Regional cloud router, enables centralized routing\n\n2. VPC Attachments: Each VPC attaches to TGW, eliminating VPC peering meshes\n\n3. Direct Connect: Dedicated connection to on-prem via Direct Connect Gateway → TGW\n\n4. Multi-Account: Use RAM to share TGW; SCPs and tagging for governance\n\nBenefits: Centralized control, simplified routing, scalable connectivity.",
+      "wrongAnswers": [
+        "Create individual VPC peering connections between all VPCs",
+        "Use a single VPC for the entire enterprise",
+        "Transit Gateway cannot connect multiple AWS accounts"
+      ],
       "difficulty": "hard",
       "tags": ["networking", "transit-gateway", "multi-account", "enterprise"]
     },
@@ -260,6 +440,11 @@
       "id": "aws-037",
       "question": "A Lambda function integrated with API Gateway is intermittently timing out in a VPC accessing RDS.",
       "answer": "Troubleshooting steps:\n1. Analyze Logs/Traces: CloudWatch Logs for timeout errors; X-Ray for latency hotspots\n2. Investigate Causes:\n   - VPC Cold Starts: ENI creation adds latency → enable Provisioned Concurrency\n   - DB Connections: Exhaust RDS limits → use RDS Proxy\n   - RDS Performance: Monitor via CloudWatch/Performance Insights\n   - VPC Networking: Verify subnet routing, SGs, NACLs\n3. Remediate incrementally; load test to confirm resolution.",
+      "wrongAnswers": [
+        "Increase Lambda timeout to 15 minutes",
+        "Remove the VPC configuration from Lambda",
+        "Restart API Gateway to fix timeouts"
+      ],
       "difficulty": "hard",
       "tags": ["lambda", "vpc", "rds", "troubleshooting"]
     },
@@ -267,6 +452,11 @@
       "id": "aws-038",
       "question": "Design a system to ingest and process real-time IoT data from thousands of sensors.",
       "answer": "Real-time IoT Architecture:\n1. Ingestion: Kinesis Data Streams for high-velocity data with durability and ordering\n2. Processing:\n   - Lambda: Lightweight filtering, enrichment, alerting\n   - Kinesis Data Analytics: Continuous SQL queries for aggregations, anomaly detection\n3. Storage: S3 for raw/processed data lake\n4. Analytics: Athena for ad-hoc SQL queries; Redshift for BI\n5. Security: IAM roles, KMS encryption, VPC endpoints; CloudWatch monitoring",
+      "wrongAnswers": [
+        "Use SQS for real-time IoT data ingestion",
+        "EC2 instances are required for IoT processing",
+        "IoT data cannot be processed in real-time on AWS"
+      ],
       "difficulty": "hard",
       "tags": ["iot", "kinesis", "real-time", "analytics"]
     },
@@ -274,6 +464,11 @@
       "id": "aws-039",
       "question": "How would you design a zero-trust networking environment for microservices on EKS?",
       "answer": "Zero-Trust Architecture for EKS:\n\n- Strong Identity (IRSA): Each microservice gets its own least-privilege IAM role; avoid node-level roles\n\n- Micro-segmentation: Default deny-all NetworkPolicy; add narrow allows\n\n- Encrypted Comms: Service mesh (Istio/Linkerd/App Mesh) with mTLS and identity-based access\n\n- Ingress/Egress Control: ALB Ingress + TLS + WAF; outbound via NAT/VPC Endpoints with strict policies",
+      "wrongAnswers": [
+        "Zero-trust allows all traffic by default",
+        "Use Security Groups at the node level only",
+        "Network Policies are optional in zero-trust"
+      ],
       "difficulty": "hard",
       "tags": ["eks", "kubernetes", "zero-trust", "security"]
     },
@@ -281,6 +476,11 @@
       "id": "aws-040",
       "question": "Design a disaster recovery strategy with RTO of 15 minutes and RPO of 1 minute.",
       "answer": "Recommended: Warm Standby Strategy\n\nSetup:\n- Secondary DR region maintains scaled-down but fully functional environment\n- Multi-AZ networking, minimal ASG, load balancer\n\nData Replication:\n- Aurora Global Database or DynamoDB Global Tables for near real-time sync\n- S3 Cross-Region Replication (CRR)\n\nFailover:\n- Automated via Route 53 health checks\n- DNS routes to DR region; ASG scales to full capacity\n- Replicated DB promoted to primary\n\nResult: Meets 15-min RTO and 1-min RPO requirements.",
+      "wrongAnswers": [
+        "Backup to S3 daily is sufficient for 1-min RPO",
+        "DR region is not needed for disaster recovery",
+        "Manual failover can meet 15-min RTO requirement"
+      ],
       "difficulty": "hard",
       "tags": ["disaster-recovery", "dr", "rto", "rpo", "aurora"]
     },
@@ -288,6 +488,11 @@
       "id": "aws-041",
       "question": "What is AWS Lambda and what are its key features?",
       "answer": "AWS Lambda is a serverless compute service that runs code without servers.\n\nKey Features:\n- Event-driven: Triggers from 200+ AWS services\n- Auto-scaling: Handles from 0 to thousands of requests\n- Pay-per-use: No charge for idle time\n- Multiple runtimes: Node.js, Python, Java, Go, Ruby, .NET\n- Integration: Deep integration with AWS services\n- Stateless: State stored externally (DynamoDB, S3)",
+      "wrongAnswers": [
+        "Lambda requires provisioning and managing servers",
+        "Lambda functions run continuously 24/7",
+        "Lambda only supports JavaScript"
+      ],
       "difficulty": "easy",
       "tags": ["lambda", "serverless", "compute"]
     },
@@ -295,6 +500,11 @@
       "id": "aws-042",
       "question": "Explain Amazon RDS and its supported database engines.",
       "answer": "Amazon RDS (Relational Database Service) is a managed DB service.\n\nSupported Engines:\n- Amazon Aurora (MySQL/PostgreSQL compatible)\n- PostgreSQL\n- MySQL\n- MariaDB\n- Oracle\n- SQL Server\n\nKey Features:\n- Automated backups and patching\n- Multi-AZ deployment\n- Read replicas for scaling\n- Encryption at rest and in transit",
+      "wrongAnswers": [
+        "RDS only supports Oracle database",
+        "RDS requires manual backup management",
+        "RDS does not support read replicas"
+      ],
       "difficulty": "easy",
       "tags": ["rds", "database", "relational"]
     },
@@ -302,6 +512,11 @@
       "id": "aws-043",
       "question": "What is Amazon DynamoDB and when should you use it?",
       "answer": "DynamoDB is a fully managed NoSQL database.\n\nWhen to Use:\n- Serverless applications\n- High-scale workloads (millions of requests/sec)\n- Low-latency requirements\n- Key-value or document data models\n- Pay-per-request pricing\n\nFeatures:\n- Global Tables for multi-region replication\n- DAX (DynamoDB Accelerator) for in-memory caching\n- On-demand and provisioned capacity modes",
+      "wrongAnswers": [
+        "DynamoDB requires managing your own servers",
+        "DynamoDB only supports key-value operations",
+        "DynamoDB cannot scale beyond 1000 requests per second"
+      ],
       "difficulty": "easy",
       "tags": ["dynamodb", "nosql", "database"]
     },
@@ -309,6 +524,11 @@
       "id": "aws-044",
       "question": "What are the different types of AWS storage services?",
       "answer": "AWS Storage Services:\n\nObject Storage:\n- S3: 11 nines durability, HTTP accessible\n\nBlock Storage:\n- EBS: Persistent block storage for EC2\n\nFile Storage:\n- EFS: Shared file system for EC2 (NFS)\n- FSx: Windows file system or Lustre\n\nArchive:\n- S3 Glacier: Low-cost archival storage\n\nBackup:\n- AWS Backup: Centralized backup service",
+      "wrongAnswers": [
+        "S3 is block storage like EBS",
+        "EFS can only attach to one EC2 instance",
+        "AWS has only one storage service"
+      ],
       "difficulty": "easy",
       "tags": ["storage", "s3", "ebs", "efs"]
     },
@@ -316,6 +536,11 @@
       "id": "aws-045",
       "question": "What is Amazon CloudFront and how does it work?",
       "answer": "CloudFront is a Content Delivery Network (CDN).\n\nHow it works:\n- Caches content at edge locations worldwide\n- Reduces latency by serving from nearest location\n- Integrates with WAF for security\n- Supports dynamic and static content\n\nKey Features:\n- 450+ edge locations\n- DDoS protection (Shield Standard)\n- Lambda@Edge for customization\n- Field-level encryption",
+      "wrongAnswers": [
+        "CloudFront stores data permanently at edge locations",
+        "CloudFront can only cache static content",
+        "CloudFront is only available in US regions"
+      ],
       "difficulty": "medium",
       "tags": ["cloudfront", "cdn", "networking"]
     },
@@ -323,6 +548,11 @@
       "id": "aws-046",
       "question": "What is AWS Route 53 and what routing policies does it support?",
       "answer": "Route 53 is a scalable DNS web service.\n\nRouting Policies:\n- Simple: Single resource\n- Weighted: Traffic split by percentage\n- Latency-based: Lowest latency route\n- Failover: Primary to secondary on failure\n- Geolocation: Based on user location\n- Geoproximity: Based on geography + bias\n- IP-based: Based on user IP\n- Multi-value: Multiple healthy resources",
+      "wrongAnswers": [
+        "Route 53 only supports simple routing",
+        "All routing policies work the same way",
+        "Route 53 cannot route traffic based on latency"
+      ],
       "difficulty": "medium",
       "tags": ["route53", "dns", "routing"]
     },
@@ -330,6 +560,11 @@
       "id": "aws-047",
       "question": "Explain Amazon SNS and SQS. When would you use each?",
       "answer": "SQS (Simple Queue Service):\n- Message queue: Decouples producers/consumers\n- Types: Standard (at-least-once) and FIFO (exactly-once)\n- Polling model: Consumers pull messages\n- No subscriber management\n\nSNS (Simple Notification Service):\n- Pub/Sub: One message to many subscribers\n- Push model: Pushes to subscribers (Lambda, SQS, HTTP, email, SMS)\n- Topics for fan-out patterns",
+      "wrongAnswers": [
+        "SNS and SQS are the same service",
+        "SQS pushes messages to subscribers like SNS",
+        "SNS stores messages until consumed like SQS"
+      ],
       "difficulty": "medium",
       "tags": ["sns", "sqs", "messaging", "decoupling"]
     },
@@ -337,6 +572,11 @@
       "id": "aws-048",
       "question": "What is AWS Direct Connect and what are its benefits?",
       "answer": "Direct Connect provides dedicated network connection from on-premises to AWS.\n\nBenefits:\n- Consistent network performance\n- Reduced bandwidth costs\n- Private connectivity (no internet)\n- Higher throughput (1Gbps to 100Gbps)\n- Compatible with VPC, public services, and S3\n\nUse cases:\n- Large dataset transfers\n- Hybrid cloud architectures\n- Consistent latency requirements",
+      "wrongAnswers": [
+        "Direct Connect uses the public internet",
+        "Direct Connect is only for S3 access",
+        "Direct Connect provides lower throughput than VPN"
+      ],
       "difficulty": "medium",
       "tags": ["direct-connect", "hybrid-cloud", "networking"]
     },
@@ -344,6 +584,11 @@
       "id": "aws-049",
       "question": "What is AWS WAF and how does it protect web applications?",
       "answer": "AWS WAF is a web application firewall.\n\nProtection Features:\n- SQL injection and XSS protection\n- IP blocking/allowing\n- Rate limiting\n- Geo-blocking\n- Bot control\n\nIntegration:\n- CloudFront\n- Application Load Balancer\n- API Gateway\n- AppSync\n\nRules:\n- Managed rules (AWS, vendors)\n- Custom rules (IP sets, regex)",
+      "wrongAnswers": [
+        "WAF only protects against DDoS attacks",
+        "WAF cannot block IP addresses",
+        "WAF works without any integration"
+      ],
       "difficulty": "medium",
       "tags": ["waf", "security", "firewall"]
     },
@@ -351,6 +596,11 @@
       "id": "aws-050",
       "question": "Explain AWS CloudTrail and its use cases.",
       "answer": "CloudTrail records API calls across AWS account.\n\nUse Cases:\n- Security analysis: Detect unauthorized access\n- Compliance: Audit trail for regulations\n- Operational troubleshooting: Who did what, when\n- Cost optimization: Track resource changes\n\nFeatures:\n- Management events and data events\n- Log file validation (integrity)\n- CloudWatch Logs integration\n- S3 log storage\n- Multi-account aggregation",
+      "wrongAnswers": [
+        "CloudTrail is only for S3 access logging",
+        "CloudTrail cannot track who made changes",
+        "CloudTrail logs are stored in DynamoDB"
+      ],
       "difficulty": "easy",
       "tags": ["cloudtrail", "audit", "governance"]
     },
@@ -358,6 +608,11 @@
       "id": "aws-051",
       "question": "What is AWS Config and how does it help with compliance?",
       "answer": "AWS Config provides resource inventory and change tracking.\n\nCompliance Features:\n- Configuration history for resources\n- Compliance rules (managed/custom)\n- Remediation actions\n- Conformance packs for compliance frameworks\n\nUse Cases:\n- Audit resource configurations\n- Detect unintended changes\n- Drift detection\n- Security analysis",
+      "wrongAnswers": [
+        "AWS Config can only track S3 buckets",
+        "Config automatically fixes compliance issues",
+        "Config is only for security monitoring"
+      ],
       "difficulty": "medium",
       "tags": ["config", "compliance", "governance"]
     },
@@ -365,6 +620,11 @@
       "id": "aws-052",
       "question": "What is Amazon ElastiCache and when would you use it?",
       "answer": "ElastiCache is an in-memory caching service.\n\nEngines:\n- Redis: Rich data types, persistence, pub/sub, sorted sets\n- Memcached: Simple, multi-threaded, no persistence\n\nUse Cases:\n- Session storage\n- Database query caching\n- Real-time leaderboards\n- Chat/messaging\n\nBenefits:\n- Sub-millisecond latency\n- Reduces database load\n- Improves app performance",
+      "wrongAnswers": [
+        "ElastiCache replaces databases entirely",
+        "ElastiCache is slower than DynamoDB for all operations",
+        "ElastiCache cannot be used with Redis"
+      ],
       "difficulty": "medium",
       "tags": ["elasticache", "cache", "redis", "memcached"]
     },
@@ -372,6 +632,11 @@
       "id": "aws-053",
       "question": "What is AWS Step Functions and when would you use it?",
       "answer": "Step Functions is a serverless workflow orchestration service.\n\nUse Cases:\n- Coordinate Lambda functions\n- Long-running workflows\n- Human approval workflows\n- Distributed processing pipelines\n\nFeatures:\n- Visual workflow editor\n- Error handling and retry\n- Parallel execution\n- Wait states\n- Integration with 200+ AWS services",
+      "wrongAnswers": [
+        "Step Functions replaces Lambda entirely",
+        "Step Functions cannot coordinate multiple services",
+        "Step Functions is only for batch processing"
+      ],
       "difficulty": "medium",
       "tags": ["step-functions", "orchestration", "workflow"]
     },
@@ -379,6 +644,11 @@
       "id": "aws-054",
       "question": "Explain Amazon API Gateway and its features.",
       "answer": "API Gateway is a fully managed service for creating REST, WebSocket, and HTTP APIs.\n\nFeatures:\n- API versioning and stages\n- Throttling and rate limiting\n- AWS IAM and Cognito authorization\n- Custom domain names\n- API caching\n- Request/response transformation\n- WebSocket support for real-time apps\n\nTypes:\n- HTTP API: Low-cost, Lambda/HTTP integration\n- REST API: Full features, API management\n- WebSocket API: Persistent connections",
+      "wrongAnswers": [
+        "API Gateway requires managing servers",
+        "API Gateway cannot handle multiple API types",
+        "API Gateway does not support caching"
+      ],
       "difficulty": "medium",
       "tags": ["api-gateway", "serverless", "api"]
     },
@@ -386,6 +656,11 @@
       "id": "aws-055",
       "question": "What is Amazon Cognito and what does it provide?",
       "answer": "Cognito provides authentication, authorization, and user management.\n\nUser Pools:\n- Sign-up/sign-in for web/mobile apps\n- Social sign-in (Google, Facebook, Apple)\n- SAML identity providers\n- MFA support\n- Custom attributes\n\nIdentity Pools:\n- Temporary AWS credentials\n- Access to AWS services\n- Guest access support",
+      "wrongAnswers": [
+        "Cognito stores user data in DynamoDB",
+        "Cognito cannot handle social sign-in",
+        "Cognito is only for mobile applications"
+      ],
       "difficulty": "medium",
       "tags": ["cognito", "authentication", "authorization"]
     },
@@ -393,6 +668,11 @@
       "id": "aws-056",
       "question": "What is AWS Secrets Manager and how does it differ from Parameter Store?",
       "answer": "Secrets Manager:\n- Purpose-built for secrets (passwords, API keys)\n- Automatic rotation with Lambda\n- Cross-account access\n- Encryption with KMS\n- Secret versioning\n\nSystems Manager Parameter Store:\n- General-purpose parameter store\n- Free tier available\n- Hierarchical structure\n- No built-in rotation\n- Standards: String, StringList, SecureString",
+      "wrongAnswers": [
+        "Secrets Manager and Parameter Store are identical",
+        "Parameter Store has automatic secret rotation",
+        "Secrets Manager is free to use"
+      ],
       "difficulty": "medium",
       "tags": ["secrets-manager", "parameter-store", "security"]
     },
@@ -400,6 +680,11 @@
       "id": "aws-057",
       "question": "What is Amazon Redshift and when would you use it?",
       "answer": "Redshift is a petabyte-scale data warehouse.\n\nUse Cases:\n- Business intelligence\n- Analytics and reporting\n- Big data analytics\n- Data lake integration\n\nFeatures:\n- Columnar storage\n- Massively parallel processing (MPP)\n- Compression\n- RA3 nodes (pay-per-query)\n- Spectrum for S3 queries\n- Machine learning integration (SageMaker)",
+      "wrongAnswers": [
+        "Redshift is for real-time data processing",
+        "Redshift cannot query S3 data",
+        "Redshift replaces all databases"
+      ],
       "difficulty": "medium",
       "tags": ["redshift", "data-warehouse", "analytics"]
     },
@@ -407,6 +692,11 @@
       "id": "aws-058",
       "question": "What is AWS Glue and what are its main components?",
       "answer": "AWS Glue is a serverless ETL (Extract, Transform, Load) service.\n\nComponents:\n- Data Catalog: Centralized metadata repository\n- Crawlers: Auto-discover schemas from data sources\n- ETL Jobs: Transform and load data\n- Triggers: Schedule or event-based job execution\n- Dev Endpoints: Interactive development\n\nIntegrations:\n- S3, RDS, Redshift, DynamoDB\n- Apache Spark",
+      "wrongAnswers": [
+        "Glue is a database service",
+        "Glue cannot discover data schemas automatically",
+        "Glue requires managing servers"
+      ],
       "difficulty": "medium",
       "tags": ["glue", "etl", "data-pipeline"]
     },
@@ -414,6 +704,11 @@
       "id": "aws-059",
       "question": "What is Amazon Kinesis and what are its services?",
       "answer": "Kinesis is a platform for streaming data on AWS.\n\nServices:\n- Kinesis Data Streams: Build custom streaming apps\n- Kinesis Data Firehose: Load to S3/Redshift/Elasticsearch\n- Kinesis Data Analytics: Real-time SQL queries\n- Kinesis Video Streams: Streaming video\n\nKey Concepts:\n- Shards: Unit of capacity\n- Records: Data payload (up to 1MB)\n- Retention: 24 hours to 365 days",
+      "wrongAnswers": [
+        "Kinesis is for batch data processing",
+        "Kinesis cannot store data temporarily",
+        "Kinesis only works with S3"
+      ],
       "difficulty": "medium",
       "tags": ["kinesis", "streaming", "real-time"]
     },
@@ -421,6 +716,11 @@
       "id": "aws-060",
       "question": "What is AWS X-Ray and how does it help with debugging?",
       "answer": "X-Ray is a tracing service for distributed applications.\n\nFeatures:\n- Request tracing across services\n- Service maps visualization\n- Performance analysis\n- Error identification\n- Latency breakdowns\n\nIntegration:\n- EC2, ECS, Lambda, Beanstalk\n- API Gateway, SQS, SNS\n- Custom applications via SDK\n\nUse Cases:\n- Debug production issues\n- Performance optimization\n- Dependency mapping",
+      "wrongAnswers": [
+        "X-Ray replaces CloudWatch entirely",
+        "X-Ray can only trace Lambda functions",
+        "X-Ray is for storing log files"
+      ],
       "difficulty": "medium",
       "tags": ["x-ray", "tracing", "debugging", "observability"]
     },
@@ -428,6 +728,11 @@
       "id": "aws-061",
       "question": "What is Amazon EKS and how does it simplify Kubernetes?",
       "answer": "Amazon EKS (Elastic Kubernetes Service) is a managed Kubernetes service.\n\nSimplifications:\n- Managed control plane (API server, etcd)\n- Automatic scaling and high availability\n- Integration with AWS services (VPC, IAM, ELB)\n- Kubernetes add-ons and support\n\nBenefits:\n- No control plane to manage\n- Multi-AZ control plane\n- Built-in monitoring with CloudWatch Container Insights\n- Security with IAM and security groups",
+      "wrongAnswers": [
+        "EKS requires managing the Kubernetes control plane",
+        "EKS does not support standard Kubernetes tools",
+        "EKS is more expensive than self-managed Kubernetes in all cases"
+      ],
       "difficulty": "medium",
       "tags": ["eks", "kubernetes", "containers"]
     },
@@ -436,6 +741,11 @@
       "question": "What is AWS Fargate and when would you use it?",
       "answer": "Fargate is a serverless compute engine for containers.\n\nUse Cases:\n- Containerized microservices\n- Batch processing\n- Long-running applications\n- Development environments\n\nBenefits:\n- No cluster management\n- Pay per task/second\n- Auto-scaling\n- Integrated with ECS and EKS\n\nvs EC2:\n- Fargate: Serverless, no EC2 management\n- EC2: More control, potentially lower cost for steady workloads",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Fargate requires you to manage the underlying EC2 instances",
+        "Fargate is only for running batch jobs, not containers",
+        "Fargate cannot scale automatically"
+      ],
       "tags": ["fargate", "containers", "serverless", "ecs"]
     },
     {
@@ -443,6 +753,11 @@
       "question": "What is Amazon SQS and what are its queue types?",
       "answer": "SQS (Simple Queue Service) is a fully managed message queuing service.\n\nQueue Types:\n- Standard Queue:\n  - At-least-once delivery\n  - Best-effort ordering\n  - Unlimited throughput\n  \n- FIFO Queue:\n  - Exactly-once processing\n  - Guaranteed ordering\n  - Limited to 300 TPS\n\nFeatures:\n- Message retention (1 min to 14 days)\n- Dead-letter queues\n- Visibility timeout\n- Delay queues",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Standard queues guarantee exactly-once delivery",
+        "FIFO queues allow unlimited throughput",
+        "SQS requires manual message deletion after processing"
+      ],
       "tags": ["sqs", "messaging", "queue"]
     },
     {
@@ -450,6 +765,11 @@
       "question": "What is AWS CloudFormation and what are its benefits?",
       "answer": "CloudFormation is an IaC service for modeling and provisioning AWS resources.\n\nBenefits:\n- Infrastructure as code\n- Repeatable deployments\n- Dependency management\n- Rollback on failure\n- Cross-region/stack deployments\n\nConcepts:\n- Templates: JSON/YAML definitions\n- Stacks: Deployed resources\n- Change Sets: Preview changes\n- Drift Detection: Identify template changes",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "CloudFormation only supports JSON format templates",
+        "CloudFormation cannot rollback on deployment failure",
+        "CloudFormation requires manual resource provisioning"
+      ],
       "tags": ["cloudformation", "iac", "infrastructure"]
     },
     {
@@ -457,6 +777,11 @@
       "question": "What is Amazon Aurora and what makes it different from RDS?",
       "answer": "Aurora is a MySQL/PostgreSQL-compatible relational database built for the cloud.\n\nDifferences from RDS:\n- Storage: 6-way replication across 3 AZs\n- Performance: Up to 5x faster than MySQL, 3x PostgreSQL\n- Auto-scaling: Storage auto-scales to 128TB\n- Global Database: Cross-region replication\n- Backtrack: Rewind database to point-in-time\n\nUse Cases:\n- Enterprise workloads\n- High-throughput applications\n- Global applications",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Aurora only supports MySQL, not PostgreSQL",
+        "Aurora storage must be manually scaled",
+        "Aurora does not support automatic failover"
+      ],
       "tags": ["aurora", "database", "rds"]
     },
     {
@@ -464,6 +789,11 @@
       "question": "What is AWS Organizations and how does it help with account management?",
       "answer": "AWS Organizations helps manage multiple AWS accounts.\n\nFeatures:\n- Centralized management\n- Hierarchical structure (Root, OU, accounts)\n- Service Control Policies (SCPs)\n- Consolidated billing\n- API access via AWS STS\n\nUse Cases:\n- Department cost tracking\n- Security isolation\n- Compliance management\n- Multi-account strategies",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "AWS Organizations is only for managing billing",
+        "Organizations cannot create hierarchical structures",
+        "Service Control Policies manage network routing"
+      ],
       "tags": ["organizations", "account-management", "governance"]
     },
     {
@@ -471,6 +801,11 @@
       "question": "What is AWS Service Catalog and who uses it?",
       "answer": "AWS Service Catalog allows organizations to create and manage catalogs of approved IT services.\n\nUsers:\n- IT administrators: Create and manage product portfolios\n- End users: Launch approved products\n\nFeatures:\n- Version control for products\n- TagOption libraries\n- Constraints (IAM, rollout, template)\n- Portfolio sharing across accounts\n\nUse Cases:\n- Standardized deployments\n- Self-service provisioning\n- Compliance enforcement",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Service Catalog is for managing S3 buckets only",
+        "End users cannot launch products from Service Catalog",
+        "Service Catalog replaces CloudFormation"
+      ],
       "tags": ["service-catalog", "governance", "self-service"]
     },
     {
@@ -478,6 +813,11 @@
       "question": "What is AWS Control Tower and what does it set up?",
       "answer": "Control Tower automates the setup of a secure, well-architected multi-account AWS environment.\n\nWhat it sets up:\n- AWS Organizations with OU structure\n- SSO/AD integration\n- Guardrails (preventive, detective)\n- Landing Zone with best practices\n- Account Factory for new accounts\n\nGuardrails:\n- Preventive: SCPs block actions\n- Detective: Config Rules, CloudTrail",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Control Tower requires manual account creation",
+        "Control Tower only works with single-account setups",
+        "Guardrails in Control Tower can only be detective"
+      ],
       "tags": ["control-tower", "multi-account", "governance"]
     },
     {
@@ -485,6 +825,11 @@
       "question": "What is AWS Shield and what protection does it provide?",
       "answer": "AWS Shield is a DDoS protection service.\n\nTiers:\n- Shield Standard:\n  - Free, always-on protection\n  - Protects against common Layer 3/4 attacks\n  \n- Shield Advanced:\n  - $3,000/month\n  - Enhanced protection + 24/7 DDoS response team\n  - Financial protection for spikes\n  - CloudFront, Route 53, ELB, EIP, Global Accelerator",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "AWS Shield only protects against Layer 7 attacks",
+        "Shield Standard costs $3000 per month",
+        "Shield does not protect against application layer attacks"
+      ],
       "tags": ["shield", "ddos", "security"]
     },
     {
@@ -492,6 +837,11 @@
       "question": "What is AWS Trusted Advisor and what does it check?",
       "answer": "Trusted Advisor provides real-time guidance for cost optimization, security, fault tolerance, and performance.\n\nCheck Categories:\n- Cost Optimization: Idle resources, reserved instance suggestions\n- Security: IAM, MFA, S3 permissions, security groups\n- Fault Tolerance: Multi-AZ resources, backups\n- Performance: Service limits, EC2/CF utilization\n\nAvailability:\n- Basic: Core checks (limited)\n- Business/Premier: Full checks + API access",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Trusted Advisor is available to all AWS customers for free",
+        "Trusted Advisor can automatically fix security issues",
+        "Trusted Advisor only checks S3 bucket permissions"
+      ],
       "tags": ["trusted-advisor", "best-practices", "optimization"]
     },
     {
@@ -499,6 +849,11 @@
       "question": "What is AWS Artifact and what can you access?",
       "answer": "AWS Artifact is a portal for compliance reports and agreements.\n\nAccess:\n- SOC Compliance: SOC 1, 2, 3 reports\n- PCI Compliance: PCI DSS reports\n- ISO Certifications: ISO 9001, 27001, etc.\n- AWS Artifact Agreements: BAAs, DPAs\n\nUse Cases:\n- Customer audit requests\n- Compliance documentation\n- Regulatory requirements",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "AWS Artifact is a database service",
+        "Artifact reports can only be accessed via CLI",
+        "AWS Artifact manages EC2 instance provisioning"
+      ],
       "tags": ["artifact", "compliance", "certifications"]
     },
     {
@@ -506,6 +861,11 @@
       "question": "What is AWS Macie and what does it protect?",
       "answer": "Amazon Macie is a data security service that uses ML to discover and protect sensitive data.\n\nFeatures:\n- Sensitive data discovery in S3\n- Automated data classification\n- Dashboard and alerts\n- Policy findings with severity\n\nUse Cases:\n- PII/PCI detection\n- Data loss prevention\n- Compliance reporting\n- Security audits",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Macie can only scan data stored in DynamoDB",
+        "Macie requires manual configuration for each S3 bucket",
+        "Macie is a compute service for running applications"
+      ],
       "tags": ["macie", "data-security", "compliance"]
     },
     {
@@ -513,6 +873,11 @@
       "question": "What is AWS GuardDuty and how does it detect threats?",
       "answer": "GuardDuty is an intelligent threat detection service.\n\nData Sources:\n- CloudTrail event logs\n- VPC Flow Logs\n- DNS logs\n- EKS audit logs\n- S3 data events\n\nFindings:\n- Compromised EC2 (crypto mining, backdoors)\n- Compromised credentials\n- S3 data exfiltration\n- IAM threats\n\nIntegration:\n- EventBridge for automation\n- Detective for investigation",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "GuardDuty requires installing agents on all instances",
+        "GuardDuty only monitors S3 bucket access",
+        "GuardDuty cannot detect compromised credentials"
+      ],
       "tags": ["guardduty", "threat-detection", "security"]
     },
     {
@@ -520,6 +885,11 @@
       "question": "What is Amazon Inspector and how does it assess security?",
       "answer": "Inspector is an automated security assessment service for EC2.\n\nAssessment Types:\n- Network assessments: Reachability\n- Host assessments: CVE, CIS benchmarks, security best practices\n\nHow it works:\n1. Define assessment target (instances)\n2. Create assessment template\n3. Run assessment\n4. Review findings\n\nIntegration:\n- SSM for agent deployment\n- Security Hub for aggregation",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Inspector can scan Lambda functions automatically",
+        "Inspector requires manual log analysis",
+        "Inspector only works with on-premises servers"
+      ],
       "tags": ["inspector", "vulnerability", "security"]
     },
     {
@@ -527,6 +897,11 @@
       "question": "What is AWS Security Hub and what does it aggregate?",
       "answer": "Security Hub provides a comprehensive view of security alerts across AWS accounts.\n\nAggregates from:\n- GuardDuty\n- Macie\n- Inspector\n- Firewall Manager\n- Partner products\n\nFeatures:\n- Security standards (CIS, PCI DSS)\n- Automated remediation\n- Custom insights\n- Finding aggregation and prioritization\n\nIntegration:\n- EventBridge for automation\n- Detective for investigation",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Security Hub only aggregates findings from GuardDuty",
+        "Security Hub can automatically remediate all findings",
+        "Security Hub does not integrate with EventBridge"
+      ],
       "tags": ["security-hub", "security", "aggregation"]
     },
     {
@@ -534,6 +909,11 @@
       "question": "What is AWS Firewall Manager and what does it manage?",
       "answer": "Firewall Manager provides centralized security policy management across accounts and resources.\n\nWhat it manages:\n- WAF rules and rule groups\n- Shield Advanced protections\n- Security Groups (audit/remediation)\n- VPC security groups\n\nFeatures:\n- Policy-based management\n- Account-level onboarding\n- Automatic new account compliance\n- Audit and reporting",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Firewall Manager only manages EC2 security groups",
+        "Firewall Manager cannot enforce policies across accounts",
+        "Firewall Manager replaces the need for WAF"
+      ],
       "tags": ["firewall-manager", "security", "policy"]
     },
     {
@@ -541,6 +921,11 @@
       "question": "What is AWS Detective and what does it help with?",
       "answer": "Detective automatically collects and processes logs from AWS services for security investigation.\n\nUse Cases:\n- Investigate security findings\n- Identify root cause\n- Analyze timeline of events\n- Identify affected resources\n\nHow it works:\n- Ingests CloudTrail, VPC Flow Logs, GuardDuty\n- Builds linked graphs for relationships\n- Enables fast investigation queries\n\nIntegration:\n- Security Hub findings\n- GuardDuty alerts",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Detective is a prevention service that blocks attacks",
+        "Detective requires manual log collection from each service",
+        "Detective stores raw logs in S3 for long-term retention"
+      ],
       "tags": ["detective", "investigation", "security"]
     },
     {
@@ -548,6 +933,11 @@
       "question": "What is AWS Cost Explorer and what can you analyze?",
       "answer": "Cost Explorer is a tool for visualizing, understanding, and managing AWS costs.\n\nFeatures:\n- Cost visualization with charts\n- Filtering by service, region, linked account\n- Cost allocation tags\n- RI/Savings Plans recommendations\n- Budget alerts\n\nUse Cases:\n- Identify cost drivers\n- Forecast spending\n- Optimize costs\n- Track cost trends",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Cost Explorer can predict future costs with 100% accuracy",
+        "Cost Explorer is only available to enterprise customers",
+        "Cost Explorer automatically optimizes your resources"
+      ],
       "tags": ["cost-explorer", "cost", "billing"]
     },
     {
@@ -555,6 +945,11 @@
       "question": "What are AWS Savings Plans and how do they differ from Reserved Instances?",
       "answer": "Savings Plans:\n- Flexible pricing model\n- Commit to $/hour for 1 or 3 years\n- Apply to any EC2, Lambda, Fargate usage\n- Instance size flexibility\n- Family and region commitment\n\nReserved Instances:\n- Instance-type specific\n- Capacity reservation included\n- Fixed pricing\n- Less flexibility\n\nSavings Plans are more flexible but slightly higher price than RIs.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Savings Plans include capacity reservation by default",
+        "Reserved Instances are more flexible than Savings Plans",
+        "Savings Plans only apply to Lambda functions"
+      ],
       "tags": ["savings-plans", "reserved-instances", "cost-optimization"]
     },
     {
@@ -562,6 +957,11 @@
       "question": "What is AWS Budgets and what alerts can you set?",
       "answer": "AWS Budgets allows you to set custom cost and usage budgets.\n\nBudget Types:\n- Cost budget: Track spending\n- Usage budget: Track resource usage\n- RI Utilization: Track reserved instance usage\n- Savings Plans Utilization: Track Savings Plans coverage\n\nAlert Actions:\n- Email notifications\n- SNS notifications\n- Preventive actions (SSM, Lambda)\n\nFeatures:\n- Actual vs forecasted costs\n- Monthly, quarterly, annual periods\n- Custom cost filters",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "AWS Budgets can only track S3 storage costs",
+        "Budget alerts are sent via SMS only",
+        "AWS Budgets automatically stops all resources when exceeded"
+      ],
       "tags": ["budgets", "cost-management", "alerts"]
     },
     {
@@ -569,6 +969,11 @@
       "question": "What is AWS Compute Optimizer and what does it recommend?",
       "answer": "Compute Optimizer analyzes resource utilization and recommends optimal AWS resources.\n\nRecommendations for:\n- EC2 instance types (right-sizing)\n- EBS volumes (throughput/IOPS)\n- Lambda function memory size\n- Auto Scaling groups\n\nFeatures:\n- ML-based recommendations\n- Projected performance gains\n- Cost impact analysis\n- Export recommendations via CLI/API",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Compute Optimizer automatically resizes instances",
+        "Compute Optimizer recommendations are always the cheapest option",
+        "Compute Optimizer only analyzes EC2 instances"
+      ],
       "tags": ["compute-optimizer", "optimization", "right-sizing"]
     },
     {
@@ -576,6 +981,11 @@
       "question": "What is AWS Lambda Layers and why use them?",
       "answer": "Lambda Layers allows you to share code and dependencies across functions.\n\nBenefits:\n- Reduce deployment package size\n- Centralize common code\n- Separate runtime dependencies\n- Easier dependency management\n\nUse Cases:\n- Common libraries (SDKs, utilities)\n- Custom runtimes\n- Monitoring agents\n\nLimits:\n- 5 layers per function\n- 250 MB total unzipped size",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Lambda Layers increase the deployment package size",
+        "Layers can be shared only within the same AWS account",
+        "Lambda Layers are mandatory for all Lambda functions"
+      ],
       "tags": ["lambda", "layers", "code-sharing"]
     },
     {
@@ -583,6 +993,11 @@
       "question": "What is Amazon EventBridge and how does it differ from CloudWatch Events?",
       "answer": "EventBridge is a serverless event bus for connecting applications.\n\nDifferences from CloudWatch Events:\n- EventBridge has third-party/SaaS partner events\n- Schema Registry for event structure\n- Event replay and archiving\n- Resource-based policies\n\nShared Features:\n- Rule-based filtering\n- Multiple targets\n- Event patterns\n\nUse Cases:\n- Application integration\n- Microservices communication\n- Audit logging",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "EventBridge and CloudWatch Events are completely different services",
+        "EventBridge cannot process events from AWS services",
+        "EventBridge does not support scheduling"
+      ],
       "tags": ["eventbridge", "events", "integration"]
     },
     {
@@ -590,6 +1005,11 @@
       "question": "What is AWS App Mesh and what does it provide for microservices?",
       "answer": "App Mesh is a service mesh for microservices communication.\n\nFeatures:\n- Traffic routing control\n- Service discovery\n- Load balancing\n- End-to-end encryption (mTLS)\n- Metrics and logging\n- Canary deployments\n\nComponents:\n- Virtual nodes (microservices)\n- Virtual routers (routing)\n- Virtual routes (path rules)\n\nUse Cases:\n- Complex microservice architectures\n- Traffic management\n- Observability",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "App Mesh requires modifications to application code",
+        "App Mesh only works with ECS, not EKS",
+        "App Mesh replaces the need for load balancers"
+      ],
       "tags": ["app-mesh", "service-mesh", "microservices"]
     },
     {
@@ -597,6 +1017,11 @@
       "question": "What is AWS Proton and who is it for?",
       "answer": "AWS Proton is a fully managed deployment service for container and serverless applications.\n\nFor:\n- Platform teams building templates\n- Developers deploying from templates\n\nFeatures:\n- Environment templates (VPC, clusters)\n- Service templates (apps, CI/CD)\n- Automated provisioning\n- Versioning and rollbacks\n\nUse Cases:\n- Standardize deployments\n- Self-service infrastructure\n- Enforce best practices",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "AWS Proton requires manual infrastructure provisioning",
+        "Proton is only for serverless applications",
+        "Proton replaces the need for CI/CD pipelines"
+      ],
       "tags": ["proton", "deployment", "platform-engineering"]
     },
     {
@@ -604,6 +1029,11 @@
       "question": "What is AWS DevOps Guru and how does it detect operational issues?",
       "answer": "DevOps Guru uses ML to detect operational issues and reduce mean time to resolution.\n\nWhat it detects:\n- Resource exhaustion (CPU, memory, connections)\n- Configuration issues\n- Operational bottlenecks\n- Anomalous behavior\n\nData Sources:\n- CloudWatch metrics and logs\n- X-Ray traces\n- Config rules\n- CloudTrail\n\nFeatures:\n- Proactive and reactive insights\n- Root cause analysis\n- Recommended remediations",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "DevOps Guru requires manual threshold configuration",
+        "DevOps Guru can only analyze Lambda functions",
+        "DevOps Guru is a deployment service"
+      ],
       "tags": ["devops-guru", "ml", "operational-issues"]
     },
     {
@@ -611,6 +1041,11 @@
       "question": "What is AWS Fault Injection Simulator (FIS) and why use it?",
       "answer": "FIS is a managed chaos engineering service for testing resilience.\n\nUse Cases:\n- Test failure recovery\n- Validate auto-scaling\n- Verify monitoring/alerting\n- Improve system resilience\n\nActions:\n- EC2: Stop, terminate, stress CPU/memory\n- ECS: Stop tasks\n- EKS: Pod deletion\n- Network: Block traffic, introduce latency\n\nFeatures:\n- Pre-built experiment templates\n- Safety controls (automatic stop)\n- SSM Automation integration",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "FIS can only inject network latency",
+        "FIS requires manual script creation for all experiments",
+        "FIS is only for testing Lambda functions"
+      ],
       "tags": ["fis", "chaos-engineering", "resilience"]
     },
     {
@@ -618,6 +1053,11 @@
       "question": "What is AWS Database Migration Service (DMS) and what does it support?",
       "answer": "DMS is a managed migration service for database migrations.\n\nSupported Sources:\n- Oracle, SQL Server, MySQL, PostgreSQL\n- MongoDB, DynamoDB\n- S3, SAP\n\nSupported Targets:\n- RDS, Aurora, DynamoDB\n- Redshift, ElastiCache\n- S3, Kinesis\n\nFeatures:\n- Homogeneous and heterogeneous migrations\n- CDC (Change Data Capture)\n- Schema Conversion Tool (SCT)\n- Validation",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "DMS only supports homogeneous database migrations",
+        "DMS cannot perform continuous data replication",
+        "DMS requires the source database to be offline during migration"
+      ],
       "tags": ["dms", "migration", "database"]
     },
     {
@@ -625,6 +1065,11 @@
       "question": "What is AWS Application Discovery Service and what does it collect?",
       "answer": "Application Discovery Service helps plan migration projects by collecting infrastructure data.\n\nData Collected:\n- Server specifications\n- Running processes\n- Network connections\n- Performance metrics\n- Dependency mapping\n\nAgents:\n- AWS Discovery Agent: Full data collection\n- Agentless Collector: VMware environments\n\nIntegrations:\n- Migration Hub\n- Database Migration Service\n- AWS Transfer Family",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Application Discovery Service automatically migrates applications",
+        "Discovery agents are only available for Windows servers",
+        "Application Discovery does not collect network dependency data"
+      ],
       "tags": ["application-discovery", "migration", "planning"]
     },
     {
@@ -632,6 +1077,11 @@
       "question": "What is AWS Migration Hub and how does it track migrations?",
       "answer": "Migration Hub is a central dashboard for tracking application migrations.\n\nFeatures:\n- Centralized progress tracking\n- Unified view across tools\n- Integrations with migration tools\n\nSupported Tools:\n- AWS DMS\n- Server Migration Service\n- CloudEndure\n- 150+ partner tools\n\nUse Cases:\n- Portfolio assessment\n- Progress tracking\n- Resource grouping\n- Cutover coordination",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Migration Hub can only track EC2 migrations",
+        "Migration Hub performs the actual data migration",
+        "Migration Hub is only available in us-east-1"
+      ],
       "tags": ["migration-hub", "migration", "tracking"]
     },
     {
@@ -639,6 +1089,11 @@
       "question": "What is cloud computing?",
       "answer": "Cloud computing provides on-demand access to IT resources like compute, storage, and databases over the internet. Users pay only for what they use instead of owning physical infrastructure.\n\nKey benefits:\n- No upfront infrastructure investment\n- Pay-as-you-go based on usage\n- Rapid scaling to meet demand\n- Reduced maintenance overhead\n- Faster innovation and agility",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Cloud computing requires physical ownership of servers",
+        "Cloud resources cannot scale dynamically",
+        "Cloud computing only offers PaaS services"
+      ],
       "tags": ["cloud-computing", "fundamentals"]
     },
     {
@@ -646,6 +1101,11 @@
       "question": "What are the three types of cloud deployment models?",
       "answer": "Three deployment models:\n\n1. Private Cloud: Used by a single organization, not exposed to public. Ideal for sensitive applications requiring strict control.\n\n2. Public Cloud: Resources owned and operated by third-party providers like AWS, Azure. Available to anyone over the internet.\n\n3. Hybrid Cloud: Combination of private and public clouds. Keeps some servers on-premises while extending capabilities to the cloud.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Private cloud uses public internet for all connections",
+        "Public cloud resources are shared with other organizations",
+        "Hybrid cloud cannot connect on-premises with cloud resources"
+      ],
       "tags": ["deployment-models", "cloud-types"]
     },
     {
@@ -653,6 +1113,11 @@
       "question": "What are the five characteristics of cloud computing?",
       "answer": "Five characteristics of cloud computing:\n\n1. On-demand self-service: Users can provision services without human interaction\n\n2. Broad network access: Services available over network via standard mechanisms\n\n3. Multi-tenancy and resource pooling: Resources dynamically assigned based on demand\n\n4. Rapid elasticity and scalability: Auto-scale up/down quickly\n\n5. Measured service: Usage monitored, controlled, and billed transparently",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Measured service means customers pay flat monthly fees",
+        "Rapid elasticity only applies to compute resources",
+        "Broad network access requires proprietary protocols"
+      ],
       "tags": ["cloud-characteristics", "fundamentals"]
     },
     {
@@ -660,6 +1125,11 @@
       "question": "What are the three main types of cloud computing services (IaaS, PaaS, SaaS)?",
       "answer": "Three main types of cloud computing:\n\n1. IaaS (Infrastructure as a Service): Provides basic building blocks like compute, storage, networking. Examples: EC2, S3, VPC\n\n2. PaaS (Platform as a Service): Managed platform for developing, deploying, managing apps without building infrastructure. Examples: Elastic Beanstalk, Heroku\n\n3. SaaS (Software as a Service): Complete end-user applications running in cloud. Examples: SES, Google Docs, Salesforce CRM",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "SaaS provides raw infrastructure components",
+        "PaaS requires managing the underlying operating system",
+        "IaaS provides fully managed software applications"
+      ],
       "tags": ["iaas", "paas", "saas", "cloud-services"]
     },
     {
@@ -667,6 +1137,11 @@
       "question": "What is Amazon EC2 and what are its main uses?",
       "answer": "Amazon EC2 (Elastic Compute Cloud) provides scalable virtual servers called instances in AWS.\n\nMain uses:\n- Host websites and web applications\n- Run backend processes and batch jobs\n- Implement hybrid cloud solutions\n- Achieve high availability and scalability\n- Reduce time to market for new use cases",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "EC2 is a managed database service",
+        "EC2 instances cannot be stopped or terminated",
+        "EC2 provides only block storage, not compute"
+      ],
       "tags": ["ec2", "compute", "fundamentals"]
     },
     {
@@ -674,6 +1149,11 @@
       "question": "Why is Amazon S3 important and what are its key features?",
       "answer": "Amazon S3 is a versatile, scalable, and secure object storage service.\n\nKey features:\n- 99.999999999% durability, 99.99% availability\n- Robust security with access policies and encryption\n- Seamless integration with Lambda, EC2, EBS\n- Low latency and high throughput for analytics\n- Flexible management: monitoring, versioning, lifecycle policies\n- Global infrastructure for worldwide access",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "S3 provides 99.9% durability",
+        "S3 can only store text files under 1MB",
+        "S3 requires manual replication across regions"
+      ],
       "tags": ["s3", "storage", "fundamentals"]
     },
     {
@@ -681,6 +1161,11 @@
       "question": "What is the difference between traditional databases and Amazon RDS?",
       "answer": "Traditional DB vs Amazon RDS:\n\n| Feature | RDS | Traditional DB |\n|---------|-----|---------------|\n| Scalability | Easy vertical/horizontal | Hardware upgrades needed |\n| Availability | Multi-AZ with automatic failover | Complex HA setup |\n| Maintenance | Managed by AWS | Manual updates/backups |\n| Backup | Automated backups | Manual processes |\n| Cost | Pay-as-you-go | Fixed, higher upfront |",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "RDS requires manual backup management",
+        "Traditional databases scale automatically",
+        "RDS does not support Multi-AZ deployments"
+      ],
       "tags": ["rds", "database", "comparison"]
     },
     {
@@ -688,6 +1173,11 @@
       "question": "What is the role of an AWS Solutions Architect?",
       "answer": "AWS Solutions Architects design and oversee applications on AWS, ensuring scalability and optimal performance.\n\nResponsibilities:\n- Guide developers and system administrators\n- Help customers utilize AWS effectively\n- Design scalable, efficient, cost-effective systems\n- Communicate complex concepts to technical/non-technical stakeholders\n- Ensure security and compliance requirements are met",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Solutions Architects only write code",
+        "Solutions Architects manage day-to-day server operations",
+        "Solutions Architects are not involved in security design"
+      ],
       "tags": ["solutions-architect", "role", "career"]
     },
     {
@@ -695,6 +1185,11 @@
       "question": "What are the key security best practices for AWS EC2?",
       "answer": "Essential EC2 security practices:\n\n1. Use IAM for access management with least privilege\n2. Restrict access to trusted hosts only\n3. Minimize permissions - only grant what's needed\n4. Disable password-based logins for AMIs\n5. Implement Multi-Factor Authentication (MFA)\n6. Use Security Groups as firewalls\n7. Regularly patch and update instances\n8. Enable VPC for network isolation",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "EC2 security groups allow all inbound traffic by default",
+        "Password-based logins are recommended for EC2 instances",
+        "EC2 instances do not need regular patching"
+      ],
       "tags": ["ec2", "security", "best-practices"]
     },
     {
@@ -702,6 +1197,11 @@
       "question": "How do you ensure multi-region redundancy in AWS architecture?",
       "answer": "Multi-region redundancy strategies:\n\n1. Deploy critical resources (EC2, RDS, S3) in multiple AWS Regions\n2. Use Route 53 for geo-based DNS routing and failover\n3. Implement S3 Cross-Region Replication for data backup\n4. Configure active-active or active-passive failover\n5. Use CloudWatch for monitoring performance\n6. Leverage AWS Global Accelerator for improved latency\n7. Test failover procedures regularly",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Multi-region redundancy requires manual data synchronization",
+        "Route 53 cannot route traffic between regions",
+        "S3 replication does not support cross-region copying"
+      ],
       "tags": ["multi-region", "redundancy", "disaster-recovery"]
     },
     {
@@ -709,6 +1209,11 @@
       "question": "What strategies create a highly available and fault-tolerant AWS architecture?",
       "answer": "High availability strategies:\n\n1. Implement redundancy across all components\n2. Use load balancing to distribute traffic evenly\n3. Set up automated monitoring for real-time failure detection\n4. Design for scalability to handle varying loads\n5. Implement fault isolation and regular backups\n6. Create comprehensive disaster recovery plans\n7. Design for graceful degradation\n8. Practice continuous testing and deployment",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "High availability means using a single instance in one AZ",
+        "Load balancers are not needed for high availability",
+        "Backups are optional in fault-tolerant systems"
+      ],
       "tags": ["high-availability", "fault-tolerance", "architecture"]
     },
     {
@@ -716,6 +1221,11 @@
       "question": "How do you optimize AWS costs for a high-traffic web application?",
       "answer": "Cost optimization strategies:\n\n1. Use AWS Cost Explorer and Budgets to monitor spending\n2. Use Reserved Instances for predictable workloads\n3. Use Spot Instances for flexible, fault-tolerant workloads\n4. Implement Auto Scaling based on demand\n5. Optimize storage with S3 lifecycle policies\n6. Use S3 Intelligent-Tiering for unpredictable access\n7. Implement caching with CloudFront and ElastiCache\n8. Choose right-sized instances based on actual usage",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "On-demand instances are the cheapest option for all workloads",
+        "Auto Scaling should only scale up, never down",
+        "Caching does not help reduce costs"
+      ],
       "tags": ["cost-optimization", "budgets", "savings"]
     },
     {
@@ -723,6 +1233,11 @@
       "question": "What are the key differences between batch and real-time data processing?",
       "answer": "Batch vs Real-time processing:\n\nBatch Processing:\n- Collects data over time, processes in large chunks\n- Good for historical, less frequent data analysis\n- Lower processing costs\n- Complex modeling and forecasting\n\nReal-time (Streaming):\n- Processes data continuously as it arrives\n- Immediate insights and analysis\n- Good for fraud detection, social media monitoring\n- Low latency requirements like trading systems\n\nChoose batch for historical analysis, real-time for immediate insights.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Batch processing provides lower latency than real-time",
+        "Real-time processing is always more cost-effective",
+        "Both methods process data the same way"
+      ],
       "tags": ["batch-processing", "streaming", "data-engineering"]
     },
     {
@@ -730,6 +1245,11 @@
       "question": "When would you choose Amazon Kinesis over AWS Lambda for data processing?",
       "answer": "Choose Kinesis over Lambda when:\n\n- High data volume: Kinesis handles MB/s vs Lambda's 6MB/invocation\n- Streaming processing: Continuous real-time processing vs batch invocations\n- Replay capability: Kinesis retains data for reprocessing\n- Ordering: Kinesis shards ensure ordered processing\n- Scaling: Kinesis shards scale for high throughput\n- Integration: Better with Firehose, Redshift, EMR for analytics",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Lambda is always better for high-volume streaming data",
+        "Kinesis cannot retain data for replay",
+        "Lambda functions can process millions of events per second"
+      ],
       "tags": ["kinesis", "lambda", "data-processing", "streaming"]
     },
     {
@@ -737,6 +1257,11 @@
       "question": "How do you handle schema-on-read vs schema-on-write in AWS data lakes?",
       "answer": "Schema handling in data lakes:\n\nSchema-on-Read (Data Lakes):\n- Raw, semi-structured data stored in S3\n- Schema applied only during query time\n- Tools: Athena, Redshift Spectrum\n- Flexibility for diverse data sources\n\nSchema-on-Write (Traditional):\n- Structure enforced upfront\n- Preferred for transactional data\n- Tools: RDS, Redshift\n- Strict data validation required\n\nData lakes offer flexibility; traditional DBs offer structure.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Schema-on-read enforces structure during data ingestion",
+        "Schema-on-write only works with data lakes",
+        "Data lakes cannot handle unstructured data"
+      ],
       "tags": ["data-lake", "schema", "athena", "redshift"]
     },
     {
@@ -744,6 +1269,11 @@
       "question": "How do you automate schema evolution in an AWS data pipeline?",
       "answer": "Automating schema evolution:\n\n1. Use AWS Glue's dynamic frame for schema inference\n2. Leverage Glue Data Catalog to track schema changes\n3. Implement schema validation with AWS Deequ\n4. Add custom logic in ETL scripts to log mismatches\n5. Use Lambda for schema change notifications\n6. Set up CloudWatch events for schema drift alerts\n7. Document schema versions for audit trail",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Schema evolution requires rewriting all historical data",
+        "AWS Glue does not support schema inference",
+        "Schema changes are automatically blocked in data pipelines"
+      ],
       "tags": ["schema-evolution", "glue", "data-pipeline"]
     },
     {
@@ -751,6 +1281,11 @@
       "question": "What is an Operational Data Store (ODS) and how does it complement a data warehouse?",
       "answer": "ODS (Operational Data Store):\n- Database for real-time business operations\n- Acts as interim platform between transactional systems and data warehouse\n- Provides real-time data for operations monitoring\n- Integrates live data from multiple sources\n- Optimized for fast queries\n\nData Warehouse:\n- High-quality data for BI and reporting\n- Historical, integrated data\n- Strategic reporting and analysis\n\nODS + Data Warehouse = comprehensive platform for operations and analytics",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "ODS replaces the need for data warehouses",
+        "ODS stores only historical, never current data",
+        "ODS cannot integrate data from multiple sources"
+      ],
       "tags": ["ods", "data-warehouse", "data-engineering"]
     },
     {
@@ -758,6 +1293,11 @@
       "question": "How would you set up a data lake on AWS?",
       "answer": "AWS Data Lake Setup:\n\n1. Storage Layer: Amazon S3 for raw, structured, unstructured data\n2. Data Cataloging: AWS Glue for metadata definitions\n3. Transformation: AWS Glue ETL to prepare data for analysis\n4. Security: IAM and Lake Formation for access control\n5. Analytics: Athena for ad-hoc queries, Redshift Spectrum\n6. Visualization: Amazon QuickSight for dashboards\n\nOrganize S3 with structured folder hierarchy by data type/source.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Data lakes only store structured data in databases",
+        "AWS Glue is not needed for data lakes",
+        "Data lake architecture requires physical servers"
+      ],
       "tags": ["data-lake", "s3", "glue", "athena", "architecture"]
     },
     {
@@ -765,6 +1305,11 @@
       "question": "What are the different S3 storage classes and when to use each?",
       "answer": "S3 Storage Classes:\n\n| Class | Use Case | Access | Cost |\n|-------|----------|--------|------|\n| S3 Standard | Frequently accessed | High | Standard |\n| Intelligent-Tiering | Unpredictable patterns | Auto | Cost-effective |\n| Standard-IA | Infrequent, quick retrieval | Low | Lower + retrieval fee |\n| One Zone-IA | Single AZ, infrequent | Low | Lower, less redundancy |\n| Glacier | Long-term archival | Rare | Lowest |\n| Glacier Deep Archive | Compliance, 12+ years | Very rare | Lowest ever |",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "S3 Standard is the cheapest storage class",
+        "S3 Glacier requires 24 hours to retrieve any data",
+        "Intelligent-Tiering has higher costs than S3 Standard"
+      ],
       "tags": ["s3", "storage-classes", "cost-optimization"]
     },
     {
@@ -772,6 +1317,11 @@
       "question": "How do you use AWS CodePipeline to automate a CI/CD pipeline?",
       "answer": "AWS CodePipeline CI/CD automation:\n\n1. Create Pipeline: Specify source repository (GitHub, CodeCommit)\n2. Build Stage: Connect CodeBuild to compile, run tests, create artifacts\n3. Deploy Stages: Configure for each tier using CodeDeploy, Beanstalk, or ECS\n4. Add Approval Gates: Manual approvals for critical environments\n5. Monitor: Track pipeline performance, iterate based on feedback",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "CodePipeline cannot integrate with GitHub",
+        "CodePipeline requires manual deployment steps",
+        "CodePipeline only works with AWS-native services"
+      ],
       "tags": ["codepipeline", "cicd", "devops", "automation"]
     },
     {
@@ -779,6 +1329,11 @@
       "question": "What are blue/green deployment strategies on AWS?",
       "answer": "Blue/Green Deployments:\n\nConcept: Run two identical environments - blue (current) and green (new)\n\nAWS Implementation:\n1. Deploy green environment with new version\n2. Test green environment thoroughly\n3. Shift traffic using Route 53 or ALB\n4. Monitor for issues\n5. If problems: instant rollback to blue\n6. Keep blue running until green is stable\n\nServices: Elastic Beanstalk, CodeDeploy, ECS\n\nBenefits: Zero downtime, instant rollback, reduced risk",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Blue-green deployment requires downtime during switchover",
+        "Blue-green is only for containerized applications",
+        "Route 53 cannot route traffic between environments"
+      ],
       "tags": ["blue-green", "deployment", "devops"]
     },
     {
@@ -786,6 +1341,11 @@
       "question": "How do you manage and secure secrets for CI/CD pipeline in AWS?",
       "answer": "Secrets Management in CI/CD:\n\n1. AWS Secrets Manager:\n   - Store API keys, DB passwords, certificates\n   - Automatic rotation with Lambda\n   - Integration with CodePipeline/CodeBuild\n\n2. Systems Manager Parameter Store:\n   - SecureString for encrypted parameters\n   - Hierarchical structure\n   - Free tier available\n\n3. IAM Controls:\n   - Granular access policies\n   - Role-based access for pipeline\n   - No hardcoded secrets in code",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Secrets should be stored directly in source code",
+        "Parameter Store cannot store encrypted values",
+        "IAM roles are not needed for CI/CD pipeline access"
+      ],
       "tags": ["secrets-manager", "parameter-store", "cicd", "security"]
     },
     {
@@ -793,6 +1353,11 @@
       "question": "How do you use AWS Systems Manager in a production environment?",
       "answer": "AWS Systems Manager in Production:\n\nUse Cases:\n1. Patch Management: Auto-apply OS/app patches across instances\n2. Run Command: Execute scripts on multiple instances\n3. Inventory: Collect software inventory from instances\n4. Parameter Store: Store configs and secrets securely\n5. Session Manager: Secure shell access without SSH\n6. Automation: Trigger runbooks for operational tasks\n7. State Manager: Enforce consistent configurations",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Systems Manager requires SSH access to all instances",
+        "Systems Manager cannot patch operating systems",
+        "Systems Manager is only for monitoring, not automation"
+      ],
       "tags": ["systems-manager", "operations", "automation"]
     },
     {
@@ -800,6 +1365,11 @@
       "question": "What is the relationship between AWS Glue and AWS Lake Formation?",
       "answer": "AWS Glue and Lake Formation relationship:\n\nAWS Glue provides:\n- ETL capabilities for data transformation\n- Control console and Data Catalog\n- Serverless architecture for processing\n\nAWS Lake Formation builds on Glue:\n- Adds features for building data lakes\n- Security and access management\n- Data governance and auditing\n\nIn essence: Lake Formation = Glue + Data Lake Management\n\nGlue handles ETL; Lake Formation handles security and governance.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Lake Formation replaces AWS Glue entirely",
+        "Glue cannot perform ETL operations",
+        "Lake Formation is only for small data sets under 1TB"
+      ],
       "tags": ["glue", "lake-formation", "data-lake"]
     },
     {
@@ -807,6 +1377,11 @@
       "question": "What factors should be considered in designing a deployment solution on AWS?",
       "answer": "AWS Deployment Design Factors:\n\n1. Provisioning: Set up EC2, VPC, S3, RDS, CloudFront infrastructure\n2. Configuring: Adjust for environment, security, availability, performance\n3. Deploying: Efficiently roll out updates with smooth transitions\n4. Scaling: Dynamically modify resources based on demand\n5. Monitoring: Track usage, health, logs continuously\n6. Security: Implement IAM, encryption, network controls\n7. Cost: Right-size resources, use appropriate pricing models",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Security is optional in initial deployment design",
+        "Cost considerations should be addressed after deployment",
+        "Monitoring is only needed after production launch"
+      ],
       "tags": ["deployment", "architecture", "best-practices"]
     },
     {
@@ -814,6 +1389,11 @@
       "question": "How would you implement a microservices architecture on AWS?",
       "answer": "Microservices Architecture on AWS:\n\n1. Adopt Agile Development for rapid iteration\n2. Use API-First Design for clear service contracts\n3. Implement CI/CD with CodePipeline/CodeBuild\n4. Containerize with ECS/EKS or use Lambda\n5. Apply Twelve-Factor App principles\n6. Choose API-driven or event-driven patterns\n7. Implement service discovery\n8. Add distributed monitoring with CloudWatch/X-Ray\n9. Design for fault tolerance and resilience\n10. Use Well-Architected Framework for review",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Microservices must all use the same programming language",
+        "Microservices should share a single database",
+        "CI/CD is not needed for microservices"
+      ],
       "tags": ["microservices", "architecture", "ecs", "eks"]
     },
     {
@@ -821,6 +1401,11 @@
       "question": "What is the difference between Amazon Redshift, RDS, and S3? When to use each?",
       "answer": "S3 vs RDS vs Redshift:\n\nAmazon S3:\n- Object storage for raw, unstructured data\n- Log files, CSVs, images, backups\n- Infinite scalability, pay per usage\n\nAmazon RDS:\n- Managed relational databases (PostgreSQL, MySQL, etc.)\n- ACID-compliant transactions\n- Indexing, constraints, complex queries\n- Transactional applications\n\nAmazon Redshift:\n- Cloud data warehouse for analytics\n- Complex queries over large datasets\n- Columnar storage, massive parallelism\n- BI and business intelligence",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "S3 is a database that supports SQL queries natively",
+        "RDS is optimized for analytical queries over petabytes",
+        "Redshift replaces the need for any database"
+      ],
       "tags": ["redshift", "rds", "s3", "database", "comparison"]
     },
     {
@@ -828,6 +1413,11 @@
       "question": "What considerations for migrating an on-premises application to AWS?",
       "answer": "AWS Migration Considerations:\n\n1. Assessment: Catalog components, identify dependencies\n2. Strategy: Choose migration techniques (lift-and-shift, replatform, refactor)\n3. Network: Plan connection (Direct Connect or VPN)\n4. Security: Implement IAM, encryption, compliance\n5. Data: Use DMS for database migration\n6. Testing: Validate functionality, performance\n7. Cutover: Plan minimal downtime migration\n8. Post-migration: Monitor, optimize, train team\n\nUse AWS Migration Hub for tracking.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "All applications must be migrated at once",
+        "Network connectivity planning is not necessary",
+        "AWS migration tools only work with AWS-native databases"
+      ],
       "tags": ["migration", "dms", "planning"]
     },
     {
@@ -835,6 +1425,11 @@
       "question": "Design a scalable web application with DDoS protection on AWS.",
       "answer": "Scalable Web App with DDoS Protection:\n\nArchitecture:\n1. CloudFront: Edge caching, DDoS protection layer 1-3\n2. Route 53: DNS management with health checks\n3. WAF: Filter malicious requests, rate limiting\n4. Shield: Additional DDoS protection for layer 3-7\n5. ALB: Distribute traffic across instances\n6. ASG: Auto-scale EC2 across multiple AZs\n7. RDS (Multi-AZ): Fault-tolerant database\n8. ElastiCache: Session and data caching\n9. CloudWatch: Monitoring and alerting",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "A single EC2 instance is sufficient for DDoS protection",
+        "WAF is not needed if using CloudFront",
+        "Auto Scaling does not help with DDoS attacks"
+      ],
       "tags": ["ddos", "scalability", "architecture", "shield", "waf"]
     },
     {
@@ -842,6 +1437,11 @@
       "question": "Design a disaster recovery solution with RPO of 5 minutes and RTO of 1 hour.",
       "answer": "DR Solution (RPO: 5min, RTO: 1hr):\n\nServices Used:\n1. AWS Backup: Regular backups with 5-minute RPO\n2. CloudFormation: Define DR infrastructure as code\n3. S3 Cross-Region Replication: Replicate backups across regions\n4. CloudWatch Alarms: Monitor and trigger failover\n5. Route 53: DNS failover to DR region\n\nStrategy:\n- Warm standby in secondary region\n- Automated failover based on health checks\n- Regular DR drills and testing",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "A secondary region is not needed for disaster recovery",
+        "AWS Backup cannot replicate data between regions",
+        "RTO of 1 hour means data loss of up to 1 hour"
+      ],
       "tags": ["disaster-recovery", "rpo", "rto", "backup"]
     },
     {
@@ -849,6 +1449,11 @@
       "question": "What is AWS Glue and what are its main components?",
       "answer": "AWS Glue - Serverless ETL service:\n\nComponents:\n1. Data Catalog: Centralized metadata repository\n2. Crawlers: Auto-discover schemas from data sources\n3. ETL Jobs: Transform and load data\n4. Triggers: Schedule or event-based execution\n5. Dev Endpoints: Interactive development\n6. Dynamic Frames: Schema evolution handling\n\nIntegrations: S3, RDS, Redshift, DynamoDB\n\nUse Cases: Data migration, data lake preparation, analytics pipeline",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Glue crawlers can only discover JSON data formats",
+        "Glue is a compute service, not an ETL service",
+        "Glue requires managing underlying servers"
+      ],
       "tags": ["glue", "etl", "data-pipeline"]
     },
     {
@@ -856,6 +1461,11 @@
       "question": "What is the AWS Well-Architected Framework and its five pillars?",
       "answer": "AWS Well-Architected Framework - Five Pillars:\n\n1. Operational Excellence: Run/monitor systems, improve processes\n2. Security: Protect data, systems through risk management\n3. Reliability: Recover from failures, maintain availability\n4. Performance Efficiency: Optimize resources, adapt to changes\n5. Cost Optimization: Minimize expenses, maximize value\n\nEach pillar provides best practices and design principles for building secure, high-performing, resilient, and efficient infrastructure.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Cost optimization is the most important pillar",
+        "Security should be addressed after other pillars",
+        "Reliability pillar only covers compute resources"
+      ],
       "tags": ["well-architected", "architecture", "best-practices"]
     },
     {
@@ -863,6 +1473,11 @@
       "question": "What is the difference between IAM Users, Groups, Roles, and Policies?",
       "answer": "IAM Components:\n\nUsers:\n- Individual identities for people or applications\n- Long-term credentials (access keys, passwords)\n- Direct access to AWS services\n\nGroups:\n- Collection of users with shared permissions\n- Easier permission management\n- Apply policies to multiple users at once\n\nRoles:\n- Temporary permissions for trusted entities\n- No permanent credentials\n- Used by EC2, Lambda, cross-account access\n\nPolicies:\n- JSON documents defining permissions\n- Attached to users, groups, or roles\n- Can be AWS-managed or customer-managed",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "IAM users and roles are identical concepts",
+        "Policies are only attached to individual users",
+        "Groups cannot have multiple policies attached"
+      ],
       "tags": ["iam", "users", "groups", "roles", "policies"]
     },
     {
@@ -870,6 +1485,11 @@
       "question": "What is Amazon EFS and when would you use it?",
       "answer": "Amazon EFS - Elastic File System:\n\nWhat it is:\n- Managed NFS (Network File System) file storage\n- Scalable, pay-per-use\n- Multi-AZ for high availability\n\nUse Cases:\n- Shared storage for multiple EC2 instances\n- CMS and content management systems\n- Code repositories and build systems\n- Big data and analytics workloads\n- Container storage (ECS, EKS)\n\nvs EBS: EFS scales automatically, supports multiple connections",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "EFS can only be attached to a single EC2 instance",
+        "EFS is block storage like EBS",
+        "EFS does not support multi-AZ deployment"
+      ],
       "tags": ["efs", "file-storage", "nfs"]
     },
     {
@@ -877,6 +1497,11 @@
       "question": "What is AWS Snowball and what are its use cases?",
       "answer": "AWS Snowball - Physical data transfer:\n\nTypes:\n- Snowball: 80TB storage, standard transfer\n- Snowball Edge: 100TB with compute (Lambda, S3)\n- Snowmobile: Container, up to 100PB\n\nUse Cases:\n- Large-scale data migration (TB/PB scale)\n- Limited or no internet connectivity\n- Disaster recovery data transfer\n- Cloud migration for large enterprises\n\nBenefits: Fast (Gbps speeds), secure (encrypted), cost-effective",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Snowball is for computing workloads at the edge",
+        "Snowball requires internet connectivity for data transfer",
+        "Snowball Edge has less storage capacity than standard Snowball"
+      ],
       "tags": ["snowball", "data-transfer", "migration"]
     },
     {
@@ -884,6 +1509,11 @@
       "question": "What is AWS Simple Notification Service (SNS)?",
       "answer": "Amazon SNS - Pub/Sub messaging and mobile notifications:\n\nFeatures:\n- Pub/Sub: One message to many subscribers\n- Push model: Pushes to multiple endpoints\n- Topics: Organize subscribers by category\n\nSupported Subscribers:\n- Lambda, SQS, HTTP/S\n- Email, SMS, Mobile push\n- Kinesis Data Firehose\n\nUse Cases:\n- Application alerts and notifications\n- Event-driven architectures\n- Fan-out patterns\n- Mobile push notifications",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "SNS requires consumers to poll for messages",
+        "SNS topics can only have one subscriber",
+        "SNS cannot send mobile push notifications"
+      ],
       "tags": ["sns", "messaging", "pub-sub"]
     },
     {
@@ -891,6 +1521,11 @@
       "question": "What is AWS Simple Queue Service (SQS) and the difference between Standard and FIFO queues?",
       "answer": "Amazon SQS - Managed message queuing:\n\nStandard Queue:\n- At-least-once delivery\n- Best-effort ordering\n- Unlimited throughput\n- Millions of messages per second\n\nFIFO Queue:\n- Exactly-once processing\n- Guaranteed ordering (first-in-first-out)\n- Limited to 300 TPS\n- No duplicates\n\nShared Features:\n- Message retention (1 min to 14 days)\n- Dead-letter queues\n- Visibility timeout",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "FIFO queues guarantee at-least-once delivery",
+        "Standard queues process messages in strict order",
+        "SQS messages are automatically deleted after 24 hours"
+      ],
       "tags": ["sqs", "queue", "messaging"]
     },
     {
@@ -898,6 +1533,11 @@
       "question": "What is AWS Elastic Beanstalk and when should you use it?",
       "answer": "AWS Elastic Beanstalk - PaaS for deploying apps:\n\nWhat it is:\n- Managed platform for deploying apps\n- Supports: Node.js, Python, Java, .NET, Go, Docker\n- Handles provisioning, scaling, monitoring\n\nUse Cases:\n- Quick deployment without infrastructure knowledge\n- Simple web applications\n- Microservices architecture\n- API backends\n\nBenefits:\n- No additional cost (pay for underlying resources)\n- Auto-scaling and load balancing\n- Multiple environment support",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Elastic Beanstalk requires managing all underlying infrastructure",
+        "Beanstalk only supports Java applications",
+        "Beanstalk cannot auto-scale applications"
+      ],
       "tags": ["elastic-beanstalk", "paas", "deployment"]
     },
     {
@@ -905,6 +1545,11 @@
       "question": "What is AWS Global Accelerator and how does it improve performance?",
       "answer": "AWS Global Accelerator:\n\nWhat it is:\n- Networking service that improves availability and performance\n- Routes traffic through AWS edge locations\n- Uses anycast IP addresses\n\nHow it works:\n1. Traffic enters nearest edge location\n2. Routes over AWS network (not public internet)\n3. Reaches your application in one or more regions\n\nBenefits:\n- 60% performance improvement for global apps\n- Instant failover to healthy endpoints\n- DDoS protection with Shield Standard\n- Consistent performance regardless of location",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Global Accelerator routes traffic over the public internet",
+        "Global Accelerator is only for Lambda functions",
+        "Global Accelerator cannot improve latency to EC2 instances"
+      ],
       "tags": ["global-accelerator", "networking", "performance"]
     },
     {
@@ -912,6 +1557,11 @@
       "question": "What is AWS WAF and what protections does it offer?",
       "answer": "AWS WAF - Web Application Firewall:\n\nProtections:\n- SQL injection and XSS filtering\n- IP blocking/allowing\n- Rate limiting (prevent DDoS)\n- Geo-blocking\n- Bot control\n- Custom rules with regex\n\nIntegration Points:\n- CloudFront\n- Application Load Balancer\n- API Gateway\n- AppSync\n\nManaged Rules:\n- AWS managed rule groups\n- Third-party vendor rules (Fortinet, CrowdStrike)",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "AWS WAF only protects against SQL injection attacks",
+        "WAF can only be used with EC2 instances",
+        "AWS WAF does not support rate limiting"
+      ],
       "tags": ["waf", "security", "firewall"]
     }
   ]

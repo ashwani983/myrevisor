@@ -9,560 +9,960 @@
       "question": "What is Ansible and what are its primary use cases?",
       "answer": "Ansible is an open-source automation tool used for configuration management, application deployment, task automation, and IT orchestration. Primary use cases include: 1) Configuration management - keeping servers in a known state, 2) Application deployment - rolling out apps across environments, 3) Orchestration - coordinating complex workflows like zero-downtime updates, 4) Provisioning - bootstrapping new infrastructure. It uses YAML playbooks and operates in an agentless manner using SSH/WinRM.",
       "difficulty": "easy",
-      "tags": ["basics", "automation"]
+      "tags": ["basics", "automation"],
+      "wrongAnswers": [
+        "A container orchestration platform similar to Kubernetes for managing microservices",
+        "A version control system for tracking infrastructure changes in Git repositories",
+        "A monitoring tool for collecting metrics and logs from managed servers"
+      ]
     },
     {
       "id": "ansible-002",
       "question": "What are the key components of Ansible's architecture?",
       "answer": "Ansible consists of a control node where playbooks are executed, and managed nodes which are the target systems. It communicates using standard protocols: SSH for Linux/Unix and WinRM for Windows without requiring any agent installation. This push-based model allows the control node to initiate tasks directly. The simplicity of this setup is central to Ansible's appeal.",
       "difficulty": "easy",
-      "tags": ["architecture", "basics"]
+      "tags": ["architecture", "basics"],
+      "wrongAnswers": [
+        "A central master server that pushes configurations and worker nodes that pull updates",
+        "A container-based architecture using Docker images for each managed service",
+        "A peer-to-peer network where all nodes share responsibility for configuration"
+      ]
     },
     {
       "id": "ansible-003",
       "question": "What does it mean for Ansible to be agentless?",
       "answer": "Being agentless means Ansible doesn't require software agents on managed nodes; it uses SSH or WinRM for communication. In contrast, Puppet and Chef rely on agents that poll a central server for updates - a pull-based model. Ansible's push-based approach simplifies deployment and reduces resource overhead. However, it can be less scalable without optimization.",
       "difficulty": "easy",
-      "tags": ["basics", "agentless"]
+      "tags": ["basics", "agentless"],
+      "wrongAnswers": [
+        "Agentless means Ansible doesn't require any network connectivity to managed nodes",
+        "Agentless means Ansible only works with virtual machines, not bare-metal servers",
+        "Agentless means Ansible cannot run on Windows operating systems"
+      ]
     },
     {
       "id": "ansible-004",
       "question": "What is Ansible Galaxy and how does it relate to Collections?",
       "answer": "Ansible Galaxy is a community hub for sharing Ansible roles and collections. It allows users to find, download, and share reusable content that can accelerate playbook development. Originally, Galaxy mainly shared roles, but Collections were introduced in Ansible 2.9 to package not only roles but also modules, plugins, and playbooks. Galaxy is the place to publish and browse content, while Collections are the distribution format.",
       "difficulty": "medium",
-      "tags": ["galaxy", "collections"]
+      "tags": ["galaxy", "collections"],
+      "wrongAnswers": [
+        "Ansible Galaxy is a commercial marketplace for enterprise Ansible features",
+        "Galaxy is the default collection that comes pre-installed with Ansible",
+        "Collections are deprecated in favor of Galaxy roles for all content sharing"
+      ]
     },
     {
       "id": "ansible-005",
       "question": "What are Collections and FQCNs in Ansible?",
       "answer": "Collections are a distribution format to package and distribute Ansible content including roles, modules, and plugins. FQCN (Fully Qualified Collection Name) uniquely identifies a module by specifying its collection, e.g., community.general.git. Using FQCNs ensures clarity about which collection the module comes from. You can pin specific versions in requirements.yml like: name: community.general version: 7.8.0",
       "difficulty": "medium",
-      "tags": ["collections", "modules"]
+      "tags": ["collections", "modules"],
+      "wrongAnswers": [
+        "Collections are Docker containers that package Ansible execution environments",
+        "FQCN is a certificate format used for securing Ansible communication",
+        "Collections replaced roles entirely; roles are no longer supported"
+      ]
     },
     {
       "id": "ansible-006",
       "question": "Explain Ansible variable precedence ladder",
       "answer": "Ansible has a well-defined variable precedence hierarchy: role defaults have lowest priority, then inventory variables (group_vars, host_vars), then playbook vars, then task-level vars (set_fact), and extra-vars (--extra-vars) have highest priority. The full precedence has over 20 levels. Common pitfalls include unintended overrides, using role defaults for important values, and forgetting that set_fact creates host-level variables that persist throughout the play.",
       "difficulty": "medium",
-      "tags": ["variables", "precedence"]
+      "tags": ["variables", "precedence"],
+      "wrongAnswers": [
+        "Variables defined in vars_files have the highest precedence in all cases",
+        "Environment variables always override all other variable definitions",
+        "Variables have no defined precedence; Ansible uses the first one it encounters"
+      ]
     },
     {
       "id": "ansible-007",
       "question": "What are Ansible facts and registered variables?",
       "answer": "Facts are pieces of information about target systems that Ansible automatically collects at the beginning of a playbook run using the setup module. They include OS, IP addresses, memory, CPU details and are stored as variables. Registered variables capture the result of a task using the register keyword. For example: register: file_info makes the module output available for later use in conditionals or other tasks.",
       "difficulty": "medium",
-      "tags": ["facts", "variables"]
+      "tags": ["facts", "variables"],
+      "wrongAnswers": [
+        "Facts are user-defined variables set at the beginning of each play",
+        "Registered variables can only capture output from shell and command modules",
+        "Facts are collected automatically but cannot be modified or filtered"
+      ]
     },
     {
       "id": "ansible-008",
       "question": "How does fact gathering and caching work in Ansible?",
       "answer": "By default, Ansible gathers facts at the start of every play which can be slow in large environments. You can disable it with gather_facts: no or use caching to speed things up. Fact caching stores host facts in a backend (JSON files, Redis, Memcached) so they persist between runs. Configure in ansible.cfg with gathering: smart, fact_caching: jsonfile, fact_caching_timeout: 7200.",
       "difficulty": "medium",
-      "tags": ["facts", "performance"]
+      "tags": ["facts", "performance"],
+      "wrongAnswers": [
+        "Fact caching requires installing additional agents on all managed nodes",
+        "Caching is automatic and cannot be configured; it always uses local files",
+        "Fact gathering can only be disabled globally, not per-play"
+      ]
     },
     {
       "id": "ansible-009",
       "question": "What is the difference between push and pull model in Ansible?",
       "answer": "Ansible primarily operates in push model where the control node pushes configurations to managed nodes over SSH/WinRM. The pull model uses ansible-pull command where managed nodes pull configuration from a central Git repository and apply it locally. Use ansible-pull for decentralized environments, self-healing systems, edge devices, or when nodes are not always reachable from the control node.",
       "difficulty": "medium",
-      "tags": ["architecture", "push-pull"]
+      "tags": ["architecture", "push-pull"],
+      "wrongAnswers": [
+        "Push model requires agents on managed nodes; pull model is agentless",
+        "Pull model is faster because it doesn't require SSH connections",
+        "Push model can only be used with cloud providers, not on-premises"
+      ]
     },
     {
       "id": "ansible-010",
       "question": "What is an Ansible module?",
       "answer": "A module in Ansible is a reusable, standalone script that performs a specific task on managed nodes. Modules are the building blocks of playbooks and handle tasks like installing packages, managing files, configuring services. Use ansible-doc <module_name> to look up options and parameters. Modules can be built-in or custom, and they're typically idempotent.",
       "difficulty": "easy",
-      "tags": ["modules", "basics"]
+      "tags": ["modules", "basics"],
+      "wrongAnswers": [
+        "A module is a single-line command executed directly from the Ansible CLI",
+        "Modules are YAML files that define the structure of an entire playbook",
+        "A module is a Python script that runs on the control node only"
+      ]
     },
     {
       "id": "ansible-011",
       "question": "What is the difference between ad-hoc commands and playbooks?",
       "answer": "Ad-hoc commands are one-off commands run from CLI for quick tasks like checking connectivity or gathering facts. For example: ansible all -m ping. Playbooks are YAML files defining a series of tasks to be executed in order, automating complex workflows with multiple plays, roles, variables, and conditionals. Playbooks are more powerful and structured than ad-hoc commands.",
       "difficulty": "easy",
-      "tags": ["basics", "playbooks"]
+      "tags": ["basics", "playbooks"],
+      "wrongAnswers": [
+        "Ad-hoc commands can only run on localhost, playbooks can target remote hosts",
+        "Playbooks are faster because they compile tasks before execution",
+        "Ad-hoc commands and playbooks are identical; the names are interchangeable"
+      ]
     },
     {
       "id": "ansible-012",
       "question": "What are inventories in Ansible? Explain static vs dynamic inventories",
       "answer": "An inventory is a file or script defining hosts and groups that Ansible manages. Static inventory is a text file (INI or YAML) explicitly listing hosts and groups. Dynamic inventory is generated on-the-fly by a script querying external sources like AWS, Azure, GCP, or CMDBs - ideal for cloud-native or frequently changing environments.",
       "difficulty": "easy",
-      "tags": ["inventory", "basics"]
+      "tags": ["inventory", "basics"],
+      "wrongAnswers": [
+        "Inventories are only used for storing host credentials and passwords",
+        "Dynamic inventory is faster but requires a paid Ansible subscription",
+        "Static inventory files must be written in Python, not YAML or INI format"
+      ]
     },
     {
       "id": "ansible-013",
       "question": "How do you define inventories and group hosts?",
       "answer": "Define inventories in hosts.ini or inventory.yml with groups like [web] or [db]. Use group_vars/ to attach variables to all hosts in a group, and host_vars/ for individual host variables. This organizes configurations for different environments or roles cleanly.",
       "difficulty": "easy",
-      "tags": ["inventory", "variables"]
+      "tags": ["inventory", "variables"],
+      "wrongAnswers": [
+        "Hosts can only belong to one group in Ansible inventories",
+        "Group variables must be defined inline with the host definition",
+        "Inventory files must be named exactly hosts.ini to be recognized"
+      ]
     },
     {
       "id": "ansible-014",
       "question": "How does Ansible connect to Linux vs Windows hosts?",
       "answer": "For Linux, Ansible uses SSH and requires Python on target machines. For Windows, it uses WinRM (Microsoft's remote management protocol). Modules for Windows are written in PowerShell, but you still write tasks in YAML. The connection method differs but the Ansible experience remains consistent.",
       "difficulty": "easy",
-      "tags": ["connectivity", "windows"]
+      "tags": ["connectivity", "windows"],
+      "wrongAnswers": [
+        "Ansible requires the same Python interpreter on both Linux and Windows hosts",
+        "Windows hosts can only be managed through a separate Ansible controller",
+        "Linux uses WinRM while Windows uses SSH for Ansible connections"
+      ]
     },
     {
       "id": "ansible-015",
       "question": "What does ansible.cfg control?",
       "answer": "ansible.cfg is the central configuration file controlling Ansible behavior: inventory paths, SSH settings, privilege escalation, retries, and more. Ansible searches for it in order: current directory, ANSIBLE_CONFIG env variable, ~/.ansible.cfg, and /etc/ansible/ansible.cfg. First match wins, allowing project-specific and global defaults.",
       "difficulty": "easy",
-      "tags": ["configuration", "basics"]
+      "tags": ["configuration", "basics"],
+      "wrongAnswers": [
+        "ansible.cfg must be located in /etc/ansible/ to be recognized",
+        "Environment variables override ansible.cfg settings in all cases",
+        "ansible.cfg is required; Ansible cannot run without it"
+      ]
     },
     {
       "id": "ansible-016",
       "question": "How do you test connectivity in Ansible?",
       "answer": "Use ansible all -m ping to test connectivity. This runs the Ansible ping module which confirms connection, authentication, and Python/PowerShell availability. If it works, your basic setup is correct.",
       "difficulty": "easy",
-      "tags": ["testing", "connectivity"]
+      "tags": ["testing", "connectivity"],
+      "wrongAnswers": [
+        "Use ansible all -m ping only for localhost testing",
+        "Test connectivity by running ansible-playbook with --check flag",
+        "Use ansible all -m setup to test SSH connectivity"
+      ]
     },
     {
       "id": "ansible-017",
       "question": "What are Execution Environments and ansible-navigator?",
       "answer": "Execution Environments are container images packaging Ansible with necessary collections, plugins, and dependencies. ansible-navigator is a tool providing a smoother interface for running playbooks, exploring collections, and debugging within these environments. Automation Controller and AWX provide a web UI, API, and scheduling on top of CLI.",
       "difficulty": "hard",
-      "tags": ["execution-environments", "awx"]
+      "tags": ["execution-environments", "awx"],
+      "wrongAnswers": [
+        "Execution Environments replace ansible.cfg for all configuration needs",
+        "ansible-navigator is a web-based UI that replaces the command-line interface",
+        "Execution Environments require Kubernetes to run Ansible playbooks"
+      ]
     },
     {
       "id": "ansible-018",
       "question": "What is an Ansible playbook?",
       "answer": "A playbook is a YAML file defining what Ansible should do - which machines to target and the exact steps to bring them to desired state. It consists of one or more plays, each with multiple tasks. Each task uses a module to perform a specific action like installing a package or starting a service.",
       "difficulty": "easy",
-      "tags": ["playbooks", "basics"]
+      "tags": ["playbooks", "basics"],
+      "wrongAnswers": [
+        "Playbooks are Python scripts that Ansible interprets at runtime",
+        "A playbook can contain only one task per play by design",
+        "Playbooks are stored in JSON format, not YAML"
+      ]
     },
     {
       "id": "ansible-019",
       "question": "What does idempotence mean in Ansible?",
       "answer": "Idempotence means running the same playbook multiple times leads to the same outcome - if a file is present or package is installed, Ansible won't reapply changes. This makes Ansible safe and predictable. Use modules as designed (like package module) rather than raw commands to ensure idempotency.",
       "difficulty": "easy",
-      "tags": ["idempotency", "basics"]
+      "tags": ["idempotency", "basics"],
+      "wrongAnswers": [
+        "Idempotence means tasks run only once and cannot be repeated",
+        "Idempotent tasks always report 'changed' status on subsequent runs",
+        "Raw shell commands are always idempotent in Ansible playbooks"
+      ]
     },
     {
       "id": "ansible-020",
       "question": "What is the difference between vars, vars_files, and vars_prompt?",
       "answer": "vars declares variables directly in the playbook. vars_files references a separate YAML file containing variables, keeping playbooks cleaner. vars_prompt asks for user input at runtime, useful for passwords or environment-specific values not hardcoded.",
       "difficulty": "medium",
-      "tags": ["variables", "playbooks"]
+      "tags": ["variables", "playbooks"],
+      "wrongAnswers": [
+        "vars_files cannot be used with encrypted Ansible Vault files",
+        "vars_prompt requires Python to be installed on the control node only",
+        "vars and vars_files are identical; vars_prompt is for list variables only"
+      ]
     },
     {
       "id": "ansible-021",
       "question": "When would you use a role vs a simple task file?",
       "answer": "Use task files for quick, lightweight automation with few steps not expected to be reused. Use roles when you want standard structure with tasks, variables, handlers, templates, and defaults grouped together. Roles make playbooks modular and reusable across projects.",
       "difficulty": "medium",
-      "tags": ["roles", "tasks"]
+      "tags": ["roles", "tasks"],
+      "wrongAnswers": [
+        "Roles are required for any playbook with more than five tasks",
+        "Task files are faster but cannot use any Ansible modules",
+        "Roles and task files are interchangeable; choose based on personal preference"
+      ]
     },
     {
       "id": "ansible-022",
       "question": "What is the difference between block, rescue, and always?",
       "answer": "block groups tasks together. If any task in the block fails, the rescue section runs for error handling. The always section runs regardless of success or failure, like a finally block. This pattern is useful for trying something, having a fallback if it fails, and performing cleanup.",
       "difficulty": "medium",
-      "tags": ["error-handling", "playbooks"]
+      "tags": ["error-handling", "playbooks"],
+      "wrongAnswers": [
+        "rescue only runs when a task explicitly calls the rescue module",
+        "always executes before block, not after",
+        "block is optional but rescue and always are mandatory in all playbooks"
+      ]
     },
     {
       "id": "ansible-023",
       "question": "How do legacy with_items compare to loop in newer Ansible?",
       "answer": "with_items was the old way to loop over lists. It still works but is legacy. The newer loop keyword is cleaner, more consistent, and supports advanced features like loop control, indexing, and filters. Use loop: [1, 2, 3] instead of with_items: [1, 2, 3].",
       "difficulty": "medium",
-      "tags": ["loops", "playbooks"]
+      "tags": ["loops", "playbooks"],
+      "wrongAnswers": [
+        "with_items is faster than loop because it's native C code",
+        "loop cannot be used with conditionals, only with_items supports when",
+        "with_items and loop have identical syntax and features"
+      ]
     },
     {
       "id": "ansible-024",
       "question": "How do handlers and notify work together?",
       "answer": "Handlers are special tasks that only run when triggered by a regular task using notify. For example, changing a config file can notify a handler to restart a service. Advanced patterns include listen for multiple tasks triggering same handler, and controlling handler ordering when they depend on each other.",
       "difficulty": "medium",
-      "tags": ["handlers", "playbooks"]
+      "tags": ["handlers", "playbooks"],
+      "wrongAnswers": [
+        "Handlers run automatically at the end of every playbook",
+        "notify can only be used once per task, even if multiple changes occur",
+        "Handlers cannot be triggered by tasks that use the loop keyword"
+      ]
     },
     {
       "id": "ansible-025",
       "question": "Name three common strategies to keep playbooks DRY",
       "answer": "1) Roles - encapsulate tasks, variables, handlers into reusable units. 2) Includes and imports - use include_tasks or import_tasks to reuse task files. 3) Variables and defaults - define common values in group_vars, host_vars, or role defaults to avoid hardcoding.",
       "difficulty": "medium",
-      "tags": ["best-practices", "dry"]
+      "tags": ["best-practices", "dry"],
+      "wrongAnswers": [
+        "Use comments to mark duplicate sections that should be refactored later",
+        "Copy and paste blocks of code to other playbooks to maintain consistency",
+        "Use multiple small playbooks instead of roles for better reusability"
+      ]
     },
     {
       "id": "ansible-026",
       "question": "When do you favor include_tasks over import_tasks?",
       "answer": "import_tasks pulls tasks at parse time - Ansible is aware of them before execution. Good for tasks always needed. include_tasks works at runtime - tasks are brought in only when that part of the play runs. Better for conditionals or loops. Use include_tasks for dynamic, conditional task inclusion.",
       "difficulty": "medium",
-      "tags": ["tasks", "playbooks"]
+      "tags": ["tasks", "playbooks"],
+      "wrongAnswers": [
+        "include_tasks is faster because it runs tasks in parallel",
+        "import_tasks cannot be used with the loop keyword",
+        "Always prefer import_tasks as it provides better error messages"
+      ]
     },
     {
       "id": "ansible-027",
       "question": "How do you use changed_when and failed_when effectively?",
       "answer": "changed_when tells Ansible a task didn't really make changes even if the module thought it did - useful for keeping reports accurate. failed_when lets you mark a task as failed based on custom logic even if the command technically succeeded. Both make playbooks smarter about real-world conditions.",
       "difficulty": "hard",
-      "tags": ["playbooks", "conditions"]
+      "tags": ["playbooks", "conditions"],
+      "wrongAnswers": [
+        "changed_when only works with the shell and command modules",
+        "failed_when cannot be combined with the when conditional",
+        "These options modify the actual task execution, not just the reporting"
+      ]
     },
     {
       "id": "ansible-028",
       "question": "What are callback plugins and when might you enable one?",
       "answer": "Callback plugins customize how Ansible displays output or sends results elsewhere. Use them to log results to file, send to chat apps, or display cleaner summaries. They're helpful for better observability or integrating results with external tools.",
       "difficulty": "hard",
-      "tags": ["plugins", "logging"]
+      "tags": ["plugins", "logging"],
+      "wrongAnswers": [
+        "Callback plugins can only be used with Ansible Tower or AWX",
+        "Callback plugins modify how modules execute on managed nodes",
+        "You can only enable one callback plugin at a time in ansible.cfg"
+      ]
     },
     {
       "id": "ansible-029",
       "question": "How do you template with Jinja2 in Ansible?",
       "answer": "Templating uses Jinja2 to insert variables and apply filters in tasks or templates. Filters like default provide fallback values, combine merges dictionaries, to_nice_yaml renders variables as readable YAML. This makes templates flexible and dynamic for generating config files.",
       "difficulty": "medium",
-      "tags": ["templates", "jinja2"]
+      "tags": ["templates", "jinja2"],
+      "wrongAnswers": [
+        "Jinja2 templates must have a .j2 extension and cannot contain Ansible tasks",
+        "Templates can only be used with the copy module, not the file module",
+        "Jinja2 is only available in Ansible roles, not in standalone playbooks"
+      ]
     },
     {
       "id": "ansible-030",
       "question": "How do you write advanced conditionals and loops in Ansible?",
       "answer": "Use when for conditionals to control task execution based on variables or facts. Use loop to repeat tasks for each item in a list. Advanced usage combines them - looping over users and only creating them if they don't exist, or using filters inside loops to transform data.",
       "difficulty": "medium",
-      "tags": ["conditionals", "loops"]
+      "tags": ["conditionals", "loops"],
+      "wrongAnswers": [
+        "Conditionals and loops cannot be used together in the same task",
+        "The 'when' keyword only works with boolean variables, not strings",
+        "Advanced loops require the ansible-projects collection to be installed"
+      ]
     },
     {
       "id": "ansible-031",
       "question": "How do you control task execution across hosts?",
       "answer": "By default, Ansible runs tasks on all targeted hosts in parallel. Use serial to run tasks in batches. Use conditionals to skip tasks for specific hosts. Use delegate_to to run a task on a specific host even if part of a larger group. These controls orchestrate how and where tasks get applied.",
       "difficulty": "medium",
-      "tags": ["execution", "orchestration"]
+      "tags": ["execution", "orchestration"],
+      "wrongAnswers": [
+        "Ansible always executes tasks sequentially, never in parallel",
+        "Use fork only to control execution order, not parallelism",
+        "delegate_to requires the target host to be in the inventory"
+      ]
     },
     {
       "id": "ansible-032",
       "question": "How do you implement rolling updates with serial?",
       "answer": "Use serial keyword to implement rolling updates. Set serial: 2 to update two hosts at a time instead of all at once. This distributes risk and avoids downtime. max_fail_percentage setting stops the rollout if too many hosts fail in a batch. Together they balance speed and stability.",
       "difficulty": "hard",
-      "tags": ["rolling-updates", "deployment"]
+      "tags": ["rolling-updates", "deployment"],
+      "wrongAnswers": [
+        "serial only works with the free strategy, not the default linear strategy",
+        "Rolling updates require all hosts to be in a single inventory group",
+        "max_fail_percentage defaults to 100% meaning no failures are allowed"
+      ]
     },
     {
       "id": "ansible-033",
       "question": "How do you run long-running tasks asynchronously?",
       "answer": "Use async parameter for long-running tasks to run in background. Set poll to control how often Ansible checks for completion. poll: 0 means fire and forget. Higher values wait for results. Trade-off is asynchronous tasks are harder to track - consider logging and error handling.",
       "difficulty": "hard",
-      "tags": ["async", "performance"]
+      "tags": ["async", "performance"],
+      "wrongAnswers": [
+        "Async tasks always run on localhost regardless of the hosts directive",
+        "The poll parameter is required and cannot be set to zero",
+        "Async can only be used with the shell module, not with other modules"
+      ]
     },
     {
       "id": "ansible-034",
       "question": "How do you design and use tags in playbooks?",
       "answer": "Tags are labels to attach to tasks or plays to run only specific parts. Tag all database tasks as db and run only those when needed. Good tag hygiene means clear consistent names, avoiding too many overlapping tags, documenting for the team. Makes playbooks modular in big projects.",
       "difficulty": "medium",
-      "tags": ["tags", "playbooks"]
+      "tags": ["tags", "playbooks"],
+      "wrongAnswers": [
+        "Tags can only be applied to entire plays, not individual tasks",
+        "Every task must have at least one tag or Ansible will skip it",
+        "Tags are required in ansible.cfg configuration before use"
+      ]
     },
     {
       "id": "ansible-035",
       "question": "How can you limit the execution scope of a playbook?",
       "answer": "Use --limit flag to restrict execution to a single host, group, or pattern. Combined with inventory groups, this provides quick way to narrow scope - for example, running a fix only on staging before production. Also use patterns and group filtering to control scope.",
       "difficulty": "medium",
-      "tags": ["execution", "limit"]
+      "tags": ["execution", "limit"],
+      "wrongAnswers": [
+        "Limit only works with static inventory files, not dynamic inventory",
+        "The --limit flag requires the control node to have SSH access to all hosts",
+        "You can only limit by host, not by group or pattern"
+      ]
     },
     {
       "id": "ansible-036",
       "question": "What are Ansible strategies and when do you use each?",
       "answer": "Strategies control how Ansible schedules tasks: linear is default - tasks in order on all hosts. free allows hosts to run as quickly as possible without waiting - faster but harder to follow output. host_pinned keeps each host tied to single worker - useful for debugging. debug runs interactively for troubleshooting.",
       "difficulty": "hard",
-      "tags": ["strategies", "execution"]
+      "tags": ["strategies", "execution"],
+      "wrongAnswers": [
+        "Strategies are set in the inventory file, not in ansible.cfg",
+        "The free strategy is the default and recommended for production",
+        "host_pinned strategy is required when using delegate_to"
+      ]
     },
     {
       "id": "ansible-037",
       "question": "What logging and profiling options are available in Ansible?",
       "answer": "Enable logs through ansible.cfg by setting a log path. Use callback plugins for profiling - profile_tasks shows time each task takes, timer gives total runtime. These are useful for spotting bottlenecks in playbooks.",
       "difficulty": "medium",
-      "tags": ["logging", "profiling"]
+      "tags": ["logging", "profiling"],
+      "wrongAnswers": [
+        "Logging is enabled by default and writes to syslog",
+        "Profiling requires a commercial license from Red Hat",
+        "profile_tasks is a module, not a callback plugin"
+      ]
     },
     {
       "id": "ansible-038",
       "question": "How can performance be optimized in Ansible?",
       "answer": "Optimize with: forks - increase parallelism for more hosts at once. pipelining - reduces SSH operations by cutting round-trips. SSH ControlPersist - keeps connections open. Fact caching - stores gathered facts to avoid re-fetching. Connection reuse - keeps connections alive across tasks.",
       "difficulty": "hard",
-      "tags": ["performance", "optimization"]
+      "tags": ["performance", "optimization"],
+      "wrongAnswers": [
+        "Increasing forks beyond the default of 5 can cause SSH connection issues",
+        "Pipelining requires WinRM, not SSH, for connections",
+        "Fact caching is slower than gathering fresh facts on each run"
+      ]
     },
     {
       "id": "ansible-039",
       "question": "What is diff_mode and when is it helpful?",
       "answer": "diff_mode displays the difference between current state and proposed changes. It's especially helpful for config management - see exactly what Ansible will change before applying. Think of it as a safe way to validate playbook impact before execution.",
       "difficulty": "medium",
-      "tags": ["diff", "validation"]
+      "tags": ["diff", "validation"],
+      "wrongAnswers": [
+        "diff_mode is enabled by default for all playbook runs",
+        "diff_mode only works with the file and copy modules",
+        "diff_mode requires --check mode to be enabled first"
+      ]
     },
     {
       "id": "ansible-040",
       "question": "How do you use privilege escalation safely?",
       "answer": "Use become: yes at task or play level only where needed, with become_method (usually sudo) and controlled become_user. Scope tightly: least privilege for shortest time, avoid embedding plaintext passwords, prefer secure vault or credential store. Audit ansible.cfg settings for stricter controls.",
       "difficulty": "medium",
-      "tags": ["security", "privilege"]
+      "tags": ["security", "privilege"],
+      "wrongAnswers": [
+        "Privilege escalation should be enabled globally in ansible.cfg for all tasks",
+        "become_user defaults to root and cannot be changed to other users",
+        "SSH keys are more secure than privilege escalation for root access"
+      ]
     },
     {
       "id": "ansible-041",
       "question": "How do you secure control node credentials?",
       "answer": "Protect the control node like a vault: minimize who can log in, use SSH agent instead of world-readable private keys, keep credentials out of playbooks and source control. For secrets in task output, set no_log: true on the task so Ansible doesn't record sensitive values.",
       "difficulty": "hard",
-      "tags": ["security", "credentials"]
+      "tags": ["security", "credentials"],
+      "wrongAnswers": [
+        "Credentials can be stored in plain text in ansible.cfg if it's in /etc/ansible/",
+        "The no_log setting hides credentials only from the console, not from logs",
+        "SSH passwords are more secure than SSH keys for automation"
+      ]
     },
     {
       "id": "ansible-042",
       "question": "How do you use no_log and redaction for secrets?",
       "answer": "no_log: true hides task input/output entirely from logs - useful for credential generation. For more control than all-or-nothing, use redaction via custom callback plugins or ansible.cfg log settings. Never render secrets into templates stored on control node - pull from secure lookup or Vault at runtime.",
       "difficulty": "hard",
-      "tags": ["security", "secrets"]
+      "tags": ["security", "secrets"],
+      "wrongAnswers": [
+        "no_log is enabled by default for all tasks involving passwords",
+        "Redaction can be configured per-task using the redact parameter",
+        "Secrets in templates are safe because templates are not logged"
+      ]
     },
     {
       "id": "ansible-043",
       "question": "How do you handle external secret lookups?",
       "answer": "Use Ansible Vault or dedicated secrets backends. Vault encrypts files and variables, decrypt at runtime with --vault-password-file. For cloud secrets, use lookup plugins like aws_ssm or hashi_vault. Use Vault IDs for multiple vaults (CI vs production) mapping encrypted files to different keys.",
       "difficulty": "hard",
-      "tags": ["vault", "secrets"]
+      "tags": ["vault", "secrets"],
+      "wrongAnswers": [
+        "Vault can only encrypt entire files, not individual variables",
+        "External secrets must be downloaded to the control node before use",
+        "hashi_vault plugin requires a HashiCorp subscription"
+      ]
     },
     {
       "id": "ansible-044",
       "question": "What is Ansible check mode and what are its caveats?",
       "answer": "Check mode (--check) is Ansible's dry run - shows what would change without making actual changes. Useful for validation, but not every module supports it, and some tasks may behave differently than in real run. Great for preview, not a guarantee.",
       "difficulty": "easy",
-      "tags": ["check-mode", "validation"]
+      "tags": ["check-mode", "validation"],
+      "wrongAnswers": [
+        "Check mode is enabled by default when running ansible-playbook",
+        "All modules fully support check mode without any exceptions",
+        "Check mode requires SSH access to managed nodes"
+      ]
     },
     {
       "id": "ansible-045",
       "question": "How do you handle version control for playbooks and roles?",
       "answer": "Treat playbooks and roles like code: keep in Git, use branches for changes, tag versions for reuse. Publish and version roles through Ansible Galaxy. Makes automation reproducible and easy to roll back.",
       "difficulty": "easy",
-      "tags": ["git", "version-control"]
+      "tags": ["git", "version-control"],
+      "wrongAnswers": [
+        "Ansible files must be stored in a separate repository from application code",
+        "Roles can only be versioned using Ansible Galaxy, not Git tags",
+        "Git is required; Ansible cannot work with other version control systems"
+      ]
     },
     {
       "id": "ansible-046",
       "question": "How do you integrate Ansible with CI/CD pipelines?",
       "answer": "Plug Ansible into pipelines like Jenkins, GitHub Actions, or GitLab CI. Pipelines can run playbooks after commit, handle testing, linting, apply configs to staging before production. Infrastructure changes follow same review-and-release process as app code.",
       "difficulty": "medium",
-      "tags": ["ci-cd", "integration"]
+      "tags": ["ci-cd", "integration"],
+      "wrongAnswers": [
+        "Ansible can only integrate with Jenkins, not other CI/CD tools",
+        "Playbooks must be compiled before running in CI/CD pipelines",
+        "CI/CD integration requires Ansible Tower or AWX"
+      ]
     },
     {
       "id": "ansible-047",
       "question": "What are dynamic inventory plugins for cloud providers?",
       "answer": "Dynamic inventory queries cloud directly instead of hardcoding hosts in a file. Ansible can pull current info from AWS, Azure, Google Cloud using plugins. Your playbooks always target right machines without manual updates.",
       "difficulty": "medium",
-      "tags": ["inventory", "cloud"]
+      "tags": ["inventory", "cloud"],
+      "wrongAnswers": [
+        "Dynamic inventory is slower than static inventory for cloud environments",
+        "Cloud inventory plugins require a premium Ansible subscription",
+        "Static inventory is not supported for cloud environments"
+      ]
     },
     {
       "id": "ansible-048",
       "question": "How does Ansible interact with Kubernetes?",
       "answer": "Ansible can communicate with Kubernetes using modules and collections like kubernetes.core. You can deploy workloads, manage resources, or bootstrap clusters. It brings YAML-driven automation into Kubernetes world.",
       "difficulty": "medium",
-      "tags": ["kubernetes", "integration"]
+      "tags": ["kubernetes", "integration"],
+      "wrongAnswers": [
+        "Ansible can only interact with Kubernetes through Docker containers",
+        "Kubernetes clusters must be registered in the Ansible inventory first",
+        "Ansible requires kubectl to be installed on all managed nodes"
+      ]
     },
     {
       "id": "ansible-049",
       "question": "How do you handle failures gracefully in Ansible?",
       "answer": "Use ignore_errors or failed_when: false for expected but non-critical failures. Use blocks with rescue and always for error handling - rescue can roll back or clean up, always ensures cleanup runs regardless. Break large playbooks into smaller units, validate inputs, run critical steps in check mode first.",
       "difficulty": "medium",
-      "tags": ["error-handling", "failure"]
+      "tags": ["error-handling", "failure"],
+      "wrongAnswers": [
+        "ignore_errors should be used globally in ansible.cfg for all tasks",
+        "rescue blocks only run for network-related failures, not all errors",
+        "failed_when cannot be combined with the block/rescue pattern"
+      ]
     },
     {
       "id": "ansible-050",
       "question": "What is Event-Driven Ansible (EDA)?",
       "answer": "EDA reacts in real time - instead of scheduled runs, it listens for events like alerts or log entries and triggers automation immediately. Prefer when speed matters: handling incidents or scaling services instantly rather than waiting for cron jobs.",
       "difficulty": "hard",
-      "tags": ["eda", "event-driven"]
+      "tags": ["eda", "event-driven"],
+      "wrongAnswers": [
+        "EDA replaces traditional Ansible playbooks entirely",
+        "EDA only works with webhooks from GitHub and GitLab",
+        "Event-Driven Ansible requires Kubernetes to be installed"
+      ]
     },
     {
       "id": "ansible-051",
       "question": "What are the key parts of a rulebook in EDA?",
       "answer": "A rulebook defines EDA logic: source is where events come from, rules check events against conditions, if condition matches an action often runs an ansible playbook. Together they're the if-this-then-that of Ansible automation.",
       "difficulty": "hard",
-      "tags": ["eda", "rulebook"]
+      "tags": ["eda", "rulebook"],
+      "wrongAnswers": [
+        "A rulebook can only contain one source and one action",
+        "Rules in EDA are written in Python, not YAML",
+        "Rulebooks are identical to playbooks and use the same syntax"
+      ]
     },
     {
       "id": "ansible-052",
       "question": "What is Ansible Tower and what features does it provide?",
       "answer": "Ansible Tower (now part of Red Hat Ansible Automation Platform) is a web-based interface providing centralized platform for managing playbooks, inventories, credentials. Key features: role-based access control, job scheduling, real-time monitoring, workflow orchestration, REST API, logging and auditing.",
       "difficulty": "medium",
-      "tags": ["tower", "enterprise"]
+      "tags": ["tower", "enterprise"],
+      "wrongAnswers": [
+        "Ansible Tower is the open-source version of AWX",
+        "Tower can only manage playbooks, not inventories or credentials",
+        "Tower requires agents to be installed on all managed nodes"
+      ]
     },
     {
       "id": "ansible-053",
       "question": "What is the difference between AWX and Red Hat Ansible Automation Platform?",
       "answer": "AWX is open-source upstream project, ideal for dev/test environments - fast-evolving but may lack stability and formal support. AAP is commercial enterprise solution from Red Hat, built on hardened AWX with additional components like Automation Hub and Event-Driven Ansible, backed by official support and SLAs for production.",
       "difficulty": "medium",
-      "tags": ["awx", "enterprise"]
+      "tags": ["awx", "enterprise"],
+      "wrongAnswers": [
+        "AWX is the commercial version; AAP is the free community project",
+        "AWX and AAP are identical; the names are used interchangeably",
+        "AAP cannot run AWX playbooks without modification"
+      ]
     },
     {
       "id": "ansible-054",
       "question": "How do you set up a jump host in Ansible?",
       "answer": "A jump host acts as gateway to access target servers in restricted networks. Set up via ProxyJump in SSH config or ansible_ssh_common_args in inventory. In SSH config: Host jump_host, HostName, User, IdentityFile. In playbook: vars: ansible_ssh_common_args: '-o ProxyJump=jump_host'",
       "difficulty": "hard",
-      "tags": ["networking", "ssh"]
+      "tags": ["networking", "ssh"],
+      "wrongAnswers": [
+        "Jump hosts must be defined in the Ansible inventory file only",
+        "ProxyJump requires the same SSH key on both jump host and target",
+        "Jump hosts are only needed for Windows, not Linux servers"
+      ]
     },
     {
       "id": "ansible-055",
       "question": "How can you automate password input in Ansible playbooks?",
       "answer": "Use Ansible Vault to encrypt files containing sensitive data. Create vault file: ansible-vault create secrets.yml. Include in playbook with vars_files. Unlock with --ask-vault-pass or --vault-password-file. Use Vault IDs for different environments.",
       "difficulty": "medium",
-      "tags": ["vault", "security"]
+      "tags": ["vault", "security"],
+      "wrongAnswers": [
+        "Passwords can be passed directly in the playbook using vars_prompt",
+        "Vault-encrypted files cannot contain variables used in tasks",
+        "--ask-vault-pass is deprecated in favor of environment variables"
+      ]
     },
     {
       "id": "ansible-056",
       "question": "What is a handler in Ansible and what problem does it solve?",
       "answer": "A handler is a special task triggered only when notified by another task, typically for restarting services after config changes. Handlers solve unnecessary repetition by ensuring tasks run only when needed, improving efficiency and idempotency. Defined like regular tasks but activated with notify keyword.",
       "difficulty": "easy",
-      "tags": ["handlers", "basics"]
+      "tags": ["handlers", "basics"],
+      "wrongAnswers": [
+        "Handlers run before regular tasks, not after",
+        "A handler can only be triggered once per playbook execution",
+        "Handlers are required in every Ansible playbook"
+      ]
     },
     {
       "id": "ansible-057",
       "question": "Explain Ansible roles and their significance",
       "answer": "Ansible roles organize automation into reusable, modular components. Instead of monolithic playbooks, roles break configuration into structured directories with tasks, variables, handlers, templates. Benefits: modularity, reusability, scalability, collaboration. Teams can share via Ansible Galaxy.",
       "difficulty": "medium",
-      "tags": ["roles", "organization"]
+      "tags": ["roles", "organization"],
+      "wrongAnswers": [
+        "Roles are mandatory for any playbook with more than 10 tasks",
+        "Roles can only contain tasks, not variables or templates",
+        "Roles must be stored in /etc/ansible/roles/ to be discovered"
+      ]
     },
     {
       "id": "ansible-058",
       "question": "Describe each key file in a standard role directory",
       "answer": "tasks/main.yml - core tasks the role performs. handlers/main.yml - actions triggered by task notifications. defaults/main.yml - low-priority user-overridable variables. vars/main.yml - high-priority internal variables. meta/main.yml - role metadata and dependencies.",
       "difficulty": "medium",
-      "tags": ["roles", "structure"]
+      "tags": ["roles", "structure"],
+      "wrongAnswers": [
+        "defaults/main.yml has higher priority than vars/main.yml",
+        "meta/main.yml is optional and only contains role description",
+        "handlers/main.yml is deprecated in favor of tasks/main.yml"
+      ]
     },
     {
       "id": "ansible-059",
       "question": "How would you design a reusable Ansible role for web server?",
       "answer": "Follow standard role structure with folders for tasks, handlers, templates, files, variables. tasks/main.yml installs/configures web server. handlers/main.yml restarts service on config changes. Use defaults/main.yml for user-tunable settings like port, document root. Use vars/main.yml for internal values like package names.",
       "difficulty": "hard",
-      "tags": ["roles", "design"]
+      "tags": ["roles", "design"],
+      "wrongAnswers": [
+        "All variables must be in vars/main.yml for security",
+        "Templates are not allowed in roles; use files instead",
+        "A role can only manage one service, not an entire web server stack"
+      ]
     },
     {
       "id": "ansible-060",
       "question": "What command runs a playbook with specific inventory?",
       "answer": "Use ansible-playbook command with -i option to specify inventory: ansible-playbook -i /path/to/inventory/file myplaybook.yml. Replace path and filename with actual values.",
       "difficulty": "easy",
-      "tags": ["commands", "inventory"]
+      "tags": ["commands", "inventory"],
+      "wrongAnswers": [
+        "Use ansible-inventory to run playbooks with specific inventory",
+        "The -i flag specifies the playbook file, not the inventory",
+        "Inventory is always specified in ansible.cfg, not via command line"
+      ]
     },
     {
       "id": "ansible-061",
       "question": "How do you check service status on multiple servers?",
       "answer": "Create playbook targeting server group. Use service_facts module to gather service data, debug to display state. Example: hosts: your_server_group, tasks: - name: Check status, service_facts: name: service_name, - name: Display status, debug: var: ansible_facts.services['service_name'].state",
       "difficulty": "medium",
-      "tags": ["modules", "services"]
+      "tags": ["modules", "services"],
+      "wrongAnswers": [
+        "Use the shell module with systemctl status command only",
+        "service_facts can only check one service at a time",
+        "Service status can only be checked on localhost, not remote hosts"
+      ]
     },
     {
       "id": "ansible-062",
       "question": "How do you implement looping over hosts in a group?",
       "answer": "Use Ansible's groups variable with loop or with_items to perform actions on each host. Example: hosts: localhost, tasks: - name: Ping each host in webservers, ansible.builtin.ping: delegate_to: \"{{ item }}\" loop: \"{{ groups['webservers'] }}\". Task runs on localhost but loops through webservers group.",
       "difficulty": "medium",
-      "tags": ["loops", "inventory"]
+      "tags": ["loops", "inventory"],
+      "wrongAnswers": [
+        "Use ansible all with the --forks option to loop over hosts",
+        "Looping over inventory groups requires the inventory plugin to be configured",
+        "groups['webservers'] returns hostnames, not IP addresses"
+      ]
     },
     {
       "id": "ansible-063",
       "question": "What is an ad-hoc command and when is it used?",
       "answer": "Ad-hoc commands are one-liner tasks run directly from command line for quick fixes or checks. Useful for simple operations like checking connectivity or gathering facts. Example: ansible group1 -m shell -a 'df -h' to check disk space on group of servers.",
       "difficulty": "easy",
-      "tags": ["ad-hoc", "commands"]
+      "tags": ["ad-hoc", "commands"],
+      "wrongAnswers": [
+        "Ad-hoc commands are deprecated and should only use playbooks",
+        "Ad-hoc commands can only run the ping module",
+        "Ad-hoc commands require a playbook file to be created first"
+      ]
     },
     {
       "id": "ansible-064",
       "question": "How do you install Nginx using Ansible playbook?",
       "answer": "Create playbook with tasks to update package cache, install Nginx, start service. Example for Ubuntu/Debian: hosts: web_servers, become: true, tasks: - name: Update cache, apt: update_cache: yes, - name: Install Nginx, apt: name: nginx state: present, - name: Start Nginx, service: name: nginx state: started enabled: yes",
       "difficulty": "easy",
-      "tags": ["playbooks", "packages"]
+      "tags": ["playbooks", "packages"],
+      "wrongAnswers": [
+        "Use the nginx module directly without package or service modules",
+        "Package installation requires become: false for Ubuntu",
+        "The service module only works on RHEL-based systems"
+      ]
     },
     {
       "id": "ansible-065",
       "question": "How do you programmatically access a variable name?",
       "answer": "Use set_fact module to extract variable name: set_fact: var_name: \"{{ my_variable | dict2items | selectattr('value', 'eq', my_value) | map(attribute='key') | first }}\". This sets var_name based on variable name corresponding to specified value.",
       "difficulty": "hard",
-      "tags": ["variables", "jinja2"]
+      "tags": ["variables", "jinja2"],
+      "wrongAnswers": [
+        "Variable names can only be accessed using the vars() dictionary function",
+        "Programmatic variable access requires writing a custom Python plugin",
+        "You cannot dynamically determine a variable name from its value"
+      ]
     },
     {
       "id": "ansible-066",
       "question": "Differentiate between Ansible and Puppet",
       "answer": "Ansible is agentless using YAML playbooks with push-based model over SSH. Puppet is agent-based using its own DSL with pull-based model where agents poll master. Ansible easier to set up for ad-hoc tasks, Puppet better for environments requiring consistent scheduled enforcement.",
       "difficulty": "medium",
-      "tags": ["comparison", "puppet"]
+      "tags": ["comparison", "puppet"],
+      "wrongAnswers": [
+        "Both Ansible and Puppet require agents on all managed nodes",
+        "Puppet uses YAML syntax while Ansible uses its own DSL",
+        "Puppet is faster because it compiles manifests before execution"
+      ]
     },
     {
       "id": "ansible-067",
       "question": "Explain process of generating encrypted passwords for user module",
       "answer": "Use ansible-vault to generate encrypted passwords. Command: ansible-vault encrypt_string --vault-id @prompt --name 'ansible_become_pass' 'mypassword'. This prompts for vault password interactively and encrypts the string with specified variable name.",
       "difficulty": "medium",
-      "tags": ["vault", "passwords"]
+      "tags": ["vault", "passwords"],
+      "wrongAnswers": [
+        "Use md5sum to generate password hashes for the user module",
+        "ansible-vault encrypt_string only works with files, not inline passwords",
+        "Passwords must be encrypted using openssl before Ansible can use them"
+      ]
     },
     {
       "id": "ansible-068",
       "question": "How to generate encrypted password using password_hash filter?",
       "answer": "Command: ansible all -i inventory -m debug -a \"msg={{ 'your_password' | password_hash('sha512', 'my_salt') }}\" --vault-id @prompt. Replace password and salt values. This outputs encrypted password suitable for Ansible playbook user module.",
       "difficulty": "medium",
-      "tags": ["password", "filters"]
+      "tags": ["password", "filters"],
+      "wrongAnswers": [
+        "Use the hash filter instead of password_hash for user passwords",
+        "password_hash only supports md5 and sha1 algorithms",
+        "The salt parameter is optional and defaults to a random value"
+      ]
     },
     {
       "id": "ansible-069",
       "question": "Differentiate dot notation vs array notation for variables",
       "answer": "Dot notation accesses dictionary variables cleanly: {{ user.name }}. Preferred for simple predictable variable names. Array/bracket notation handles special characters, spaces, or dynamic keys: {{ user['first name'] }} or {{ variable[item] }}. Used when looping or dealing with external data.",
       "difficulty": "easy",
-      "tags": ["variables", "syntax"]
+      "tags": ["variables", "syntax"],
+      "wrongAnswers": [
+        "Array notation is faster than dot notation for dictionary access",
+        "Dot notation can handle any variable name without limitations",
+        "The notations are interchangeable; Ansible converts them automatically"
+      ]
     },
     {
       "id": "ansible-070",
       "question": "How can callback plugins modify default behavior?",
       "answer": "Configure through ansible.cfg or command-line. Set stdout_callback to change output display, use callback_whitelist for additional plugins. They enable real-time logging, notifications to external systems like Slack, custom result formatting, post-execution actions - making Ansible more adaptable to enterprise needs.",
       "difficulty": "hard",
-      "tags": ["plugins", "callbacks"]
+      "tags": ["plugins", "callbacks"],
+      "wrongAnswers": [
+        "Callback plugins require restarting the Ansible service to take effect",
+        "Only one callback plugin can be active at a time",
+        "Callback plugins modify module behavior, not Ansible's output"
+      ]
     },
     {
       "id": "ansible-071",
       "question": "What to investigate for slow playbook on 500 hosts?",
       "answer": "First three areas: 1) Enable SSH Pipelining - reuses SSH connections, speeds up execution. 2) Increase Forks - boosts parallelism (default is 5). 3) Configure Fact Caching - stores host facts to avoid re-gathering. Additional: async tasks for long operations, free strategy plugin.",
       "difficulty": "hard",
-      "tags": ["performance", "optimization"]
+      "tags": ["performance", "optimization"],
+      "wrongAnswers": [
+        "The default forks value of 5 is optimal for all environments",
+        "SSH Pipelining requires WinRM, not SSH connections",
+        "Fact caching increases memory usage on managed nodes significantly"
+      ]
     },
     {
       "id": "ansible-072",
       "question": "How do you debug a failing Ansible task?",
       "answer": "Debugging approach: 1) Increase verbosity with -vvv for detailed output. 2) Isolate issue with --limit and --start-at-task. 3) Use debug and register to inspect variables and task output. 4) Run in check mode with --check --diff to preview changes.",
       "difficulty": "medium",
-      "tags": ["debugging", "troubleshooting"]
+      "tags": ["debugging", "troubleshooting"],
+      "wrongAnswers": [
+        "Use ansible-debug command for interactive debugging sessions",
+        "Debug output is always written to /var/log/ansible/debug.log",
+        "The --start-at-task option only works with tagged tasks"
+      ]
     },
     {
       "id": "ansible-073",
       "question": "What enterprise challenges does AWX/Tower solve?",
       "answer": "They solve: centralized web UI for managing playbooks, role-based access control for secure multi-user environments, credential management for secrets, job scheduling and workflow orchestration, REST API for CI/CD integration, centralized logging and auditing for compliance.",
       "difficulty": "medium",
-      "tags": ["awx", "tower", "enterprise"]
+      "tags": ["awx", "tower", "enterprise"],
+      "wrongAnswers": [
+        "AWX and Tower provide container orchestration for Ansible playbooks",
+        "They are required for any Ansible deployment with more than 10 hosts",
+        "AWX and Tower replace the need for Ansible Galaxy"
+      ]
     },
     {
       "id": "ansible-074",
       "question": "How do you delegate tasks in Ansible?",
       "answer": "Use delegate_to keyword within a task to execute on different host than current play target. Useful for centralized operations like updating load balancer or managing shared database. Combine with run_once to ensure task executes only once regardless of hosts. Example: delegate_to: dns-master run_once: true.",
       "difficulty": "medium",
-      "tags": ["delegation", "tasks"]
+      "tags": ["delegation", "tasks"],
+      "wrongAnswers": [
+        "delegate_to only works with localhost and the control node",
+        "Delegated tasks inherit all variables from the original target host",
+        "run_once is not compatible with delegate_to"
+      ]
     },
     {
       "id": "ansible-075",
       "question": "What is Ansible Registry?",
       "answer": "Ansible Registry isn't a built-in feature but refers to mechanisms for persistently storing variables. Implemented via: registered variables (register keyword), set_fact module for dynamic variables, host/group variables in inventory, fact caching with Redis or JSON.",
       "difficulty": "hard",
-      "tags": ["variables", "registry"]
+      "tags": ["variables", "registry"],
+      "wrongAnswers": [
+        "Ansible Registry is a central database for storing encrypted secrets",
+        "Registry is a built-in Ansible service running on port 8259",
+        "Variables stored in Registry persist across different playbook runs"
+      ]
     },
     {
       "id": "ansible-076",
       "question": "How is Ansible used in Continuous Delivery pipelines?",
       "answer": "Ansible automates CI/CD pipeline stages: infrastructure provisioning, application deployment, configuration management. Integrate with Jenkins, GitLab CI, Azure DevOps to trigger playbooks on code commits or merge requests. Enables rapid reliable deployments and ensures consistent environments.",
       "difficulty": "medium",
-      "tags": ["ci-cd", "pipelines"]
+      "tags": ["ci-cd", "pipelines"],
+      "wrongAnswers": [
+        "Ansible can only be used in pipelines after code is deployed to production",
+        "CI/CD integration requires Ansible Tower to be installed",
+        "Playbooks must be converted to Jenkins pipelines for integration"
+      ]
     },
     {
       "id": "ansible-077",
       "question": "How do you create a LAMP stack with Ansible?",
       "answer": "Write playbook automating Linux, Apache, MySQL, PHP installation. Tasks: install and start Apache, install and configure MySQL, install PHP with modules, copy webpage to /var/www/html, configure firewall for HTTP, enable services to start on boot.",
       "difficulty": "medium",
-      "tags": ["playbooks", "lamp"]
+      "tags": ["playbooks", "lamp"],
+      "wrongAnswers": [
+        "LAMP stack can only be created using the lamp module in Ansible",
+        "Ansible does not support installing and configuring MySQL",
+        "All LAMP components must be installed in a single task"
+      ]
     },
     {
       "id": "ansible-078",
       "question": "How do you design zero-downtime rolling update strategy?",
       "answer": "Use master orchestration playbook: start with database migrations, then APIs, finally web frontends. Use serial keyword for batches. Before updating each server, call load balancer API to drain/disable server. Run deployment role, perform health checks, re-enable in load balancer. Use block/rescue for failure handling and rollback.",
       "difficulty": "hard",
-      "tags": ["deployment", "rolling-updates"]
+      "tags": ["deployment", "rolling-updates"],
+      "wrongAnswers": [
+        "Zero-downtime requires all services to be load-balanced from the start",
+        "Rolling updates are not compatible with database schema changes",
+        "serial: 1 is the only safe batch size for zero-downtime deployments"
+      ]
     },
     {
       "id": "ansible-079",
       "question": "How do you install packages based on OS type?",
       "answer": "Use conditionals with ansible_distribution. Example: tasks: - name: Install for Debian, apt: name: \"{{ item }}\" state: present, loop: [package1, package2], when: \"ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'\"",
       "difficulty": "medium",
-      "tags": ["conditionals", "packages"]
+      "tags": ["conditionals", "packages"],
+      "wrongAnswers": [
+        "Use ansible_distribution_file to determine which packages to install",
+        "Package names are identical across all Linux distributions",
+        "Conditionals cannot be used with the loop keyword"
+      ]
     },
     {
       "id": "ansible-080",
       "question": "What are the features of Ansible?",
       "answer": "Key features: Agentless - no agent installation, uses SSH. Declarative Language - YAML syntax for readable automation. Idempotent Operations - ensures desired state, safe re-execution. Playbooks - automation scripts in YAML. Modules - built-in and custom for specific tasks. Inventory Management - static or dynamic host groupings.",
       "difficulty": "easy",
-      "tags": ["features", "basics"]
+      "tags": ["features", "basics"],
+      "wrongAnswers": [
+        "Ansible supports graphical programming through a drag-and-drop interface",
+        "Ansible includes built-in container orchestration capabilities",
+        "Ansible can automatically scale infrastructure in the cloud"
+      ]
     }
   ]
 }

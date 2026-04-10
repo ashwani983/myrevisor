@@ -9,560 +9,960 @@
       "question": "What is Terraform and what is its primary purpose?",
       "answer": "Terraform is an open-source Infrastructure as Code (IaC) tool created by HashiCorp. It allows you to define and manage cloud and on-premises infrastructure using HCL (HashiCorp Configuration Language). Its primary purpose is to automate the infrastructure lifecycle, enabling teams to build, change, and version infrastructure safely and efficiently across multiple cloud providers and on-premises data centers.",
       "difficulty": "easy",
-      "tags": ["basics", "iac"]
+      "tags": ["basics", "iac"],
+      "wrongAnswers": [
+        "A container orchestration platform similar to Kubernetes for managing microservices",
+        "A version control system for tracking infrastructure changes in Git repositories",
+        "A monitoring tool for collecting metrics and logs from cloud resources"
+      ]
     },
     {
       "id": "terraform-002",
       "question": "Explain the difference between declarative and imperative IaC.",
       "answer": "Declarative approach (used by Terraform) focuses on the 'what' - you define the desired end-state, and the tool figures out how to achieve it. Imperative approach (often shell scripts) focuses on the 'how' - explicit step-by-step commands executed in order. Declarative IaC is generally less complex and more reliable for managing state over time.",
       "difficulty": "easy",
-      "tags": ["concepts", "declarative"]
+      "tags": ["concepts", "declarative"],
+      "wrongAnswers": [
+        "Declarative uses Python scripts while imperative uses YAML configuration files",
+        "Imperative is faster because it doesn't require parsing configuration files",
+        "Declarative is only used for cloud resources while imperative is for on-premises"
+      ]
     },
     {
       "id": "terraform-003",
       "question": "How does Terraform differ from configuration management tools like Ansible?",
       "answer": "Terraform is primarily a provisioning tool focused on creating, managing, and destroying infrastructure resources like VMs, networks, and databases. It excels at managing lifecycle of foundational components. Ansible is primarily a configuration management tool focused on installing and managing software on existing servers. They serve different but complementary purposes.",
       "difficulty": "easy",
-      "tags": ["comparison", "ansible"]
+      "tags": ["comparison", "ansible"],
+      "wrongAnswers": [
+        "Terraform requires agents on managed servers while Ansible is agentless",
+        "Terraform is for Windows only while Ansible is for Linux systems",
+        "Terraform and Ansible serve identical purposes and are interchangeable"
+      ]
     },
     {
       "id": "terraform-004",
       "question": "What makes Terraform a cloud-agnostic tool?",
       "answer": "Terraform is cloud-agnostic due to its provider-based architecture. Providers act as translation layers between Terraform's universal configuration language and specific cloud provider APIs (AWS, Azure, GCP). This allows a single configuration to manage resources across multiple platforms simultaneously, unlike cloud-specific tools like AWS CloudFormation.",
       "difficulty": "easy",
-      "tags": ["cloud-agnostic", "providers"]
+      "tags": ["cloud-agnostic", "providers"],
+      "wrongAnswers": [
+        "Terraform is cloud-agnostic because it only works with YAML configuration files",
+        "Cloud providers must pay HashiCorp to have their platform supported by Terraform",
+        "Terraform can only manage one cloud provider at a time in a single configuration"
+      ]
     },
     {
       "id": "terraform-005",
       "question": "What is Infrastructure as Code (IaC) and its main benefits?",
       "answer": "IaC is the practice of managing and provisioning infrastructure through machine-readable configuration files rather than manual processes. Main benefits include: increased deployment speed through automation, enhanced consistency across environments (dev, staging, prod), improved scalability, version control for tracking changes, better collaboration, and significantly reduced risk of human error.",
       "difficulty": "easy",
-      "tags": ["iac", "basics"]
+      "tags": ["iac", "basics"],
+      "wrongAnswers": [
+        "IaC requires specialized hardware that can read configuration files directly",
+        "IaC is only suitable for cloud infrastructure, not on-premises systems",
+        "IaC eliminates the need for any testing or validation before deployment"
+      ]
     },
     {
       "id": "terraform-006",
       "question": "Describe the core Terraform workflow.",
       "answer": "The core Terraform workflow has three main steps: 1) Write - define infrastructure as code in HCL files, 2) Plan - run terraform plan to preview changes without applying, 3) Apply - run terraform apply to provision or modify resources as described in the plan. This cycle provides safe and predictable infrastructure management.",
       "difficulty": "easy",
-      "tags": ["workflow", "basics"]
+      "tags": ["workflow", "basics"],
+      "wrongAnswers": [
+        "Write, Deploy, Verify - the apply step includes automatic verification",
+        "Initialize, Execute, Complete - the core workflow skips planning",
+        "Plan, Apply, Destroy - the workflow always starts with planning"
+      ]
     },
     {
       "id": "terraform-007",
       "question": "What is the purpose of terraform init?",
       "answer": "terraform init initializes a working directory containing Terraform configuration files. It performs three primary tasks: downloads and installs provider plugins declared in the configuration, initializes the configured backend for state storage, and downloads any modules referenced. This must be run before other Terraform commands.",
       "difficulty": "easy",
-      "tags": ["commands", "init"]
+      "tags": ["commands", "init"],
+      "wrongAnswers": [
+        "terraform init creates the initial state file with empty resources",
+        "terraform init validates all configuration files for syntax errors",
+        "terraform init deploys infrastructure to the target environment"
+      ]
     },
     {
       "id": "terraform-008",
       "question": "Explain terraform plan and why it's important.",
       "answer": "terraform plan creates an execution plan by comparing desired state in configuration files against current state in the state file. It shows exactly which resources will be created, updated, or destroyed. This provides a 'dry run' or preview, allowing review before modifications - critically important for preventing unintended or destructive actions.",
       "difficulty": "easy",
-      "tags": ["commands", "plan"]
+      "tags": ["commands", "plan"],
+      "wrongAnswers": [
+        "terraform plan automatically applies all changes without requiring approval",
+        "terraform plan only works with remote backends, not local state files",
+        "terraform plan creates a backup of the current state before making changes"
+      ]
     },
     {
       "id": "terraform-009",
       "question": "What is the difference between terraform apply and terraform apply with a plan file?",
       "answer": "Running terraform apply without arguments generates a new plan and prompts for interactive approval. terraform apply <planfile> applies the exact pre-saved plan without generating a new one or prompting. The latter is best practice for automation and CI/CD pipelines, ensuring only previously reviewed changes are executed.",
       "difficulty": "medium",
-      "tags": ["commands", "apply"]
+      "tags": ["commands", "apply"],
+      "wrongAnswers": [
+        "terraform apply with a plan file is slower because it processes the plan twice",
+        "Plan files can only be used once and must be regenerated for each apply",
+        "The only difference is the command syntax; functionality is identical"
+      ]
     },
     {
       "id": "terraform-010",
       "question": "What are the key Terraform commands?",
       "answer": "Key Terraform commands: terraform init - initializes project and downloads providers, terraform plan - creates execution plan showing changes, terraform apply - applies planned changes and provisions resources, terraform destroy - deletes all managed resources, terraform validate - checks syntax errors.",
       "difficulty": "easy",
-      "tags": ["commands", "basics"]
+      "tags": ["commands", "basics"],
+      "wrongAnswers": [
+        "terraform create, terraform update, terraform delete - basic CRUD operations",
+        "terraform provision, terraform configure, terraform deploy - cloud-specific commands",
+        "terraform install, terraform setup, terraform run - initial setup commands"
+      ]
     },
     {
       "id": "terraform-011",
       "question": "What is the Terraform state file?",
       "answer": "Terraform state (terraform.tfstate) is a JSON file serving as single source of truth for managed infrastructure. It maps resources in configuration files to actual cloud resources, tracks metadata and dependencies, and allows Terraform to create accurate plans. It is crucial for detecting drift and ensuring changes are applied correctly.",
       "difficulty": "easy",
-      "tags": ["state", "basics"]
+      "tags": ["state", "basics"],
+      "wrongAnswers": [
+        "State file is a database that stores actual cloud resource configurations",
+        "State file is automatically backed up to Git repositories",
+        "State file is optional and Terraform can work without it"
+      ]
     },
     {
       "id": "terraform-012",
       "question": "Why is storing state remotely a best practice?",
       "answer": "Remote state storage (using S3, Terraform Cloud) is best practice because: it enables collaboration with shared central location, provides state locking to prevent concurrent modifications, offers versioning for rollback capabilities, and encryption at rest secures sensitive data. Far more secure and reliable than local state files.",
       "difficulty": "medium",
-      "tags": ["state", "remote"]
+      "tags": ["state", "remote"],
+      "wrongAnswers": [
+        "Remote state is required by law for compliance with data protection regulations",
+        "Local state files are faster because they don't require network calls",
+        "Remote state storage is only available with paid Terraform Enterprise"
+      ]
     },
     {
       "id": "terraform-013",
       "question": "What is state locking and why is it important?",
       "answer": "State locking prevents multiple users from running Terraform operations on the same state simultaneously. When an operation begins, Terraform locks the state file - others must wait until released. Critically important for collaboration as it prevents race conditions leading to corrupted state, overwritten changes, or inconsistent infrastructure.",
       "difficulty": "medium",
-      "tags": ["state", "locking"]
+      "tags": ["state", "locking"],
+      "wrongAnswers": [
+        "State locking is optional and can be disabled for faster operations",
+        "State locking prevents users from reading state files during operations",
+        "State locking is only needed when using local state files"
+      ]
     },
     {
       "id": "terraform-014",
       "question": "How can you secure sensitive data within Terraform state?",
       "answer": "Use remote backend with encryption at rest (e.g., AWS S3 with server-side encryption). Control backend access via IAM policies. For secrets in configuration, use dedicated secrets manager (AWS Secrets Manager, HashiCorp Vault) and fetch values dynamically so they never enter the state file at all. Mark variables as sensitive to prevent logging.",
       "difficulty": "medium",
-      "tags": ["security", "secrets"]
+      "tags": ["security", "secrets"],
+      "wrongAnswers": [
+        "Terraform automatically encrypts all state files without additional configuration",
+        "Store secrets in plain text in .tfvars files as they are not committed to Git",
+        "Use the sensitive = true flag in resource blocks to hide data from logs"
+      ]
     },
     {
       "id": "terraform-015",
       "question": "What are Terraform providers?",
       "answer": "Providers are plugins that enable Terraform to interact with cloud platforms, SaaS services, and other APIs. Each provider (AWS, Azure, Kubernetes) defines the resources Terraform can manage. Without providers, Terraform wouldn't know how to create or configure infrastructure resources.",
       "difficulty": "easy",
-      "tags": ["providers", "basics"]
+      "tags": ["providers", "basics"],
+      "wrongAnswers": [
+        "Providers are Docker containers that run Terraform in isolated environments",
+        "Providers are pre-written Terraform configurations that can be copied and used",
+        "Providers are only needed for cloud resources, not for on-premises infrastructure"
+      ]
     },
     {
       "id": "terraform-016",
       "question": "What is a Terraform resource?",
       "answer": "Resources are the fundamental building blocks of infrastructure in HCL, such as aws_instance or azurerm_resource_group. Each resource block in configuration declares an infrastructure object that Terraform will manage. They are the core components that define what infrastructure to create.",
       "difficulty": "easy",
-      "tags": ["resources", "basics"]
+      "tags": ["resources", "basics"],
+      "wrongAnswers": [
+        "Resources are cloud provider APIs that Terraform calls during apply",
+        "Resources are template files that get rendered before deployment",
+        "Resources are only used for compute resources like VMs and containers"
+      ]
     },
     {
       "id": "terraform-017",
       "question": "What are Terraform modules and why are they used?",
       "answer": "Terraform modules are reusable components grouping related resources together. They improve maintainability, enable code reuse across projects, and simplify deployments. A module can be as simple as a directory containing .tf files. They help organize infrastructure code and establish standardized, reusable components.",
       "difficulty": "medium",
-      "tags": ["modules", "organization"]
+      "tags": ["modules", "organization"],
+      "wrongAnswers": [
+        "Modules are external services that Terraform calls during resource creation",
+        "Modules are required for any Terraform configuration with more than 5 resources",
+        "Modules can only be published to the Terraform Registry"
+      ]
     },
     {
       "id": "terraform-018",
       "question": "What is the difference between a root module and a child module?",
       "answer": "Root module is the main set of Terraform configuration files in your working directory from which you run terraform commands. Child module is a separate module called from another configuration (typically root) using a module block. Root is entry point, orchestrating deployment by calling child modules and connecting their inputs and outputs.",
       "difficulty": "medium",
-      "tags": ["modules"]
+      "tags": ["modules"],
+      "wrongAnswers": [
+        "Root module runs in the cloud while child modules run locally",
+        "Child modules can only be called from the root module of the same project",
+        "Root module is read-only while child modules can be modified during apply"
+      ]
     },
     {
       "id": "terraform-019",
       "question": "Describe the typical file structure of a Terraform module.",
       "answer": "Standard module structure: main.tf (core resource definitions), variables.tf (input variables as parameters), outputs.tf (output values returned). Best practice also includes README.md for documentation and LICENSE file. This structure enhances clarity and usability.",
       "difficulty": "medium",
-      "tags": ["modules", "structure"]
+      "tags": ["modules", "structure"],
+      "wrongAnswers": [
+        "Modules must include a state.tf file for state management",
+        "The main.tf file is optional if resources are defined in separate files",
+        "Modules can only have one .tf file per resource type"
+      ]
     },
     {
       "id": "terraform-020",
       "question": "What are remote backends in Terraform?",
       "answer": "Remote backends (S3, Azure Blob Storage, Terraform Cloud) are storage locations where Terraform stores state files. They ensure consistent state management across environments and promote team collaboration by remotely storing state, maintaining infrastructure consistency for IaC projects.",
       "difficulty": "medium",
-      "tags": ["backends", "state"]
+      "tags": ["backends", "state"],
+      "wrongAnswers": [
+        "Remote backends are cloud APIs that Terraform calls to create resources",
+        "Remote backends are required for workspaces to function properly",
+        "Remote backends only work with the enterprise version of Terraform"
+      ]
     },
     {
       "id": "terraform-021",
       "question": "Explain the difference between input variables and local variables.",
       "answer": "Input variables (variable block) parameterize configuration and serve as inputs passed from outside - like function arguments. Local variables (locals block) are named expressions for complex values used multiple times within a module - like temporary local variables within a function scope. Both improve readability and reduce repetition.",
       "difficulty": "medium",
-      "tags": ["variables"]
+      "tags": ["variables"],
+      "wrongAnswers": [
+        "Input variables can only be strings while local variables support all data types",
+        "Local variables are encrypted while input variables are stored in plain text",
+        "Input variables are evaluated first; local variables are evaluated at the end"
+      ]
     },
     {
       "id": "terraform-022",
       "question": "What are three common ways to assign values to Terraform variables?",
       "answer": "Three common methods: 1) Command-line flags using -var or -var-file (e.g., terraform apply -var='region=us-west-2'), 2) Variable definition files (.tfvars) - Terraform auto-loads terraform.tfvars or *.auto.tfvars, 3) Environment variables prefixed with TF_VAR_ (e.g., export TF_VAR_region=us-west-2).",
       "difficulty": "medium",
-      "tags": ["variables"]
+      "tags": ["variables"],
+      "wrongAnswers": [
+        "Using direct HTTP requests to the Terraform API endpoint",
+        "Reading values from the cloud provider's metadata service",
+        "Embedding values directly in the .tf configuration files using secret blocks"
+      ]
     },
     {
       "id": "terraform-023",
       "question": "What is the purpose of output values in Terraform?",
       "answer": "Output values expose information about managed resources. For root module, they print useful data to CLI after apply (e.g., server IP). For child modules, outputs act as return values allowing data to be passed to parent module for use in other configurations. Primary way to share data between modules.",
       "difficulty": "medium",
-      "tags": ["outputs", "variables"]
+      "tags": ["outputs", "variables"],
+      "wrongAnswers": [
+        "Output values are used to pass credentials between modules securely",
+        "Output values are required for all resources to enable state tracking",
+        "Output values can only display string data, not complex objects"
+      ]
     },
     {
       "id": "terraform-024",
       "question": "What is a .tfvars file and how is it used?",
       "answer": ".tfvars is a variable definition file for assigning values to input variables. By default, Terraform loads from files named terraform.tfvars or ending in .auto.tfvars. Commonly used to separate environment-specific values (dev.tfvars, prod.tfvars) from core logic, allowing same configuration with different parameters.",
       "difficulty": "easy",
-      "tags": ["variables", "tfvars"]
+      "tags": ["variables", "tfvars"],
+      "wrongAnswers": [
+        ".tfvars files contain resource definitions, not variable assignments",
+        ".tfvars files must be manually included with -var-file in every command",
+        ".tfvars files are stored in the cloud and downloaded during terraform init"
+      ]
     },
     {
       "id": "terraform-025",
       "question": "What are Terraform workspaces and when should you use them?",
       "answer": "Terraform workspaces maintain separate state files within same configuration. Useful for managing multiple environments (dev, staging, prod) without duplicating code. Best for simple environment separation but may be too difficult for complex multi-account setups.",
       "difficulty": "medium",
-      "tags": ["workspaces", "environments"]
+      "tags": ["workspaces", "environments"],
+      "wrongAnswers": [
+        "Workspaces are cloud-based storage for Terraform configuration files",
+        "Workspaces require separate provider configurations for each environment",
+        "Workspaces can only be used with Terraform Cloud, not with local backends"
+      ]
     },
     {
       "id": "terraform-026",
       "question": "How does Terraform manage remote state?",
       "answer": "Terraform supports remote backends: S3 with DynamoDB for AWS, GCS for Google Cloud, Terraform Cloud. Remote state enables shared access for team members, state locking to prevent conflicts, and better security with encryption and controlled access.",
       "difficulty": "medium",
-      "tags": ["state", "remote"]
+      "tags": ["state", "remote"],
+      "wrongAnswers": [
+        "Remote state is automatically synced to Git repositories for version control",
+        "Remote state requires a paid subscription to HashiCorp Terraform Cloud",
+        "Remote state is stored as encrypted binaries, not JSON files"
+      ]
     },
     {
       "id": "terraform-027",
       "question": "How do you manage different environments with Terraform?",
       "answer": "Use separate directories or Terraform workspaces for each environment. Use variables to parameterize configurations across environments. Implement version control to track changes. Example: variable environment { default = 'dev' }, then use conditionals to create resources based on environment.",
       "difficulty": "medium",
-      "tags": ["environments", "variables"]
+      "tags": ["environments", "variables"],
+      "wrongAnswers": [
+        "Use separate Git branches with identical Terraform configurations",
+        "Use Terraform Cloud workspaces with automatic environment promotion",
+        "Terraform automatically creates dev/staging/prod environments"
+      ]
     },
     {
       "id": "terraform-028",
       "question": "What happens if you manually edit the terraform.tfstate file?",
       "answer": "Manually editing state file is strongly discouraged and can corrupt the file or cause mismatch between state and actual infrastructure. This can cause Terraform to destroy and recreate resources unexpectedly on next run, or fail to manage existing resources. Use dedicated terraform state subcommands (terraform state rm, terraform import) for safe manipulation.",
       "difficulty": "medium",
-      "tags": ["state", "troubleshooting"]
+      "tags": ["state", "troubleshooting"],
+      "wrongAnswers": [
+        "Manual edits are automatically detected and reverted by Terraform",
+        "Manual edits require terraform refresh to take effect",
+        "Manual edits are safe as long as the JSON syntax is valid"
+      ]
     },
     {
       "id": "terraform-029",
       "question": "How does Terraform handle importing existing infrastructure?",
       "answer": "Use terraform import command to add existing infrastructure to state. It only adds to state - does NOT automatically generate configuration files. After importing, you must manually write corresponding Terraform configuration. Limitations: some resource types not supported, manual config reconciliation required.",
       "difficulty": "medium",
-      "tags": ["import", "existing"]
+      "tags": ["import", "existing"],
+      "wrongAnswers": [
+        "Terraform import automatically generates complete configuration files",
+        "Import can only be used for AWS resources, not other cloud providers",
+        "Import requires the resource to be deleted and recreated to match state"
+      ]
     },
     {
       "id": "terraform-030",
       "question": "What are Terraform provisioners and when should they be used?",
       "answer": "Provisioners execute scripts on a resource after creation (local or remote via SSH/WinRM). They are a 'last resort' because Terraform cannot model their actions in execution plan, making outcomes less predictable. Use alternatives like cloud-init, Packer for pre-configured images, or configuration management tools like Ansible.",
       "difficulty": "medium",
-      "tags": ["provisioners"]
+      "tags": ["provisioners"],
+      "wrongAnswers": [
+        "Provisioners are required for all Terraform resources to function properly",
+        "Provisioners run before resources are created to prepare the environment",
+        "Provisioners are deprecated and replaced by init scripts in all cases"
+      ]
     },
     {
       "id": "terraform-031",
       "question": "What is infrastructure drift and what are its common causes?",
       "answer": "Infrastructure drift is divergence between actual infrastructure state and state defined in Terraform configuration. Common causes: manual changes through cloud console, automated changes by external scripts/services not managed by Terraform, failed or partial Terraform applies. Drift undermines reliability of IaC and can lead to security vulnerabilities.",
       "difficulty": "medium",
-      "tags": ["drift", "troubleshooting"]
+      "tags": ["drift", "troubleshooting"],
+      "wrongAnswers": [
+        "Drift is when Terraform fails to parse configuration files correctly",
+        "Drift only occurs when using local state files, not remote backends",
+        "Drift is caused by Terraform bugs, not by manual changes"
+      ]
     },
     {
       "id": "terraform-032",
       "question": "How do you detect and remediate infrastructure drift?",
       "answer": "Drift is detected by running terraform plan - if changes show even without configuration modifications, infrastructure has drifted. Remediation: either run terraform apply to revert infrastructure back to code state, or update Terraform code to match manual changes and apply.",
       "difficulty": "medium",
-      "tags": ["drift", "remediation"]
+      "tags": ["drift", "remediation"],
+      "wrongAnswers": [
+        "Drift is detected automatically by terraform apply and requires no manual check",
+        "Run terraform destroy and recreate all resources to fix drift",
+        "Use terraform import to detect which resources have drifted"
+      ]
     },
     {
       "id": "terraform-033",
       "question": "How does Terraform handle dependencies between resources?",
       "answer": "Terraform uses both implicit and explicit dependencies. Implicit are created when one resource references another - Terraform automatically infers order. Explicit use depends_on argument when Terraform cannot auto-infer. Terraform builds dependency graph ensuring resources are provisioned in correct sequence.",
       "difficulty": "medium",
-      "tags": ["dependencies"]
+      "tags": ["dependencies"],
+      "wrongAnswers": [
+        "Dependencies must be explicitly declared for all resources",
+        "Terraform executes all resources in parallel regardless of dependencies",
+        "Dependencies are resolved by the cloud provider, not by Terraform"
+      ]
     },
     {
       "id": "terraform-034",
       "question": "What is the difference between count and for_each meta-arguments?",
       "answer": "count takes an integer and creates that many copies, referencing via index (e.g., aws_instance.server[0]). for_each takes a map/set and creates one instance per item, referencing via key (e.g., aws_instance.server[\"web\"]). for_each is more stable - removing items won't cause re-indexing and recreation of subsequent resources.",
       "difficulty": "medium",
-      "tags": ["meta-arguments"]
+      "tags": ["meta-arguments"],
+      "wrongAnswers": [
+        "count is faster than for_each because it uses simpler indexing",
+        "for_each cannot be used with modules, only count works with modules",
+        "count and for_each are interchangeable; the choice is purely stylistic"
+      ]
     },
     {
       "id": "terraform-035",
       "question": "When would you choose for_each over count?",
       "answer": "Choose for_each when: resources are not identical, collection might change over time, or when removing items from middle wouldn't cause disruption. With for_each, removing an item destroys only that specific resource. With count, removing from middle causes all subsequent resources to be destroyed and recreated due to re-indexing.",
       "difficulty": "medium",
-      "tags": ["meta-arguments"]
+      "tags": ["meta-arguments"],
+      "wrongAnswers": [
+        "Choose for_each when you need faster execution times",
+        "Choose for_each only when working with cloud resources, not local",
+        "for_each is deprecated in favor of count in Terraform 1.0+"
+      ]
     },
     {
       "id": "terraform-036",
       "question": "What are dynamic blocks and provide a common use case?",
-      "answer": "Dynamic blocks generate multiple nested configuration blocks within a resource dynamically. Useful when a resource argument requires repeatable blocks whose number isn't known ahead of time. Common use case: defining multiple ingress/egress rules for security groups by iterating over a list of ports.",
+      "answer": "Dynamic blocks generates multiple nested configuration blocks within a resource dynamically. Useful when a resource argument requires repeatable blocks whose number isn't known ahead of time. Common use case: defining multiple ingress/egress rules for security groups by iterating over a list of ports.",
       "difficulty": "hard",
-      "tags": ["dynamic-blocks"]
+      "tags": ["dynamic-blocks"],
+      "wrongAnswers": [
+        "Dynamic blocks generate new Terraform configuration files at runtime",
+        "Dynamic blocks are deprecated in favor of for_each for nested resources",
+        "Dynamic blocks can only be used with cloud resources, not data sources"
+      ]
     },
     {
       "id": "terraform-037",
       "question": "How can you conditionally create a resource in Terraform?",
       "answer": "Use count meta-argument with ternary expression. Set count to 1 or 0 based on boolean condition. If true, resource is created. If false, count is 0 and resource is not created. Example: count = var.create_resource ? 1 : 0",
       "difficulty": "medium",
-      "tags": ["conditionals"]
+      "tags": ["conditionals"],
+      "wrongAnswers": [
+        "Use the when conditional to skip resource creation",
+        "Set the resource active = false to prevent creation",
+        "Conditionals cannot be used with resources, only with variables"
+      ]
     },
     {
       "id": "terraform-038",
       "question": "How do you manage complex multi-cloud deployments with Terraform?",
       "answer": "Configure multiple providers in one configuration (AWS, Azure, GCP). Use provider aliases for multiple instances of same provider (different regions). Leverage modules to abstract common configurations. Manage cross-cloud dependencies carefully as resources in different clouds may not have direct relationships.",
       "difficulty": "hard",
-      "tags": ["multi-cloud"]
+      "tags": ["multi-cloud"],
+      "wrongAnswers": [
+        "Use separate Terraform configurations for each cloud provider",
+        "Multi-cloud deployments require Terraform Enterprise license",
+        "Cross-cloud dependencies are automatically resolved by Terraform"
+      ]
     },
     {
       "id": "terraform-039",
       "question": "What are terraform taint and untaint commands?",
       "answer": "terraform taint marks a resource for recreation on next terraform apply, even without configuration changes. Useful when resource is problematic. terraform untaint undoes taint command to prevent recreation. Example: terraform taint aws_instance.example",
       "difficulty": "medium",
-      "tags": ["commands"]
+      "tags": ["commands"],
+      "wrongAnswers": [
+        "terraform taint permanently deletes the resource from state",
+        "terraform taint only works with resources created by count",
+        "terraform taint is deprecated and replaced by -replace flag"
+      ]
     },
     {
       "id": "terraform-040",
       "question": "What is Terraform Cloud and Terraform Enterprise?",
       "answer": "Terraform Cloud is SaaS offering collaboration features: remote state, workspace management, VCS integration, policy enforcement. Ideal for small-medium teams. Terraform Enterprise is self-hosted with advanced features: private module registries, granular access controls, on-premise deployments. Cloud is hosted by HashiCorp, Enterprise gives full control.",
       "difficulty": "medium",
-      "tags": ["cloud", "enterprise"]
+      "tags": ["cloud", "enterprise"],
+      "wrongAnswers": [
+        "Terraform Cloud is the open-source version; Enterprise is the commercial one",
+        "Terraform Cloud requires an annual contract while Enterprise is free",
+        "Terraform Cloud can only manage AWS resources; Enterprise manages all clouds"
+      ]
     },
     {
       "id": "terraform-041",
       "question": "How do you handle secrets management in Terraform?",
       "answer": "Terraform doesn't natively manage secrets but integrates with external tools: HashiCorp Vault for API keys/passwords at runtime, environment variables, remote backends with encryption. Use sensitive argument on variables/outputs to prevent appearing in logs. Never hardcode secrets in configuration files.",
       "difficulty": "medium",
-      "tags": ["secrets", "security"]
+      "tags": ["secrets", "security"],
+      "wrongAnswers": [
+        "Use terraform apply -secret to encrypt all resources during deployment",
+        "Store secrets in terraform.tfstate as it is always encrypted",
+        "Secrets must be passed via command line arguments to terraform apply"
+      ]
     },
     {
       "id": "terraform-042",
       "question": "What are zero-downtime deployments and how can Terraform achieve them?",
       "answer": "Zero-downtime deployments apply changes without interrupting service availability. Terraform can achieve through: Blue-Green deployment using two identical environments switching traffic, Rolling updates gradually updating subset of instances. These strategies often require additional tools like load balancers for full implementation.",
       "difficulty": "hard",
-      "tags": ["deployment", "zero-downtime"]
+      "tags": ["deployment", "zero-downtime"],
+      "wrongAnswers": [
+        "Terraform automatically ensures zero-downtime for all resource changes",
+        "Zero-downtime is only possible with Terraform Cloud, not with CLI",
+        "Use terraform apply -no-interrupt to enable zero-downtime mode"
+      ]
     },
     {
       "id": "terraform-043",
       "question": "How would you implement a rolling update using Terraform?",
       "answer": "Implement rolling update by defining immutable infrastructure using count or for_each. Create new instance, wait for it to become healthy (using health checks), then gradually replace old instances. This allows subset of application to remain available during updates.",
       "difficulty": "hard",
-      "tags": ["deployment", "rolling-update"]
+      "tags": ["deployment", "rolling-update"],
+      "wrongAnswers": [
+        "Rolling updates are automatic when using lifecycle create_before_destroy",
+        "Terraform cannot implement rolling updates without external orchestration tools",
+        "Use terraform apply -rolling to enable automatic rolling updates"
+      ]
     },
     {
       "id": "terraform-044",
       "question": "What are the roles of terraform validate and terraform fmt?",
       "answer": "terraform validate checks syntax and logical consistency without connecting to remote services - catches incorrect syntax, invalid arguments, undeclared variables. terraform fmt is a code formatting tool rewriting configuration to canonical style for improved readability.",
       "difficulty": "easy",
-      "tags": ["commands"]
+      "tags": ["commands"],
+      "wrongAnswers": [
+        "terraform validate checks cloud provider API connectivity",
+        "terraform fmt compiles configuration files into executable format",
+        "terraform fmt and terraform validate are the same command with different aliases"
+      ]
     },
     {
       "id": "terraform-045",
       "question": "How do you debug and troubleshoot Terraform configurations?",
       "answer": "Use terraform plan to preview changes before applying. Use terraform validate to check syntax and structure. Use terraform state commands for reading and handling state. Use Terraform's verbose mode, error messages, and logging for detailed flow and errors.",
       "difficulty": "medium",
-      "tags": ["debugging", "troubleshooting"]
+      "tags": ["debugging", "troubleshooting"],
+      "wrongAnswers": [
+        "Use terraform debug command for interactive debugging sessions",
+        "Debug output is written to /var/log/terraform/debug.log",
+        "Terraform configurations cannot be debugged; errors only show at apply time"
+      ]
     },
     {
       "id": "terraform-046",
       "question": "How do you import existing infrastructure into Terraform?",
       "answer": "Use terraform import command with resource address and unique ID: terraform import aws_instance.example i-1234567890abcdef0. NOTE: import adds to state only - doesn't generate configuration. Must manually write corresponding resource block in configuration to match imported resource.",
       "difficulty": "medium",
-      "tags": ["import"]
+      "tags": ["import"],
+      "wrongAnswers": [
+        "terraform import automatically generates complete configuration files",
+        "Import can only be used for resources created by Terraform",
+        "Use terraform init -import to import resources during initialization"
+      ]
     },
     {
       "id": "terraform-047",
       "question": "Why is it important to lock module versions?",
       "answer": "Locking module versions creates stable, predictable deployments. Without version pinning, future terraform init could download incompatible version causing errors or breaking changes. Lock via version argument in module block: version = '~> 1.2'",
       "difficulty": "medium",
-      "tags": ["modules", "versioning"]
+      "tags": ["modules", "versioning"],
+      "wrongAnswers": [
+        "Module versions are locked automatically by terraform init",
+        "Locking module versions prevents using newer, better features",
+        "Version locking is only necessary for enterprise modules, not community"
+      ]
     },
     {
       "id": "terraform-048",
       "question": "What are the best practices for structuring Terraform configurations?",
       "answer": "Best practices: use modules to organize resources by function, employ outputs and variables to parameterize configuration, use naming conventions for clarity, leverage workspaces for multiple environments, store state remotely with locking, implement CI/CD for automation.",
       "difficulty": "medium",
-      "tags": ["best-practices"]
+      "tags": ["best-practices"],
+      "wrongAnswers": [
+        "Put all resources in a single main.tf file for simplicity",
+        "Use descriptive names like 'resource1', 'resource2' to save typing time",
+        "Store state locally for faster terraform plan and apply times"
+      ]
     },
     {
       "id": "terraform-049",
       "question": "Can Terraform manage on-premises infrastructure?",
       "answer": "Yes, Terraform can use custom providers like VMware or OpenStack to manage on-premises infrastructure. It enables version control and automation via IaC practices. Ensures scalability and consistency in both on-premises and cloud environments.",
       "difficulty": "easy",
-      "tags": ["on-premises"]
+      "tags": ["on-premises"],
+      "wrongAnswers": [
+        "Terraform can only manage cloud infrastructure, not on-premises",
+        "On-premises infrastructure requires Terraform Enterprise license",
+        "Use separate tools for on-premises; Terraform is cloud-only"
+      ]
     },
     {
       "id": "terraform-050",
       "question": "How do you prevent accidental resource deletions in Terraform?",
       "answer": "Use lifecycle prevent_destroy rule in resource configuration. With this setting, Terraform will NOT destroy the resource unless you explicitly remove the flag. Particularly useful in production to safeguard critical resources.",
       "difficulty": "medium",
-      "tags": ["prevention", "deletion"]
+      "tags": ["prevention", "deletion"],
+      "wrongAnswers": [
+        "Use terraform apply -safe to prevent any destructive operations",
+        "Prevent destroy is enabled by default for all resources in Terraform",
+        "Use terraform lock to prevent accidental deletions of resources"
+      ]
     },
     {
       "id": "terraform-051",
       "question": "Who are Terraform's key competitors in IaC market?",
       "answer": "Key competitors: Ansible (automation), AWS CloudFormation (AWS-native), Google Cloud Deployment Manager (GCP), Azure Resource Manager (Azure ARM). Each has different strengths - CloudFormation is AWS-specific, Deployment Manager is GCP-specific, ARM is Azure-specific while Terraform is cloud-agnostic.",
       "difficulty": "easy",
-      "tags": ["competitors"]
+      "tags": ["competitors"],
+      "wrongAnswers": [
+        "Terraform's main competitor is Docker for container management",
+        "Kubernetes is Terraform's main competitor for infrastructure management",
+        "All IaC tools are identical; the choice depends only on pricing"
+      ]
     },
     {
       "id": "terraform-052",
       "question": "How do you use data sources in Terraform?",
       "answer": "Data sources query information from remote APIs without creating resources. Use aws_secretsmanager_secret_version to fetch secrets, aws_ami to find specific AMIs, etc. They allow Terraform to query existing infrastructure for use in your configurations without managing those resources.",
       "difficulty": "medium",
-      "tags": ["data-sources"]
+      "tags": ["data-sources"],
+      "wrongAnswers": [
+        "Data sources are deprecated in favor of outputs from other resources",
+        "Data sources can only read data, not write or modify anything",
+        "Data sources require a separate provider configuration from resources"
+      ]
     },
     {
       "id": "terraform-053",
       "question": "Explain Terraform's basic configuration structure.",
       "answer": "Terraform configuration uses HCL with blocks: variable for input variables, resource for defining infrastructure, provider for cloud platform, output for extracting values. These blocks define infrastructure settings and components.",
       "difficulty": "easy",
-      "tags": ["configuration", "HCL"]
+      "tags": ["configuration", "HCL"],
+      "wrongAnswers": [
+        "Terraform uses JSON format for all configuration files",
+        "Configuration blocks are optional; Terraform infers configuration from state",
+        "HCL is a proprietary language that only works with Terraform"
+      ]
     },
     {
       "id": "terraform-054",
       "question": "How do you integrate Terraform with CI/CD pipeline?",
       "answer": "Store Terraform code in Git. Use CI/CD tools (Jenkins, GitHub Actions, GitLab CI, Terraform Cloud) to automate runs. Pipeline should: run terraform fmt, run terraform validate, execute terraform plan and wait for approval, apply with terraform apply -auto-approve after review.",
       "difficulty": "hard",
-      "tags": ["ci-cd", "automation"]
+      "tags": ["ci-cd", "automation"],
+      "wrongAnswers": [
+        "Terraform automatically detects CI/CD pipelines and runs itself",
+        "Use terraform export to generate pipeline configurations",
+        "CI/CD integration requires Terraform Enterprise with VCS integration"
+      ]
     },
     {
       "id": "terraform-055",
       "question": "How do you recover from corrupted Terraform state?",
       "answer": "If using remote state storage with versioning (e.g., S3), retrieve last working version. If local state lost, may need to reconstruct using terraform import. If no state exists, recreate infrastructure manually or re-import into Terraform. Best practice: use remote state with versioning enabled.",
       "difficulty": "hard",
-      "tags": ["state", "recovery"]
+      "tags": ["state", "recovery"],
+      "wrongAnswers": [
+        "Use terraform restore to automatically recover from corrupted state",
+        "Corrupted state can be fixed by running terraform validate",
+        "Terraform state cannot be recovered once corrupted; must recreate all resources"
+      ]
     },
     {
       "id": "terraform-056",
       "question": "How do you conditionally create resources based on environment?",
       "answer": "Use count with ternary operator: count = environment == 'prod' ? 2 : 1. This creates more resources in prod than dev. Or use for_each with dynamic configuration for more complex conditional logic.",
       "difficulty": "medium",
-      "tags": ["conditionals", "environment"]
+      "tags": ["conditionals", "environment"],
+      "wrongAnswers": [
+        "Use separate Terraform configurations for each environment",
+        "Environment detection is automatic based on the working directory",
+        "Use terraform environment to switch between different configurations"
+      ]
     },
     {
       "id": "terraform-057",
       "question": "What is the purpose of output values in modules?",
       "answer": "Output values in child modules act as return values, allowing parent modules to access information about resources created in child. Essential for passing data between modules - for example, child module creates security group, parent module needs its ID for EC2 instance.",
       "difficulty": "medium",
-      "tags": ["outputs", "modules"]
+      "tags": ["outputs", "modules"],
+      "wrongAnswers": [
+        "Output values in modules are mandatory for all resources",
+        "Output values cannot pass sensitive data between modules",
+        "Child module outputs are only visible in the Terraform console"
+      ]
     },
     {
       "id": "terraform-058",
       "question": "How do you handle sensitive values in Terraform?",
       "answer": "Mark variables as sensitive: variable \"password\" { type = string, sensitive = true }. This prevents values appearing in terraform plan/apply logs. Use with backend encryption and secrets management tools for complete security.",
       "difficulty": "medium",
-      "tags": ["security", "sensitive"]
+      "tags": ["security", "sensitive"],
+      "wrongAnswers": [
+        "Use encryption = true flag on variables to protect sensitive values",
+        "Sensitive values are automatically encrypted in Terraform state",
+        "Store sensitive values in separate .tf files with restricted Git access"
+      ]
     },
     {
       "id": "terraform-059",
       "question": "What is terraform graph command?",
       "answer": "terraform graph generates visual representation of resource dependencies. Useful for understanding the order of resource creation, identifying circular dependencies, and visualizing infrastructure relationships. Output can be piped to graphviz for visualization.",
       "difficulty": "medium",
-      "tags": ["commands", "graph"]
+      "tags": ["commands", "graph"],
+      "wrongAnswers": [
+        "terraform graph creates actual infrastructure diagrams in PNG format",
+        "terraform graph is only available in Terraform Enterprise",
+        "terraform graph requires internet connectivity to generate the visualization"
+      ]
     },
     {
       "id": "terraform-060",
       "question": "How do you use for_each with modules?",
       "answer": "Pass map or set to module using for_each: module \"servers\" { for_each = var.server_configs, source = \"./modules/server\", name = each.key, ... }. Creates one module instance per item in the map.",
       "difficulty": "hard",
-      "tags": ["for_each", "modules"]
+      "tags": ["for_each", "modules"],
+      "wrongAnswers": [
+        "for_each with modules requires Terraform Cloud subscription",
+        "Modules cannot use for_each; they only work with count",
+        "for_each only works with set, not with map data types"
+      ]
     },
     {
       "id": "terraform-061",
       "question": "What is the purpose of terraform refresh?",
       "answer": "terraform refresh updates state file to reflect actual infrastructure - syncs state with real-world resources. Updates state file without making changes. NOTE: In newer Terraform, this happens automatically during plan and apply - explicit refresh is less commonly needed.",
       "difficulty": "medium",
-      "tags": ["commands", "refresh"]
+      "tags": ["commands", "refresh"],
+      "wrongAnswers": [
+        "terraform refresh regenerates the entire state file from scratch",
+        "terraform refresh is required before every terraform apply",
+        "terraform refresh can only be used with remote backends"
+      ]
     },
     {
       "id": "terraform-062",
       "question": "How do you manage state in team environments?",
       "answer": "Use remote backend (S3 with DynamoDB, Terraform Cloud) with state locking. Enables: shared access for team, state locking to prevent conflicts, encryption at rest, versioning for rollback. Critical for production team workflows.",
       "difficulty": "medium",
-      "tags": ["state", "team"]
+      "tags": ["state", "team"],
+      "wrongAnswers": [
+        "Use a shared local state file on a network file system",
+        "State management is automatic when using Terraform Cloud",
+        "Each team member should have their own state file to avoid conflicts"
+      ]
     },
     {
       "id": "terraform-063",
       "question": "What is terraform destroy and when should you use it?",
       "answer": "terraform destroy deletes all resources managed by Terraform. Shows plan of what will be destroyed before execution. Use when: tearing down environments, removing infrastructure no longer needed, cleaning up after testing. Always review plan carefully before applying.",
       "difficulty": "easy",
-      "tags": ["commands", "destroy"]
+      "tags": ["commands", "destroy"],
+      "wrongAnswers": [
+        "terraform destroy only removes resources from state, not from cloud",
+        "terraform destroy is automatic when Terraform configuration is deleted",
+        "terraform destroy cannot be used with remote backends"
+      ]
     },
     {
       "id": "terraform-064",
       "question": "How do you handle duplicate resource errors?",
       "answer": "Use -ignore_duplicate switch with terraform apply. This allows Terraform to continue operating when encountering duplicate resources, ensuring continuous deployment. Improves reliability for complex infrastructure setups.",
       "difficulty": "hard",
-      "tags": ["troubleshooting", "duplicate"]
+      "tags": ["troubleshooting", "duplicate"],
+      "wrongAnswers": [
+        "Duplicate resources are automatically merged by Terraform",
+        "Delete one of the duplicate resources from the configuration",
+        "Use terraform merge to combine duplicate resources into one"
+      ]
     },
     {
       "id": "terraform-065",
       "question": "What is the Terraform provider plugin SDK?",
       "answer": "Provider Plugin SDK is a Go library for building custom Terraform providers. Used when you need to manage resources not natively supported - like an in-house API or niche cloud service. Requires handling authentication, CRUD operations, and any API-specific configuration.",
       "difficulty": "hard",
-      "tags": ["providers", "SDK"]
+      "tags": ["providers", "SDK"],
+      "wrongAnswers": [
+        "The SDK is a Python library for creating Terraform providers",
+        "Custom providers require a HashiCorp partnership agreement",
+        "The SDK can only create providers for major cloud platforms"
+      ]
     },
     {
       "id": "terraform-066",
       "question": "Describe Terraform's architecture components.",
       "answer": "Terraform architecture has four components: 1) CLI - primary user interface, 2) Core Engine - takes actions to provision/maintain infrastructure using HCL, 3) Providers - enable interaction with infrastructure platforms via APIs, 4) State Management - maintains state file tracking current infrastructure status.",
       "difficulty": "medium",
-      "tags": ["architecture"]
+      "tags": ["architecture"],
+      "wrongAnswers": [
+        "Terraform has two components: the CLI and the cloud backend",
+        "Providers are optional; Terraform can work without them",
+        "The Core Engine runs in the cloud, not on the local machine"
+      ]
     },
     {
       "id": "terraform-067",
       "question": "How do you use AWS Secrets Manager with Terraform?",
       "answer": "Use aws_secretsmanager_secret_version data source to fetch secrets at runtime. Define data block referencing secret by ID/ARN. Terraform queries AWS API during plan to retrieve secret value. Can then reference in other resources without hardcoding secrets.",
       "difficulty": "medium",
-      "tags": ["secrets", "AWS"]
+      "tags": ["secrets", "AWS"],
+      "wrongAnswers": [
+        "AWS Secrets Manager requires Terraform Enterprise license",
+        "Secrets Manager values are automatically cached in terraform.tfstate",
+        "Use aws_secretsmanager_secret resource to create and use secrets"
+      ]
     },
     {
       "id": "terraform-068",
       "question": "What are lifecycle rules in Terraform?",
       "answer": "Lifecycle rules control resource creation/destruction behavior: create_before_destroy creates new before destroying old, prevent_destroy prevents accidental deletion, ignore_changes ignores specific attribute changes. Use for zero-downtime updates.",
       "difficulty": "medium",
-      "tags": ["lifecycle"]
+      "tags": ["lifecycle"],
+      "wrongAnswers": [
+        "Lifecycle rules are required for all resources in Terraform",
+        "Lifecycle rules can only be used with compute resources",
+        "Lifecycle rules are configured in the provider block, not resource block"
+      ]
     },
     {
       "id": "terraform-069",
       "question": "How do you reference outputs from child modules?",
       "answer": "Reference module outputs using module.<name>.<output_name>. Example: module.vpc outputs: module.vpc.public_subnets. Outputs must be defined in child module's outputs.tf to be accessible to parent.",
       "difficulty": "medium",
-      "tags": ["outputs", "modules"]
+      "tags": ["outputs", "modules"],
+      "wrongAnswers": [
+        "Use module.<name>.output.<output_name> to reference module outputs",
+        "Module outputs are automatically available to all other modules",
+        "Module outputs can only reference string values, not complex types"
+      ]
     },
     {
       "id": "terraform-070",
       "question": "What is provider configuration and how do you configure multiple providers?",
       "answer": "Provider blocks configure connection to infrastructure platforms. Configure multiple providers using provider aliases for different regions/accounts: provider \"aws\" { region = \"us-east-1\" alias = \"east\" }. Then reference in resources using provider = \"aws.east\".",
       "difficulty": "medium",
-      "tags": ["providers"]
+      "tags": ["providers"],
+      "wrongAnswers": [
+        "Only one provider can be configured per Terraform configuration",
+        "Provider configuration is automatic based on cloud credentials",
+        "Use provider_aliases block to configure multiple providers"
+      ]
     },
     {
       "id": "terraform-071",
       "question": "How do you manage state file locking with DynamoDB?",
       "answer": "Configure S3 backend with DynamoDB table for locking: backend \"s3\" { bucket = \"terraform-state\" dynamodb_table = \"terraform-lock\" region = \"us-east-1\" }. DynamoDB locks state during operations preventing concurrent modifications.",
       "difficulty": "medium",
-      "tags": ["state", "locking"]
+      "tags": ["state", "locking"],
+      "wrongAnswers": [
+        "DynamoDB locking requires Terraform Enterprise license",
+        "State locking is automatic with S3; DynamoDB is not required",
+        "DynamoDB table must be created manually before configuring backend"
+      ]
     },
     {
       "id": "terraform-072",
       "question": "What happens when terraform apply fails due to missing dependencies?",
       "answer": "Terraform may fail if implicit dependency is not detected. Solution: define explicit dependency using depends_on: resource \"aws_instance\" \"web\" { depends_on = [aws_security_group.web_sg] ... }. Forces Terraform to create dependency first.",
       "difficulty": "medium",
-      "tags": ["dependencies", "troubleshooting"]
+      "tags": ["dependencies", "troubleshooting"],
+      "wrongAnswers": [
+        "Terraform automatically resolves all dependencies without configuration",
+        "Missing dependencies require recreating the entire configuration",
+        "Use terraform resolve to automatically fix missing dependencies"
+      ]
     },
     {
       "id": "terraform-073",
       "question": "How do you use terraform import for existing resources?",
       "answer": "Steps: 1) Write resource block matching resource to import, 2) Run terraform import <resource_address> <unique_id>, 3) Verify state added correctly with terraform state list. NOTE: Must write configuration manually - import doesn't generate .tf files.",
       "difficulty": "medium",
-      "tags": ["import"]
+      "tags": ["import"],
+      "wrongAnswers": [
+        "terraform import automatically generates complete .tf configuration files",
+        "Import requires deleting the existing resource first",
+        "terraform import can only import resources from AWS, not other providers"
+      ]
     },
     {
       "id": "terraform-074",
       "question": "What is the purpose of the null_resource?",
       "answer": "null_resource implements resource with no provider - useful for running provisioners or triggering actions based on other resource changes. Use with triggers map to force recreation when values change. Often used for running local exec scripts.",
       "difficulty": "hard",
-      "tags": ["resources"]
+      "tags": ["resources"],
+      "wrongAnswers": [
+        "null_resource is deprecated and replaced by terraform_resource",
+        "null_resource creates actual infrastructure resources in the null provider",
+        "null_resource cannot use provisioners like local-exec"
+      ]
     },
     {
       "id": "terraform-075",
       "question": "How do you manage infrastructure across multiple AWS accounts?",
       "answer": "Use provider aliases for each account: provider \"aws\" { alias = \"prod\" region = \"us-east-1\" credentials = ... }. Use IAM roles with assume_role for cross-account access. Or use AWS Organizations with separate state files per account.",
       "difficulty": "hard",
-      "tags": ["AWS", "multi-account"]
+      "tags": ["AWS", "multi-account"],
+      "wrongAnswers": [
+        "Multi-account management requires Terraform Enterprise",
+        "Use terraform workspace for each AWS account",
+        "Separate Terraform configurations are required for each account"
+      ]
     },
     {
       "id": "terraform-076",
       "question": "What is terraform state mv used for?",
       "answer": "terraform state mv renames or moves resources within state. Use to: rename existing resource without destroying, move resource to different module, update resource address without changing configuration. Safer than manually editing state file.",
       "difficulty": "medium",
-      "tags": ["commands", "state"]
+      "tags": ["commands", "state"],
+      "wrongAnswers": [
+        "terraform state mv moves resources between cloud providers",
+        "terraform state mv requires deleting and recreating the resource",
+        "terraform state mv is deprecated in favor of terraform state rm"
+      ]
     },
     {
       "id": "terraform-077",
       "question": "How do you use splat expressions in Terraform?",
       "answer": "Splat expressions iterate over lists: aws_instance.server[*].id returns list of all instance IDs. Use with for_each or count to get attributes of all instances. Example: ${join(\",\", aws_instance.server[*].private_ip)}",
       "difficulty": "medium",
-      "tags": ["expressions"]
+      "tags": ["expressions"],
+      "wrongAnswers": [
+        "Splat expressions are deprecated in favor of for expressions",
+        "Splat expressions only work with string data types",
+        "Splat expressions require the terraform-provisioner plugin"
+      ]
     },
     {
       "id": "terraform-078",
       "question": "What is terraform workspace list and how do you create a new workspace?",
       "answer": "terraform workspace list shows existing workspaces. terraform workspace new <name> creates new workspace (e.g., dev, staging, prod). Each workspace has separate state file, allowing same configuration for multiple environments.",
       "difficulty": "medium",
-      "tags": ["workspaces"]
+      "tags": ["workspaces"],
+      "wrongAnswers": [
+        "Workspaces can only be created in Terraform Cloud",
+        "terraform workspace new creates both configuration and state",
+        "Workspaces are stored in separate Git repositories"
+      ]
     },
     {
       "id": "terraform-079",
       "question": "How do you handle resource recreation on parameter changes?",
       "answer": "Some parameter changes force recreation (changing allocated_storage in RDS). Options: 1) accept that recreation will happen, 2) create new resource, migrate data, remove old, 3) use lifecycle create_before_destroy for zero-downtime replacement, 4) use aws_db_instance with custom engine version that supports in-place updates.",
       "difficulty": "hard",
-      "tags": ["recreation"]
+      "tags": ["recreation"],
+      "wrongAnswers": [
+        "Use ignore_changes to prevent recreation for all parameter changes",
+        "All parameter changes can be done in-place without recreation",
+        "Resource recreation is automatic and cannot be controlled"
+      ]
     },
     {
       "id": "terraform-080",
       "question": "What are Terraform functions and how do you use them?",
       "answer": "Terraform has built-in functions: length(), join(), format(), lookup(), coalesce(), etc. Use in interpolations: ${length(var.list)} or ${lookup(map, key, default)}. Functions enable dynamic configuration and data manipulation within templates.",
       "difficulty": "medium",
-      "tags": ["functions"]
+      "tags": ["functions"],
+      "wrongAnswers": [
+        "Terraform functions require importing external libraries",
+        "Custom functions can be defined in configuration files",
+        "Functions are only available in Terraform Cloud, not in CLI"
+      ]
     }
   ]
 }

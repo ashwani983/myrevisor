@@ -9,6 +9,11 @@
       "question": "What is Git?",
       "answer": "Git is a distributed version control system (DVCS) designed to track changes in source code during software development. Created by Linus Torvalds in 2005, it permits multiple developers to work on a project together without interrupting each other's changes. Git is especially popular for its speed and ability to manage both small and large projects capably.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Git is a centralized version control system",
+        "Git requires internet connection to work",
+        "Git is used only for storing database backups"
+      ],
       "tags": ["basics", "vcs"]
     },
     {
@@ -16,6 +21,11 @@
       "question": "What is a repository in Git?",
       "answer": "A Git repository is a file structure that stores all the files for a project. It tracks changes made to these files over time, helping teams work together evenly. Git can control both local repositories (on your own machine) and remote repositories (usually hosted on platforms like GitHub, GitLab, or Bitbucket), allowing teamwork and backup.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "A repository is only used for storing images",
+        "Repositories can only exist on remote servers",
+        "A repository contains only the current version of files"
+      ],
       "tags": ["basics", "concepts"]
     },
     {
@@ -23,6 +33,11 @@
       "question": "What is the difference between Git and GitHub?",
       "answer": "Git:\n- Version control system used to track changes in files over time\n- Runs locally on your computer\n- Can be used offline, operates locally on your machine\n\nGitHub:\n- Platform where Git repositories can be stored and shared\n- Cloud-based service\n- Requires an internet connection because it is hosted on the web",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Git and GitHub are the same thing",
+        "GitHub is required to use Git",
+        "Git runs only on cloud servers"
+      ],
       "tags": ["comparison", "github"]
     },
     {
@@ -30,6 +45,11 @@
       "question": "What is the purpose of the .gitignore file?",
       "answer": "The .gitignore file tells Git which files and folders to ignore when tracking changes. It is used to avoid attaching unneeded files (like logs, temporary files, or compiled code) to your repository. This keeps the repository clean and focused on important files only.\n\nCommon entries:\n- node_modules/\n- .env\n- *.log\n- dist/\n- .idea/\n- build/",
       "difficulty": "easy",
+      "wrongAnswers": [
+        ".gitignore tells Git which files to always commit",
+        ".gitignore only affects remote repositories",
+        ".gitignore is required in every Git repository"
+      ],
       "tags": ["gitignore", "configuration"]
     },
     {
@@ -37,6 +57,11 @@
       "question": "What is a version control system (VCS)?",
       "answer": "A version control system (VCS) records the work of developers coordinating on projects. It keeps the history of code changes, permitting developers to add new code, fix bugs, and run tests securely. If required, they can restore a past working version, ensuring project security.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "A VCS only tracks who edited files",
+        "VCS cannot restore previous versions of files",
+        "VCS requires all developers to work on the same computer"
+      ],
       "tags": ["basics", "vcs"]
     },
     {
@@ -44,6 +69,11 @@
       "question": "What is the git push command?",
       "answer": "The git push command is used to share local repository changes to a remote repository. It changes the remote repository with the recent commits from the fixed local branch.\n\ngit push <remote-name> <branch-name>\n\nExample: git push origin main",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git push downloads changes from remote",
+        "git push requires git pull to be run first",
+        "git push can only be used with SSH protocol"
+      ],
       "tags": ["commands", "remote"]
     },
     {
@@ -51,6 +81,11 @@
       "question": "What is the git pull command?",
       "answer": "The git pull command updates the current local branch with changes from a remote repository and combines it with the local repository. It is essentially a combination of git fetch followed by git merge.\n\ngit pull = git fetch + git merge",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git pull only downloads files without merging",
+        "git pull separates fetch and merge operations",
+        "git pull cannot update branches automatically"
+      ],
       "tags": ["commands", "remote"]
     },
     {
@@ -58,6 +93,11 @@
       "question": "What does git clone do?",
       "answer": "The git clone command creates a copy (or clone) of an existing git repository. It downloads all files, branches, and history, enabling you to start working on the project or contribute to it. With git clone -b <branch-name>, you can download and work on an individual branch of a repository.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git clone creates an empty repository",
+        "git clone only downloads the latest version without history",
+        "git clone requires GitHub account"
+      ],
       "tags": ["commands", "basics"]
     },
     {
@@ -65,6 +105,11 @@
       "question": "What are the advantages of using Git?",
       "answer": "Using Git provides multiple advantages:\n- Assists teamwork by supporting multiple developers to work on the same project together\n- Each developer has a local copy of the repository, improving performance and enabling offline work\n- Free and widely supported\n- Supports work on various types of projects\n- Each repository has only one Git directory\n- Distributed nature means no single point of failure",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Git requires all developers to be online simultaneously",
+        "Git cannot work with binary files",
+        "Git is only suitable for web development projects"
+      ],
       "tags": ["features", "advantages"]
     },
     {
@@ -72,6 +117,11 @@
       "question": "What is the difference between git init and git clone?",
       "answer": "git init creates a new, empty Git repository in the present directory, while git clone copies an existing remote repository, containing all files and history, to a local directory.\n\ngit init - Creates fresh repository\ngit clone - Copies existing repository",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git init and git clone do the same thing",
+        "git clone creates a new empty repository",
+        "git init copies an existing remote repository"
+      ],
       "tags": ["commands", "basics"]
     },
     {
@@ -79,6 +129,11 @@
       "question": "What is git add?",
       "answer": "The git add command marks changes in your project for the next commit. It tells Git which files to involve in the later update, making them ready to be saved in the repository. This is the early step in recording changes in the Git repository.\n\n- git add <file> - Stage specific file\n- git add . - Stage all changes",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git add permanently deletes files",
+        "git add commits changes immediately",
+        "git add can only stage one file at a time"
+      ],
       "tags": ["commands", "staging"]
     },
     {
@@ -86,6 +141,11 @@
       "question": "What is git status?",
       "answer": "The git status command shows the recent status of your Git repository. It tells you which files have changed, which ones are ready to be committed, and which ones are new and untracked. This helps you monitor your work's growth and see what changes need to be staged or committed.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git status shows all commit history",
+        "git status commits changes to repository",
+        "git status only works with remote repositories"
+      ],
       "tags": ["commands", "basics"]
     },
     {
@@ -93,6 +153,11 @@
       "question": "What is a commit in Git?",
       "answer": "A commit in Git denotes a snapshot of changes made to files in a repository. It captures all the changes you have made to files—like additions, modifications, or deletions of files at a particular moment. Each commit has a unique message explaining what was done. This helps you track your project's history, undo changes if required, and work with others on the same project.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "A commit only saves files without any metadata",
+        "Commits cannot be undone once created",
+        "A commit can only contain additions, not deletions"
+      ],
       "tags": ["commits", "basics"]
     },
     {
@@ -100,6 +165,11 @@
       "question": "What is the purpose of the git clean command?",
       "answer": "The git clean command is used to erase untracked files from the working directory of Git repository. Its motive is to clean up the workspace by deleting files that are not being saved by Git, achieving a clean state with only tracked files present.\n\ngit clean -n (preview what would be deleted)\ngit clean -f (force delete untracked files)",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git clean removes all files including tracked ones",
+        "git clean -n actually deletes files",
+        "git clean requires the -d flag to work"
+      ],
       "tags": ["commands", "cleanup"]
     },
     {
@@ -107,6 +177,11 @@
       "question": "What is a 'conflict' in Git?",
       "answer": "Git usually manages merges automatically, but conflicts occur when two branches edit the same line or when one branch deletes a file that another edits. Conflicts cannot be automatically resolved and require manual intervention.\n\nConflicts arise when:\n1. Two separate branches have changes to the same line in a file\n2. A file is deleted in one branch but has been modified in the other",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Conflicts occur when two developers push at the same time",
+        "Git automatically resolves all conflicts",
+        "Conflicts only happen with binary files"
+      ],
       "tags": ["conflicts", "merging"]
     },
     {
@@ -114,6 +189,11 @@
       "question": "What is the meaning of 'Index' in Git?",
       "answer": "In Git, the 'Index' (also called the 'Staging Area') is a place where alterations are temporarily stored before committing them to the repository. It permits you to select and prepare specific alterations from your working directory before properly saving them as part of the project's history.\n\nFlow: Working Directory → Index (Staging Area) → Repository",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Index is another name for the remote repository",
+        "The Index only stores new files, not modified ones",
+        "Files in the Index are automatically committed"
+      ],
       "tags": ["staging", "concepts"]
     },
     {
@@ -121,6 +201,11 @@
       "question": "How do you change the last commit in Git?",
       "answer": "To change the last commit in Git, use 'git commit --amend' after making changes:\n\n1. Make your changes\n2. Stage them with git add\n3. Run: git commit --amend\n4. This replaces the previous commit with a new one\n\nNote: Only amend commits that haven't been pushed to a shared branch!",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git commit --amend deletes the commit entirely",
+        "git commit --amend can only change the commit message",
+        "git commit --amend is safe to use on pushed commits"
+      ],
       "tags": ["commands", "commits"]
     },
     {
@@ -128,6 +213,11 @@
       "question": "What is git checkout?",
       "answer": "The git checkout command helps you switch between branches or return files to a previous state in Git.\n\nModern alternatives:\n- git switch - for changing branches\n- git restore - to return files to their previous state\n\nThese commands are more intentional for their specific tasks, offering better clarity and capability.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git checkout creates a new branch",
+        "git checkout only works with remote branches",
+        "git checkout can only be used for branches, not files"
+      ],
       "tags": ["commands", "branches"]
     },
     {
@@ -135,6 +225,11 @@
       "question": "How do you switch branches in Git?",
       "answer": "To switch branches in Git, use 'git checkout <branch-name>' to move to an existing branch. Alternatively, use 'git switch <branch-name>' in newer Git versions for the same objective. This permits you to work on different versions or features of your project stored in separate branches.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git checkout and git switch are identical commands",
+        "You can only switch to existing branches",
+        "git switch cannot be used to create new branches"
+      ],
       "tags": ["commands", "branches"]
     },
     {
@@ -142,6 +237,11 @@
       "question": "Name some popular Git hosting services",
       "answer": "Popular Git hosting services include:\n- GitHub (largest platform, Microsoft owned)\n- GitLab (includes CI/CD features)\n- Bitbucket (Atlassian product)\n- SourceForge.net\n- Visual Studio Online\n- Azure DevOps",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "GitHub is the only Git hosting service available",
+        "Git hosting services are not used for collaboration",
+        "All Git hosting services require paid subscriptions"
+      ],
       "tags": ["github", "hosting"]
     },
     {
@@ -149,6 +249,11 @@
       "question": "What are the different types of Git repositories?",
       "answer": "Git has two types of repositories:\n\n1. Bare Repository:\n   - A repository without a working directory\n   - Typically used for sharing projects remotely\n   - No files can be edited directly\n\n2. Non-Bare Repository:\n   - Includes a working directory where developers can modify and track files\n   - Used for local development\n\nTo create a bare repository: git init --bare",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Bare repositories are the only type of repositories",
+        "Bare repositories have a working directory",
+        "You can directly edit files in a bare repository"
+      ],
       "tags": ["concepts", "repositories"]
     },
     {
@@ -156,6 +261,11 @@
       "question": "How does Git handle file deletion?",
       "answer": "Git provides the git rm command to remove files from the working directory and the staging area.\n\n- To remove a file from both working directory and staging:\n  git rm <file_name>\n\n- To remove a file from Git but keep it in the working directory:\n  git rm --cached <file_name>",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git rm cannot remove staged files",
+        "git rm permanently deletes all repository history",
+        "git rm --cached keeps files in the staging area"
+      ],
       "tags": ["commands", "files"]
     },
     {
@@ -163,6 +273,11 @@
       "question": "How can you create an alias in Git?",
       "answer": "Aliases can be created to simplify Git commands using:\n\ngit config --global alias.<alias_name> '<git_command>'\n\nExamples:\ngit config --global alias.st status\ngit config --global alias.co checkout\ngit config --global alias.br branch\ngit config --global alias.cm commit",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Aliases can only be created using shell scripts",
+        "Aliases replace Git commands permanently",
+        "Aliases cannot be created for complex commands"
+      ],
       "tags": ["commands", "configuration"]
     },
     {
@@ -170,6 +285,11 @@
       "question": "How do you rename a branch in Git?",
       "answer": "To rename the current branch:\ngit branch -m <new_branch_name>\n\nTo rename a different branch:\ngit branch -m <old_branch_name> <new_branch_name>\n\nTo rename on remote:\n1. Rename locally: git branch -m old new\n2. Delete old remote: git push origin --delete old\n3. Push new: git push origin -u new",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Renaming a branch updates all references automatically on remote",
+        "git branch -m can only rename the current branch",
+        "You cannot rename a branch that has been pushed"
+      ],
       "tags": ["commands", "branches"]
     },
     {
@@ -177,6 +297,11 @@
       "question": "What is the difference between git fetch and git pull?",
       "answer": "git fetch:\n- Retrieves updates from the remote repository but does not merge them into the local branch\n- Allows you to review changes before integrating\n- Updates remote-tracking branches locally\n- Safe operation that doesn't modify working directory\n\ngit pull:\n- Fetches updates AND merges them into current branch\n- Equivalent to git fetch + git merge\n- May create merge conflicts\n- Updates working directory immediately",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git fetch and git pull are identical operations",
+        "git pull is safer than git fetch",
+        "git fetch does not update remote-tracking branches"
+      ],
       "tags": ["commands", "remote"]
     },
     {
@@ -184,6 +309,11 @@
       "question": "Explain Git rebase and when do you use it?",
       "answer": "The Git rebase is a process to combine alterations from one branch into another. It creates a linear history, avoiding merge commits.\n\nUse it to:\n- Clean up commit history\n- Keep a project history sequential\n- Make feature branches up-to-date before merging\n\nWarning: Never rebase commits that have been pushed to a shared repository!",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git rebase preserves merge commits",
+        "git rebase is faster than git merge",
+        "git rebase is always safer than git merge"
+      ],
       "tags": ["commands", "merging"]
     },
     {
@@ -191,6 +321,11 @@
       "question": "How will you create a Git repository?",
       "answer": "To create a Git repository:\n1. Download Git on your system if not already installed\n2. Create a project folder in the location where you want your repository\n3. Open Terminal or Command Prompt and navigate to your project folder\n4. Run 'git init' in the project folder\n5. This will create a '.git' folder, indicating your repository is set",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git init creates a copy of an existing repository",
+        "git init requires internet connection",
+        "git init can only be run inside an existing Git repository"
+      ],
       "tags": ["basics", "setup"]
     },
     {
@@ -198,6 +333,11 @@
       "question": "What differentiates between git remote and git clone?",
       "answer": "git remote:\n- Manages connections to remote repositories\n- Lets you add, remove, and view remotes linked to a local project\n- Does not download any files\n\ngit clone:\n- Creates a local copy of an existing remote repository\n- Includes all files, branches, and commit history\n- Allows you to start working immediately",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git remote downloads repository files",
+        "git clone is a type of git remote command",
+        "git remote cannot list all connected repositories"
+      ],
       "tags": ["commands", "remote"]
     },
     {
@@ -205,6 +345,11 @@
       "question": "What are the benefits of using a pull request in a project?",
       "answer": "Pull requests offer multiple benefits:\n- Code Review: Team members can review code before merging, ensuring better code quality\n- Collaboration: Multiple developers can work on the same project and discuss changes within the pull request\n- Version Control: Helps track proposed changes and keeps the main branch stable\n- Teams can work on distinct parts of the system and later combine their changes",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Pull requests are only for closing branches",
+        "Pull requests cannot be reviewed by team members",
+        "Pull requests require all tests to pass before opening"
+      ],
       "tags": ["github", "workflow"]
     },
     {
@@ -212,6 +357,11 @@
       "question": "What is a Git bundle?",
       "answer": "A Git bundle is a collective file that wraps all data from a Git repository, such as commits, branches, and tags. It acts as a handy approach for relocating a repository offline or sharing upgrades when network connection is not available.\n\nTo create a bundle:\ngit bundle create <bundle_file> <refs>\n\nTo use a bundle:\ngit clone <bundle_file>",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git bundles are compressed archives like ZIP files",
+        "Git bundles can only be created from bare repositories",
+        "Git bundles require network connection to use"
+      ],
       "tags": ["advanced", "sharing"]
     },
     {
@@ -219,6 +369,11 @@
       "question": "What are the advantages of Git over SVN?",
       "answer": "Advantages of Git over SVN:\n- Distributed Version Control: Git allows every developer to have a complete copy of the repository, whereas SVN relies on a centralized model\n- Faster Performance: Git is generally faster due to local operations, while SVN requires network communication for many actions\n- Branching and Merging: Git offers lightweight and efficient branching, whereas SVN branches are heavier and more complex\n- Offline Work: Since Git is distributed, developers can work offline, committing changes locally before pushing them\n- Better Conflict Resolution: Git provides more advanced tools for resolving merge conflicts",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Git and SVN both use distributed models",
+        "SVN has better branching than Git",
+        "Git cannot work offline unlike SVN"
+      ],
       "tags": ["comparison", "svn"]
     },
     {
@@ -226,6 +381,11 @@
       "question": "What is git stash?",
       "answer": "The git stash command temporarily saves changes that are not yet ready to be committed. It allows developers to switch branches or work on something else without losing their progress.\n\nKey commands:\n- git stash - Save current changes\n- git stash list - View stashes\n- git stash pop - Reapply most recent stash and remove it\n- git stash apply - Reapply stash without removing it\n- git stash drop - Delete a specific stash",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git stash commits changes to the repository",
+        "git stash pop is the only way to recover stashed changes",
+        "Stashed changes are automatically pushed to remote"
+      ],
       "tags": ["commands", "workflow"]
     },
     {
@@ -233,6 +393,11 @@
       "question": "How do you revert a commit that has already been pushed and made public?",
       "answer": "To revert a pushed commit:\n1. git checkout <branch-name> - Switch to the branch\n2. git log - Find the commit hash to revert\n3. git revert <commit-hash> - Create a revert commit\n4. git push origin <branch-name> - Push the revert\n\nThis creates a new commit that undoes changes without altering history.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git revert modifies existing commit history",
+        "git revert is faster than git reset",
+        "git revert can only undo the last commit"
+      ],
       "tags": ["commands", "undo"]
     },
     {
@@ -240,6 +405,11 @@
       "question": "Explain the difference between reverting and resetting",
       "answer": "git reset:\n- Moves the HEAD pointer to a previous commit\n- Removes changes from the commit history\n- Can modify staged and working directory changes\n- Modes: --soft, --mixed, --hard\n\ngit revert:\n- Creates a new commit that undoes changes from a previous commit\n- Does NOT modify commit history\n- Safer when working in a shared repository\n- Preserves complete history with audit trail",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git reset and git revert are the same thing",
+        "git reset preserves commit history while revert deletes it",
+        "git reset is safer for shared branches"
+      ],
       "tags": ["commands", "undo"]
     },
     {
@@ -247,6 +417,11 @@
       "question": "What is the difference between git reflog and git log?",
       "answer": "git log:\n- Displays commit history of a repository\n- Only shows commits in the current branch history\n- Used to review past commits and changes\n\ngit reflog:\n- Tracks movements of HEAD and branch changes\n- Shows all references, even those not in branch history\n- Can help recover lost commits\n- Used to restore lost branches or commits",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git log and git reflog show the same information",
+        "git reflog entries are permanent and never expire",
+        "git reflog only tracks pushed commits"
+      ],
       "tags": ["commands", "history"]
     },
     {
@@ -254,6 +429,11 @@
       "question": "What is HEAD in Git?",
       "answer": "HEAD in Git is a reference to the latest commit on the currently checked-out branch.\n\nKey points:\n- Determines which commit and branch you are working on\n- When switching branches, HEAD updates to point to the latest commit of the new branch\n- If in a detached HEAD state, you are working on a specific commit instead of a branch\n- Located in .git/HEAD",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "HEAD always points to the main branch",
+        "HEAD is a file that stores the current commit message",
+        "Detached HEAD state is the normal working state"
+      ],
       "tags": ["concepts", "basics"]
     },
     {
@@ -261,6 +441,11 @@
       "question": "What is the purpose of git tag -a?",
       "answer": "The git tag -a command creates an annotated tag in Git. Annotated tags store additional metadata such as the tagger's name, email, date, and a message describing the tag.\n\nThese tags are useful for marking important points like software releases.\n\ngit tag -a v1.0 -m \"Version 1.0 Release\"\n\nTo push tags to remote:\ngit push origin v1.0",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git tag -a creates a lightweight tag",
+        "Tags created with git tag -a are automatically pushed",
+        "git tag -a only works on the current commit"
+      ],
       "tags": ["commands", "releases"]
     },
     {
@@ -268,6 +453,11 @@
       "question": "What is the difference between HEAD, working tree and index?",
       "answer": "HEAD:\n- A reference to the current commit or branch you are working on\n- Located in .git/HEAD\n\nWorking Tree:\n- The directory where your project files reside\n- Contains the actual project files and unstaged changes\n- Your local project directory\n\nIndex (Staging Area):\n- A file that acts as a buffer between the working tree and the repository\n- Holds changes that are staged and ready to be committed\n- Located in .git/index",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "HEAD, working tree, and index are all the same thing",
+        "The Index contains all tracked files in the repository",
+        "Working tree is stored inside the .git directory"
+      ],
       "tags": ["concepts", "architecture"]
     },
     {
@@ -275,6 +465,11 @@
       "question": "How to resolve a conflict in Git?",
       "answer": "To resolve a conflict in Git:\n1. Identify Conflict: Git will alert you during merge or rebase\n2. Open the Conflicted File: Look for conflict markers like <<<<<<< HEAD, =======, >>>>>>>\n3. Resolve the Conflict: Edit the file to keep your changes, the incoming changes, or both\n4. Stage the Resolved File: Use git add <file>\n5. Commit the Changes: Run git commit\n6. Continue Rebase (if applicable): Use git rebase --continue",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Git automatically resolves all merge conflicts",
+        "Conflicts only occur during git fetch operations",
+        "After resolving conflict markers, Git commits automatically"
+      ],
       "tags": ["conflicts", "merging"]
     },
     {
@@ -282,6 +477,11 @@
       "question": "What is the difference between git merge and git rebase?",
       "answer": "git merge:\n- Combines two branches and creates a merge commit\n- Preserves both branches' histories\n- Best when you want to keep full branch history\n- Common in collaborative environments\n\ngit rebase:\n- Reapplies commits from one branch on top of another\n- Rewrites commit history to make it linear\n- Creates a clean, straight history without merge commits\n- Useful for personal branches before pushing",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git merge always creates a linear history",
+        "git rebase preserves the original commit history",
+        "git merge cannot create merge conflicts"
+      ],
       "tags": ["merging", "branches"]
     },
     {
@@ -289,6 +489,11 @@
       "question": "What language is Git written in?",
       "answer": "Git is mainly developed using the C programming language. The core features and commands of Git, containing its data structures and algorithms, are implemented in C. This choice of language ensures efficiency, speed, and portability across distinct operating systems and platforms.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git is written in Python",
+        "Git requires Java to run",
+        "Git is written in assembly language"
+      ],
       "tags": ["history", "internals"]
     },
     {
@@ -296,6 +501,11 @@
       "question": "What is git diff?",
       "answer": "git diff shows the differences between files or commits:\n\n- Compare working directory with staging area:\n  git diff\n\n- Compare staged changes with last commit:\n  git diff --staged\n\n- Compare two commits:\n  git diff <commit1> <commit2>\n\n- Compare two branches:\n  git diff branch1..branch2",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git diff shows only committed changes",
+        "git diff cannot compare two branches",
+        "git diff --staged shows unstaged changes"
+      ],
       "tags": ["commands", "comparison"]
     },
     {
@@ -303,6 +513,11 @@
       "question": "What is a Git commit hash?",
       "answer": "A Git commit hash is a unique identifier (SHA-1) for each commit. It:\n- Helps to reference and track specific commits in the repository\n- Is 40 characters long\n- Can be shortened to first 7 characters for convenience\n- You can use it to checkout, reset, or revert to a particular commit",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "A commit hash is randomly generated each time",
+        "Commit hashes are the same across all repositories",
+        "A commit hash is only 10 characters long"
+      ],
       "tags": ["concepts", "commits"]
     },
     {
@@ -310,6 +525,11 @@
       "question": "What is a detached HEAD state?",
       "answer": "A detached HEAD state occurs when you check out a specific commit rather than a branch. In this state:\n- Commits are not attached to any branch\n- They may be lost if not properly managed\n- Git will warn you when entering this state\n\nTo avoid losing work:\n1. Create a branch before making changes: git checkout -b new-branch\n2. Or checkout a branch to save changes before leaving",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Detached HEAD means Git is not working properly",
+        "Commits in detached HEAD state are never lost",
+        "You cannot make commits while in detached HEAD state"
+      ],
       "tags": ["concepts", "branches"]
     },
     {
@@ -317,6 +537,11 @@
       "question": "How can you delete a remote Git branch?",
       "answer": "To delete a remote branch:\ngit push origin --delete <branch-name>\n\nThis removes the branch from the remote repository. The local branch remains unchanged.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "git push origin --delete only deletes local branches",
+        "Remote branches cannot be deleted",
+        "Deleting a remote branch also deletes the local branch"
+      ],
       "tags": ["commands", "branches"]
     },
     {
@@ -324,6 +549,11 @@
       "question": "What is the purpose of git cherry-pick?",
       "answer": "The git cherry-pick command:\n- Applies changes from a specific commit to the current branch\n- Useful when you want to incorporate changes from a branch without merging the entire branch\n- Helps maintain a clean history by including only selected changes\n- Ideal for bringing specific bug fixes or features from one branch to another\n- Creates a new commit on the current branch with the same changes",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git cherry-pick requires merging branches",
+        "git cherry-pick deletes the original commit",
+        "git cherry-pick can only be used on the same branch"
+      ],
       "tags": ["commands", "advanced"]
     },
     {
@@ -331,6 +561,11 @@
       "question": "What does git ls-files do?",
       "answer": "The command git ls-files lists all files that are currently tracked by Git in the repository. It:\n- Displays the files in both the working directory and the staging area\n- Helps identify which files are being tracked and ready to be committed\n- Does not show untracked files\n- Does not show files ignored by .gitignore",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git ls-files shows all files in the repository",
+        "git ls-files requires the repository to be connected to remote",
+        "git ls-files cannot be used to verify staging"
+      ],
       "tags": ["commands", "files"]
     },
     {
@@ -338,6 +573,11 @@
       "question": "How do you fetch all remote branches?",
       "answer": "Run: git fetch --all\n\nThis command fetches all branches and their latest changes from all remotes without merging them.\n\nTo also see all branches (including remote):\ngit branch -a\n\nTo switch to a remote branch:\ngit checkout -b <local-name> origin/<remote-name>",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git fetch only downloads the main branch",
+        "git fetch automatically merges changes",
+        "git fetch requires write permissions on remote"
+      ],
       "tags": ["commands", "remote"]
     },
     {
@@ -345,6 +585,11 @@
       "question": "What is the Git object model?",
       "answer": "The Git object model consists of four major types of objects:\n\n1. Blobs: Store the file data (the contents of files)\n2. Trees: Represent directory structures and contain references to blobs (files) and other trees (subdirectories)\n3. Commits: Store repository snapshots with author, time, and parent info\n4. Tags: Store references to specific commits, typically used for marking important points like releases",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "The Git object model has three types of objects",
+        "Blobs store file metadata, not content",
+        "Commits directly store file contents"
+      ],
       "tags": ["internals", "concepts"]
     },
     {
@@ -352,6 +597,11 @@
       "question": "What is a Git hook and how might you use it?",
       "answer": "A Git hook is a script that runs automatically at certain points in the Git workflow, like before or after a commit, merge, or push.\n\nUse cases:\n- Pre-commit: Check code quality or run tests before committing\n- Post-commit: Automate tasks like notifications after a commit\n- Pre-push: Ensure tests pass before pushing changes\n\nHooks are stored in .git/hooks directory.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git hooks are stored on the remote server",
+        "Git hooks run automatically for all users by default",
+        "Git hooks can only be written in Python"
+      ],
       "tags": ["hooks", "automation"]
     },
     {
@@ -359,6 +609,11 @@
       "question": "How do you handle large files with Git?",
       "answer": "Use Git LFS (Large File Storage) to handle large files:\n\n1. Install Git LFS:\n   git lfs install\n\n2. Track large files:\n   git lfs track \"*.psd\"\n\n3. Commit and push as usual. Git LFS will handle the large file storage automatically.\n\nLFS replaces large files in the repository with pointers, while the actual file content is stored externally.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git LFS replaces Git entirely for large files",
+        "Git LFS stores files directly in the repository",
+        "Git LFS is built into Git by default"
+      ],
       "tags": ["lfs", "large-files"]
     },
     {
@@ -366,6 +621,11 @@
       "question": "What is a 'bare repository' in Git?",
       "answer": "A bare repository in Git is a repository that doesn't have a working directory. It only contains the Git data, such as branches, tags, and commits, without the actual project files.\n\nCharacteristics:\n- No working directory (no actual files)\n- Used for sharing changes between collaborators (remote)\n- Stored typically in the .git folder format\n\nCreate with: git init --bare",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Bare repositories have a working directory with files",
+        "Bare repositories cannot be cloned",
+        "Only bare repositories can be pushed to"
+      ],
       "tags": ["repositories", "concepts"]
     },
     {
@@ -373,6 +633,11 @@
       "question": "What is branching in Git?",
       "answer": "Branching in Git permits creating separate lines of development. It allows users to work on features or fixes separately from the main codebase.\n\nKey benefits:\n- Parallel development on multiple features\n- Safe experimentation without affecting main code\n- Easier integration of changes\n- Supports various workflows (feature branching, Gitflow, etc.)",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Branches are copies of the entire repository",
+        "There can only be one branch at a time",
+        "Branches cannot be merged together"
+      ],
       "tags": ["branches", "basics"]
     },
     {
@@ -380,6 +645,11 @@
       "question": "What is a Git submodule?",
       "answer": "A Git submodule is a repository embedded inside another Git repository. It allows you to keep track of an external repository as part of your project.\n\nSubmodules are useful when:\n- Including external libraries or dependencies\n- Keeping their history separate from main project\n\nCommands:\ngit submodule add <url> <path>\ngit submodule update --init --recursive",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git submodules are identical to git clone",
+        "Submodules update automatically when parent updates",
+        "Submodules cannot have their own commit history"
+      ],
       "tags": ["advanced", "submodules"]
     },
     {
@@ -387,6 +657,11 @@
       "question": "How can you undo a commit that hasn't been pushed?",
       "answer": "We can use git reset to undo a commit:\n\n- To keep changes in the working directory:\n  git reset --soft HEAD~1\n\n- To remove changes from staging area but keep files:\n  git reset --mixed HEAD~1\n\n- To remove changes from both the commit and working directory:\n  git reset --hard HEAD~1\n\nWarning: --hard option permanently deletes changes!",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git reset deletes commits permanently",
+        "git reset --soft keeps all changes in working directory",
+        "git reset --hard is the safest option"
+      ],
       "tags": ["commands", "undo"]
     },
     {
@@ -394,6 +669,11 @@
       "question": "How do you squash multiple commits into one using Git rebase?",
       "answer": "To squash multiple commits into one:\n\n1. Start an interactive rebase:\n   git rebase -i HEAD~<number-of-commits>\n\n2. In the editor, change 'pick' to 'squash' (or 's') for the commits you want to combine\n\n3. Save and close the editor\n\n4. Git will open another editor to combine commit messages. Edit the message and save.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Squashing commits requires deleting and recreating them",
+        "You can only squash the last two commits",
+        "Squashing commits loses the original commit messages"
+      ],
       "tags": ["commands", "advanced"]
     },
     {
@@ -401,6 +681,11 @@
       "question": "What is the difference between git reset --hard and git clean -fd?",
       "answer": "git reset --hard:\n- Resets the commit history\n- Resets the staging area\n- Resets the working directory to a specific commit\n- Discards any uncommitted changes\n\ngit clean -fd:\n- Removes UNTRACKED files and directories from the working directory\n- Does NOT affect the commit history\n- Does NOT affect staged changes\n- Leaves tracked files untouched",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git reset --hard and git clean -fd do the same thing",
+        "git reset --hard only affects the commit history",
+        "git clean -fd removes staged files"
+      ],
       "tags": ["commands", "cleanup"]
     },
     {
@@ -408,6 +693,11 @@
       "question": "How do you configure Git for a specific project?",
       "answer": "To set a specific user for a project:\n\ngit config user.name \"Your Name\"\ngit config user.email \"your.email@example.com\"\n\nThese settings apply only to the current repository (local level).\n\nLevels of configuration:\n- --system: Applied to every user and all repos\n- --global: Applied to all repos for current user\n- (default/local): Applied only to current repo",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Git configuration only works with git config command",
+        "Global configuration applies to all users on the system",
+        "Repository-specific config overrides global config"
+      ],
       "tags": ["configuration", "setup"]
     },
     {
@@ -415,6 +705,11 @@
       "question": "What is a Git reflog and how is it useful?",
       "answer": "The Git reflog tracks the history of changes to HEAD and branches, including changes that are not part of the commit history (e.g., resets, rebase).\n\nIt allows you to:\n- Recover lost commits\n- Restore deleted branches\n- Understand the sequence of actions taken\n\nCommands:\ngit reflog\n\nRecovery example:\ngit checkout <commit-hash-from-reflog>",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git reflog is part of regular commit history",
+        "git reflog only tracks commits on the current branch",
+        "git reflog entries are automatically deleted after 30 days"
+      ],
       "tags": ["commands", "recovery"]
     },
     {
@@ -422,6 +717,11 @@
       "question": "How do you manage multiple remotes in a Git repository?",
       "answer": "Manage multiple remotes using:\n\n- Add a new remote:\n  git remote add <remote-name> <remote-url>\n\n- View remotes:\n  git remote -v\n\n- Remove a remote:\n  git remote remove <remote-name>\n\n- Rename a remote:\n  git remote rename <old-name> <new-name>\n\n- Fetch from specific remote:\n  git fetch <remote-name>",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "You can only have one remote per repository",
+        "Remotes are created automatically when cloning",
+        "git remote add copies all repository data"
+      ],
       "tags": ["remote", "commands"]
     },
     {
@@ -429,6 +729,11 @@
       "question": "How do you perform a Git bisect to find a buggy commit?",
       "answer": "To perform a Git bisect:\n\n1. Start the bisect process:\n   git bisect start\n\n2. Mark current commit as bad:\n   git bisect bad\n\n3. Mark a known good commit:\n   git bisect good <commit-hash>\n\n4. Git will checkout a commit between them. Test and mark as good or bad.\n\n5. Repeat until the buggy commit is found.\n\n6. Stop the process:\n   git bisect reset",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git bisect requires manual testing of each commit",
+        "git bisect only works with the main branch",
+        "git bisect cannot find the first bad commit"
+      ],
       "tags": ["debugging", "advanced"]
     },
     {
@@ -436,6 +741,11 @@
       "question": "What is origin in Git?",
       "answer": "In Git, 'origin' refers to the default name offered to the remote repository from which the local repository was cloned. Origin is used as a reference to control fetches, pulls, and pushes.\n\nCommon usage:\ngit push origin main\ngit pull origin main\ngit fetch origin",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "origin is the only valid remote name",
+        "origin is a special Git command",
+        "origin is automatically created on every clone"
+      ],
       "tags": ["remote", "basics"]
     },
     {
@@ -443,6 +753,11 @@
       "question": "How do you recover a deleted branch that was pushed?",
       "answer": "To recover a deleted branch:\n\n1. Use git reflog to find the commit:\n   git reflog\n\n2. Look for the commit where the branch existed\n\n3. Recreate the branch:\n   git branch <branch-name> <commit-hash>\n\nOr if you recently deleted:\n   git checkout -b <branch-name> <sha>\n\nAlternative: Check GitHub/GitLab's branch recovery features.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Deleted branches cannot be recovered",
+        "GitHub preserves all deleted branches forever",
+        "git reflog cannot find deleted branch commits"
+      ],
       "tags": ["recovery", "branches"]
     },
     {
@@ -450,6 +765,11 @@
       "question": "What consists of a commit object?",
       "answer": "A commit object consists of:\n\n1. A set of files that represents the state of a project at a given point in time\n2. Reference to parent commit objects\n3. A 40 character string termed as SHA-1 name uniquely identifies the commit object\n\nAdditional metadata:\n- Author name and email\n- Committer name and email\n- Commit timestamp",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "A commit object stores the actual file contents",
+        "Commits do not contain parent information",
+        "A commit object is the same as a blob"
+      ],
       "tags": ["internals", "commits"]
     },
     {
@@ -457,6 +777,11 @@
       "question": "What is the difference between git stash apply and git stash pop?",
       "answer": "git stash pop:\n- Applies the most recent stash\n- Removes the stash from the stash list after applying\ngit stash pop = git stash apply + git stash drop\n\ngit stash apply:\n- Applies the most recent stash\n- Leaves the stash in the stash list for future reuse\n- You can manually remove it later with git stash drop",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git stash apply removes the stash automatically",
+        "git stash pop and git stash apply are identical",
+        "Stashed changes are pushed to remote automatically"
+      ],
       "tags": ["commands", "stash"]
     },
     {
@@ -464,6 +789,11 @@
       "question": "What is the difference between a pull request and a branch?",
       "answer": "Branch:\n- A separate version of the code\n- Exists within a repository\n- Used for parallel development\n\nPull Request:\n- A process done when there is a need to put a developer's change into another person's code branch\n- Initiates code review process\n- Discussion and feedback mechanism\n- Used for integrating changes from one branch to another",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "A branch is a discussion thread for code changes",
+        "Branches and pull requests are the same thing",
+        "Pull requests can only be created from local branches"
+      ],
       "tags": ["github", "workflow"]
     },
     {
@@ -471,6 +801,11 @@
       "question": "Why is Git considered easy to work with?",
       "answer": "Git is considered easy due to:\n\n1. Branching Capabilities:\n   - Sophisticated branching for multiple features\n   - Easier merge option\n   - Efficient workflow tracking\n\n2. Distributed Development:\n   - Every developer has a local repository copy\n   - Easier to trace and locate data if lost\n   - Improved scalability\n\n3. Pull Requests:\n   - Easier interaction among team members\n   - Proper track of changes\n\n4. Effective Release Cycle:\n   - Wide variety of features\n   - Faster release cycles",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Git is difficult to learn and use",
+        "Git requires expensive licenses",
+        "Git cannot handle large teams"
+      ],
       "tags": ["benefits", "workflow"]
     },
     {
@@ -478,6 +813,11 @@
       "question": "What command helps know the list of branches merged to master?",
       "answer": "To get a list of branches merged to the current branch:\n\ngit branch --merged\n\nThis shows all branches that have been merged into the current branch.\n\nTo show unmerged branches:\ngit branch --no-merged\n\nTo delete merged branches:\ngit branch -d <branch-name>",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git branch --merged shows all branches in the repository",
+        "Merged branches are automatically deleted",
+        "git branch --merged only works on remote branches"
+      ],
       "tags": ["commands", "branches"]
     },
     {
@@ -485,6 +825,11 @@
       "question": "What is best: Create an additional commit OR amend an existing commit?",
       "answer": "It is always advisable to create an additional commit rather than amending the existing commit because:\n\n- Amend operation destroys the previously saved state of that commit\n- If only the commit message changes, it's acceptable\n- But if contents get amended, it results in loss of important information\n- Over usage of git commit --amend can have severe repercussions\n\nBest practice: Create new commits rather than rewriting history on shared branches.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Creating additional commits is always bad practice",
+        "Amending commits is safer than creating new ones",
+        "You should amend commits after pushing to shared branches"
+      ],
       "tags": ["best-practices", "commits"]
     },
     {
@@ -492,6 +837,11 @@
       "question": "What is the functionality of git ls-tree?",
       "answer": "The git ls-tree command returns a tree object representation of the current repository along with:\n- The mode of each item\n- The name of each item\n- The SHA-1 value of the blob\n\nExample:\ngit ls-tree HEAD\ngit ls-tree <branch-name>\ngit ls-tree -r (recursive, shows files)",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git ls-tree lists all commits in the repository",
+        "git ls-tree only shows file names",
+        "git ls-tree cannot show files in subdirectories"
+      ],
       "tags": ["commands", "internals"]
     },
     {
@@ -499,6 +849,11 @@
       "question": "What does git annotate command do?",
       "answer": "The git annotate command annotates each line within the given file with information from the commit which introduced that change.\n\nSyntax:\ngit annotate [<options>] <file> [<revision>]\n\nThis shows which commit last modified each line of a file, useful for:\n- Tracking when changes were made\n- Finding who made specific changes\n- Understanding code history",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git annotate creates new commits",
+        "git annotate only works on the main branch",
+        "git annotate cannot show who modified each line"
+      ],
       "tags": ["commands", "history"]
     },
     {
@@ -506,6 +861,11 @@
       "question": "What is git revert vs git reset vs git checkout?",
       "answer": "git reset:\n- Moves HEAD to different commit\n- Potentially changes history\n- Modes: --soft, --mixed, --hard\n\ngit revert:\n- Creates new commit undoing exact commit changes\n- Does NOT modify history\n- Safe for shared branches\n\ngit checkout:\n- Switches branches or checks out files from commit\n- Puts you in 'detached HEAD' state for direct commits",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git reset and git revert modify the working directory",
+        "git checkout can undo previous commits",
+        "git reset changes commit history while git revert does not"
+      ],
       "tags": ["commands", "comparison"]
     },
     {
@@ -513,6 +873,11 @@
       "question": "What is the significance of git push --force-with-lease?",
       "answer": "git push --force-with-lease is safer than git push --force because:\n\ngit push --force:\n- Force-pushes changes regardless of remote updates\n- Can accidentally overwrite others' work\n\ngit push --force-with-lease:\n- Checks if remote branch has been updated since your last fetch\n- Rejects push if remote has new commits\n- Prevents accidental overwriting of other developers' changes\n\nAlways prefer --force-with-lease over --force when force-pushing.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git push --force-with-lease is the same as git push --force",
+        "git push --force is safer than git push --force-with-lease",
+        "git push --force-with-lease cannot detect if remote has new commits"
+      ],
       "tags": ["commands", "remote"]
     },
     {
@@ -520,6 +885,11 @@
       "question": "How do you make an existing branch track a remote branch?",
       "answer": "To make an existing branch track a remote branch:\n\ngit branch --set-upstream-to=<remote-name>/<branch-name>\n\nOr the shorter version:\ngit branch -u <remote-name>/<branch-name>\n\nExample:\ngit branch -u origin/feature-branch",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Tracking branches are created automatically on first push",
+        "git branch -u sets the remote for the current branch only",
+        "You cannot track a remote branch that doesn't exist"
+      ],
       "tags": ["commands", "branches"]
     },
     {
@@ -527,6 +897,11 @@
       "question": "How do you configure multiple project-specific settings?",
       "answer": "For multiple configurations, use git config with different levels:\n\n- System-wide (all users):\n  git config --system\n\n- User-wide (all repos):\n  git config --global\n\n- Repository-specific:\n  git config (default, no flag)\n\nAlternatively, use includeIf for conditional includes based on repository path in .gitconfig.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git config levels cannot be combined",
+        "System-wide config is the highest priority",
+        "Local config is the lowest priority"
+      ],
       "tags": ["configuration", "advanced"]
     },
     {
@@ -534,6 +909,11 @@
       "question": "How do you update a Git submodule?",
       "answer": "To update a submodule:\n\n1. Navigate to the submodule directory:\n   cd submodule-path\n\n2. Fetch the latest changes:\n   git fetch\n\n3. Update to latest commit:\n   git pull\n\nOr update from parent repo:\ngit submodule update --remote --merge\n\n4. Commit the submodule change in main repo:\n   git add .\n   git commit -m \"Update submodule\"",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git submodules update automatically with parent",
+        "Submodule changes are committed with parent repo automatically",
+        "git submodule update only works with git submodule add"
+      ],
       "tags": ["submodules", "commands"]
     },
     {
@@ -541,6 +921,11 @@
       "question": "What are the levels in git config?",
       "answer": "Git config has three levels:\n\n1. System-wide (--system):\n   - Stored in /etc/gitconfig\n   - Applied to all users and all repos\n\n2. User-wide (--global):\n   - Stored in ~/.gitconfig\n   - Applied to all repos for current user\n\n3. Local (default):\n   - Stored in .git/config\n   - Applied only to current repository\n\nPriority: Local > Global > System",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "System config has the highest priority",
+        "Global config overrides local config",
+        "Git config only has one level"
+      ],
       "tags": ["configuration", "basics"]
     },
     {
@@ -548,6 +933,11 @@
       "question": "How to remove a file from git index without removing from filesystem?",
       "answer": "To remove a file from git index (staging) without removing from filesystem:\n\ngit reset <file_name>\n\nOr:\ngit rm --cached <file_name>\n\nThen add to .gitignore:\necho filename >> .gitignore\n\nThis prevents accidentally staging the file again.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git reset and git rm --cached are the same",
+        "Removing from index also deletes the file from filesystem",
+        "Files removed from index are automatically added to .gitignore"
+      ],
       "tags": ["commands", "staging"]
     },
     {
@@ -555,6 +945,11 @@
       "question": "What is the functionality of git merge --abort?",
       "answer": "The git merge --abort command is used for:\n\n- Stopping the merge process\n- Returning back to the state before the merging occurred\n- Cancelling an in-progress merge with conflicts\n\nIt essentially reverses the merge operation and restores the pre-merge state.\n\nNote: Only works if merge hasn't been completed and committed.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git merge --abort completes the merge",
+        "git merge --abort only works after merge conflicts",
+        "git merge --abort requires the merge to be committed first"
+      ],
       "tags": ["commands", "merging"]
     },
     {
@@ -562,6 +957,11 @@
       "question": "How do you apply a patch in Git?",
       "answer": "To apply a patch:\n\n1. Create a patch:\n   git format-patch -1 <commit>\n\n2. Apply a patch from a file:\n   git apply <patch-file>\n\n3. Apply and commit:\n   git am <patch-file>\n\nThe git apply command stages changes, while git am applies and creates a commit.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git apply commits changes automatically",
+        "git apply and git am are identical",
+        "Patches can only be created from committed changes"
+      ],
       "tags": ["commands", "advanced"]
     },
     {
@@ -569,6 +969,11 @@
       "question": "What are the factors for choosing between git merge and git rebase?",
       "answer": "Consider these factors:\n\nUse merge when:\n- Working in collaborative environments\n- Merging feature branches\n- You want to preserve complete history\n\nUse rebase when:\n- You want clean, linear history\n- Personal branches before pushing\n- Keeping feature branches up-to-date\n\nAvoid rebase when:\n- On public/shared branches\n- Other developers have based work on your commits\n- In open-source repositories",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Always prefer rebase over merge",
+        "Merge is faster than rebase",
+        "Use merge for personal branches and rebase for shared branches"
+      ],
       "tags": ["merging", "best-practices"]
     },
     {
@@ -576,6 +981,11 @@
       "question": "What is the Gitflow workflow?",
       "answer": "Gitflow is a branching model for Git:\n\nMain branches:\n- main/master: Production code\n- develop: Integration branch for features\n\nSupporting branches:\n- feature/*: New features\n- release/*: Release preparation\n- hotfix/*: Production fixes\n\nBenefits:\n- Clear structure for releases\n- Parallel development\n- Organized workflow",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Gitflow is the only Git branching strategy",
+        "Gitflow requires all branches to be long-lived",
+        "Gitflow cannot be used with CI/CD pipelines"
+      ],
       "tags": ["workflows", "branches"]
     },
     {
@@ -583,6 +993,11 @@
       "question": "What is the difference between fork and clone?",
       "answer": "Clone:\n- Creates a local copy of a repository\n- Connects to original (origin remote)\n- Used for working on your own copy\n- One-way operation\n\nFork:\n- Creates a server-side copy on GitHub/GitLab\n- Your own repository under your account\n- Maintains link to original (upstream remote)\n- Enables contributing to projects you don't own",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Clone and fork do the same thing",
+        "Forking requires git clone command",
+        "You cannot contribute back from a clone"
+      ],
       "tags": ["github", "workflow"]
     },
     {
@@ -590,6 +1005,11 @@
       "question": "How do you sync a forked repository?",
       "answer": "To sync a forked repository with upstream:\n\n1. Add upstream remote:\n   git remote add upstream <original-repo-url>\n\n2. Fetch upstream:\n   git fetch upstream\n\n3. Merge changes:\n   git checkout main\n   git merge upstream/main\n\n4. Push to your fork:\n   git push origin main",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Syncing a fork requires deleting and recreating it",
+        "You can only sync from your own fork",
+        "git pull is sufficient for syncing a fork"
+      ],
       "tags": ["github", "workflow"]
     },
     {
@@ -597,6 +1017,11 @@
       "question": "What is git log and how do you use it?",
       "answer": "git log shows the commit history:\n\nCommon options:\ngit log -n <number>     # Limit commits\ngit log --oneline      # Compact format\ngit log --graph        # Visual branch graph\ngit log --author=<name> # Filter by author\ngit log --since=<date>  # Filter by date\ngit log -p             # Show diffs\ngit log --stat         # Show file stats",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git log only shows commits on remote branches",
+        "git log -p shows only file names, not content",
+        "git log cannot filter by author or date"
+      ],
       "tags": ["commands", "history"]
     },
     {
@@ -604,6 +1029,11 @@
       "question": "What are Git hooks available?",
       "answer": "Git hooks include:\n\nClient-side:\n- pre-commit: Before commit is created\n- prepare-commit-msg: Before commit message editor\n- commit-msg: After commit message is created\n- post-commit: After commit is complete\n- pre-push: Before push happens\n- pre-rebase: Before rebase happens\n\nServer-side:\n- pre-receive: On server before accepting push\n- post-receive: On server after push is accepted",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git hooks are stored on the remote server",
+        "Git hooks run automatically for all collaborators",
+        "Git hooks can only be written in shell script"
+      ],
       "tags": ["hooks", "advanced"]
     },
     {
@@ -611,6 +1041,11 @@
       "question": "How do you configure Git hooks for pre-commit checks?",
       "answer": "To configure Git hooks:\n\n1. Go to the .git/hooks directory\n\n2. Rename or copy the sample hook:\n   cp pre-commit.sample pre-commit\n\n3. Write your script for checks:\n   #!/bin/bash\n   npm test\n   npm run lint\n\n4. Make executable:\n   chmod +x pre-commit\n\nOr use tools like Husky for automatic setup.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git hooks require installation of additional software",
+        "Git hooks only run on the server side",
+        "Git hooks cannot run tests automatically"
+      ],
       "tags": ["hooks", "automation"]
     },
     {
@@ -618,6 +1053,11 @@
       "question": "What is a Git bundle and how to use it?",
       "answer": "A Git bundle packages repository data for offline transfer:\n\nCreate a bundle:\ngit bundle create file.bundle HEAD master\n\nVerify bundle:\ngit bundle verify file.bundle\n\nClone from bundle:\ngit clone file.bundle\n\nList contents:\ngit bundle list-heads file.bundle",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git bundles are only for backing up the repository",
+        "Git bundles cannot be verified before cloning",
+        "Git bundles include the .git directory"
+      ],
       "tags": ["advanced", "sharing"]
     },
     {
@@ -625,6 +1065,11 @@
       "question": "What is interactive rebase?",
       "answer": "Interactive rebase (git rebase -i) allows:\n\n- reword: Change commit message\n- edit: Stop and amend commit\n- squash: Combine with previous\n- fixup: Like squash, discard this message\n- drop: Remove commit\n- reorder: Change commit order\n\nStart with:\ngit rebase -i HEAD~n\nWhere n is number of commits to modify.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Interactive rebase can only modify the last commit",
+        "All interactive rebase options are safe for shared branches",
+        "squash and fixup do the same thing"
+      ],
       "tags": ["advanced", "rebase"]
     },
     {
@@ -632,6 +1077,11 @@
       "question": "How do you find which commit broke something after merge?",
       "answer": "Use git bisect for binary search:\n\n1. Start:\n   git bisect start\n\n2. Mark current as bad:\n   git bisect bad\n\n3. Mark known good:\n   git bisect good <good-commit>\n\n4. Test and mark:\n   git bisect good  # or bad\n\n5. Git finds the culprit commit\n\n6. Reset:\n   git bisect reset",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git bisect requires testing each commit manually",
+        "git bisect only works with the main branch",
+        "git bisect automatically fixes the bug"
+      ],
       "tags": ["debugging", "advanced"]
     },
     {
@@ -639,6 +1089,11 @@
       "question": "What is the difference between --soft, --mixed, and --hard reset?",
       "answer": "git reset --soft:\n- Moves HEAD pointer only\n- Keeps changes staged\n- Working directory unchanged\n\ngit reset --mixed (default):\n- Moves HEAD pointer\n- Unstages changes\n- Working directory unchanged\n\ngit reset --hard:\n- Moves HEAD pointer\n- Removes from staging\n- DELETES working directory changes\n- DANGEROUS - cannot be undone",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "All reset modes delete the commit history",
+        "git reset --soft deletes changes from staging",
+        "git reset --hard is the safest option to use"
+      ],
       "tags": ["commands", "reset"]
     },
     {
@@ -646,6 +1101,11 @@
       "question": "What is Git blame?",
       "answer": "Git blame shows who last modified each line of a file:\n\ngit blame <file>\n\nOptions:\n- -L <start>,<end>: Limit to line range\n- -e: Show author email\n- -w: Ignore whitespace changes\n\nUseful for:\n- Understanding code history\n- Finding who to ask about changes\n- Tracking down bugs",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git blame modifies the file contents",
+        "git blame only works on the main branch",
+        "git blame cannot show when changes were made"
+      ],
       "tags": ["commands", "history"]
     },
     {
@@ -653,6 +1113,11 @@
       "question": "What is git gc and when should you run it?",
       "answer": "git gc (garbage collection) optimizes the repository:\n\n- Removes unused objects\n- Compresses file revisions\n- Packs loose objects\n- Prunes unreachable objects\n\nUsually runs automatically, but manually:\ngit gc\n\nWith aggressive optimization:\ngit gc --aggressive\n\nShould be run periodically for best performance.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git gc should run after every commit",
+        "git gc removes committed changes",
+        "git gc cannot be run manually"
+      ],
       "tags": ["maintenance", "commands"]
     },
     {
@@ -660,6 +1125,11 @@
       "question": "What is git show and what can it display?",
       "answer": "git show displays various Git objects:\n\nShow a commit:\ngit show <commit-hash>\n\nShow a file at a commit:\ngit show <commit>:<file>\n\nShow a tag:\ngit show <tag>\n\nShows: author, date, commit message, diff, and file changes.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git show only displays commit messages",
+        "git show cannot display file contents",
+        "git show works only on uncommitted changes"
+      ],
       "tags": ["commands", "history"]
     },
     {
@@ -667,6 +1137,11 @@
       "question": "How do you create and apply tags?",
       "answer": "Create a tag:\n\nLightweight:\ngit tag v1.0.0\n\nAnnotated (recommended):\ngit tag -a v1.0.0 -m \"Release version 1.0.0\"\n\nTag a past commit:\ngit tag -a v0.9.0 <commit-hash>\n\nPush tags:\ngit push origin v1.0.0\ngit push origin --tags\n\nList tags:\ngit tag\ngit tag -l \"v1.*\"",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Tags are automatically pushed with git push",
+        "Lightweight tags are recommended for releases",
+        "You cannot tag a past commit"
+      ],
       "tags": ["commands", "releases"]
     },
     {
@@ -674,6 +1149,11 @@
       "question": "What is the difference between merge and rebase workflow?",
       "answer": "Merge workflow:\n- Preserves complete history\n- Creates merge commits\n- Can make history cluttered\n- Safe for all branches\n\nRebase workflow:\n- Creates linear history\n- No merge commits\n- Must be careful with shared branches\n- Cleaner history\n\nBest practice: Rebase local branches, merge when integrating to main.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Merge and rebase workflows are identical",
+        "Always use rebase for shared branches",
+        "Merge workflow cannot preserve history"
+      ],
       "tags": ["workflows", "merging"]
     },
     {
@@ -681,6 +1161,11 @@
       "question": "What are Git worktrees?",
       "answer": "Git worktrees allow multiple working directories from one repository:\n\nCreate a worktree:\ngit worktree add <path> <branch>\n\nList worktrees:\ngit worktree list\n\nRemove a worktree:\ngit worktree remove <path>\n\nUseful for:\n- Working on multiple branches simultaneously\n- Testing features without switching",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Git worktrees are the same as submodules",
+        "Worktrees require separate Git installations",
+        "Worktrees cannot be removed after creation"
+      ],
       "tags": ["advanced", "branches"]
     },
     {
@@ -688,6 +1173,11 @@
       "question": "What is git reflog vs git log recovery difference?",
       "answer": "git log:\n- Shows commits in branch history\n- Cleans up old entries after gc\n- May not show deleted commits\n\ngit reflog:\n- Tracks HEAD movements\n- Includes all actions (commits, resets, checkouts)\n- Shows entries even after gc\n- Entries expire after 90 days by default\n\nUse reflog to recover:\n- Deleted branches\n- Lost commits\n- Undone operations",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git log can recover rebased commits",
+        "git reflog entries are permanent",
+        "Rebased commits cannot be recovered"
+      ],
       "tags": ["recovery", "commands"]
     },
     {
@@ -695,6 +1185,11 @@
       "question": "How do you undo git rebase?",
       "answer": "To undo a rebase:\n\n1. Find the state before rebase:\n   git reflog\n\n2. Look for 'rebase' entry:\n   git reflog | grep rebase\n\n3. Reset to that state:\n   git reset --hard HEAD@{n}\n\nOr if you know the previous HEAD:\n   git reset --hard ORIG_HEAD\n\nThis restores the state before the rebase operation.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git rebase cannot be undone",
+        "ORIG_HEAD only contains the last command",
+        "git reflog does not track rebase operations"
+      ],
       "tags": ["undo", "rebase"]
     },
     {
@@ -702,6 +1197,11 @@
       "question": "What are the best practices for Git commits?",
       "answer": "Best practices for Git commits:\n\n1. Atomic commits: One logical change per commit\n2. Clear messages: First line <50 chars, then blank, then details\n3. Present tense: \"Add feature\" not \"Added feature\"\n4. Reference issues: Include ticket/issue numbers\n5. Review before commit: git diff --staged\n6. Don't commit generated files\n7. Test before committing\n\nExample:\nAdd user authentication\n\n-implements login/logout functionality\n- adds session management\n- closes #123",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Commits should include all possible changes",
+        "Commit messages should be in past tense",
+        "Code review is not necessary before committing"
+      ],
       "tags": ["best-practices", "commits"]
     },
     {
@@ -709,6 +1209,11 @@
       "question": "What is git add -p and why use it?",
       "answer": "git add -p (--patch) stages changes interactively:\n\n- Splits changes into individual hunks\n- Allows you to choose which changes to stage\n- Lets you split, skip, or edit hunks\n\nCommands within patch mode:\ny - stage this hunk\nn - skip this hunk\ns - split into smaller hunks\ne - manually edit hunk\n\nUseful for staging only relevant parts of changes.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git add -p stages entire files only",
+        "git add -p cannot split hunks",
+        "git add -p is faster than git add"
+      ],
       "tags": ["commands", "staging"]
     },
     {
@@ -716,6 +1221,11 @@
       "question": "What is git clean -n vs git clean -f?",
       "answer": "git clean -n (--dry-run):\n- Shows what would be deleted\n- Does NOT actually delete files\n- Safe preview before cleaning\n\ngit clean -f (--force):\n- Actually deletes untracked files\n- Requires -f flag for safety\n\ngit clean -fd:\n- Deletes untracked files AND directories\n\nNever deletes files ignored by .gitignore (unless -x).",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git clean -n actually deletes files",
+        "git clean -f is safe without the -n preview",
+        "git clean removes tracked files"
+      ],
       "tags": ["commands", "cleanup"]
     },
     {
@@ -723,6 +1233,11 @@
       "question": "What is shallow clone and when to use it?",
       "answer": "Shallow clone downloads only recent history:\n\ngit clone --depth 1 <url>\n\nBenefits:\n- Faster download\n- Less disk space\n- Faster clone\n\nLimitations:\n- No full history\n- Cannot push/pull all branches\n- Cannot merge from upstream\n\nUse when:\n- You only need recent code\n- CI/CD pipelines\n- Quick testing",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Shallow clone downloads complete repository history",
+        "Shallow clone is the default Git behavior",
+        "git clone --depth 1 has no limitations"
+      ],
       "tags": ["clone", "optimization"]
     },
     {
@@ -730,6 +1245,11 @@
       "question": "How do you compress a Git repository?",
       "answer": "To compress and optimize a repository:\n\n1. Garbage collection:\n   git gc\n\n2. Aggressive packing:\n   git gc --aggressive\n\n3. Prune unreachable objects:\n   git prune\n\n4. Verify repository:\n   git fsck\n\nThis reduces repository size and improves performance.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Compression is automatic and cannot be run manually",
+        "git gc deletes commits from history",
+        "Repository compression removes all branch history"
+      ],
       "tags": ["maintenance", "optimization"]
     },
     {
@@ -737,6 +1257,11 @@
       "question": "What is git update-index and when to use it?",
       "answer": "git update-index modifies the index to control file attributes:\n\nAssume unchanged:\ngit update-index --assume-unchanged <file>\n\nUndo:\ngit update-index --no-assume-unchanged <file>\n\nSkip worktree (alternative):\ngit update-index --skip-worktree <file>\n\nUse when:\n- Large files that change locally\n- IDE files that shouldn't be tracked\n- Performance optimization",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git update-index commits files to repository",
+        "assume-unchanged prevents files from being tracked",
+        "git update-index only works with new files"
+      ],
       "tags": ["advanced", "index"]
     },
     {
@@ -744,6 +1269,11 @@
       "question": "What are the differences between git stash and git cherry-pick?",
       "answer": "git stash:\n- Temporarily saves uncommitted changes\n- Changes stay on your machine\n- Can be applied anytime\n- Multiple stashes possible\n- For switching contexts\n\ngit cherry-pick:\n- Applies specific commits to current branch\n- Creates new commits\n- Works with committed changes\n- For applying bug fixes to multiple branches",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "git stash and git cherry-pick work the same way",
+        "git stash saves changes to remote repository",
+        "git cherry-pick saves changes locally"
+      ],
       "tags": ["comparison", "commands"]
     },
     {
@@ -751,6 +1281,11 @@
       "question": "What is git archive?",
       "answer": "git archive creates archive files of repository content:\n\nCreate zip of main branch:\ngit archive -o archive.zip HEAD\n\nCreate tar.gz of specific commit:\ngit archive --format=tar.gz -o snapshot.tar.gz v1.0\n\nCreate archive of subdirectory:\ngit archive -o partial.zip HEAD:path/to/dir\n\nDoes not include .git directory.",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git archive includes the .git directory",
+        "git archive requires network connection",
+        "git archive can only create ZIP files"
+      ],
       "tags": ["commands", "packaging"]
     },
     {
@@ -758,6 +1293,11 @@
       "question": "What is git rev-parse and git rev-list?",
       "answer": "git rev-parse:\n- Converts refs to SHA-1 hashes\n- Resolves symbolic refs\n- Get current branch name:\n  git rev-parse --abbrev-ref HEAD\n\ngit rev-list:\n- Lists commit objects in reverse chronological order\n- Count commits:\n  git rev-list --count HEAD\n- Find common ancestor:\n  git rev-list --merge-base branch1 branch2",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "git rev-parse and git rev-list are the same",
+        "git rev-parse creates new commits",
+        "git rev-list cannot count commits"
+      ],
       "tags": ["commands", "advanced"]
     },
     {
@@ -765,6 +1305,11 @@
       "question": "What are Git alternatives and why use Git?",
       "answer": "Git alternatives:\n- Mercurial (Hg): Similar DVCS, simpler\n- Subversion (SVN): Centralized VCS\n- Perforce: Enterprise VCS\n- Fossil: Integrated bug tracking\n\nWhy Git is preferred:\n- Fast and efficient\n- Free and open source\n- Excellent branching/merging\n- Huge ecosystem\n- Industry standard\n- Great hosting platforms (GitHub, GitLab)",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Git is the only version control system",
+        "Git requires expensive licensing",
+        "Git has poor branching capabilities"
+      ],
       "tags": ["comparison", "basics"]
     },
     {
@@ -772,6 +1317,11 @@
       "question": "What is GitHub Actions and how does it integrate with Git?",
       "answer": "GitHub Actions is CI/CD built into GitHub:\n\n- Triggers on pushes, PRs, schedules\n- YAML-based workflow files in .github/workflows\n- Runs jobs in virtual machines\n- Supports Docker containers\n\nExample trigger:\non: [push, pull_request]\n\nBenefits:\n- Integrated with repository\n- Free tier available\n- Marketplace for actions\n- Automatic testing and deployment",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "GitHub Actions requires Jenkins to run",
+        "GitHub Actions only works with GitHub Enterprise",
+        "GitHub Actions cannot deploy to non-AWS cloud providers"
+      ],
       "tags": ["github", "ci-cd"]
     }
   ]

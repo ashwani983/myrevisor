@@ -327,17 +327,10 @@ export function Quiz() {
   const progress =
     ((currentQuiz.currentIndex + 1) / currentQuiz.questions.length) * 100;
 
-  // Generate options for MCQ - get wrong answers from other questions in the quiz
-  const otherAnswers = currentQuiz.questions
-    .filter(q => q.id !== currentQuestion.id)
-    .map(q => q.answer)
-    .slice(0, 3);
+  // Generate options for MCQ - use wrongAnswers field from question data
+  const wrongAnswers = currentQuestion.wrongAnswers || [];
 
-  while (otherAnswers.length < 3) {
-    otherAnswers.push(`Option ${otherAnswers.length + 2}`);
-  }
-
-  const options = [currentQuestion.answer, ...otherAnswers].sort(
+  const options = [currentQuestion.answer, ...wrongAnswers].sort(
     () => Math.random() - 0.5
   );
 

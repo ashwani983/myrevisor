@@ -6,6 +6,7 @@ export interface Question {
   subject: string;
   question: string;
   answer: string;
+  wrongAnswers: string[];
   difficulty: 'easy' | 'medium' | 'hard';
   tags: string[];
 }

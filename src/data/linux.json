@@ -10,6 +10,11 @@
       "question": "What is Linux? Explain its key features.",
       "answer": "Linux is a Unix-like open-source OS that manages hardware and resources.\n\nKey features:\n- Free and Open Source\n- Robust and adaptable\n- More secure (authentication, file access control)\n- Multiprogramming system\n- Application support via repositories\n- GUI support\n\nFlavors: Ubuntu, Debian, SUSE, CentOS, RHEL",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Linux is a proprietary operating system developed by Microsoft",
+        "Linux is only used for mobile devices",
+        "Linux requires a graphical interface to function"
+      ],
       "tags": ["basics", "introduction"]
     },
     {
@@ -17,6 +22,11 @@
       "question": "What is the Linux Kernel? Explain its functions.",
       "answer": "Kernel is the core component of Linux - a resource manager acting as bridge between hardware and software.\n\nFunctions:\n- Memory Management\n- Process Management\n- Device Management\n- Storage Management\n- Manages access to peripherals\n- First program loaded at system start",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Kernel is a type of application software",
+        "Kernel runs in user space",
+        "Kernel is the same as the shell"
+      ],
       "tags": ["kernel", "internals"]
     },
     {
@@ -24,6 +34,11 @@
       "question": "What is BASH?",
       "answer": "BASH (Bourne Again Shell) is a command language interpreter.\n\nFeatures:\n- Written by Brian Fox for GNU OS\n- Default user shell on most Linux installations\n- Command-line editing\n- Interpreted, non-compiled\n- Reads commands from shell scripts\n- More features than Bourne Shell",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "BASH is a hardware component",
+        "BASH is only available on Windows",
+        "BASH compiles code before execution"
+      ],
       "tags": ["shell", "bash"]
     },
     {
@@ -31,6 +46,11 @@
       "question": "What is the difference between Linux and Unix?",
       "answer": "Linux:\n- Open-source, free\n- Developed by Linus Torvalds (1991)\n- Variants called distributions\n- Lower hardware requirements\n- Used in PCs, servers, mobiles\n\nUnix:\n- Closed source, derived from AT&T Unix\n- Developed in 1960s\n- Proprietary\n- Multi-user, multitasking\n- Designed for enterprise systems",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Linux and Unix are the same operating system",
+        "Unix is open-source and free",
+        "Linux was developed before Unix"
+      ],
       "tags": ["comparison", "basics"]
     },
     {
@@ -38,6 +58,11 @@
       "question": "What is a Kernel? Explain its functions.",
       "answer": "Kernel is the main component of Linux - resource manager between hardware and software.\n\nFunctions:\n- Memory Management\n- Process Management\n- Device Management\n- Storage Management\n- Access control to peripherals\n- Low-level system software",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Kernel runs all user applications directly",
+        "Kernel is optional in Linux",
+        "Kernel manages only hardware drivers"
+      ],
       "tags": ["kernel", "internals"]
     },
     {
@@ -45,6 +70,11 @@
       "question": "What are the basic elements/components of Linux?",
       "answer": "Five basic elements:\n\n1. Kernel - Core, manages processes, devices\n2. System Library - Functions for apps to access kernel\n3. System Utility - Individual-level specialized programs\n4. Hardware - Physical devices (mouse, keyboard, CPU)\n5. Shell - Interface between user and kernel",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Kernel is the only component of Linux",
+        "System utilities are part of the kernel",
+        "Hardware refers to virtual devices"
+      ],
       "tags": ["architecture", "basics"]
     },
     {
@@ -52,6 +82,11 @@
       "question": "What is swap space and why is it used?",
       "answer": "Swap space is disk space used when RAM is full.\n\nPurpose:\n- Substitute for physical memory\n- Extends RAM using disk\n- Prevents crashes when memory exhausted\n- Holds inactive memory pages\n\nTypical size: 2x RAM (traditional rule)",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Swap space replaces RAM entirely",
+        "Swap space is faster than physical RAM",
+        "Linux does not use swap space"
+      ],
       "tags": ["memory", "storage"]
     },
     {
@@ -59,6 +94,11 @@
       "question": "What are the different types of shells in Linux?",
       "answer": "Shell types:\n\n1. sh (Bourne Shell)\n2. bash (Bourne Again Shell) - default\n3. ksh (Korn Shell)\n4. zsh (Z Shell)\n5. csh (C Shell)\n6. tcsh (TENEX C Shell)\n\nBourne shells use $ prompt\nC shells use % prompt",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "All shells use the same command syntax",
+        "There is only one shell in Linux",
+        "Shell is a type of hardware"
+      ],
       "tags": ["shell", "basics"]
     },
     {
@@ -66,6 +106,11 @@
       "question": "What is LVM? Why is it required?",
       "answer": "LVM (Logical Volume Management) provides flexible disk management.\n\nBenefits:\n- Resize volumes without downtime\n- Easy storage expansion\n- Snapshots and recovery\n- Flexible disk space management\n\nCommands:\n- lvextend - extend logical volume\n- lvreduce - reduce logical volume",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "LVM reduces disk space",
+        "LVM requires system restart to resize",
+        "LVM cannot be used with existing partitions"
+      ],
       "tags": ["storage", "lvm"]
     },
     {
@@ -73,6 +118,11 @@
       "question": "What is the difference between cron and anacron?",
       "answer": "cron vs anacron:\n\ncron:\n- Daemon program\n- Tasks at scheduled times\n- Requires continuous system running\n- Minimum granularity: minutes\n- Any user can schedule\n\nanacron:\n- Not a daemon\n- Executes at intervals\n- Works on machines that may be off\n- Minimum granularity: days\n- Super user only",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "cron and anacron are the same thing",
+        "anacron requires continuous system uptime",
+        "cron works on machines that may be off"
+      ],
       "tags": ["scheduling", "automation"]
     },
     {
@@ -80,6 +130,11 @@
       "question": "What is the /proc file system?",
       "answer": "/proc is a pseudo/virtual filesystem.\n\nPurpose:\n- Interface to kernel data structures\n- Information about running processes\n- Change kernel parameters at runtime\n- Control and information center for kernel\n\nAll files are virtual (named pipes)\nExamples: /proc/cpuinfo, /proc/meminfo",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "/proc contains actual files stored on disk",
+        "/proc can be deleted to free up space",
+        "/proc is used for network routing"
+      ],
       "tags": ["filesystem", "proc"]
     },
     {
@@ -87,6 +142,11 @@
       "question": "What are daemons in Linux?",
       "answer": "Daemons are background processes that run continuously.\n\nCharacteristics:\n- Long-running programs\n- No controlling terminal\n- Started at boot, end at shutdown\n- Extend OS functionality\n- Handle periodic requests\n\nExamples:\n- httpd (web server)\n- sshd (SSH daemon)\n- crond (scheduler)",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Daemons are user-facing applications",
+        "Daemons run only when user is logged in",
+        "Daemons cannot be stopped"
+      ],
       "tags": ["processes", "daemons"]
     },
     {
@@ -94,6 +154,11 @@
       "question": "What is a Zombie Process?",
       "answer": "Zombie (defunct) process has finished execution but entry remains in process table.\n\nCause:\n- Parent hasn't read child's exit status\n- Uses wait() system call\n\nCharacteristics:\n- Shows 'Z' state in process list\n- Doesn't consume resources\n- Removed after parent reads status\n- May indicate parent process bug",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Zombie processes consume CPU resources",
+        "Zombie processes can be killed normally",
+        "Zombie processes indicate system crash"
+      ],
       "tags": ["processes", "troubleshooting"]
     },
     {
@@ -101,6 +166,11 @@
       "question": "What is load average in Linux?",
       "answer": "Load average is system load calculated over time.\n\nDisplay:\n- Three values: 1min, 5min, 15min averages\n- Found via 'top' and 'uptime' commands\n- Decimal numbers starting at 0.00\n\nInterpretation:\n- 0.00 = no load\n- 1.00 = full load (1 process)\n- >1.00 = processes waiting\n\nHigh load with low CPU = I/O bottleneck",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Load average shows CPU usage percentage",
+        "Load average of 0.0 means system is idle",
+        "Load average only measures CPU, not I/O"
+      ],
       "tags": ["monitoring", "performance"]
     },
     {
@@ -108,6 +178,11 @@
       "question": "What is the maximum filename length in Linux?",
       "answer": "Maximum filename length: 255 bytes\n\nNote:\n- Path max: 4096 bytes\n- Filenames are case-sensitive\n- Can contain any character except / and null\n- Hidden files start with .",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Maximum filename length is 64 characters",
+        "Filenames are case-insensitive in Linux",
+        "Filenames cannot contain numbers"
+      ],
       "tags": ["filesystem", "basics"]
     },
     {
@@ -115,6 +190,11 @@
       "question": "What are file permissions in Linux?",
       "answer": "Three types of permissions for owners:\n\n1. Read (r) - View file/directory\n2. Write (w) - Modify file/add files\n3. Execute (x) - Run file/lookup directory\n\nThree owners:\n- User (u)\n- Group (g)\n- Others (o)\n\nNumeric: r=4, w=2, x=1\nExample: chmod 755 = rwxr-xr-x",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "File permissions only apply to the owner",
+        "Execute permission is only for programs",
+        "Write permission allows deleting files in any directory"
+      ],
       "tags": ["permissions", "security"]
     },
     {
@@ -122,6 +202,11 @@
       "question": "What are the types of file systems in Linux?",
       "answer": "Common Linux filesystems:\n\n- ext4 (4th extended) - default\n- XFS - high performance\n- Btrfs - snapshots, pooling\n- ZFS - advanced, combined FS\n- vfat - Windows compatibility\n- NTFS - Windows read/write\n- NFS - Network filesystem\n- tmpfs - RAM-based",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "ext4 is a network filesystem",
+        "XFS is the default filesystem on Ubuntu",
+        "Btrfs does not support snapshots"
+      ],
       "tags": ["filesystem", "storage"]
     },
     {
@@ -129,6 +214,11 @@
       "question": "What is the difference between hard links and soft links?",
       "answer": "Hard Links:\n- Same inode as original\n- Survive deletion\n- Cannot span filesystems\n- Cannot link directories\n- Faster\n\nSoft Links (Symbolic):\n- Different inode\n- Break when original deleted\n- Can span filesystems\n- Can link directories\n- Slower",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Hard links and soft links are identical",
+        "Hard links can span different filesystems",
+        "Soft links cannot be created for files"
+      ],
       "tags": ["filesystem", "links"]
     },
     {
@@ -136,6 +226,11 @@
       "question": "What are the different modes in VI editor?",
       "answer": "Three VI editor modes:\n\n1. Command Mode (default)\n   - Type commands\n   - Press Esc to enter\n\n2. Insert Mode\n   - Edit text\n   - Press 'i' from command mode\n\n3. Ex Mode (Replacement)\n   - Save/execute commands\n   - Press ':' from command mode",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "VI has only one mode",
+        "You can only type text in Ex mode",
+        "Command mode is used for saving files"
+      ],
       "tags": ["editor", "vi"]
     },
     {
@@ -143,6 +238,11 @@
       "question": "What is LILO?",
       "answer": "LILO (Linux Loader) is a bootloader for Linux.\n\nFunctions:\n- Load Linux into memory\n- Start the OS\n- Facilitate dual boot\n- Locate kernel\n- Identify supporting programs\n- Load memory and start kernel",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "LILO is a shell program",
+        "LILO is used to format disks",
+        "LILO can only boot Windows"
+      ],
       "tags": ["boot", "lilo"]
     },
     {
@@ -150,6 +250,11 @@
       "question": "What is the first process started by kernel? What is its PID?",
       "answer": "First process: init\n\nPID: 1\n\nNote:\n- Ancestor of all other processes\n- Started by kernel during boot\n- Responsible for system initialization\n- In systemd systems, PID 1 is systemd",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "The first process is always cron with PID 1",
+        "Init is started by the user",
+        "PID 1 is always bash"
+      ],
       "tags": ["boot", "process"]
     },
     {
@@ -157,6 +262,11 @@
       "question": "What is an INODE and Process ID?",
       "answer": "INODE:\n- Unique number assigned to each file\n- Unique within filesystem\n- Stores: ownership, size, type, permissions\n- Used by filesystem to track files\n\nProcess ID:\n- Unique ID for each process\n- Active process identifier\n- Used for process management",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "INODE stores file content directly",
+        "Process ID is the same as parent process ID",
+        "INODE is the same as file extension"
+      ],
       "tags": ["filesystem", "process"]
     },
     {
@@ -164,6 +274,11 @@
       "question": "What is CLI and GUI?",
       "answer": "CLI (Command Line Interface):\n- Text-based commands\n- Lower memory usage\n- More flexible\n- Faster for experts\n- Uses terminal\n\nGUI (Graphical User Interface):\n- Visual icons/indicators\n- Intuitive, easy to learn\n- Higher resource usage\n- Uses windows, menus",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "CLI requires internet connection",
+        "GUI is faster than CLI for all tasks",
+        "CLI and GUI cannot coexist on the same system"
+      ],
       "tags": ["interface", "basics"]
     },
     {
@@ -171,6 +286,11 @@
       "question": "What are standard streams in Linux?",
       "answer": "Three standard streams:\n\n1. stdin (Standard Input)\n   - Keyboard input\n   - File descriptor 0\n\n2. stdout (Standard Output)\n   - Screen output\n   - File descriptor 1\n\n3. stderr (Standard Error)\n   - Error messages\n   - File descriptor 2",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Standard streams are stored in files",
+        "stderr displays normal output",
+        "stdin is only for mouse input"
+      ],
       "tags": ["io", "basics"]
     },
     {
@@ -178,6 +298,11 @@
       "question": "How do you check Linux kernel version?",
       "answer": "Commands:\n\nuname -r     # Kernel release\nuname -a     # All info\ncat /proc/version  # Version file\nhostnamectl    # System info\n\nExample output:\n5.15.0-56-generic",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "uname -v shows the kernel release",
+        "cat /etc/issue shows kernel version",
+        "Kernel version cannot be checked from command line"
+      ],
       "tags": ["commands", "kernel"]
     },
     {
@@ -185,6 +310,11 @@
       "question": "What is the difference between process states in Linux?",
       "answer": "Process states:\n\n1. New/Ready - Created, waiting to run\n2. Running - Currently executing\n3. Blocked/Wait - Waiting for input/resource\n4. Terminated - Completed or terminated\n5. Zombie - Terminated but info remains\n\nState codes:\n- R = Running\n- S = Sleeping\n- D = Uninterruptible sleep\n- Z = Zombie\n- T = Stopped",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "All processes are always in Running state",
+        "Zombie processes are actively running",
+        "Process states are only used in Windows"
+      ],
       "tags": ["processes", "states"]
     },
     {
@@ -192,6 +322,11 @@
       "question": "How do you check default run level?",
       "answer": "Check default run level:\n\nrunlevel     # Shows previous and current\ngrep initdefault /etc/inittab\n\nRun levels:\n0 - Halt\n1 - Single user\n2 - Multiuser (no NFS)\n3 - Full multiuser\n4 - Unused\n5 - X11/GUI\n6 - Reboot",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Runlevel 5 is for single-user mode",
+        "Runlevel 0 is for normal operation",
+        "Runlevels are not used in systemd"
+      ],
       "tags": ["boot", "runlevel"]
     },
     {
@@ -199,6 +334,11 @@
       "question": "What is /etc/fstab used for?",
       "answer": "/etc/fstab (filesystem table) defines filesystems to mount at boot.\n\nFormat:\n<device> <mount point> <type> <options> <dump> <pass>\n\nExample:\n/dev/sda1 / ext4 defaults 0 1\nUUID=xxx /boot ext4 defaults 0 2\n\nVerify: mount -a",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "/etc/fstab is automatically generated by the system",
+        "/etc/fstab only contains network shares",
+        "/etc/fstab does not affect boot process"
+      ],
       "tags": ["filesystem", "mounting"]
     },
     {
@@ -206,6 +346,11 @@
       "question": "How do you check disk usage?",
       "answer": "Disk usage commands:\n\ndf -h          # Filesystem usage (human)\ndf -i          # Inode usage\ndu -sh /dir    # Directory size\ndu -h --max-depth=1  # Subdirectory sizes\ndu -ah         # All files\ndu -sh * | sort -h  # Sorted by size\n\nFlags:\n-h = human readable\n-a = all files\n-s = summary",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "du shows only file contents",
+        "df shows individual file sizes",
+        "du and df show the same information"
+      ],
       "tags": ["commands", "disk"]
     },
     {
@@ -213,6 +358,11 @@
       "question": "How do you find all files larger than 100MB?",
       "answer": "find /path -type f -size +100M\n\nOptions:\n-type f = files only\n-size +100M = larger than 100MB\n-size 100M = exactly 100MB\n-size -100M = smaller than 100MB\n\nFind with details:\nfind /path -type f -size +100M -exec ls -lh {} \\;",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "find command only searches by filename",
+        "find cannot search by file size",
+        "find is limited to current directory only"
+      ],
       "tags": ["commands", "find"]
     },
     {
@@ -220,6 +370,11 @@
       "question": "How do you troubleshoot high disk usage?",
       "answer": "Steps:\n\n1. df -h - Identify affected filesystem\n2. du -sh * - Find large directories\n3. ncdu - Interactive disk analyzer\n4. Check logs: du -sh /var/log/*\n5. Find large files: find / -type f -size +100M\n6. Remove unnecessary files\n7. Log rotation: logrotate",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "High disk usage is always caused by viruses",
+        "Log files never take up significant space",
+        "Large files can only be found in /home"
+      ],
       "tags": ["troubleshooting", "disk"]
     },
     {
@@ -227,6 +382,11 @@
       "question": "How do you check memory usage?",
       "answer": "Memory commands:\n\nfree -h          # Human readable\nfree -m          # In MB\ncat /proc/meminfo # Detailed info\nvmstat 1         # Virtual memory stats\ntop               # Real-time view\nhtop              # Enhanced top\n\nBuffers vs Cache:\n- Buffers: Raw disk blocks\n- Cache: Filesystem pages",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "free shows CPU usage",
+        "Cache is not part of memory management",
+        "Linux has no way to check memory usage"
+      ],
       "tags": ["commands", "memory"]
     },
     {
@@ -234,6 +394,11 @@
       "question": "How do you check system uptime and load average?",
       "answer": "Commands:\n\nuptime         # Show uptime + load\nexample output:\n14:32:01 up 5 days, 3:22, 2 users, load average: 0.52, 0.58, 0.59\n\nLoad average = processes waiting for:\n- CPU time\n- I/O completion\n- Available resources\n\nInterpretation:\n- < CPU cores = under load\n- = CPU cores = fully loaded\n- > CPU cores = overloaded",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Load average measures only network traffic",
+        "High load always means high CPU usage",
+        "Load average is only visible in htop"
+      ],
       "tags": ["commands", "monitoring"]
     },
     {
@@ -241,6 +406,11 @@
       "question": "How do you list all running processes?",
       "answer": "Process listing commands:\n\nps aux          # All processes\nps -ef          # Full format\nps aux --sort=-%cpu  # By CPU usage\nps aux --sort=-%mem  # By memory\ntop              # Real-time\nhtop             # Interactive\npidof <name>     # PID by name\npgrep <pattern>  # By pattern",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "ps aux shows only the current user processes",
+        "top command cannot be used to list processes",
+        "All processes have the same PID"
+      ],
       "tags": ["commands", "processes"]
     },
     {
@@ -248,6 +418,11 @@
       "question": "How do you terminate a process?",
       "answer": "Kill process commands:\n\nkill PID        # Graceful (SIGTERM)\nkill -9 PID     # Force kill (SIGKILL)\nkill -15 PID    # Same as kill\n\nBy name:\npkill <name>      # Kill by pattern\nkillall <name>    # Kill all by name\n\nSignal codes:\n- 1 = HUP (reload)\n- 9 = KILL (force)\n- 15 = TERM (default)",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "kill command starts a new process",
+        "kill -9 is the gentlest way to stop a process",
+        "All signals work the same way"
+      ],
       "tags": ["processes", "commands"]
     },
     {
@@ -255,6 +430,11 @@
       "question": "How do you identify high CPU usage process?",
       "answer": "Identify high CPU process:\n\n1. top - Press Shift+P to sort by CPU\n2. ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head\n3. top\n   - Press 1 to see per-CPU\n   - Press k and enter PID\n\nCheck:\n- Is it expected?\n- Check logs for cause\n- Consider: nice/renice",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "High CPU usage is always caused by hardware issues",
+        "nice command increases process priority",
+        "Only root can view CPU usage"
+      ],
       "tags": ["troubleshooting", "cpu"]
     },
     {
@@ -262,6 +442,11 @@
       "question": "How do you change file permissions?",
       "answer": "chmod options:\n\nNumeric:\nchmod 755 file    # rwxr-xr-x\nchmod 644 file    # rw-r--r--\nchmod 600 file    # rw-------\nchmod 777 file    # rwxrwxrwx\n\nSymbolic:\nchmod u+x file    # Add execute for owner\nchmod g-w file    # Remove write for group\nchmod o+r file    # Add read for others\nchmod a+x file    # Add execute for all\n\n-R = recursive",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "chmod 777 gives read-only access",
+        "Numeric permissions cannot exceed 777",
+        "chmod only works on directories"
+      ],
       "tags": ["permissions", "commands"]
     },
     {
@@ -269,6 +454,11 @@
       "question": "How do you change file ownership?",
       "answer": "chown commands:\n\nchown user file           # Change owner\nchown user:group file     # Change both\nchown :group file        # Change group only\nchown -R user:group dir/  # Recursive\n\nchgrp group file          # Change group only\n\nOnly root can change ownership.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "chown only changes group ownership",
+        "Regular users can change file ownership",
+        "chown only works on directories"
+      ],
       "tags": ["permissions", "commands"]
     },
     {
@@ -276,6 +466,11 @@
       "question": "How do you create a new user?",
       "answer": "Create user:\n\nuseradd username        # Basic\nuseradd -m username     # With home dir\nuseradd -d /path username  # Custom home\nuseradd -s /bin/bash username  # Custom shell\n\nSet password:\npasswd username\n\nAdd to group:\nusermod -aG groupname username",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Any user can create new users without restrictions",
+        "useradd is the only command to create users",
+        "Password is optional when creating users"
+      ],
       "tags": ["users", "administration"]
     },
     {
@@ -283,6 +478,11 @@
       "question": "How do you schedule tasks with cron?",
       "answer": "Crontab format:\n* * * * * command\n| | | | |\n| | | | └─── day (0-6)\n| | | └──── month (1-12)\n| | └────── hour (0-23)\n| └───────── minute (0-59)\n\nExamples:\n0 2 * * * /script.sh      # Daily 2 AM\n*/5 * * * * /script.sh    # Every 5 min\n0 0 * * 0 /script.sh      # Weekly Sunday\n30 8 1 * * /script.sh     # Monthly 1st 8:30 AM\n\nCommands:\ncrontab -e       # Edit\ncrontab -l       # List\ncrontab -r       # Remove",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Cron can only run at exact hour marks",
+        "All cron fields are required",
+        "Cron jobs run in reverse order"
+      ],
       "tags": ["scheduling", "cron"]
     },
     {
@@ -290,6 +490,11 @@
       "question": "How do you check network interfaces and IP?",
       "answer": "Network commands:\n\nip addr              # Show interfaces\nip addr show eth0    # Specific interface\nifconfig eth0        # Legacy command\nhostname -I          # All IPs\n\nip link set eth0 up/down  # Enable/disable\nip addr add 192.168.1.10/24 dev eth0  # Add IP",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "ip addr shows only wireless interfaces",
+        "ifconfig is the modern standard command",
+        "Network interfaces cannot be checked remotely"
+      ],
       "tags": ["network", "commands"]
     },
     {
@@ -297,6 +502,11 @@
       "question": "How do you test network connectivity?",
       "answer": "Network testing:\n\nping <host>                    # Basic test\nping -c 4 -W 2 <host>         # 4 packets, 2s timeout\ncurl <url>                     # HTTP test\nwget <url>                     # Download test\ntelnet host port               # Port test\nnc -zv host port               # Scan port\ntraceroute <host>              # Trace route\nmtr <host>                     # Real-time traceroute",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "ping is the only way to test connectivity",
+        "curl can only download files",
+        "Network troubleshooting requires expensive tools"
+      ],
       "tags": ["network", "troubleshooting"]
     },
     {
@@ -304,6 +514,11 @@
       "question": "How do you check open ports?",
       "answer": "Port checking:\n\nss -tulpn           # Modern (preferred)\nnetstat -tulpn      # Legacy\nlsof -i             # Files and ports\nfuser -v 80/tcp     # Port 80 usage\n\nFlags:\n-t = TCP\n-u = UDP\n-l = Listening\n-p = Process\n-n = Numeric",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Open ports can be checked with ls command",
+        "netstat is the modern standard command",
+        "Port checking requires root access always"
+      ],
       "tags": ["network", "ports"]
     },
     {
@@ -311,6 +526,11 @@
       "question": "How do you configure firewall?",
       "answer": "UFW (Ubuntu):\nufw status\nufw allow 22/tcp    # Allow SSH\nufw deny 80/tcp     # Block HTTP\nufw enable\n\nfirewalld (RHEL/CentOS):\nfirewall-cmd --list-all\nfirewall-cmd --add-service=http\nfirewall-cmd --add-port=8080/tcp\nfirewall-cmd --permanent\n\niptables (legacy):\niptables -L -n",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Firewall is enabled by default on all Linux systems",
+        "ufw only works on Ubuntu",
+        "firewalld is the same as iptables"
+      ],
       "tags": ["security", "firewall"]
     },
     {
@@ -318,6 +538,11 @@
       "question": "What is SSH and how to connect?",
       "answer": "SSH (Secure Shell) - encrypted remote access.\n\nConnect:\nssh user@hostname\nssh -p 2222 user@host\nssh -i key.pem user@host\n\nPasswordless setup:\nssh-keygen -t rsa\nssh-copy-id user@host\n\nConfig file: ~/.ssh/config\nKnown hosts: ~/.ssh/known_hosts",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "SSH is unencrypted remote access",
+        "SSH only works on Windows",
+        "SSH requires physical access to the server"
+      ],
       "tags": ["network", "ssh"]
     },
     {
@@ -325,6 +550,11 @@
       "question": "How do you copy files between servers?",
       "answer": "File transfer:\n\nscp file.txt user@host:/path/       # Copy to remote\nscp user@host:/file.txt /local/     # Copy from remote\nscp -r folder/ user@host:/path/    # Recursive\n\nrsync -avz source/ user@host:/dest/  # Sync (only changes)\nrsync -avz --delete source/ dest/    # Mirror sync\n\nFlags:\n-a = archive\n-v = verbose\n-z = compress",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "scp encrypts the data during transfer",
+        "scp can only copy directories",
+        "rsync cannot copy over network"
+      ],
       "tags": ["network", "files"]
     },
     {
@@ -332,6 +562,11 @@
       "question": "What is rsync and why use it over scp?",
       "answer": "rsync advantages:\n\n- Transfers only changed data\n- Compression support\n- Resume interrupted transfers\n- Preserve permissions/links\n- Faster for large/similar files\n\nscp = full copy every time\nrsync = smart incremental sync\n\nExample:\nrsync -avzP source/ user@host:/dest/",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "rsync requires more bandwidth than scp",
+        "rsync cannot preserve file permissions",
+        "rsync and scp work identically"
+      ],
       "tags": ["files", "rsync"]
     },
     {
@@ -339,6 +574,11 @@
       "question": "How do you view system logs?",
       "answer": "Log locations and commands:\n\n/var/log/syslog      # System events\n/var/log/auth.log    # Auth (Ubuntu)\n/var/log/secure      # Auth (RHEL)\n/var/log/messages    # General messages\n\nCommands:\nless /var/log/syslog\ntail -f /var/log/syslog    # Live\njournalctl -u <service>    # Systemd\ndmesg                    # Boot messages",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "System logs are stored in /var/log/kernel",
+        "Logs are automatically deleted after 24 hours",
+        "tail command shows the beginning of files"
+      ],
       "tags": ["logs", "monitoring"]
     },
     {
@@ -346,6 +586,11 @@
       "question": "How do you manage systemd services?",
       "answer": "systemctl commands:\n\nsystemctl start nginx\nsystemctl stop nginx\nsystemctl restart nginx\nsystemctl reload nginx\nsystemctl status nginx\nsystemctl enable nginx     # Boot\nsystemctl disable nginx    # Boot\nsystemctl is-active nginx\nsystemctl list-units --type=service\n\njournalctl -u nginx -f   # Logs",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "systemctl is used only for user services",
+        "systemd cannot manage network services",
+        "Services can only be stopped with kill"
+      ],
       "tags": ["services", "systemd"]
     },
     {
@@ -353,6 +598,11 @@
       "question": "How do you create and manage partitions?",
       "answer": "Partition management:\n\nfdisk /dev/sdb           # MBR partitions\ngdisk /dev/sdb           # GPT partitions\nparted /dev/sdb          # Interactive\n\nSteps:\n1. fdisk /dev/sdb\n2. n (new partition)\n3. p (primary)\n4. w (write)\n\nmkfs.ext4 /dev/sdb1      # Format\nmount /dev/sdb1 /mnt     # Mount",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "fdisk can only create Linux-native partitions",
+        "parted cannot resize existing partitions",
+        "Partitions are created automatically at boot"
+      ],
       "tags": ["storage", "partitions"]
     },
     {
@@ -360,6 +610,11 @@
       "question": "How do you mount and unmount filesystems?",
       "answer": "Mount commands:\n\nmount /dev/sdb1 /mnt              # Basic mount\nmount -t ext4 /dev/sdb1 /mnt    # With type\nmount -o remount,rw /           # Remount\nmount -a                         # All from fstab\n\numount /mnt                      # Basic unmount\numount -f /mnt                   # Force unmount\numount -l /mnt                   # Lazy unmount\n\nCheck: mount | grep /dev/sdb1",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "mount command makes filesystems permanent",
+        "Filesystems can only be mounted by root",
+        "umount -f is the safest way to unmount"
+      ],
       "tags": ["filesystem", "mounting"]
     },
     {
@@ -367,6 +622,11 @@
       "question": "What is the purpose of /etc/resolv.conf and /etc/hosts?",
       "answer": "/etc/resolv.conf:\n- Configures DNS name servers\n- Contains nameserver entries\n- DNS resolves hostname to IP\nExample:\nnameserver 8.8.8.8\nnameserver 8.8.4.4\n\n/etc/hosts:\n- Static hostname to IP mapping\n- Local overrides DNS\n- Format: IP hostname aliases\nExample:\n127.0.0.1 localhost\n192.168.1.10 server1",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "/etc/resolv.conf resolves hostnames to IPs",
+        "/etc/hosts requires internet to work",
+        "Both files serve the same DNS function"
+      ],
       "tags": ["network", "dns"]
     },
     {
@@ -374,6 +634,11 @@
       "question": "How do you troubleshoot DNS issues?",
       "answer": "DNS troubleshooting:\n\n1. Check /etc/resolv.conf\n2. Test resolution:\n   nslookup example.com\n   dig example.com\n   host example.com\n\n3. Check connectivity:\n   ping 8.8.8.8\n\n4. Check firewall:\n   iptables -L -n\n\n5. Use different DNS:\n   dig @8.8.8.8 example.com",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "DNS troubleshooting requires restarting the system",
+        "dig command is deprecated",
+        "DNS issues cannot be tested from command line"
+      ],
       "tags": ["network", "dns"]
     },
     {
@@ -381,6 +646,11 @@
       "question": "What are default ports for common services?",
       "answer": "Default ports:\n\nFTP:    20, 21\nSSH:    22\nSMTP:   25\nDNS:    53\nHTTP:   80\nPOP3:   110\nIMAP:   143\nHTTPS:  443\nMySQL:  3306\nRDP:    3389\nPostgreSQL: 5432\nDocker: 2375/2376\n\nCheck listening ports:\nss -tulpn\nnetstat -tulpn",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "HTTP port is 443 by default",
+        "SSH port is 21 by default",
+        "All services use the same default port"
+      ],
       "tags": ["network", "ports"]
     },
     {
@@ -388,6 +658,11 @@
       "question": "How do you extend LVM partition?",
       "answer": "Extend LVM:\n\n1. Check current:\n   df -h /mountpoint\n   pvs, vgs, lvs\n\n2. Extend physical volume:\n   pvextend /dev/sdb1\n\n3. Extend logical volume:\n   lvextend -L +10G /dev/vg/lv\n   lvextend -l +100%FREE /dev/vg/lv\n\n4. Resize filesystem:\n   resize2fs /dev/vg/lv     # ext4\n   xfs_growfs /mountpoint   # XFS",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "LVM cannot extend partitions online",
+        "Extending LVM requires system reboot",
+        "lvextend automatically resizes the filesystem"
+      ],
       "tags": ["lvm", "storage"]
     },
     {
@@ -395,6 +670,11 @@
       "question": "What is SELinux and how to check status?",
       "answer": "SELinux (Security-Enhanced Linux) - mandatory access control.\n\nCommands:\nsestatus             # Full status\ngetenforce           # Current mode\nsetenforce Enforcing # Enable\nsetenforce Permissive # Warning only\n\nModes:\n- Enforcing: Blocks violations\n- Permissive: Logs only\n- Disabled: Off\n\nConfig: /etc/selinux/config\n\nCheck context:\nls -Z file\nps -Z",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "SELinux is enabled by default on Ubuntu",
+        "SELinux can be uninstalled completely",
+        "SELinux only controls network access"
+      ],
       "tags": ["security", "selinux"]
     },
     {
@@ -402,6 +682,11 @@
       "question": "How do you create swap file?",
       "answer": "Create swap file:\n\n1. Create file:\n   fallocate -l 2G /swapfile\n   dd if=/dev/zero of=/swapfile bs=1G count=2\n\n2. Set permissions:\n   chmod 600 /swapfile\n\n3. Format:\n   mkswap /swapfile\n\n4. Enable:\n   swapon /swapfile\n\n5. Persist in /etc/fstab:\n   /swapfile none swap sw 0 0\n\nCheck: swapon -s",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Swap file is faster than physical RAM",
+        "Swap file can be created with any file permissions",
+        "Swap files are automatically created by Linux"
+      ],
       "tags": ["memory", "swap"]
     },
     {
@@ -409,6 +694,11 @@
       "question": "How do you check and manage kernel modules?",
       "answer": "Kernel module commands:\n\nlsmod                    # List loaded\nlsmod | grep <module>    # Check specific\nmodinfo <module>         # Module info\n\nLoad/remove:\nmodprobe <module>         # Load\nmodprobe -r <module>      # Remove\n\nBlacklist:\necho \"blacklist module\" >> /etc/modprobe.d/blacklist.conf\n\nTemporary load:\ninsmod /path/to/module.ko",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Kernel modules are part of the filesystem",
+        "lsmod shows only running applications",
+        "Kernel modules cannot be loaded at boot"
+      ],
       "tags": ["kernel", "modules"]
     },
     {
@@ -416,6 +706,11 @@
       "question": "How do you configure static IP?",
       "answer": "Ubuntu/Debian:\n\nEdit /etc/netplan/00-installer-config.yaml:\nnetwork:\n  version: 2\n  ethernets:\n    eth0:\n      addresses: [192.168.1.100/24]\n      gateway4: 192.168.1.1\n      nameservers:\n        addresses: [8.8.8.8]\n\nApply: sudo netplan apply\n\nRHEL/CentOS:\n\nEdit /etc/sysconfig/network-scripts/ifcfg-eth0:\nBOOTPROTO=static\nIPADDR=192.168.1.100\nNETMASK=255.255.255.0\nGATEWAY=192.168.1.1",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Static IP requires manual reboot each time",
+        "NetworkManager only works on servers",
+        "Static IP cannot be set via command line"
+      ],
       "tags": ["network", "ip"]
     },
     {
@@ -423,6 +718,11 @@
       "question": "How do you set up passwordless SSH?",
       "answer": "Passwordless SSH setup:\n\n1. Generate key:\n   ssh-keygen -t rsa -b 4096 -C \"comment\"\n\n2. Copy public key:\n   ssh-copy-id user@hostname\n   \n   Or manually:\n   cat ~/.ssh/id_rsa.pub | ssh user@host \"mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys\"\n\n3. Test:\n   ssh user@hostname\n\nPermissions:\nchmod 700 ~/.ssh\nchmod 600 ~/.ssh/authorized_keys",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Passwordless SSH requires same password on both servers",
+        "SSH keys are stored in /etc/passwd",
+        "SSH keys are the same as SSH passwords"
+      ],
       "tags": ["ssh", "security"]
     },
     {
@@ -430,6 +730,11 @@
       "question": "How do you use tar for backup?",
       "answer": "tar commands:\n\nCreate archive:\ntar -cvf archive.tar /path\ntar -czvf archive.tar.gz /path    # gzip\ntar -cjvf archive.tar.bz2 /path    # bzip2\n\nExtract:\ntar -xvf archive.tar\ntar -xzvf archive.tar.gz\ntar -xjvf archive.tar.bz2\n\nList contents:\ntar -tvf archive.tar\n\nOptions:\n-c = create\n-x = extract\n-v = verbose\n-f = file\n-z = gzip\n-j = bzip2",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "tar compresses files by default",
+        "tar can only create archives, not extract",
+        "tar requires root access for all operations"
+      ],
       "tags": ["backup", "commands"]
     },
     {
@@ -437,6 +742,11 @@
       "question": "How do you rotate logs?",
       "answer": "logrotate configuration:\n\n/etc/logrotate.conf    # Global config\n/etc/logrotate.d/      # App configs\n\nExample /etc/logrotate.d/nginx:\n/var/log/nginx/*.log {\n    daily\n    rotate 7\n    compress\n    missingok\n    notifempty\n    create 0640 nginx adm\n    sharedscripts\n    postrotate\n        systemctl reload nginx > /dev/null\n    endscript\n}\n\nManual rotation:\nsudo logrotate -f /etc/logrotate.conf",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Log rotation is automatic in Linux",
+        "Logs cannot be rotated automatically",
+        "logrotate only works with Apache logs"
+      ],
       "tags": ["logs", "automation"]
     },
     {
@@ -444,6 +754,11 @@
       "question": "How do you check system performance?",
       "answer": "Performance monitoring:\n\nCPU:\ntop, htop\nmpstat 1\n\nMemory:\nfree -h\nvmstat 1\n\nDisk I/O:\niostat -x 1\niotop\n\nNetwork:\niftop\nnload\n\nAll-in-one:\ndstat -a\nsar -A 1 10\n\nSystem info:\nuptime\nwho",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Performance monitoring requires special hardware",
+        "Linux cannot monitor its own performance",
+        "top command shows only disk usage"
+      ],
       "tags": ["performance", "monitoring"]
     },
     {
@@ -451,6 +766,11 @@
       "question": "How do you find top largest files?",
       "answer": "Find largest files:\n\ndu -ah / | sort -rh | head -n 20\n\nfind / -type f -exec du -h {} + | sort -rh | head -n 10\n\nCurrent directory:\ndu -sh * | sort -rh | head -n 10\n\nLargest directories:\ndu -h --max-depth=1 / | sort -rh | head -n 10",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Largest files are always in system directories",
+        "du command shows file contents",
+        "Files cannot be sorted by size"
+      ],
       "tags": ["files", "disk"]
     },
     {
@@ -458,6 +778,11 @@
       "question": "What is the difference between apt and yum?",
       "answer": "apt (Debian/Ubuntu):\n- apt-get install package\n- apt-get update\n- apt-get upgrade\n- apt-cache search package\n- dpkg -i package.deb\n\nyum/dnf (RHEL/CentOS):\n- yum install package\n- yum update\n- yum search package\n- rpm -ivh package.rpm\n\ndnf is the newer yum replacement.",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "apt and yum are the same package manager",
+        "yum is used on Debian-based systems",
+        "Package managers cannot update installed software"
+      ],
       "tags": ["packages", "basics"]
     },
     {
@@ -465,6 +790,11 @@
       "question": "How do you check which process uses a port?",
       "answer": "Find port usage:\n\nss -tulpn | grep :80\nnetstat -tulpn | grep :80\nlsof -i :80\nfuser 80/tcp\n\nExample output:\ntcp  LISTEN  0  128  *:80  *:*  users:((\"nginx\",pid=1234))",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Ports can only be checked with ping",
+        "netstat shows only network interfaces",
+        "Port usage cannot be identified in Linux"
+      ],
       "tags": ["ports", "processes"]
     },
     {
@@ -472,6 +802,11 @@
       "question": "How do you troubleshoot a service not starting?",
       "answer": "Service troubleshooting:\n\n1. Check status:\n   systemctl status nginx\n\n2. Check logs:\n   journalctl -u nginx -n 50\n   journalctl -xe\n\n3. Test config:\n   nginx -t\n\n4. Check ports:\n   ss -tulpn | grep :port\n\n5. Check resources:\n   df -h\n   free -h\n   \n6. Dependencies:\n   systemctl list-dependencies nginx",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Failed services cannot be troubleshot",
+        "Services always start automatically after failure",
+        "systemctl status shows only the service name"
+      ],
       "tags": ["troubleshooting", "services"]
     },
     {
@@ -479,6 +814,11 @@
       "question": "How do you add persistent static route?",
       "answer": "Add persistent route:\n\nRHEL/CentOS:\n\n/etc/sysconfig/network-scripts/route-eth0:\n10.0.0.0/8 via 192.168.1.1 dev eth0\n\nRestart:\nsystemctl restart network\n\nUbuntu:\n\n/etc/network/interfaces:\nup ip route add 10.0.0.0/8 via 192.168.1.1\n\nTemporary:\nip route add 10.0.0.0/8 via 192.168.1.1\n\nCheck:\nip route",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Static routes are automatically configured by DHCP",
+        "Routes cannot be made persistent",
+        "ip route only works on wireless interfaces"
+      ],
       "tags": ["network", "routing"]
     },
     {
@@ -486,6 +826,11 @@
       "question": "How do you create and manage groups?",
       "answer": "Group management:\n\nCreate group:\ngroupadd groupname\ngroupadd -g GID groupname\n\nAdd user to group:\nuseradd -G groupname username\nusermod -aG groupname username\n\nManage group members:\ngroupmod -n newname oldname\ngroupdel groupname\n\nCheck:\ngroups username\ncat /etc/group | grep groupname",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "Groups are only for administrative purposes",
+        "Users can only belong to one group",
+        "groupadd requires the group to exist first"
+      ],
       "tags": ["users", "groups"]
     },
     {
@@ -493,6 +838,11 @@
       "question": "How do you check failed login attempts?",
       "answer": "Check failed logins:\n\nUbuntu/Debian:\ncat /var/log/auth.log | grep \"Failed password\"\n\nRHEL/CentOS:\ncat /var/log/secure | grep \"Failed password\"\n\nReal-time:\ntail -f /var/log/auth.log | grep Failed\n\nUsers currently logged:\nwho\nlast\nlastlog\n\nFailed attempts summary:\nfaillog\npam_tally2 --user username",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Failed login attempts are not logged",
+        "Only root can view login logs",
+        "Failed login tracking requires additional software"
+      ],
       "tags": ["security", "logs"]
     },
     {
@@ -500,6 +850,11 @@
       "question": "How do you change process priority?",
       "answer": "Priority commands:\n\nnice -n 10 command       # Start with priority\nrenice -n 10 -p PID     # Change running process\nrenice -n 10 -u username  # All user processes\n\nPriority range: -20 (high) to 19 (low)\nDefault: 0\n\nCheck nice value:\nps -eo pid,ni,cmd | grep process",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Nice value of 19 is the highest priority",
+        "Only root can increase process priority",
+        "renice cannot change running process priority"
+      ],
       "tags": ["processes", "priority"]
     },
     {
@@ -507,6 +862,11 @@
       "question": "How do you monitor real-time logs?",
       "answer": "Real-time log monitoring:\n\ntail -f /var/log/syslog     # Live system log\ntail -f /var/log/nginx/access.log\n\nFollow with grep:\ntail -f /var/log/syslog | grep error\n\nMultiple files:\nmultitail /var/log/syslog /var/log/nginx/error.log\n\nAll new lines:\noh -f /var/log/*.log",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "tail shows the first lines of a file",
+        "Real-time log monitoring is not possible in Linux",
+        "Logs can only be viewed by root"
+      ],
       "tags": ["logs", "monitoring"]
     },
     {
@@ -514,6 +874,11 @@
       "question": "How do you repair filesystem errors?",
       "answer": "Filesystem repair:\n\n1. Unmount:\n   umount /dev/sdb1\n\n2. Run fsck:\n   fsck /dev/sdb1\n   fsck -f /dev/sdb1        # Force check\n   fsck -y /dev/sdb1        # Auto yes\n\n3. Check type:\n   fsck.ext4 /dev/sdb1\n   fsck.xfs /dev/sdb1       # XFS (read-only)\n\n4. For mounted (read-only):\n   mount -o remount,ro /\n   fsck -p /",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "fsck can repair mounted filesystems safely",
+        "Filesystem errors cannot be repaired",
+        "fsck automatically fixes all errors"
+      ],
       "tags": ["filesystem", "repair"]
     },
     {
@@ -521,6 +886,11 @@
       "question": "How do you backup with rsync?",
       "answer": "rsync backup examples:\n\nBasic:\nrsync -av /source/ /dest/\n\nRemote:\nrsync -avz -e ssh /source/ user@host:/dest/\n\nMirror (delete extraneous):\nrsync -avz --delete /source/ /dest/\n\nIncremental:\nrsync -avz --compare-dest=/prev /source/ /new/\n\nDry run:\nrsync -avzn /source/ /dest/\n\nFlags:\n-a = archive\n-v = verbose\n-z = compress\n-P = progress",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "rsync cannot sync over SSH",
+        "rsync deletes files in destination that are not in source",
+        "rsync requires the same filesystem on both ends"
+      ],
       "tags": ["backup", "rsync"]
     },
     {
@@ -528,6 +898,11 @@
       "question": "How do you check inode usage?",
       "answer": "Inode usage:\n\ndf -i              # Inode info per filesystem\ndf -i /            # Specific filesystem\n\nExample output:\nFilesystem     Inodes  IUsed  IFree IUse%\n/dev/sda1      655360  45000  610360    7%\n\nMany small files = inode exhaustion\nEven with disk space, can't create files\n\nReduce inode count at mkfs:\nmkfs.ext4 -N 1000000 /dev/sdb1",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Inodes store file content",
+        "Inode exhaustion cannot happen",
+        "df -i shows disk space, not inodes"
+      ],
       "tags": ["filesystem", "inode"]
     },
     {
@@ -535,6 +910,11 @@
       "question": "How do you set up firewall rules?",
       "answer": "UFW (Ubuntu):\n\nufw status              # Check status\nufw enable              # Enable\nufw disable             # Disable\nufw allow 22/tcp        # Allow SSH\nufw allow 80/tcp        # Allow HTTP\nufw deny 443/tcp        # Block HTTPS\nufw delete allow 80     # Remove rule\nufw show added          # List rules\n\nfirewalld (RHEL):\n\nfirewall-cmd --list-all\nfirewall-cmd --add-service=http\nfirewall-cmd --add-port=8080/tcp\nfirewall-cmd --permanent",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "UFW is available on all Linux distributions",
+        "firewalld cannot block specific IP addresses",
+        "Firewall rules are automatically saved"
+      ],
       "tags": ["firewall", "security"]
     },
     {
@@ -542,6 +922,11 @@
       "question": "How do you disable root login over SSH?",
       "answer": "Disable root SSH:\n\n1. Edit /etc/ssh/sshd_config:\n   PermitRootLogin no\n\n2. Restart SSH:\n   systemctl restart sshd\n\n3. Create sudo user:\n   useradd -m admin\n   usermod -aG sudo admin\n   passwd admin\n\n4. Test new user before logout!\n\nAlternative - use PermitRootLogin without-password\nto allow key-based root login.",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Disabling root login requires reinstalling SSH",
+        "Root login can only be disabled at compile time",
+        "SSH passwords are more secure than keys"
+      ],
       "tags": ["ssh", "security"]
     },
     {
@@ -549,6 +934,11 @@
       "question": "How do you monitor disk I/O?",
       "answer": "Disk I/O monitoring:\n\niostat -x 1            # Extended stats every 1s\niostat -dx /dev/sda   # Specific device\n\nColumns:\n- %util = I/O utilization\n- await = avg wait time\n- svctm = avg service time\n- w/s, r/s = writes/reads per sec\n\nReal-time:\niotop                    # Interactive\n\nProcess I/O:\niotop -o              # Only active processes\n",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "iotop shows CPU usage per process",
+        "iostat shows only disk capacity",
+        "High disk I/O is always caused by hardware failure"
+      ],
       "tags": ["monitoring", "disk"]
     },
     {
@@ -556,6 +946,11 @@
       "question": "How do you create LVM snapshot?",
       "answer": "LVM snapshot:\n\n1. Check space:\n   vgs\n\n2. Create snapshot:\n   lvcreate --size 1G --snapshot --name snap_name /dev/vg/lv\n\n3. Mount snapshot:\n   mount /dev/vg/snap_name /mnt\n\n4. Merge snapshot:\n   lvconvert --merge /dev/vg/snap_name\n\nUse for:\n- Backup without downtime\n- Test changes\n- Rollback",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "LVM snapshots require downtime",
+        "Snapshots cannot be merged back",
+        "Snapshots are only for full backups"
+      ],
       "tags": ["lvm", "backup"]
     },
     {
@@ -563,6 +958,11 @@
       "question": "How do you troubleshoot network issues?",
       "answer": "Network troubleshooting:\n\n1. Check interface:\n   ip addr\n   ip link show\n\n2. Test connectivity:\n   ping 8.8.8.8\n   ping google.com\n\n3. Check routing:\n   ip route\n   traceroute google.com\n\n4. Check DNS:\n   nslookup google.com\n   cat /etc/resolv.conf\n\n5. Check firewall:\n   iptables -L -n\n   ufw status\n\n6. Check ports:\n   ss -tulpn",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Network issues cannot be troubleshot from CLI",
+        "ping is the only network troubleshooting tool",
+        "Network configuration is stored in /etc/hosts"
+      ],
       "tags": ["network", "troubleshooting"]
     },
     {
@@ -570,6 +970,11 @@
       "question": "How do you lock/unlock user account?",
       "answer": "Lock account:\n\npasswd -l username      # Lock\nusermod -L username     # Alternative\n\nUnlock account:\n\npasswd -u username      # Unlock\nusermod -U username     # Alternative\n\nCheck status:\n\npasswd -S username\n# Shows: Pk = locked, P = normal\n\nExpire password:\n\npasswd -e username     # Force expire\nchage -E 0 username   # Alternative",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Locking a user deletes their files",
+        "passwd -l requires root access only to unlock",
+        "Locked accounts can still SSH with keys"
+      ],
       "tags": ["users", "security"]
     },
     {
@@ -577,6 +982,11 @@
       "question": "How do you check service dependencies?",
       "answer": "Check dependencies:\n\nsystemctl list-dependencies nginx\nsystemctl list-dependencies --all nginx\nsystemctl list-units --type=service | grep nginx\n\nReverse (what depends on):\n\nsystemctl list-dependencies --reverse nginx\n\nCheck failed:\n\nsystemctl list-unit-files --state=failed\n\nTree view:\n\nsystemd-tree nginx",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Services can only depend on processes, not other services",
+        "Dependencies are automatically resolved by systemd",
+        "systemctl list-dependencies shows only failed services"
+      ],
       "tags": ["systemd", "services"]
     },
     {
@@ -584,6 +994,11 @@
       "question": "How do you capture network packets?",
       "answer": "tcpdump usage:\n\nBasic:\nsudo tcpdump -i eth0\n\nSpecific port:\nsudo tcpdump -i eth0 port 80\n\nHTTP traffic:\nsudo tcpdump -i eth0 -A port 80\n\nSave to file:\nsudo tcpdump -i eth0 -w capture.pcap\n\nRead capture:\ntcpdump -r capture.pcap\n\nWith filters:\ntcpdump -i eth0 'tcp port 80 and host 192.168.1.1'",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "tcpdump can only capture outgoing packets",
+        "tcpdump modifies network traffic",
+        "Packet capture requires special hardware"
+      ],
       "tags": ["network", "troubleshooting"]
     },
     {
@@ -591,6 +1006,11 @@
       "question": "How do you configure NIC bonding?",
       "answer": "NIC bonding setup:\n\n1. Load bonding module:\n   modprobe bonding\n\n2. Create bond interface:\n   nmcli con add type bond con-name bond0 ifname bond0\n   nmcli con mod bond0 bond.options mode=active-backup\n\n3. Add slave interfaces:\n   nmcli con add type ethernet slave-type bond con-name bond0-eth0 ifname eth0 master bond0\n   nmcli con add type ethernet slave-type bond con-name bond0-eth1 ifname eth1 master bond0\n\n4. Enable:\n   nmcli con up bond0\n\nModes:\n0 = balance-rr\n1 = active-backup\n4 = 802.3ad",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "NIC bonding requires identical network cards",
+        "Bonding only works with wireless interfaces",
+        "Bonded interfaces show as separate devices"
+      ],
       "tags": ["network", "bonding"]
     },
     {
@@ -598,6 +1018,11 @@
       "question": "How do you check system architecture and OS version?",
       "answer": "System info commands:\n\nuname -m              # Architecture (x86_64)\nuname -r              # Kernel version\nuname -a              # All info\n\nOS version:\ncat /etc/os-release      # Ubuntu/CentOS\nlsb_release -a           # If installed\ncat /etc/centos-release  # CentOS\ncat /etc/issue            # Login banner",
       "difficulty": "easy",
+      "wrongAnswers": [
+        "uname shows only CPU information",
+        "OS version can only be found in GUI",
+        "System architecture is stored in /etc/version"
+      ],
       "tags": ["system", "commands"]
     },
     {
@@ -605,6 +1030,11 @@
       "question": "How do you force restart a service?",
       "answer": "Force restart service:\n\nsystemctl restart nginx\nsystemctl stop nginx\nsleep 1\nsystemctl start nginx\n\nCheck after restart:\nsystemctl status nginx\njournalctl -u nginx -n 20\n\nKill and restart:\nkillall nginx\nnginx\n\nEmergency:\nsystemctl reset-failed\nsystemctl daemon-reload",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "systemctl restart is the same as stop then start",
+        "Failed services are automatically removed",
+        "systemctl can only restart stopped services"
+      ],
       "tags": ["services", "systemd"]
     },
     {
@@ -612,6 +1042,11 @@
       "question": "How do you schedule one-time jobs with at?",
       "answer": "at command for one-time tasks:\n\n1. Install if needed:\n   apt install at  # Ubuntu\n   yum install at  # CentOS\n\n2. Schedule:\n   at 14:30          # At 2:30 PM today\n   at 2:30 PM         # Alternative format\n   at midnight\n   at tomorrow\n   at 3:00 AM tomorrow\n\n3. Enter command:\nat> systemctl restart nginx\nat> <Ctrl+D>\n\nList pending:\natq\n\nRemove:\natrm <jobnumber>",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "at command schedules recurring tasks",
+        "at jobs are stored in /var/spool/cron",
+        "at only works on servers"
+      ],
       "tags": ["scheduling", "automation"]
     },
     {
@@ -619,6 +1054,11 @@
       "question": "How do you find which package owns a file?",
       "answer": "Find package owning file:\n\nDebian/Ubuntu:\ndpkg -S /path/to/file\napt-file search /path/to/file  # If installed\n\nRHEL/CentOS:\nrpm -qf /path/to/file\n\nWhat files in package:\n\ndpkg -L package_name   # Ubuntu\nrpm -ql package_name  # RHEL",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Files are stored in the package database",
+        "dpkg works on Red Hat systems",
+        "Package ownership cannot be identified"
+      ],
       "tags": ["packages", "troubleshooting"]
     },
     {
@@ -626,6 +1066,11 @@
       "question": "How do you analyze system load average?",
       "answer": "Understanding load average:\n\nuptime\n# 14:30:01 up 10 days,  2 users,  load average: 0.52, 0.58, 0.59\n#                               1min     5min     15min\n\nLoad = processes waiting for CPU/IO\n\nInterpretation:\n- 4 cores, load 2.0 = 50% usage\n- 4 cores, load 8.0 = 2x overloaded\n\nHigh load with low CPU:\niostat\nvmstat 1\nmpstat -P ALL",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Load average shows memory usage",
+        "High load always means high CPU usage",
+        "Load average is only visible in htop"
+      ],
       "tags": ["performance", "monitoring"]
     },
     {
@@ -633,6 +1078,11 @@
       "question": "How do you configure rsyslog for remote logging?",
       "answer": "Remote logging with rsyslog:\n\nServer (receiving):\n\n1. Enable UDP/TCP:\n   cat /etc/rsyslog.conf\n   # Uncomment:\n   module(load=\"imudp\")\n   input(type=\"imudp\" port=\"514\")\n\n2. Create rule:\n   cat /etc/rsyslog.d/remote.conf\n   :fromhost-ip, !isequal, \"127.0.0.1\" /var/log/remote/%HOSTNAME%/\n\n3. Restart:\n   systemctl restart rsyslog\n\nClient (sending):\n   *.* @server_ip:514",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "rsyslog only works locally",
+        "Remote logging requires additional hardware",
+        "rsyslog cannot send logs over network"
+      ],
       "tags": ["logs", "syslog"]
     },
     {
@@ -640,6 +1090,11 @@
       "question": "How do you check for security updates?",
       "answer": "Security update checking:\n\nUbuntu/Debian:\napt update\napt list --upgradable\napt-get -s upgrade      # Simulate\nunattended-upgrades     # Auto-update\n\nRHEL/CentOS:\nyum check-update --security\nyum update --security\n\nCheck installed CVE:\ndpkg --audit            # Ubuntu\nrpm -Va                # Check files\n\nKnown vulnerabilities:\napt list --upgradable | grep security",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Security updates are not available for Linux",
+        "All updates require system reboot",
+        "yum check-update shows all updates equally"
+      ],
       "tags": ["security", "updates"]
     },
     {
@@ -647,6 +1102,11 @@
       "question": "How do you manage cron job environment?",
       "answer": "Cron environment issues:\n\nCron has minimal PATH:\nPATH=/usr/bin:/bin\n\nDebug cron:\n1. Run manually:\n   env -i /bin/bash -c '/path/to/script'\n\n2. Add to script:\n   #!/bin/bash\n   env > /tmp/cron_env.log\n\n3. Redirect output:\n   * * * * * /script.sh >> /var/log/script.log 2>&1\n\n4. Set full PATH:\n   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Cron has the same PATH as the shell",
+        "Cron scripts cannot output to files",
+        "Cron runs scripts immediately when scheduled"
+      ],
       "tags": ["cron", "troubleshooting"]
     },
     {
@@ -654,6 +1114,11 @@
       "question": "How do you create systemd service file?",
       "answer": "Create systemd service:\n\n/etc/systemd/system/myservice.service:\n\n[Unit]\nDescription=My Service\nAfter=network.target\n\n[Service]\nType=simple\nUser=myuser\nWorkingDirectory=/opt/myservice\nExecStart=/opt/myservice/bin/start.sh\nRestart=always\nRestartSec=5\n\n[Install]\nWantedBy=multi-user.target\n\nCommands:\nsystemctl daemon-reload\nsystemctl enable myservice\nsystemctl start myservice",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "systemd service files are automatically created",
+        "Service files only work in /usr/lib",
+        "Type=simple is for system services only"
+      ],
       "tags": ["systemd", "services"]
     },
     {
@@ -661,6 +1126,11 @@
       "question": "How do you troubleshoot high memory usage?",
       "answer": "Memory troubleshooting:\n\n1. Check usage:\n   free -h\n   cat /proc/meminfo\n\n2. Top processes:\n   ps aux --sort=-%mem | head\n   top (shift+M)\n\n3. Memory details:\n   smem\n   pmap -x <pid>\n\n4. Check for:\n   - Memory leak (growing process)\n   - OOM kills (dmesg | grep -i oom)\n   - Swap usage (free -h, si/so columns)\n\n5. Clear cache:\n   sync; echo 3 > /proc/sys/vm/drop_caches",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "High memory usage always indicates a memory leak",
+        "Linux cannot detect memory issues",
+        "free command shows CPU usage instead"
+      ],
       "tags": ["memory", "troubleshooting"]
     },
     {
@@ -668,6 +1138,11 @@
       "question": "How do you find recently modified files?",
       "answer": "Find recently modified:\n\nLast 24 hours:\nfind / -mtime 0\nfind / -mtime -1\n\nLast 7 days:\nfind / -mtime -7\n\nExactly 7 days ago:\nfind / -mtime 7\n\nMore than 7 days:\nfind / -mtime +7\n\nMinutes:\nfind / -mmin -30\n\nSpecific date:\nfind / -newermt \"2024-01-01\" ! -newermt \"2024-01-15\"",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Recent files can only be found in the GUI",
+        "find command cannot search by modification time",
+        "mtime only works on the root directory"
+      ],
       "tags": ["files", "find"]
     },
     {
@@ -675,6 +1150,11 @@
       "question": "How do you configure sudo access?",
       "answer": "sudo configuration:\n\nAdd user to sudo:\nusermod -aG sudo username\n\nEdit sudoers:\nvisudo\n\nExample configurations:\n\n# User can sudo\nusername ALL=(ALL:ALL) ALL\n\n# No password:\nusername ALL=(ALL) NOPASSWD: ALL\n\n# Specific commands:\nusername ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart nginx\n\n# Group sudo access:\n%sudogroup ALL=(ALL:ALL) ALL",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "sudo is enabled by default on all Linux systems",
+        "Only root can edit sudoers file",
+        "visudo is not required for sudo configuration"
+      ],
       "tags": ["sudo", "security"]
     },
     {
@@ -682,6 +1162,11 @@
       "question": "How do you update kernel in Linux?",
       "answer": "Kernel update:\n\nUbuntu:\napt update\napt list --upgradable | grep linux-image\napt install linux-image-generic\nupdate-grub\nreboot\n\nRHEL/CentOS:\nyum update kernel\nreboot\n\nCheck current:\nuname -r\n\nList installed:\ndpkg --list | grep linux-image\nrpm -qa | grep kernel\n\nRemove old kernels:\napt autoremove\nyum remove kernel-old",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Kernel updates are automatic in Linux",
+        "Only root can update the kernel",
+        "apt update installs new kernels"
+      ],
       "tags": ["kernel", "updates"]
     },
     {
@@ -689,6 +1174,11 @@
       "question": "How do you verify backup integrity?",
       "answer": "Backup verification:\n\n1. Checksum backup:\n   md5sum backup.tar.gz > backup.md5\n   \n2. Verify:\n   md5sum -c backup.md5\n\n3. tar verification:\n   tar -tzf backup.tar.gz > /dev/null\n\n4. Compare file counts:\n   tar -tzf backup.tar.gz | wc -l\n   \n5. rsync verification:\n   rsync -avc --dry-run source/ backup/\n\n6. Test restore in dev:\n   Extract to temp, verify app works",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Backups are always verified automatically",
+        "tar archives cannot be verified",
+        "rsync does not verify copied data"
+      ],
       "tags": ["backup", "verification"]
     },
     {
@@ -696,6 +1186,11 @@
       "question": "How do you kill all processes for a user?",
       "answer": "Kill all user processes:\n\nKill user:\npkill -u username\n\nKill with signal:\npkill -9 -u username\n\nKill specific process type:\npkill -u username nginx\n\nKill login sessions:\nskill -KILL -u username\n\nCheck remaining:\nps -u username\npgrep -u username",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "pkill only kills the first matching process",
+        "All user processes can be killed by any user",
+        "killall requires the full process name"
+      ],
       "tags": ["processes", "administration"]
     },
     {
@@ -703,6 +1198,11 @@
       "question": "How do you build a custom Linux kernel?",
       "answer": "Custom kernel build:\n\n1. Install dependencies:\n   apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev\n\n2. Download kernel:\n   wget https://kernel.org/...linux-x.y.z.tar.xz\n\n3. Extract:\n   tar xvf linux-x.y.z.tar.xz\n   cd linux-x.y.z\n\n4. Configure:\n   cp /boot/config-$(uname -r) .config\n   make olddefconfig\n\n5. Build:\n   make -j$(nproc)\n   make modules_install\n   make install\n\n6. Update bootloader:\n   update-grub\n   \n7. Reboot and select new kernel",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Custom kernel can only be built on Windows",
+        "Kernel compilation takes less than a minute",
+        "Bootloader is automatically updated after kernel build"
+      ],
       "tags": ["kernel", "advanced"]
     },
     {
@@ -710,6 +1210,11 @@
       "question": "How do you troubleshoot system boot issues?",
       "answer": "Boot troubleshooting:\n\n1. Boot to recovery:\n   Select 'Advanced options' in GRUB\n   Choose 'recovery mode'\n\n2. Check logs:\n   journalctl -b          # Current boot\n   journalctl -b -1       # Previous boot\n   dmesg\n\n3. Check GRUB:\n   cat /boot/grub/grub.cfg\n   update-grub\n\n4. Filesystem check:\n   fsck /dev/sda1\n\n5. Reinstall GRUB:\n   grub-install /dev/sda\n\n6. Check fstab:\n   cat /etc/fstab\n   blkid                 # Get UUIDs",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Boot issues cannot be troubleshot without reinstall",
+        "journalctl shows only current boot logs",
+        "GRUB cannot be reinstalled"
+      ],
       "tags": ["boot", "troubleshooting"]
     },
     {
@@ -717,6 +1222,11 @@
       "question": "How do you set up disk quotas?",
       "answer": "Disk quota setup:\n\n1. Enable quota in fstab:\n   /dev/sda1 / ext4 defaults,usrquota,grpquota 0 2\n\n2. Remount:\n   mount -o remount /\n\n3. Create quota files:\n   touch /aquota.user /aquota.group\n   chmod 600 /aquota.*\n\n4. Initialize:\n   quotacheck -cug /\n\n5. Enable:\n   quotaon /\n\n6. Set quotas:\n   edquota -u username\n   edquota -g groupname\n\n7. Check:\n   quota -u username\n   repquota /",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "Disk quotas are enabled by default",
+        "Quotas work on all filesystems",
+        "Quota enforcement requires reboot"
+      ],
       "tags": ["disk", "quotas"]
     },
     {
@@ -724,6 +1234,11 @@
       "question": "How do you configure LDAP authentication?",
       "answer": "LDAP setup:\n\n1. Install:\n   apt install ldap-utils libnss-ldapd\n\n2. Configure NSS:\n   /etc/nsswitch.conf:\n   passwd:         compat ldap\n   group:           compat ldap\n   shadow:         compat ldap\n\n3. Configure LDAP client:\n   /etc/ldap.conf\n   /etc/ldap/ldap.conf\n\n4. Test:\n   ldapsearch -x\n   getent passwd | grep ldapuser\n\n5. PAM configuration:\n   pam-auth-update\n\n6. Restart:\n   systemctl restart nscd",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "LDAP authentication is only for local users",
+        "LDAP requires special hardware",
+        "LDAP configuration cannot be tested"
+      ],
       "tags": ["ldap", "authentication"]
     },
     {
@@ -731,6 +1246,11 @@
       "question": "How do you configure automated security updates?",
       "answer": "Automated updates:\n\nUbuntu:\n1. Install:\n   apt install unattended-upgrades\n\n2. Configure:\n   cat /etc/apt/apt.conf.d/50unattended-upgrades\n\n3. Enable:\n   dpkg-reconfigure unattended-upgrades\n\nRHEL/CentOS:\n1. Install:\n   yum install yum-cron\n\n2. Configure:\n   /etc/yum/yum-cron.conf\n   update_cmd = security\n   apply_updates = yes\n\n3. Enable:\n   systemctl enable yum-cron\n   systemctl start yum-cron",
       "difficulty": "medium",
+      "wrongAnswers": [
+        "Automated security updates are enabled by default",
+        "Unattended upgrades only work on servers",
+        "yum-cron is installed by default"
+      ],
       "tags": ["security", "automation"]
     },
     {
@@ -738,6 +1258,11 @@
       "question": "How do you set up IP forwarding?",
       "answer": "IP forwarding setup:\n\n1. Enable temporarily:\n   sysctl -w net.ipv4.ip_forward=1\n\n2. Enable permanently:\n   echo \"net.ipv4.ip_forward = 1\" >> /etc/sysctl.conf\n   sysctl -p\n\n3. NAT with iptables:\n   iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE\n   iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT\n   iptables -A FORWARD -i eth0 -o eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT\n\n4. Save rules:\n   iptables-save > /etc/iptables/rules.v4",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "IP forwarding is disabled by default on all systems",
+        "sysctl settings persist only until reboot",
+        "iptables is not needed for IP forwarding"
+      ],
       "tags": ["network", "routing"]
     },
     {
@@ -745,6 +1270,11 @@
       "question": "How do you configure VLAN in Linux?",
       "answer": "VLAN configuration:\n\nUsing ip command:\n\n1. Create VLAN interface:\n   ip link add link eth0 name eth0.100 type vlan id 100\n\n2. Assign IP:\n   ip addr add 192.168.1.10/24 dev eth0.100\n\n3. Enable:\n   ip link set dev eth0.100 up\n\nUsing NetworkManager:\n\nnmcli con add type vlan dev eth0 id 100\nnmcli con mod vlan100 ipv4.addresses 192.168.1.10/24\nnmcli con up vlan100\n\nVerify:\nip link show\nip -d link show",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "VLANs require special network hardware only",
+        "Linux cannot create VLAN interfaces",
+        "VLAN tagging is automatic in Linux"
+      ],
       "tags": ["network", "vlan"]
     },
     {
@@ -752,6 +1282,11 @@
       "question": "How do you monitor system with sar?",
       "answer": "sar (System Activity Reporter):\n\n1. Install:\n   apt install sysstat\n\n2. Enable:\n   systemctl enable sysstat\n\n3. CPU usage:\n   sar -u 1 5           # Every 1s, 5 samples\n   sar -P ALL 1 1       # Per CPU\n\n4. Memory:\n   sar -r 1 5\n\n5. I/O:\n   sar -b 1 5           # Disk I/O\n   sar -d 1 5            # Per device\n\n6. Network:\n   sar -n DEV 1 5       # Network devices\n   sar -n TCP 1 5        # TCP stats\n\n7. Historical:\n   sar -q -f /var/log/sa/saXX",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "sar only monitors CPU usage",
+        "sysstat is installed by default",
+        "sar cannot show historical data"
+      ],
       "tags": ["monitoring", "sar"]
     },
     {
@@ -759,6 +1294,11 @@
       "question": "How do you troubleshoot OOM (Out of Memory) issues?",
       "answer": "OOM troubleshooting:\n\n1. Check OOM kills:\n   dmesg | grep -i 'out of memory'\n   journalctl | grep -i 'killed process'\n   cat /var/log/syslog | grep OOM\n\n2. Identify culprit:\n   dmesg | grep -i 'killed process' | tail -5\n\n3. Check memory:\n   free -h\n   vmstat 1\n\n4. Top consumers:\n   ps aux --sort=-%mem | head\n\n5. Prevent future OOM:\n   - Add swap\n   - Increase RAM\n   - Kill memory leaks\n   - Set oom_score_adj\n\n6. Tune vm:\n   /etc/sysctl.conf:\n   vm.overcommit_memory=1",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "OOM killer prevents system crashes",
+        "OOM only happens on servers",
+        "dmesg shows only hardware information"
+      ],
       "tags": ["memory", "oom"]
     },
     {
@@ -766,6 +1306,11 @@
       "question": "How do you set up a local YUM/DNF repository?",
       "answer": "Local repository setup:\n\n1. Install createrepo:\n   yum install createrepo\n\n2. Create repo directory:\n   mkdir -p /var/repo\n\n3. Copy RPMs:\n   cp *.rpm /var/repo/\n\n4. Create repo:\n   createrepo /var/repo\n\n5. Create repo file:\n   /etc/yum.repos.d/local.repo:\n   [local]\n   name=Local Repository\n   baseurl=file:///var/repo\n   enabled=1\n   gpgcheck=0\n\n6. Clear cache:\n   yum clean all\n   yum makecache\n\n7. Test:\n   yum repolist\n   yum install <package>",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "createrepo is installed by default",
+        "Local repos cannot be created for RPM packages",
+        "yum always requires internet connection"
+      ],
       "tags": ["packages", "yum"]
     },
     {
@@ -773,6 +1318,11 @@
       "question": "How do you design a highly available Linux system?",
       "answer": "HA Linux design:\n\nComponents:\n\n1. Redundant network:\n   - NIC bonding/teaming\n   - Multiple paths\n   - VLANs\n\n2. Storage:\n   - RAID (硬件/软件)\n   - Multipath I/O\n   - Shared storage (NFS/SAN)\n\n3. Load balancing:\n   - HAProxy\n   - Nginx\n   - Keepalived (VRRP)\n\n4. Clustering:\n   - Pacemaker + Corosync\n   - DRBD for storage\n\n5. Database HA:\n   - Replication\n   - Clustering\n   - Galera\n\n6. Monitoring:\n   - Heartbeat\n   - Cluster monitoring\n   - Alerting\n\n7. Failover:\n   - Automatic detection\n   - Quick recovery\n   - Health checks",
       "difficulty": "hard",
+      "wrongAnswers": [
+        "HA systems require no monitoring",
+        "High availability only needs redundant hardware",
+        "Load balancing is optional in HA systems"
+      ],
       "tags": ["ha", "architecture"]
     }
   ]
