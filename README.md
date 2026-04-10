@@ -21,6 +21,14 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
+## Logo
+
+The MyRevisor logo was designed using [Canva](https://www.canva.com):
+
+![MyRevisor Logo](web/public/images/logo-original.jpeg)
+
+**GitHub**: https://github.com/ashwani983/myrevisor
+
 ## Live Demo
 
 Try the web application live: **https://myrevisor.vercel.app**
