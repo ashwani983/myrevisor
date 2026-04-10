@@ -1,49 +1,91 @@
 {
   "version": "1.0.0",
   "description": "Tracks data file versions for MyRevisor updates",
-  "lastUpdated": "2026-04-02",
+  "lastUpdated": "2026-04-11",
   "dataFiles": {
+    "ansible": {
+      "file": "ansible.json",
+      "lastUpdated": "2026-04-10",
+      "questionCount": 80,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/ansible.json"
+    },
     "aws": {
       "file": "aws.json",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-10",
       "questionCount": 130,
       "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/aws.json"
     },
+    "azure": {
+      "file": "azure.json",
+      "lastUpdated": "2026-04-11",
+      "questionCount": 100,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/azure.json"
+    },
+    "cicd": {
+      "file": "cicd.json",
+      "lastUpdated": "2026-04-11",
+      "questionCount": 100,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/cicd.json"
+    },
     "docker": {
       "file": "docker.json",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-10",
       "questionCount": 100,
       "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/docker.json"
     },
     "git-github": {
       "file": "git-github.json",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-10",
       "questionCount": 110,
       "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/git-github.json"
     },
     "jenkins": {
       "file": "jenkins.json",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-10",
       "questionCount": 110,
       "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/jenkins.json"
     },
     "kubernetes": {
       "file": "kubernetes.json",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-10",
       "questionCount": 110,
       "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/kubernetes.json"
     },
     "linux": {
       "file": "linux.json",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-10",
       "questionCount": 110,
       "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/linux.json"
     },
+    "networking": {
+      "file": "networking.json",
+      "lastUpdated": "2026-04-11",
+      "questionCount": 100,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/networking.json"
+    },
+    "prometheus": {
+      "file": "prometheus.json",
+      "lastUpdated": "2026-04-11",
+      "questionCount": 100,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/prometheus.json"
+    },
+    "python": {
+      "file": "python.json",
+      "lastUpdated": "2026-04-11",
+      "questionCount": 100,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/python.json"
+    },
     "shell-scripting": {
       "file": "shell-scripting.json",
-      "lastUpdated": "2026-04-02",
+      "lastUpdated": "2026-04-10",
       "questionCount": 100,
       "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/shell-scripting.json"
+    },
+    "terraform": {
+      "file": "terraform.json",
+      "lastUpdated": "2026-04-10",
+      "questionCount": 80,
+      "url": "https://raw.githubusercontent.com/ashwani983/myrevisor/main/src/data/terraform.json"
     }
   }
 }
