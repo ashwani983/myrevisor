@@ -19,13 +19,13 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy custom nginx config
-COPY --from=builder /app/web/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built assets
-COPY --from=builder /app/web/dist/ /usr/share/nginx/html
+COPY --from=builder /app/dist/ /usr/share/nginx/html
 
 # Copy static assets
-COPY --from=builder /app/web/public/ /usr/share/nginx/html/public
+COPY --from=builder /app/public/ /usr/share/nginx/html/public
 
 # Expose port
 EXPOSE 80
