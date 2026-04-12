@@ -166,6 +166,34 @@ npm install
 npm run build
 ```
 
+### Docker Deployment
+
+Run the web app in a Docker container:
+
+```bash
+# Option 1: Using Docker Compose (recommended)
+docker-compose up -d
+
+# Option 2: Using Docker build and run
+docker build -t myrevisor .
+docker run -d -p 3000:80 --name myrevisor myrevisor
+```
+
+The app will be available at:
+
+- **http://localhost:3000**
+
+To stop:
+
+```bash
+# Docker Compose
+docker-compose down
+
+# Docker run
+docker stop myrevisor
+docker rm myrevisor
+```
+
 ### Development Commands
 
 ```bash
@@ -189,6 +217,11 @@ npm run format
 
 ```
 myrevisor/
+├── Dockerfile           # Docker configuration for web app
+├── docker-compose.yml   # Docker Compose setup
+├── web/
+│   ├── nginx.conf      # Nginx configuration for Docker
+│   └── public/         # Static assets
 ├── bin/
 │   └── myrevisor.js      # CLI entry point
 ├── src/
