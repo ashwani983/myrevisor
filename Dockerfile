@@ -3,14 +3,17 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Copy web package files
 COPY web/package*.json ./
 
 # Install dependencies
 RUN npm ci --legacy-peer-deps
 
-# Copy source code
+# Copy web source code
 COPY web/ ./
+
+# Copy data files from root src/data to web/src/data
+COPY src/data ./src/data
 
 # Build the application
 RUN npm run build
